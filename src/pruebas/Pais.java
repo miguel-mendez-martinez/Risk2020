@@ -9,6 +9,10 @@ package pruebas;
  *
  * @author migue
  */
+
+import java.util.ArrayList;
+
+
 public class Pais {
     private String nombre;
     private int ejercitos;

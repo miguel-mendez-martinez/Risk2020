@@ -9,9 +9,15 @@ package pruebas;
  *
  * @author migue
  */
+
+import java.util.ArrayList;
+
+
 public class Jugador {
     private String nombre;
     private String color;
+    private int tropas;
+    private ArrayList<Pais> paises;
 	
     public Jugador(){}
 
@@ -24,7 +30,11 @@ public class Jugador {
             this.nombre= nombre;
             this.color= "rojo";
     }
-
+    public Jugador(String nombre, String color, ArrayList<Pais> paises){
+	this.nombre= nombre;
+        this.color= color;
+        this.paises = paises;
+    }
     public String getNombre() {
             return nombre;
             }
@@ -37,9 +47,18 @@ public class Jugador {
     public void setColor(String Color){
             this.color = Color ;
             }
+    public void setTropas(int tropas){
+        
+    }
+    public int getTropas(){
+        return tropas;
+    }
+    public void setPaises(ArrayList<Pais> paises){
+        this.paises = paises;
+    }
     @Override
     public String toString(){
-        String texto="\nNombre: "+ this.nombre + "\nColor: " + this.color;
+        String texto="\nNombre: "+ this.nombre + "\nColor: " + this.color + "\nPaises: " + this.paises;
         return texto;
     }
 
