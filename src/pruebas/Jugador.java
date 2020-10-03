@@ -19,40 +19,52 @@ public class Jugador {
     private int tropas;
     private ArrayList<Pais> paises;
 	
-    public Jugador(){}
+    //Constructores
+    
+    public Jugador(){
+    }
+    
+    public Jugador(String nombre){
+        this.nombre= nombre;
+        this.color= "rojo";
+    }
 
     public Jugador(String nombre, String color){
 	this.nombre= nombre;
         this.color= color;
     }
 
-    public Jugador(String nombre){
-            this.nombre= nombre;
-            this.color= "rojo";
-    }
     public Jugador(String nombre, String color, ArrayList<Pais> paises){
 	this.nombre= nombre;
         this.color= color;
         this.paises = paises;
     }
+    
+    //setters & getters
+    
     public String getNombre() {
-            return nombre;
-            }
+        return nombre;
+    }
+    
     public void setNombre(String nombre){
             this.nombre = nombre;
     }
+    
     public String getColor() {
-            return color;
-            }
+        return color;
+    }
+    
     public void setColor(String Color){
-            this.color = Color ;
-            }
+        this.color = Color ;
+    }
+    
     public void setTropas(int tropas){
-        
+        this.tropas = tropas;
     }
     public int getTropas(){
         return tropas;
     }
+    
     public void setPaises(ArrayList<Pais> paises){
         this.paises = paises;
     }

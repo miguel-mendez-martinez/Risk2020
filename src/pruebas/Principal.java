@@ -19,6 +19,7 @@ public class Principal {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
         Jugador jugador1= new Jugador(); 
 	Jugador jugador2= new Jugador("Miguel", "azul");
 	Jugador jugador3= new Jugador("loko4");
