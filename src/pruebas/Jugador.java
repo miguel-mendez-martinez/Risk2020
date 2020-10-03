@@ -56,10 +56,13 @@ public class Jugador {
     public void setPaises(ArrayList<Pais> paises){
         this.paises = paises;
     }
+    public void getPaises(){
+        
+    }
     @Override
     public String toString(){
-        String texto="\nNombre: "+ this.nombre + "\nColor: " + this.color + "\nPaises: " + this.paises;
+        String texto="\nNombre: "+ this.nombre + "\nColor: " + this.color+ "\nPaises: " + this.paises;
         return texto;
     }
-
+//alberto maricon
 }
