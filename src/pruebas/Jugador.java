@@ -64,5 +64,5 @@ public class Jugador {
         String texto="\nNombre: "+ this.nombre + "\nColor: " + this.color+ "\nPaises: " + this.paises;
         return texto;
     }
-//alberto maricon
+//alberto maricon jaja
 }
