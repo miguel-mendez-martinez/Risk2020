@@ -14,9 +14,15 @@ import java.util.ArrayList;
 
 
 public class Continente {
+    
     private String nombre;
     private int bonus;
     private ArrayList<Pais> paises;
+    
+    // Constructores
+    
+    
+    // setters & getters
     
     
 }

@@ -14,10 +14,14 @@ import java.util.ArrayList;
 
 
 public class Pais {
+    
     private String nombre;
     private int ejercitos;
     
-    public Pais(){}
+    // Constructores
+    
+    public Pais(){
+    }
     
     public Pais(String nombre){
         this.nombre=nombre;
@@ -30,17 +34,22 @@ public class Pais {
     }
     
     public String getNombre() {
-            return nombre;
-            }
-    public void setNombre(String nombre){
-            this.nombre = nombre;
+        return nombre;
     }
-    public int getEjercito() {
-            return ejercitos;
-            }
-    public void setEjercito(int ejercitos){
-            this.ejercitos = ejercitos ;
-            }
+    
+    public void setNombre(String nombre){
+        this.nombre = nombre;
+    }
+    
+    public int getEjercitos() {
+        return ejercitos;
+    }
+    
+    public void setEjercitos(int ejercitos){
+        this.ejercitos = ejercitos ;
+    }
+    
+    
     @Override
     public String toString(){
         String texto="\nNombre: "+ this.nombre + "\nTropas: " + this.ejercitos;

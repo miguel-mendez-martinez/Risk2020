@@ -14,12 +14,13 @@ import java.util.ArrayList;
 
 
 public class Jugador {
+    
     private String nombre;
     private String color;
     private int tropas;
     private ArrayList<Pais> paises;
 	
-    //Constructores
+    // Constructores
     
     public Jugador(){
     }
@@ -40,14 +41,14 @@ public class Jugador {
         this.paises = paises;
     }
     
-    //setters & getters
+    // setters & getters
     
     public String getNombre() {
         return nombre;
     }
     
     public void setNombre(String nombre){
-            this.nombre = nombre;
+        this.nombre = nombre;
     }
     
     public String getColor() {
@@ -58,25 +59,27 @@ public class Jugador {
         this.color = Color ;
     }
     
+    public int getTropas(){
+        return tropas;
+    }
+    
     public void setTropas(int tropas){
         this.tropas = tropas;
     }
-    public int getTropas(){
-        return tropas;
+    
+    public ArrayList<Pais> getPaises(){
+        return paises;
     }
     
     public void setPaises(ArrayList<Pais> paises){
         this.paises = paises;
     }
-    public void getPaises(){
-        
-    }
+    
+    
     @Override
     public String toString(){
         String texto="\nNombre: "+ this.nombre + "\nColor: " + this.color+ "\nPaises: " + this.paises;
         return texto;
     }
-//alberto genio figura mastodonte jaja
-    
-    // one piece >>>>>>>>>>>> haikyu
+
 }
