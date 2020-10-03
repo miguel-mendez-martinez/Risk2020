@@ -64,5 +64,7 @@ public class Jugador {
         String texto="\nNombre: "+ this.nombre + "\nColor: " + this.color+ "\nPaises: " + this.paises;
         return texto;
     }
-//alberto maricon jaja
+//alberto genio figura mastodonte jaja
+    
+    // one piece >>>>>>>>>>>> haikyu
 }
