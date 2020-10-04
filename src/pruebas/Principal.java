@@ -32,13 +32,13 @@ public class Principal {
         paises.add(pais3);
         Jugador jugador4= new Jugador("Diana", "rojo", paises);
         
-	System.out.println(jugador1);
-	System.out.println(jugador2);
-	System.out.println(jugador3);
-        System.out.println(jugador4);
-        System.out.println(pais1);
-	System.out.println(pais2);
-	System.out.println(pais3);
+	System.out.println(jugador1.toString());
+	System.out.println(jugador2.toString());
+	System.out.println(jugador3.toString());
+        System.out.println(jugador4.toString());
+        System.out.println(pais1.toString());
+	System.out.println(pais2.toString());
+	System.out.println(pais3.toString());
 		
     }
     
