@@ -24,11 +24,11 @@ public class Mapa {
         
         Continente africa = new Continente();
         
-        for (int i = 0; i < Contie.size(); i++) {
+        /*for (int i = 0; i < Contie.size(); i++) {
             
             continentes = Continente.
             
-        }
+        }*/
     
     }
     
