@@ -10,5 +10,8 @@ package pruebas;
  * @author migue
  */
 public class Casilla {
-    
+    private String pais;
+    private String jugador;
+    private String continente;
+    private String color;
 }

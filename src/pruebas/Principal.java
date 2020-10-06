@@ -19,6 +19,7 @@ public class Principal {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        new Menu();
         
         Jugador jugador1= new Jugador(); 
 	Jugador jugador2= new Jugador("Miguel", "azul");
@@ -36,9 +37,6 @@ public class Principal {
 	System.out.println(jugador2.toString());
 	System.out.println(jugador3.toString());
         System.out.println(jugador4.toString());
-        System.out.println(pais1.toString());
-	System.out.println(pais2.toString());
-	System.out.println(pais3.toString());
 		
     }
     
