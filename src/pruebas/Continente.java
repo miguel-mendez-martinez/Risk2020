@@ -91,8 +91,102 @@ public class Continente {
                 
                 break;
             
-            
-        
+            case("América del Sur"):
+                
+                Pais argentina = new Pais("Argentina");
+                this.paises.add(argentina);
+                
+                Pais brasil = new Pais)("Brasil");
+                this.paises.add(brasil);
+                
+                Pais peru = new Pais("Perú");
+                this.paises.add(peru);
+                
+                Pais venezuela = new Pais("Venezuela");
+                this.paises.add(venezuela);
+                
+                break;
+                
+            case("Asia"):
+                
+                Pais afgan = new Pais("Afgan");
+                this.paises.add(afgan);
+                
+                Pais china = new Pais("China");
+                this.paises.add(china);
+                
+                Pais india = new Pais("India");
+                this.paises.add(india);
+                
+                Pais irktusk = new Pais("Irktusk");
+                this.paises.add(irktusk);
+                
+                Pais japon = new Pais("Japón");
+                this.paises.add(japon);
+                
+                Pais kamchatka = new Pais("Kamchatka");
+                this.paises.add(kamchatka);
+                
+                Pais mongolia = new Pais("Mongolia");
+                this.paises.add(mongolia);
+                
+                Pais omedio = new Pais("OMedio");
+                this.paises.add(omedio);
+                
+                Pais sasiatico = new Pais("SAsiático");
+                this.paises.add(sasiatico);
+                
+                Pais siberia = new Pais("Siberia");
+                this.paises.add(siberia);
+                
+                Pais urales = new Pais("Urales");
+                this.paises.add(urales);
+                
+                Pais yakutsk = new Pais("yakutsk");
+                this.paises.add(yakutsk);
+                
+                break;
+                
+            case("Europa"):
+                  
+                Pais eurnorte = new Pais("EurNorte");
+                this.paises.add(eurnorte);
+                
+                Pais eurocc = new Pais("EurOcc");
+                this.paises.add(eurocc);
+                
+                Pais eursur = new Pais("EurSur");
+                this.paises.add(eursur);
+                
+                Pais escandina = new Pais("Escandina");
+                this.paises.add(escandina);
+                
+                Pais gbretaña = new Pais("GBretaña");
+                this.paises.add(gbretaña);
+                
+                Pais islandia = new Pais("Islandia");
+                this.paises.add(islandia);
+                
+                Pais rusia = new Pais("Rusia");
+                this.paises.add(rusia);
+                
+                break;
+                
+            case("Oceania"):
+                
+                Pais ausoccid = new Pais("AusOccid");
+                this.paises.add(ausoccid);
+                
+                Pais ausorient = new Pais("AusOrient");
+                this.paises.add(ausorient);
+                
+                Pais indonesia = new Pais("Indonesia");
+                this.paises.add(indonesia);
+                
+                Pais NGuinea = new Pais("nguinea");
+                this.paises.add(nguinea);
+                
+                break;
         }
     }
     
