@@ -28,7 +28,7 @@ public class Principal {
         Pais pais2=new Pais("España");
         Pais pais3=new Pais("Alemnia", 200);
         ArrayList<Pais> paises= new ArrayList<Pais>();
-        paises.add(pais1);
+        paises.add(pais2);
         paises.add(pais3);
         Jugador jugador4= new Jugador("Diana", "rojo", paises);
         

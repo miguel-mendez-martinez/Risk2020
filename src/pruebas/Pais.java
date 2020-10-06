@@ -17,6 +17,7 @@ public class Pais {
     
     private String nombre;
     private int ejercitos;
+    private String color;
     
     // Constructores
     
@@ -28,8 +29,19 @@ public class Pais {
         this.ejercitos=0;
     }
     
+    public Pais(String nombre, String color){
+        this.nombre=nombre;
+        this.color=color;
+    }
+    
     public Pais(String nombre, int ejercitos){
         this.nombre=nombre;
+        this.ejercitos=ejercitos;
+    }
+    
+    public Pais(String nombre, String color, int ejercitos){
+        this.nombre=nombre;
+        this.color=color;
         this.ejercitos=ejercitos;
     }
     
@@ -52,7 +64,7 @@ public class Pais {
     
     @Override
     public String toString(){
-        String texto="\nNombre: "+ this.nombre + "\nTropas: " + this.ejercitos;
+        String texto="\n\tNombre: "+ this.nombre + ", Tropas en pais: " + this.ejercitos;
         return texto;
     }
 }

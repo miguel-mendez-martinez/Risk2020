@@ -40,6 +40,12 @@ public class Jugador {
         this.color= color;
         this.paises = paises;
     }
+    public Jugador(String nombre, String color, ArrayList<Pais> paises, int tropas){
+	this.nombre= nombre;
+        this.color= color;
+        this.paises = paises;
+        this.tropas = tropas;
+    }
     
     // setters & getters
     
@@ -78,7 +84,7 @@ public class Jugador {
     
     @Override
     public String toString(){
-        String texto="\nNombre: "+ this.nombre + "\nColor: " + this.color+ "\nPaises: " + this.paises;
+        String texto="\nNombre: "+ this.nombre + "\nColor: " + this.color+ "\nPaises: " + this.paises+ "\nTropas Jugador: " +this.tropas;
         return texto;
     }
 
