@@ -19,7 +19,7 @@ public class Continente {
     private int bonus;
     private ArrayList<Pais> paises;
     
-    // Constructores
+    // Constructores, recordar siempre reservar memoria para el array
     
     
     // setters & getters
