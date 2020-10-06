@@ -21,6 +21,33 @@ public class Continente {
     
     // Constructores, recordar siempre reservar memoria para el array
     
+    public Continente(){
+    }
+    public Continente(String nombre){
+        
+        if( nombre.equals("África") ||
+            nombre.equals("América del Norte") ||
+            nombre.equals("América del Sur") ||
+            nombre.equals("Asia") ||
+            nombre.equals("Europa") ||
+            nombre.equals("Oceanía")) {
+            
+            this.nombre = nombre;
+                   
+        }
+  
+        switch(nombre){
+            
+            case("África"):
+                
+                this.paises.add("Congo")
+                
+                break;
+            
+            
+        
+        }
+    }
     
     // setters & getters
     
@@ -29,7 +56,15 @@ public class Continente {
     }
     
     public void setNombre(String nombre){
-        this.nombre = nombre;
+        if( nombre.equals("África") ||
+            nombre.equals("América del Norte") ||
+            nombre.equals("América del Sur") ||
+            nombre.equals("Asia") ||
+            nombre.equals("Europa") ||
+            nombre.equals("Oceanía")) {
+            
+            this.nombre = nombre;            
+        }
     }
     
     public int getBonus(){

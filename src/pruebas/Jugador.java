@@ -84,7 +84,13 @@ public class Jugador {
     
     @Override
     public String toString(){
-        String texto="\nNombre: "+ this.nombre + "\nColor: " + this.color+ "\nPaises: " + this.paises+ "\nTropas Jugador: " +this.tropas;
+        //String result = "";
+        //for (Pais pais ; this.paises){
+          //  result += pais.toString();
+        //}
+
+        
+        String texto="\nNombre: "+ this.nombre + "\nColor: " + this.color+ "\nPaises: " + /*result*/ this.paises + "\nTropas Jugador: " +this.tropas;
         return texto;
     }
 
