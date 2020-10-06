@@ -40,7 +40,54 @@ public class Continente {
             
             case("África"):
                 
-                this.paises.add("Congo")
+                Pais anorte = new Pais("ANorte");
+                this.paises.add(anorte);
+                
+                Pais aoriental = new Pais("AOriental");
+                this.paises.add(aoriental);
+                
+                Pais congo = new Pais("Congo");
+                this.paises.add(congo);
+                
+                Pais egipto = new Pais("Egipto");
+                this.paises.add(egipto);
+                
+                Pais madagascar = new Pais("Madagasca");
+                this.paises.add(madagascar);
+                
+                Pais sudafrica = new Pais("Sudáfrica");
+                this.paises.add(sudafrica);
+                
+                break;
+                
+            case("América del Norte"):
+                
+                Pais alaska = new Pais("Alaska");
+                this.paises.add(alaska);
+                
+                Pais alberta = new Pais("Alberta");
+                this.paises.add(alberta);
+                
+                Pais amecentral = new Pais("AmeCentra");
+                this.paises.add(amecentral);
+                
+                Pais groenlandia = new Pais("Groenlan");
+                this.paises.add(groenlandia);
+                
+                Pais ontario = new Pais("Ontario");
+                this.paises.add(ontario);
+                
+                Pais quebec = new Pais("Quebec");
+                this.paises.add(quebec);
+                
+                Pais tnoroeste = new Pais("TNoroeste");
+                this.paises.add(tnoroeste);
+                
+                Pais usaeste = new Pais("USAEste");
+                this.paises.add(usaeste);
+                
+                Pais usaoeste = new Pais("USAOeste");
+                this.paises.add(usaoeste);
                 
                 break;
             
