@@ -21,7 +21,6 @@ public class Jugador {
     private ArrayList<Pais> paises;
 	
     // Constructores
-    
     public Jugador(){
     }
     
@@ -33,9 +32,11 @@ public class Jugador {
     public Jugador(String nombre, String color){
 	this.nombre= nombre;
         this.color= color;
+        this.paises = new ArrayList<>();
+        //ahora faltaria hacer todas las comprobaciones, es decir toda la mierda, pero eso mejor se hace en el menu, porque si no devuelve nulls y no son bonitos 
     }
 
-    public Jugador(String nombre, String color, ArrayList<Pais> paises){
+    /*public Jugador(String nombre, String color, ArrayList<Pais> paises){
 	this.nombre= nombre;
         this.color= color;
         this.paises = paises;
@@ -45,7 +46,7 @@ public class Jugador {
         this.color= color;
         this.paises = paises;
         this.tropas = tropas;
-    }
+    }*/
     
     // setters & getters
     

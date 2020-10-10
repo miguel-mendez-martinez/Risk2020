@@ -8,11 +8,11 @@ package pruebas;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.util.Scanner;
 
 /**
  *
- * @author migue
+ * @author Miguel
+ * 
  */
 public class Menu {
     // En esta clase se deberían de definir los atributos a los que será 
@@ -28,15 +28,11 @@ public class Menu {
         // Iniciar juego
         String orden= null;
         BufferedReader bufferLector= null;
-        int i=1;
         try {
-        System.out.println("Que desea hacer?\n");
-        Scanner scanIn = new Scanner(System.in);
-        orden = scanIn.nextLine();
-        scanIn.close();
-        
-            while(i==1) {
-                i=0;
+            File fichero=  new File("comandos.csv");
+            FileReader lector= new FileReader(fichero);
+            bufferLector= new BufferedReader(lector);
+            while((orden= bufferLector.readLine())!=null) {
                 System.out.println("$> " + orden);
                 String[] partes=orden.split(" ");
                 String comando= partes[0];
@@ -67,7 +63,6 @@ public class Menu {
                                 // crearMapa es un método de la clase Menú desde el que se puede invocar
                                 // a otros métodos de las clases que contienen los atributos y los métodos
                                 // necesarios para realizar esa invocación 
-                                System.out.println("hola\n");
                                 crearMapa();
                             } else {
                                 System.out.println("\nComando incorrecto.");
@@ -126,6 +121,7 @@ public class Menu {
      */
     public void crearMapa() {
         // Código necesario para crear el mapa
+        Mapa mapa = new Mapa();
     }
         
     /**
@@ -143,6 +139,7 @@ public class Menu {
      */
     private void crearJugador(String nombre, String color) {
         // Código necesario para crear a un jugador a partir de su nombre y color
+        //aqui es donde debemos hacer las comprobaciones de todo e imprimir los errores
 
     }
 }
