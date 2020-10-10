@@ -21,6 +21,12 @@ public class Principal {
     public static void main(String[] args) {
         new Menu();
         
+        
+        
+        //hay que hacer pruebas para crear jugador y sus codigos de error, que si es igual y esas mierdas, mejor hacer eso tmb cuanto antes
+        
+        
+        /*esto es todo pruebas arriba esta lo bueno
         Jugador jugador1= new Jugador(); 
 	Jugador jugador2= new Jugador("Miguel", "azul");
 	Jugador jugador3= new Jugador("loko4");
@@ -36,7 +42,7 @@ public class Principal {
 	System.out.println(jugador1.toString());
 	System.out.println(jugador2.toString());
 	System.out.println(jugador3.toString());
-        System.out.println(jugador4.toString());
+        System.out.println(jugador4.toString());*/
 		
     }
     

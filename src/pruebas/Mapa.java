@@ -21,16 +21,16 @@ public class Mapa {
     
     // Constructor
     public Mapa(){
-        
         Continente africa = new Continente();
         
-        for (int i = 0; i < Contie.size(); i++) {
+        /*for (int i = 0; i < Contie.size(); i++) {
             
             continentes = Continente.
             
-        }
+        }*/
     
     }
+    
     
     public ArrayList<Pais> getPaises(){
         return paises;

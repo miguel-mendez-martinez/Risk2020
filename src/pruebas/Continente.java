@@ -18,13 +18,15 @@ public class Continente {
     private String nombre;
     private int bonus;
     private ArrayList<Pais> paises;
+    private String color;
     
     // Constructores, recordar siempre reservar memoria para el array
     
     public Continente(){
     }
     public Continente(String nombre){
-        
+        this.paises = new ArrayList<>(); //inicio el array
+        //en vez de esta mierda tenemos que hacer que lea un fichero donde esten las asignaciones de los continentes y paises y ver que esta bien
         if( nombre.equals("África") ||
             nombre.equals("América del Norte") ||
             nombre.equals("América del Sur") ||
@@ -223,8 +225,8 @@ public class Continente {
     public void setPaises(ArrayList<Pais> paises){
         this.paises = paises;
     }
-    
-    
-    
-    
+
+    public String getColor() {
+        return color;
+    } 
 }

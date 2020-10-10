@@ -17,7 +17,11 @@ public class Pais {
     
     private String nombre;
     private int ejercitos;
-    private String color;
+    //private String color; el color que tiene ya viene de continente this.getContinente.getColor para sacar el color del pais
+    private String abreviatura;
+    private Jugador jugador;
+    private Continente continente;
+    private ArrayList<Pais> fronteras;
     
     // Constructores
     
@@ -29,21 +33,21 @@ public class Pais {
         this.ejercitos=0;
     }
     
-    public Pais(String nombre, String color){
+    /*public Pais(String nombre, String color){
         this.nombre=nombre;
         this.color=color;
-    }
+    }*/
     
     public Pais(String nombre, int ejercitos){
         this.nombre=nombre;
         this.ejercitos=ejercitos;
     }
     
-    public Pais(String nombre, String color, int ejercitos){
+    /*public Pais(String nombre, String color, int ejercitos){
         this.nombre=nombre;
         this.color=color;
         this.ejercitos=ejercitos;
-    }
+    }*/
     
     public String getNombre() {
         return nombre;
@@ -60,8 +64,13 @@ public class Pais {
     public void setEjercitos(int ejercitos){
         this.ejercitos = ejercitos ;
     }
-    
-    
+
+    public Continente getContinente() {
+        return continente;
+    }
+    public String getColor(){
+        return this.getContinente().getColor();
+    }
     @Override
     public String toString(){
         String texto="\n\tNombre: "+ this.nombre + ", Tropas en pais: " + this.ejercitos;

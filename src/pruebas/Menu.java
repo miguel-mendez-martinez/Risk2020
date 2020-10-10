@@ -11,7 +11,8 @@ import java.io.FileReader;
 
 /**
  *
- * @author migue
+ * @author Miguel
+ * 
  */
 public class Menu {
     // En esta clase se deberían de definir los atributos a los que será 
@@ -120,6 +121,7 @@ public class Menu {
      */
     public void crearMapa() {
         // Código necesario para crear el mapa
+        Mapa mapa = new Mapa();
     }
         
     /**
@@ -137,6 +139,7 @@ public class Menu {
      */
     private void crearJugador(String nombre, String color) {
         // Código necesario para crear a un jugador a partir de su nombre y color
+        //aqui es donde debemos hacer las comprobaciones de todo e imprimir los errores
 
     }
 }
