@@ -19,13 +19,14 @@ public class Menu {
     // En esta clase se deberían de definir los atributos a los que será 
     // necesario acceder durante la ejecución del programa como, por ejemplo,
     // el mapa o los jugadores
-    
+    ArrayList<Jugador> jugadores;
     /**
      * 
      */
     public Menu() {
         // Inicialización de algunos atributos
         // Iniciar juego
+        jugadores = new ArrayList<>();
         String orden= null;
         BufferedReader bufferLector= null;
         try {
@@ -146,6 +147,7 @@ public class Menu {
                 color= partes[1];
                 crearJugador(nombre, color);
             }
+            
         }catch(Exception excepcion) {
             excepcion.printStackTrace();
         }
@@ -159,8 +161,7 @@ public class Menu {
         // Código necesario para crear a un jugador a partir de su nombre y color
         //aqui es donde debemos hacer las comprobaciones de todo e imprimir los errores
         //lo primero es comprobar color
-        ArrayList<Jugador> jugadores;
-        jugadores = new ArrayList<>();
+        int flag=0;
         if(!(color.equals("AMARILLO") || color.equals("ROJO") || color.equals("AZUL")
                 || color.equals("CYAN") || color.equals("VERDE") || color.equals("VIOLETA"))){
             String error = "{\n\tCodigo de error 100. \n\tDescripcion: Color no permitido\n}\n";
@@ -169,20 +170,24 @@ public class Menu {
         else if(jugadores.isEmpty()==true){ //si esta vacia metemos directo
             Jugador jugador= new Jugador(nombre, color);
             jugadores.add(jugador); 
-            System.out.println(jugadores.toString());
         }else{
             for (int i=0;i<jugadores.size();i++) {
-                
                 if(jugadores.get(i).getNombre().equals(nombre)==true){
                     String error = "{\n\tCodigo de error 104. \n\tDescripcion: Jugador ya creado.\n}\n";
                     System.out.println(error);
+                    flag++;
                 }
                 else if(jugadores.get(i).getColor().equals(color)){
                     String error = "{\n\tCodigo de error 114. \n\tDescripcion: Color ya asignado.\n}\n";
                     System.out.println(error);
+                    flag++;
                 }
             }
+            if(flag==0){
+                    Jugador jugador= new Jugador(nombre, color);
+                    jugadores.add(jugador);
+                }
         }
-
+        System.out.println(jugadores.toString());
     }
 }
