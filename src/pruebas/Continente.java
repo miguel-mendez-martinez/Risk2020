@@ -98,7 +98,7 @@ public class Continente {
                 Pais argentina = new Pais("Argentina");
                 this.paises.add(argentina);
                 
-                Pais brasil = new Pais)("Brasil");
+                Pais brasil = new Pais("Brasil");
                 this.paises.add(brasil);
                 
                 Pais peru = new Pais("Perú");
@@ -186,7 +186,7 @@ public class Continente {
                 this.paises.add(indonesia);
                 
                 Pais NGuinea = new Pais("nguinea");
-                this.paises.add(nguinea);
+                this.paises.add(NGuinea);
                 
                 break;
         }

@@ -33,24 +33,24 @@ public class Menu {
 
         try{
             BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
-            eleccion = bufferRead.readLine();
+            eleccion = bufferRead.readLine(); //Almacena en eleccion si preferimos iniciar por comandos o con fichero
         }
         catch(IOException e)
         {
             e.printStackTrace();
         }
-        if(eleccion.equals("f")){
+        if(eleccion.equals("f")){ // Con fichero:
             jugadores = new ArrayList<>();
             String orden= null;
             BufferedReader bufferLector= null;
             try {
-                File fichero=  new File("comandos.csv");
-                FileReader lector= new FileReader(fichero);
-                bufferLector= new BufferedReader(lector);
-                while((orden= bufferLector.readLine())!=null) {
+                File fichero=  new File("comandos.csv"); // fichero será comandos.csv
+                FileReader lector= new FileReader(fichero); // Creacion de objeto que lee "fichero"
+                bufferLector= new BufferedReader(lector); // Usamos objeto de la clase BufferedReader ya que permite leer lineas completas
+                while((orden= bufferLector.readLine())!=null) { // Mientras las líneas no estén en blanco:
                     System.out.println("$> " + orden);
-                    String[] partes=orden.split(" ");
-                    String comando= partes[0];
+                    String[] partes=orden.split(" "); // Separa en diferentes strings los elementos de la linea separados por espacios
+                    String comando= partes[0]; // Definimos como comando la primera palabra de la linea
                     // COMANDOS INICIALES PARA EMPEZAR A JUGAR
                     //    crear mapa
                     //    crear jugadores <nombre_fichero>
