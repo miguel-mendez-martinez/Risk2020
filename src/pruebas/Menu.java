@@ -121,6 +121,13 @@ public class Menu {
      */
     public void asignarPaises(File file) {
         // Código necesario para asignar países
+
+        String nombrePais;
+        String nombreJugador;
+
+        String paisLeido = null;
+        BufferedReader bufferLector = null;
+
     }
 
     /**
