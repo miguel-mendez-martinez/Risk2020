@@ -52,176 +52,197 @@ public class Mapa {
         return texto;
     }
     private void crearAfrica(){
-        Continente africa = new Continente("África", "VERDE");
-        Pais anorte = new Pais("Africa del Norte");
+        String color = "VERDE";
+        Continente africa = new Continente("África", color);
+        Pais anorte = new Pais("Africa del Norte", color);
         africa.setPais(anorte);
         paises.add(anorte);
 
-        Pais aoriental = new Pais("Africa Oriental");
+        Pais aoriental = new Pais("Africa Oriental", color);
         africa.setPais(aoriental);
         paises.add(aoriental);
 
-        Pais congo = new Pais("Congo");
+        Pais congo = new Pais("Congo", color);
         africa.setPais(congo);
         paises.add(congo);
 
 
-        Pais egipto = new Pais("Egipto");
+        Pais egipto = new Pais("Egipto", color);
         africa.setPais(egipto);
         paises.add(egipto);
 
-        Pais madagascar = new Pais("Madagascar");
+        Pais madagascar = new Pais("Madagascar", color);
         africa.setPais(madagascar);
         paises.add(madagascar);
 
-        Pais sudafrica = new Pais("Sudafrica");
+        Pais sudafrica = new Pais("Sudafrica", color);
         africa.setPais(sudafrica);
         paises.add(sudafrica);
         
         continentes.add(africa);
     }
     private void crearEuropa(){
-        Continente europa = new Continente("Europa", "AMARILLo");
-        /*Pais anorte = new Pais("Africa del Norte");
-        africa.setPais(anorte);
-        paises.add(anorte);
+        String color ="AMARILLO";
+        Continente europa = new Continente("Europa", color);
+        Pais islandia = new Pais("Islandia", color);
+        europa.setPais(islandia);
+        paises.add(islandia);
 
-        Pais aoriental = new Pais("Africa Oriental");
-        africa.setPais(aoriental);
-        paises.add(aoriental);
+        Pais escandina = new Pais("Escandinavia", color);
+        europa.setPais(escandina);
+        paises.add(escandina);
 
-        Pais congo = new Pais("Congo");
-        africa.setPais(congo);
-        paises.add(congo);
+        Pais GBretaña = new Pais("Gran Bretaña", color);
+        europa.setPais(GBretaña);
+        paises.add(GBretaña);
 
+        Pais EurOcc = new Pais("Europa Occidental", color);
+        europa.setPais(EurOcc);
+        paises.add(EurOcc);
 
-        Pais egipto = new Pais("Egipto");
-        africa.setPais(egipto);
-        paises.add(egipto);
+        Pais EurNorte = new Pais("Madagascar", color);
+        europa.setPais(EurNorte);
+        paises.add(EurNorte);
 
-        Pais madagascar = new Pais("Madagascar");
-        africa.setPais(madagascar);
-        paises.add(madagascar);
-
-        Pais sudafrica = new Pais("Sudafrica");
-        africa.setPais(sudafrica);
-        paises.add(sudafrica);*/
+        Pais EurSur = new Pais("Sudafrica", color);
+        europa.setPais(EurSur);
+        paises.add(EurSur);
+        
+        Pais Rusia = new Pais("Rusia", color);
+        europa.setPais(Rusia);
+        paises.add(Rusia);
         
         continentes.add(europa);
     }
     private void crearANorte(){
-        Continente Anorte = new Continente("América del Norte", "MORADO");
-        /*Pais anorte = new Pais("Africa del Norte");
-        africa.setPais(anorte);
-        paises.add(anorte);
+        String color = "MORADO";
+        Continente Anorte = new Continente("América del Norte", color);
+        
+        Pais Alberta = new Pais("Alberta", color);
+        Anorte.setPais(Alberta);
+        paises.add(Alberta);
 
-        Pais aoriental = new Pais("Africa Oriental");
-        africa.setPais(aoriental);
-        paises.add(aoriental);
+        Pais USAOeste = new Pais("Estados Unidos del Oeste", color);
+        Anorte.setPais(USAOeste);
+        paises.add(USAOeste);
 
-        Pais congo = new Pais("Congo");
-        africa.setPais(congo);
-        paises.add(congo);
+        Pais TNoroeste = new Pais("Territorios del Noroeste", color);
+        Anorte.setPais(TNoroeste);
+        paises.add(TNoroeste);
 
+        Pais Ontario = new Pais("Ontario", color);
+        Anorte.setPais(Ontario);
+        paises.add(Ontario);
 
-        Pais egipto = new Pais("Egipto");
-        africa.setPais(egipto);
-        paises.add(egipto);
+        Pais USAEste = new Pais("Estados Unidos del Este", color);
+        Anorte.setPais(USAEste);
+        paises.add(USAEste);
 
-        Pais madagascar = new Pais("Madagascar");
-        africa.setPais(madagascar);
-        paises.add(madagascar);
-
-        Pais sudafrica = new Pais("Sudafrica");
-        africa.setPais(sudafrica);
-        paises.add(sudafrica);*/
+        Pais AmeCentral = new Pais("America Central", color);
+        Anorte.setPais(AmeCentral);
+        paises.add(AmeCentral);
+        
+        Pais Groenlan = new Pais("Groenlandia", color);
+        Anorte.setPais(Groenlan);
+        paises.add(Groenlan);
+        
+        Pais Quebec = new Pais("Quebec", color);
+        Anorte.setPais(Quebec);
+        paises.add(Groenlan);
         
         continentes.add(Anorte);
     }
     private void crearASur(){
-        Continente Asur = new Continente("América del Sur", "ROJO");
-        /*Pais anorte = new Pais("Africa del Norte");
-        africa.setPais(anorte);
-        paises.add(anorte);
+        String color="ROJO";
+        Continente Asur = new Continente("América del Sur", color); 
 
-        Pais aoriental = new Pais("Africa Oriental");
-        africa.setPais(aoriental);
-        paises.add(aoriental);
+        Pais venezuela = new Pais("venezuela", color);
+        Asur.setPais(venezuela);
+        paises.add(venezuela);
 
-        Pais congo = new Pais("Congo");
-        africa.setPais(congo);
-        paises.add(congo);
+        Pais Perú = new Pais("Perú", color);
+        Asur.setPais(Perú);
+        paises.add(Perú);
 
+        Pais Argentina = new Pais("Argentina", color);
+        Asur.setPais(Argentina);
+        paises.add(Argentina);
 
-        Pais egipto = new Pais("Egipto");
-        africa.setPais(egipto);
-        paises.add(egipto);
-
-        Pais madagascar = new Pais("Madagascar");
-        africa.setPais(madagascar);
-        paises.add(madagascar);
-
-        Pais sudafrica = new Pais("Sudafrica");
-        africa.setPais(sudafrica);
-        paises.add(sudafrica);*/
+        Pais Brasil = new Pais("Brasil", color);
+        Asur.setPais(Brasil);
+        paises.add(Brasil);
         
         continentes.add(Asur);
     }
     private void crearOceania(){
-        Continente oceania = new Continente("Oceanía", "AZUL");
-        /*Pais anorte = new Pais("Africa del Norte");
-        africa.setPais(anorte);
-        paises.add(anorte);
+        String color = "AZUL";
+        Continente oceania = new Continente("Oceanía", color);
+        
+        Pais Indonesia = new Pais("Indonesia", color);
+        oceania.setPais(Indonesia);
+        paises.add(Indonesia);
 
-        Pais aoriental = new Pais("Africa Oriental");
-        africa.setPais(aoriental);
-        paises.add(aoriental);
+        Pais AusOccid = new Pais("Australia Occidental", color);
+        oceania.setPais(AusOccid);
+        paises.add(AusOccid);
 
-        Pais congo = new Pais("Congo");
-        africa.setPais(congo);
-        paises.add(congo);
+        Pais NGuinea = new Pais("Nueva Guinea", color);
+        oceania.setPais(NGuinea);
+        paises.add(NGuinea);
 
-
-        Pais egipto = new Pais("Egipto");
-        africa.setPais(egipto);
-        paises.add(egipto);
-
-        Pais madagascar = new Pais("Madagascar");
-        africa.setPais(madagascar);
-        paises.add(madagascar);
-
-        Pais sudafrica = new Pais("Sudafrica");
-        africa.setPais(sudafrica);
-        paises.add(sudafrica);*/
+        Pais AusOrient = new Pais("Australia Oriental", color);
+        oceania.setPais(AusOrient);
+        paises.add(AusOrient);
         
         continentes.add(oceania);
     }
     private void crearAsia(){
-        Continente asia = new Continente("Asia", "CYAN");
-        /*Pais anorte = new Pais("Africa del Norte");
-        africa.setPais(anorte);
-        paises.add(anorte);
+        String color = "CYAN";
+        Continente asia = new Continente("Asia", color);
+       
+        Pais Siberia = new Pais("Siberia", color);
+        asia.setPais(Siberia);
+        paises.add(Siberia);
 
-        Pais aoriental = new Pais("Africa Oriental");
-        africa.setPais(aoriental);
-        paises.add(aoriental);
+        Pais Yakustsk = new Pais("Yakustsk", color);
+        asia.setPais(Yakustsk);
+        paises.add(Yakustsk);
 
-        Pais congo = new Pais("Congo");
-        africa.setPais(congo);
-        paises.add(congo);
+        Pais Urales = new Pais("Urales", color);
+        asia.setPais(Urales);
+        paises.add(Urales);
+        
+        Pais Afgan = new Pais("Afganistan", color);
+        asia.setPais(Afgan);
+        paises.add(Afgan);
 
+        Pais OMedio = new Pais("Oriente Medio", color);
+        asia.setPais(OMedio);
+        paises.add(OMedio);
 
-        Pais egipto = new Pais("Egipto");
-        africa.setPais(egipto);
-        paises.add(egipto);
-
-        Pais madagascar = new Pais("Madagascar");
-        africa.setPais(madagascar);
-        paises.add(madagascar);
-
-        Pais sudafrica = new Pais("Sudafrica");
-        africa.setPais(sudafrica);
-        paises.add(sudafrica);*/
+        Pais Kamchatka = new Pais("Kamchatka", color);
+        asia.setPais(Kamchatka);
+        paises.add(Kamchatka);
+        
+        Pais Mongolia = new Pais("Mongolia", color);
+        asia.setPais(Mongolia);
+        paises.add(Mongolia);
+        
+        Pais China = new Pais("China", color);
+        asia.setPais(China);
+        paises.add(China);
+        
+        Pais India = new Pais("India", color);
+        asia.setPais(India);
+        paises.add(India);
+        
+        Pais Japón = new Pais("Japón", color);
+        asia.setPais(Japón);
+        paises.add(Japón);
+        
+        Pais SAsiático = new Pais("Sureste Asiático", color);
+        asia.setPais(SAsiático);
+        paises.add(SAsiático);
         
         continentes.add(asia);
     }

@@ -17,7 +17,7 @@ public class Pais {
     
     private String nombre;
     private int ejercitos;
-    //private String color; el color que tiene ya viene de continente this.getContinente.getColor para sacar el color del pais
+    private String color; //el color que tiene ya viene de continente this.getContinente.getColor para sacar el color del pais
     private String abreviatura;
     private Jugador jugador;
     private Continente continente;
@@ -38,16 +38,13 @@ public class Pais {
         this.color=color;
     }*/
     
-    public Pais(String nombre, int ejercitos){
-        this.nombre=nombre;
-        this.ejercitos=ejercitos;
-    }
     
-    /*public Pais(String nombre, String color, int ejercitos){
+    
+    public Pais(String nombre, String color){
         this.nombre=nombre;
         this.color=color;
-        this.ejercitos=ejercitos;
-    }*/
+        this.ejercitos=0;
+    }
     
     public String getNombre() {
         return nombre;
