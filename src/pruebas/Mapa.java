@@ -100,11 +100,11 @@ public class Mapa {
         europa.setPais(EurOcc);
         paises.add(EurOcc);
 
-        Pais EurNorte = new Pais("Madagascar", color);
+        Pais EurNorte = new Pais("Europa Norte", color);
         europa.setPais(EurNorte);
         paises.add(EurNorte);
 
-        Pais EurSur = new Pais("Sudafrica", color);
+        Pais EurSur = new Pais("Europa Sur", color);
         europa.setPais(EurSur);
         paises.add(EurSur);
         
