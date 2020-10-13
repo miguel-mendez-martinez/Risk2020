@@ -22,6 +22,7 @@ public class Menu {
     // necesario acceder durante la ejecución del programa como, por ejemplo,
     // el mapa o los jugadores
     ArrayList<Jugador> jugadores;
+    ArrayList<Pais> paises;
     String eleccion;
     /**
      * 
@@ -125,8 +126,33 @@ public class Menu {
         String nombrePais;
         String nombreJugador;
 
-        String paisLeido = null;
+        String jugadorLeido = null;
         BufferedReader bufferLector = null;
+
+        try {
+
+            File fichero = new File("asignaciones.csv");
+            FileReader lector = new FileReader(fichero);
+            bufferLector = new BufferedReader(lector);
+
+            while((jugadorLeido= bufferLector.readLine())!=null){
+
+                String[] partes = jugadorLeido.split(";");
+                nombreJugador = partes[0];
+                nombrePais = partes[1];
+                asignarPaises(nombrePais, nombreJugador);
+
+            }
+
+            System.out.println("Array final de jugadores tras la lectura completa del archivo:");
+            for (int i=0;i<jugadores.size();i++) {
+                System.out.println(jugadores.get(i).toString());
+            }
+
+        }
+        catch (Exception excepcion){
+            excepcion.printStackTrace();
+        }
 
     }
 
@@ -137,6 +163,11 @@ public class Menu {
      */
     public void asignarPaises(String nombrePais, String nombreJugador) {
         // Código necesario para asignar un país a un jugador
+
+
+
+     // mirar en casa tengo el cerebro frito
+
     }
 
     /**
@@ -180,7 +211,7 @@ public class Menu {
     
     /**
      * 
-     * @param file 
+     * @param file
      */
     private void crearJugador(String nombre, String color) {
         // Código necesario para crear a un jugador a partir de su nombre y color
