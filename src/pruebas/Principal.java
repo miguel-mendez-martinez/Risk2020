@@ -20,7 +20,8 @@ public class Principal {
      */
     public static void main(String[] args) {
         new Menu();
-        
+
+        // probando si hace push
         
         
         //hay que hacer pruebas para crear jugador y sus codigos de error, que si es igual y esas mierdas, mejor hacer eso tmb cuanto antes
