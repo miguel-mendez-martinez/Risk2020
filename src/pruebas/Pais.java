@@ -73,7 +73,7 @@ public class Pais {
     }
     @Override
     public String toString(){
-        String texto="\n\tNombre: "+ this.nombre + ", Tropas en pais: " + this.ejercitos;
+        String texto="\n\t "+ this.nombre + ", Tropas en pais: " + this.ejercitos;
         return texto;
     }
 }

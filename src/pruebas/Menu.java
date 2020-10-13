@@ -165,6 +165,7 @@ public class Menu {
     public void crearMapa() {
         // Código necesario para crear el mapa
         Mapa mapa = new Mapa();
+        System.out.println(mapa);
     }
         
     /**
