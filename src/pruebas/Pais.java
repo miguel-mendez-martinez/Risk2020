@@ -17,7 +17,7 @@ public class Pais {
     
     private String nombre;
     private int ejercitos;
-    private String color; //el color que tiene ya viene de continente this.getContinente.getColor para sacar el color del pais
+    private Casilla casilla;
     private String abreviatura;
     private Jugador jugador;
     private Continente continente;
@@ -32,26 +32,25 @@ public class Pais {
         this.nombre=nombre;
         this.ejercitos=0;
     }
+   
+    public Pais(String nombre, String abreviatura, Casilla casilla) {
+        this.nombre = nombre;
+        this.casilla = casilla;
+        this.abreviatura = abreviatura;
+        this.ejercitos = 0;
+        fronteras = new ArrayList<>();
+    }
+
+    public Casilla getCasilla() {
+        return casilla;
+    }
     
-    /*public Pais(String nombre, String color){
-        this.nombre=nombre;
-        this.color=color;
-    }*/
-    
-    
-    
-    public Pais(String nombre, String color){
-        this.nombre=nombre;
-        this.color=color;
-        this.ejercitos=0;
+    public void addFront(Pais f){
+        this.fronteras.add(f);
     }
     
     public String getNombre() {
         return nombre;
-    }
-    
-    public void setNombre(String nombre){
-        this.nombre = nombre;
     }
     
     public int getEjercitos() {

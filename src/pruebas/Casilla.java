@@ -22,6 +22,16 @@ public class Casilla {
     public void setPais(Pais pais) {
         this.pais = pais;
     }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    
     
     
     
