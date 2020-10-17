@@ -38,7 +38,7 @@ public class Mapa {
         crearOceania();
         crearAsia();
         setFronterasP();
-        
+        getFronterasP(); // prueba
         //aacabamos de borrar todo, aqui po
     }
     
@@ -412,4 +412,22 @@ public class Mapa {
             }
         }
     }
+
+// voy a ver las fronteras
+
+    public void getFronterasP(){
+
+        for(Pais hola:paises){
+
+            System.out.println(hola.getFronteras());
+
+        }
+
+
+
+    }
+
+
 }
+
+

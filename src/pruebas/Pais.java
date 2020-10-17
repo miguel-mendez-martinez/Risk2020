@@ -48,6 +48,10 @@ public class Pais {
     public void addFront(Pais f){
         this.fronteras.add(f);
     }
+
+    public ArrayList getFronteras(){
+        return this.fronteras;
+    }
     
     public String getNombre() {
         return nombre;
