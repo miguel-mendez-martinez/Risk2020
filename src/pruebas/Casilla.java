@@ -10,8 +10,20 @@ package pruebas;
  * @author migue
  */
 public class Casilla {
-    private String pais;
-    private String jugador;
-    private String continente;
-    private String color;
+    private Pais pais;
+    private int x;
+    private int y;
+
+    public Casilla(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public void setPais(Pais pais) {
+        this.pais = pais;
+    }
+    
+    
+    
 }
+

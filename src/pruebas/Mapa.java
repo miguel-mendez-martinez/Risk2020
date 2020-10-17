@@ -54,6 +54,7 @@ public class Mapa {
     private void crearAfrica(){
         String color = "VERDE";
         Continente africa = new Continente("África", color);
+        
         Pais anorte = new Pais("Africa del Norte", color);
         africa.setPais(anorte);
         paises.add(anorte);
