@@ -79,6 +79,9 @@ public class Menu {
                             } else {
                                 crearJugador(partes[1], partes[2]);
                             }
+                            for (int i=0;i<jugadores.size();i++) {
+                System.out.println(jugadores.get(i).toString());
+            }
                         } else {
                             System.out.println("\nComando incorrecto.");
                         }
@@ -190,9 +193,7 @@ public class Menu {
                 color= partes[1];
                 crearJugador(nombre, color);
             }
-            for (int i=0;i<jugadores.size();i++) {
-                System.out.println(jugadores.get(i).toString());
-            }
+            
         }catch(Exception excepcion) {
             excepcion.printStackTrace();
         }
