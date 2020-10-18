@@ -77,8 +77,6 @@ public class Continente {
     public String getColor() {
         return color;
     } 
-    @Override
-
     public String printColor(){
 
         if(this.color == "AMARILLO") return "\[\033[0;103m\]" + "\\[\\033[1;90m\\]";

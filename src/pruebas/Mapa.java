@@ -467,9 +467,10 @@ public class Mapa {
 
 
 
-@Override
 
-    public void toString(){
+    @Override
+
+    public String toString(){
 
         for(int j=0; j<8; j++){
         
