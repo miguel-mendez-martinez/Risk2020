@@ -53,6 +53,10 @@ public class Pais {
         return fronteras;
     }
     
+    public String getAbreviatura(){
+        return abreviatura;
+    }
+    
     public String getNombre() {
         return nombre;
     }

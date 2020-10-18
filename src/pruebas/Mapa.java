@@ -66,7 +66,7 @@ public class Mapa {
         Continente africa = new Continente("África", color);
 
         casilla = new Casilla(5, 4);
-        Pais anorte = new Pais("Africa del Norte", "anorte", casilla);
+        Pais anorte = new Pais("África del Norte", "anorte", casilla);
         africa.setPais(anorte);
         casilla.setPais(anorte);
         paises.add(anorte);
@@ -412,24 +412,46 @@ public class Mapa {
                             || p.getCasilla().getX() - f.getCasilla().getX() == 1) {
                         p.addFront(f);
                     }
+                    //Fronteras indirectas: //revisar nombres 
+                 if((p.getAbreviatura() == anorte.getAbreviatura()) && (f.getAbreviatura() == Brasil.getAbreviatura())){            
+                    p.addFront(f);  
+                    f.addFront(p);
+                 } 
+                 if((p.getAbreviatura() == egipto.getAbreviatura()) && (f.getAbreviatura() == EurOcc.getAbreviatura())){            
+                    p.addFront(f);  
+                    f.addFront(p);
+                 }
+                 if((p.getAbreviatura() == islandia.getAbreviatura()) && (f.getAbreviatura() == Groenlan.getAbreviatura())){            
+                    p.addFront(f);  
+                    f.addFront(p);
+                 }
+                 if((p.getAbreviatura() == alaska.getAbreviatura()) && (f.getAbreviatura() == Kamchatka.getAbreviatura())){            
+                    p.addFront(f);  
+                    f.addFront(p);
+                 }
+                  if((p.getAbreviatura() == indonesia.getAbreviatura()) && (f.getAbreviatura() == sasiatico.getAbreviatura())){            
+                    p.addFront(f);  
+                    f.addFront(p);
+                 }
+                   if((p.getAbreviatura() == alaska.getAbreviatura()) && (f.getAbreviatura() == Kamchatka.getAbreviatura())){            
+                    p.addFront(f);  
+                    f.addFront(p);
+                 }
+                 
                 }
             }
-
-          //  System.out.println("Pais:" + p.getNombre());
-            // for(int i=0; i<p.fronteras.size();i++){    
-           // System.out.println("Frontera" + i + "= " + p.fronteras.get(i).getNombre());
         }
 
     }
 
         //Fronteras indirectas
-    //anorte.addFront(Brasil);
+    //Pais anorte.addFront(Brasil);
     //anorte.addFront(EurSur);
     //egipto.addFront(EurOcc);
     //islandia.addFront(Groenalndia);
     //Pais Alaska.addFront(Kamchatka);
     //indonesia.addFront(sasiatico);
-}
+
 
 // voy a ver las fronteras
 public void printFronterasP(){
@@ -446,4 +468,29 @@ public void printFronterasP(){
     }
 
 
+
+
+@Override
+
+    public void toString(){
+
+        for(int j=0; j<8; j++){
+        
+            System.out.println("|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|");
+        
+            for(int i=0; i<11; i++){
+            
+            
+            }
+        
+        
+        }
+
+
+
+
+
+
+    }
+    
 }
