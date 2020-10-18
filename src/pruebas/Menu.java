@@ -70,7 +70,7 @@ public class Menu {
                                 // a otros métodos de las clases que contienen los atributos y los métodos
                                 // necesarios para realizar esa invocación 
                                 crearMapa();
-                            } else {
+                         } else {
                                 System.out.println("\nComando incorrecto.");
                             }
                         } if(partes.length==3) {
@@ -168,7 +168,7 @@ public class Menu {
     public void crearMapa() {
         // Código necesario para crear el mapa
         Mapa mapa = new Mapa();
-        System.out.println(mapa);
+        //System.out.println(mapa);
     }
         
     /**

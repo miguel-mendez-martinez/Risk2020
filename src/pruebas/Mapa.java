@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package pruebas;
 
 import java.util.ArrayList;
@@ -13,23 +12,24 @@ import java.util.ArrayList;
  * @author alberto
  */
 public class Mapa {
+
     // Atributos
     private ArrayList<Continente> continentes;
     private ArrayList<Pais> paises;
     private ArrayList<ArrayList<Casilla>> casillas;
-    
+
     // Métodos
-    
     // Constructor
-    public Mapa(){
+    public Mapa() {
         continentes = new ArrayList<>();
         paises = new ArrayList<>();
         casillas = new ArrayList<>();
-        
+
         for (int i = 0; i < 11; i++) {
             this.casillas.add(new ArrayList<>());
-            for (int j = 0; j < 8; j++)
+            for (int j = 0; j < 8; j++) {
                 this.casillas.get(i).add(new Casilla(i, j));
+            }
         }
         crearAfrica();
         crearEuropa();
@@ -38,34 +38,33 @@ public class Mapa {
         crearOceania();
         crearAsia();
         setFronterasP();
-        getFronterasP(); // prueba
+        //getFronterasP(); // prueba
         //aacabamos de borrar todo, aqui po
     }
-    
-    
-    
-    public ArrayList<Continente> getContinentes(){
+
+    public ArrayList<Continente> getContinentes() {
         return continentes;
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         String paisMapa = "";
         String contMapa = "";
-        for (int i=0;i<paises.size();i++) {
-                paisMapa += paises.get(i);
+        for (int i = 0; i < paises.size(); i++) {
+            paisMapa += paises.get(i);
         }
-        for (int i=0;i<continentes.size();i++) {
-                contMapa += continentes.get(i);
+        for (int i = 0; i < continentes.size(); i++) {
+            contMapa += continentes.get(i);
         }
-        String texto="\nContinentes en Mapa: " + contMapa + "\nPaises en Mapa: " + paisMapa;
+        String texto = "\nContinentes en Mapa: " + contMapa + "\nPaises en Mapa: " + paisMapa;
         return texto;
     }
-    private void crearAfrica(){
+
+    private void crearAfrica() {
         String color = "VERDE";
         Casilla casilla;
         Continente africa = new Continente("África", color);
-        
+
         casilla = new Casilla(5, 4);
         Pais anorte = new Pais("Africa del Norte", "anorte", casilla);
         africa.setPais(anorte);
@@ -106,14 +105,15 @@ public class Mapa {
         casilla.setPais(sudafrica);
         //casillas.add(casilla);
         paises.add(sudafrica);
-        
+
         continentes.add(africa);
     }
-    private void crearEuropa(){
-        String color ="AMARILLO";
+
+    private void crearEuropa() {
+        String color = "AMARILLO";
         Casilla casilla;
         Continente europa = new Continente("Europa", color);
-        
+
         casilla = new Casilla(4, 0);
         Pais islandia = new Pais("Islandia", "Islandia", casilla);
         europa.setPais(islandia);
@@ -155,28 +155,29 @@ public class Mapa {
         casilla.setPais(EurSur);
         //casillas.add(casilla);
         paises.add(EurSur);
-        
+
         casilla = new Casilla(7, 1);
         Pais Rusia = new Pais("Rusia", "Rusia", casilla);
         europa.setPais(Rusia);
         casilla.setPais(Rusia);
         //casillas.add(casilla);
         paises.add(Rusia);
-        
+
         continentes.add(europa);
     }
-    private void crearANorte(){
+
+    private void crearANorte() {
         String color = "MORADO";
         Casilla casilla;
         Continente Anorte = new Continente("América del Norte", color);
-        
+
         casilla = new Casilla(0, 0);
         Pais Alaska = new Pais("Alaska", "Alaska", casilla);
         Anorte.setPais(Alaska);
         casilla.setPais(Alaska);
         //casillas.add(casilla);
         paises.add(Alaska);
-        
+
         casilla = new Casilla(0, 1);
         Pais Alberta = new Pais("Alberta", "Alberta", casilla);
         Anorte.setPais(Alberta);
@@ -218,27 +219,28 @@ public class Mapa {
         casilla.setPais(AmeCentral);
         //casillas.add(casilla);
         paises.add(AmeCentral);
-        
+
         casilla = new Casilla(2, 0);
         Pais Groenlan = new Pais("Groenlandia", "Groenlan", casilla);
         Anorte.setPais(Groenlan);
         casilla.setPais(Groenlan);
         //casillas.add(casilla);
         paises.add(Groenlan);
-        
+
         casilla = new Casilla(2, 1);
         Pais Quebec = new Pais("Quebec", "Quebec", casilla);
         Anorte.setPais(Quebec);
         casilla.setPais(Quebec);
         //casillas.add(casilla);
-        paises.add(Groenlan);
-        
+        paises.add(Quebec);
+
         continentes.add(Anorte);
     }
-    private void crearASur(){
-        String color="ROJO";
+
+    private void crearASur() {
+        String color = "ROJO";
         Casilla casilla;
-        Continente Asur = new Continente("América del Sur", color); 
+        Continente Asur = new Continente("América del Sur", color);
 
         casilla = new Casilla(1, 4);
         Pais venezuela = new Pais("venezuela", "venezuela", casilla);
@@ -267,14 +269,15 @@ public class Mapa {
         casilla.setPais(Brasil);
         //casillas.add(casilla);
         paises.add(Brasil);
-        
+
         continentes.add(Asur);
     }
-    private void crearOceania(){
+
+    private void crearOceania() {
         String color = "AZUL";
         Casilla casilla;
         Continente oceania = new Continente("Oceanía", color);
-        
+
         casilla = new Casilla(9, 6);
         Pais Indonesia = new Pais("Indonesia", "Indosedia", casilla);
         oceania.setPais(Indonesia);
@@ -302,14 +305,15 @@ public class Mapa {
         casilla.setPais(AusOrient);
         //casillas.add(casilla);
         paises.add(AusOrient);
-        
+
         continentes.add(oceania);
     }
-    private void crearAsia(){
+
+    private void crearAsia() {
         String color = "CYAN";
         Casilla casilla;
         Continente asia = new Continente("Asia", color);
-       
+
         casilla = new Casilla(6, 0);
         Pais Siberia = new Pais("Siberia", "Siberia", casilla);
         asia.setPais(Siberia);
@@ -330,7 +334,7 @@ public class Mapa {
         casilla.setPais(Urales);
         //casillas.add(casilla);
         paises.add(Urales);
-        
+
         casilla = new Casilla(7, 3);
         Pais Afgan = new Pais("Afganistan", "Afgan", casilla);
         asia.setPais(Afgan);
@@ -351,83 +355,95 @@ public class Mapa {
         casilla.setPais(Kamchatka);
         //casillas.add(casilla);
         paises.add(Kamchatka);
-        
+
         casilla = new Casilla(8, 1);
         Pais Irkutsk = new Pais("Irkutsk", "Irkutsk", casilla);
         asia.setPais(Irkutsk);
         casilla.setPais(Irkutsk);
         //casillas.add(casilla);
         paises.add(Irkutsk);
-        
+
         casilla = new Casilla(8, 2);
         Pais Mongolia = new Pais("Mongolia", "Mongolia", casilla);
         asia.setPais(Mongolia);
         casilla.setPais(Mongolia);
         //casillas.add(casilla);
         paises.add(Mongolia);
-        
+
         casilla = new Casilla(8, 3);
         Pais China = new Pais("China", "China", casilla);
         asia.setPais(China);
         casilla.setPais(China);
         //casillas.add(casilla);
         paises.add(China);
-        
+
         casilla = new Casilla(8, 4);
         Pais India = new Pais("India", "India", casilla);
         asia.setPais(India);
         casilla.setPais(India);
         //casillas.add(casilla);
         paises.add(India);
-        
+
         casilla = new Casilla(9, 2);
         Pais Japón = new Pais("Japón", "Japón", casilla);
         asia.setPais(Japón);
         casilla.setPais(Japón);
         //casillas.add(casilla);
         paises.add(Japón);
-        
+
         casilla = new Casilla(9, 4);
         Pais SAsiático = new Pais("Sureste Asiático", "SAsiático", casilla);
         asia.setPais(SAsiático);
         casilla.setPais(SAsiático);
         //casillas.add(casilla);
         paises.add(SAsiático);
-        
+
         continentes.add(asia);
     }
-    
-    private void setFronterasP(){
-        for(Pais p : paises){
-            for(Pais f : paises){
-                if((p.getCasilla().getX() == f.getCasilla().getX()) ||
-                        p.getCasilla().getY() == f.getCasilla().getY()){
-                    if((p.getCasilla().getY() - f.getCasilla().getY() == -1) ||
-                            (p.getCasilla().getY() - f.getCasilla().getY() == 1) ||
-                            (p.getCasilla().getX() - f.getCasilla().getX() == -1) || 
-                            p.getCasilla().getX() - f.getCasilla().getX() == 1){
+
+    private void setFronterasP() {
+        for (Pais p : paises) {
+            for (Pais f : paises) {
+                if ((p.getCasilla().getX() == f.getCasilla().getX())
+                        || p.getCasilla().getY() == f.getCasilla().getY()) {
+                    if ((p.getCasilla().getY() - f.getCasilla().getY() == -1)
+                            || (p.getCasilla().getY() - f.getCasilla().getY() == 1)
+                            || (p.getCasilla().getX() - f.getCasilla().getX() == -1)
+                            || p.getCasilla().getX() - f.getCasilla().getX() == 1) {
                         p.addFront(f);
                     }
                 }
             }
+
+          //  System.out.println("Pais:" + p.getNombre());
+            // for(int i=0; i<p.fronteras.size();i++){    
+           // System.out.println("Frontera" + i + "= " + p.fronteras.get(i).getNombre());
         }
+
     }
 
+        //Fronteras indirectas
+    //anorte.addFront(Brasil);
+    //anorte.addFront(EurSur);
+    //egipto.addFront(EurOcc);
+    //islandia.addFront(Groenalndia);
+    //Pais Alaska.addFront(Kamchatka);
+    //indonesia.addFront(sasiatico);
+}
+
 // voy a ver las fronteras
+public void printFronterasP(){
 
-    public void getFronterasP(){
-
-        for(Pais hola:paises){
-
-            System.out.println(hola.getFronteras());
-
-        }
-
+            for(Pais p:paises){
+                System.out.println("Pais:" + p.getNombre())
+                for(int i=0; i<p.getFronteras().size();i++){    
+                   System.out.println("Frontera" + i+1 + ": " + p.getFronteras().get(i).getNombre());  
+            }
+        
+}
 
 
     }
 
 
 }
-
-

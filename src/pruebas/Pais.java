@@ -21,7 +21,7 @@ public class Pais {
     private String abreviatura;
     private Jugador jugador;
     private Continente continente;
-    private ArrayList<Pais> fronteras;
+    private ArrayList<Pais> fronteras; // solo lo pongo public para provbar
     
     // Constructores
     
@@ -50,7 +50,7 @@ public class Pais {
     }
 
     public ArrayList getFronteras(){
-        return this.fronteras;
+        return fronteras;
     }
     
     public String getNombre() {
