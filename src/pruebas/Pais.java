@@ -75,6 +75,10 @@ public class Pais {
     public String getColor(){
         return this.getContinente().getColor();
     }
+
+
+
+
     @Override
     public String toString(){
         String texto="\n\t "+ this.nombre + ", Tropas en pais: " + this.ejercitos;

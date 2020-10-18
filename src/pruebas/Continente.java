@@ -78,6 +78,18 @@ public class Continente {
         return color;
     } 
     @Override
+
+    public String printColor(){
+
+        if(this.color == "AMARILLO") return "\[\033[0;103m\]" + "\\[\\033[1;90m\\]";
+        else if(this.color == "AZUL") return "\\[\\033[0;104m\\]" + "\\[\\033[1;90m\\]";
+        else if(this.color == "CYAN") return "\\[\\033[0;106m\\]" + "\\[\\033[1;90m\\]";
+        else if(this.color == "ROJO") return "\\[\\033[0;101m\\]" + "\\[\\033[1;90m\\]";
+        else if(this.color == "VERDE") return "\\[\\033[0;102m\\]" + "\\[\\033[1;90m\\]";
+        else if(this.color == "VIOLETA") return "\\[\\033[10;95m\\]" + "\\[\\033[1;90m\\]";
+        // mirar codigo de error o algo para ver que hacer si color es invalido como migueloh else System.out.println();
+    }
+
     public String toString(){
         String paisCont = "";
         for (int i=0;i<paises.size();i++) {

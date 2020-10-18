@@ -46,8 +46,8 @@ public class Mapa {
         return continentes;
     }
 
-    @Override
-    public String toString() {
+    //@Override
+    /*public String toString() {
         String paisMapa = "";
         String contMapa = "";
         for (int i = 0; i < paises.size(); i++) {
@@ -58,7 +58,7 @@ public class Mapa {
         }
         String texto = "\nContinentes en Mapa: " + contMapa + "\nPaises en Mapa: " + paisMapa;
         return texto;
-    }
+    }*/
 
     private void crearAfrica() {
         String color = "VERDE";
@@ -412,7 +412,7 @@ public class Mapa {
                             || p.getCasilla().getX() - f.getCasilla().getX() == 1) {
                         p.addFront(f);
                     }
-                    //Fronteras indirectas: //revisar nombres 
+                    //Fronteras indirectas: //revisar nombres //cambiar segundas partes de la igualdad a pej "anorte"
                  if((p.getAbreviatura() == anorte.getAbreviatura()) && (f.getAbreviatura() == Brasil.getAbreviatura())){            
                     p.addFront(f);  
                     f.addFront(p);
@@ -454,17 +454,14 @@ public class Mapa {
 
 
 // voy a ver las fronteras
-public void printFronterasP(){
+    public void printFronterasP(){
 
             for(Pais p:paises){
-                System.out.println("Pais:" + p.getNombre())
+                System.out.println("Pais:" + p.getNombre());
                 for(int i=0; i<p.getFronteras().size();i++){    
                    System.out.println("Frontera" + i+1 + ": " + p.getFronteras().get(i).getNombre());  
+                }
             }
-        
-}
-
-
     }
 
 
@@ -479,18 +476,29 @@ public void printFronterasP(){
             System.out.println("|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|");
         
             for(int i=0; i<11; i++){
-            
+
+                for(Casilla cBucle : casillas){
+
+                    if ((cBucle().getX() == i) && (cBucle().getY() == j)){
+
+                        System.out.print("|");
+                        System.out.print(cBucle.getPais().getContinente().printColor());
+
+
+
+                    }
+
+                }
             
             }
         
         
         }
 
-
-
-
-
-
     }
-    
+
+
+
+
+
 }

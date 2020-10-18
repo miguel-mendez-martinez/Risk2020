@@ -19,6 +19,10 @@ public class Casilla {
         this.y = y;
     }
 
+    public Pais getPais(){
+        return pais;
+    }
+
     public void setPais(Pais pais) {
         this.pais = pais;
     }
