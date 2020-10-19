@@ -79,12 +79,13 @@ public class Continente {
     } 
     public String printColor(){
 
-        if(this.color == "AMARILLO") return "\033[0;103m" + "\033[1;90m";
-        else if(this.color == "AZUL") return "\033[0;104m" + "\033[1;90m";
-        else if(this.color == "CYAN") return "\033[0;106m" + "\033[1;90m";
-        else if(this.color == "ROJO") return "\033[0;101m" + "\033[1;90m";
-        else if(this.color == "VERDE") return "\033[0;102m" + "\033[1;90m";
-        else if(this.color == "VIOLETA") return "\033[10;95m" + "\033[1;90m";
+        if("AMARILLO".equals(this.color)) return "\033[43m" + "\033[1;90m";
+        else if("AZUL".equals(this.color)) return "\033[44m" + "\033[1;90m";
+        else if("CYAN".equals(this.color)) return "\033[46m" + "\033[1;90m";
+        else if("ROJO".equals(this.color)) return "\033[41m" + "\033[1;90m";
+        else if("VERDE".equals(this.color)) return "\033[42m" + "\033[1;90m";
+        else if("MORADO".equals(this.color)) return "\033[45m" + "\033[1;90m";
+        else return " ";
         // mirar codigo de error o algo para ver que hacer si color es invalido como migueloh else System.out.println();
     }
 

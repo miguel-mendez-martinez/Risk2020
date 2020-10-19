@@ -33,12 +33,13 @@ public class Pais {
         this.ejercitos=0;
     }
    
-    public Pais(String nombre, String abreviatura, Casilla casilla) {
+    public Pais(String nombre, String abreviatura, Casilla casilla, Continente continente) {
         this.nombre = nombre;
         this.casilla = casilla;
         this.abreviatura = abreviatura;
         this.ejercitos = 0;
         fronteras = new ArrayList<>();
+        this.continente = continente;
     }
 
     public Casilla getCasilla() {
