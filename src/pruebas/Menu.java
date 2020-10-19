@@ -65,24 +65,24 @@ public class Menu {
                 switch(comando) {
                     case "crear":
                         if(partes.length==2) {
-                            if(partes[1].equals("mapa")) {
+                            if(partes[1].equals("mapa")){
                                 // crearMapa es un método de la clase Menú desde el que se puede invocar
                                 // a otros métodos de las clases que contienen los atributos y los métodos
                                 // necesarios para realizar esa invocación 
                                 crearMapa();
-                         } else {
+                            }else{
                                 System.out.println("\nComando incorrecto.");
                             }
-                        } if(partes.length==3) {
+                        }else if(partes.length==3) {
                             if(partes[1].equals("jugadores")) { 
                                 crearJugador(new File(partes[2]));
                             } else {
                                 crearJugador(partes[1], partes[2]);
                             }
                             for (int i=0;i<jugadores.size();i++) {
-                System.out.println(jugadores.get(i).toString());
-            }
-                        } else {
+                                System.out.println(jugadores.get(i).toString());
+                            }
+                        }else {
                             System.out.println("\nComando incorrecto.");
                         }
                         break;
