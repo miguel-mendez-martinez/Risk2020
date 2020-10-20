@@ -99,6 +99,25 @@ public class Menu {
                             asignarPaises(partes[1], partes[2]);
                         }
                         break;
+                        
+                    case "obtener": // Comandos sobre el mapa
+                        if(partes.length!=3) {
+                            System.out.println("\nComando incorrecto.");
+                        }else if(partes[1].equals("frontera")){
+                        
+                            
+                        
+                        }else if(partes[1].equals("continente")){
+                            
+                            
+                        }else if(partes[1].equals("color")){
+                            
+                            
+                        }else if(partes[1].equals("paises")){
+                        
+                        }
+                        
+                        break;
                     default:
                         System.out.println("\nComando incorrecto.");
                 }
@@ -169,6 +188,21 @@ public class Menu {
         // Código necesario para crear el mapa
         Mapa mapa = new Mapa();
         //System.out.println(mapa);
+    }
+    
+    public void obtenerFronteras(Pais pais){
+    
+        System.out.println("Las fronteras del pais" + pais.getNombre() + "son:");
+              
+        for(int i=0; i<pais.getFronteras().size(); i++){
+        
+            System.out.println(" - Frontera " + (i+1) + ": " + pais.getFronteras().get(i).getNombre());
+        
+        }
+    
+    
+    
+        
     }
         
     /**

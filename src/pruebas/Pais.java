@@ -21,7 +21,7 @@ public class Pais {
     private String abreviatura;
     private Jugador jugador;
     private Continente continente;
-    private ArrayList<Pais> fronteras; // solo lo pongo public para provbar
+    private ArrayList<Pais> fronteras;
     
     // Constructores
     
