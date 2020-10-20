@@ -50,7 +50,6 @@ public class Mapa {
     public ArrayList<Pais> getPaises(){
         return paises;
     }
-    
     private void crearAfrica() {
         String color = "VERDE";
         Casilla casilla;
