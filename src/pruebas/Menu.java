@@ -24,6 +24,7 @@ public class Menu {
     ArrayList<Jugador> jugadores;
     ArrayList<Pais> paises;
     String eleccion;
+    Mapa mapa;
     /**
      * 
      */
@@ -31,7 +32,9 @@ public class Menu {
         // Inicialización de algunos atributos
         // Iniciar juego
          // Con fichero:
+        this.mapa = null;
         jugadores = new ArrayList<>();
+        int checker = 0;
         String orden= null;
         BufferedReader bufferLector= null;
         try {
@@ -39,7 +42,7 @@ public class Menu {
             FileReader lector= new FileReader(fichero); // Creacion de objeto que lee "fichero"
             bufferLector= new BufferedReader(lector); // Usamos objeto de la clase BufferedReader ya que permite leer lineas completas
             while((orden= bufferLector.readLine())!=null) { // Mientras las líneas no estén en blanco:
-                System.out.println("$> " + orden);
+                System.out.println("\n$> " + orden);
                 String[] partes=orden.split(" "); // Separa en diferentes strings los elementos de la linea separados por espacios
                 String comando= partes[0]; // Definimos como comando la primera palabra de la linea
                 // COMANDOS INICIALES PARA EMPEZAR A JUGAR
@@ -66,24 +69,48 @@ public class Menu {
                     case "crear":
                         if(partes.length==2) {
                             if(partes[1].equals("mapa")){
-                                // crearMapa es un método de la clase Menú desde el que se puede invocar
-                                // a otros métodos de las clases que contienen los atributos y los métodos
-                                // necesarios para realizar esa invocación 
-                                crearMapa();
+                                if(this.mapa == null){
+                                    crearMapa();
+                                    if(this.mapa == null){
+                                        System.out.println("Error en la creacion de mapa.");
+                                    }else
+                                    checker +=1;//tras crear el mapa, los comandos de maxima prioridad han terminado, por lo que se pueden ejecutar los siguientes
+                                }else{
+                                    String error = "{\n\tCodigo de error 107. \n\tDescripcion: El mapa ya ha sido creado.\n}";
+                                    System.out.println(error);
+                                }
                             }else{
                                 System.out.println("\nComando incorrecto.");
                             }
                         }else if(partes.length==3) {
-                            if(partes[1].equals("jugadores")) { 
+                            if(checker >= 1){
+                                if(partes[1].equals("jugadores")) { 
                                 crearJugador(new File(partes[2]));
-                            } else {
-                                crearJugador(partes[1], partes[2]);
+                                } else {
+                                    crearJugador(partes[1], partes[2]);
+                                }
+                                System.out.print("Lista de jugadores tras el comando: $>" + orden);
+                                for (int i=0;i<jugadores.size();i++) {
+                                    System.out.println(jugadores.get(i).toString());
+                                }
+                                checker += 1; //tras crear los jugadores, el resto de comandos de prioridad 2 ya podran ser ejecutados
+                            }else{
+                                String error = "{\n\tCodigo de error 106. \n\tDescripcion: El mapa no esta creado.\n}";
+                                System.out.println(error);
                             }
-                            for (int i=0;i<jugadores.size();i++) {
-                                System.out.println(jugadores.get(i).toString());
-                            }
+                            
                         }else {
                             System.out.println("\nComando incorrecto.");
+                        }
+                        break;
+                    case "ver":
+                        if(partes[1].equals("mapa")){
+                            if(checker == 1){
+                                this.mapa.printMapa();
+                            }else{
+                                String error = "{\n\tCodigo de error 106. \n\tDescripcion: El mapa no esta creado.\n}";
+                                System.out.println(error);
+                            }
                         }
                         break;
                     case "asignar":
@@ -101,21 +128,27 @@ public class Menu {
                         break;
                         
                     case "obtener": // Comandos sobre el mapa
-                        if(partes.length!=3) {
-                            System.out.println("\nComando incorrecto.");
+                        if(checker == 1){
+                            if(partes.length!=3) {
+                                System.out.println("\nComando incorrecto.");
                             
-                        }else if(partes[1].equals("frontera")){
-                            obtenerFronteras(partes[2]);  
-                            
-                        }else if(partes[1].equals("continente")){
-                            obtenerContinente(partes[2]);
-                            
-                        }else if(partes[1].equals("color")){
-                            obtenerColor(partes[2]);
-                            
-                        }else if(partes[1].equals("paises")){
-                        
+                            }else if(partes[1].equals("frontera")){
+                                obtenerFronteras(partes[2]);  
+
+                            }else if(partes[1].equals("continente")){
+                                obtenerContinente(partes[2]);
+
+                            }else if(partes[1].equals("color")){
+                                obtenerColor(partes[2]);
+
+                            }else if(partes[1].equals("paises")){
+
+                            }
+                        }else{
+                            String error = "{\n\tCodigo de error 106. \n\tDescripcion: El mapa no esta creado.\n}";
+                            System.out.println(error);
                         }
+                        
                         
                         break;
                     default:
@@ -186,8 +219,8 @@ public class Menu {
      */
     public void crearMapa() {
         // Código necesario para crear el mapa
-        Mapa mapa = new Mapa();
-        paises = mapa.getPaises();
+        this.mapa = new Mapa();
+        paises = this.mapa.getPaises();
         //System.out.println(mapa);
     }
     
@@ -206,8 +239,8 @@ public class Menu {
             }          
         }
         if(flagPais == 0){ // Error      
-            System.out.println("Codigo de error: 109");
-            System.out.println("Descripcion: El pais no existe");       
+            String error = "{\n\tCodigo de error 109. \n\tDescripcion: El pais no existe.\n}";
+            System.out.println(error);      
         }      
     }
     
@@ -223,8 +256,8 @@ public class Menu {
             }          
         }
         if(flagPais == 0){ // Error      
-            System.out.println("Codigo de error: 109");
-            System.out.println("Descripcion: El pais no existe");       
+            String error = "{\n\tCodigo de error 109. \n\tDescripcion: El pais no existe.\n}";
+            System.out.println(error);      
         }      
     }
     
@@ -245,8 +278,8 @@ public class Menu {
             }          
         }
         if(flagPais == 0){ // Error      
-            System.out.println("Codigo de error: 109");
-            System.out.println("Descripcion: El pais no existe");       
+            String error = "{\n\tCodigo de error 109. \n\tDescripcion: El pais no existe.\n}";
+            System.out.println(error);       
         }      
     }
         
@@ -289,7 +322,9 @@ public class Menu {
         int flag=0;
         if(!(color.equals("AMARILLO") || color.equals("ROJO") || color.equals("AZUL")
                 || color.equals("CYAN") || color.equals("VERDE") || color.equals("VIOLETA"))){
-            String error = "{\n\tCodigo de error 100. \n\tDescripcion: Color no permitido\n}\n";
+            //aqui estaria guai `poner nombre y color del jugador que se ha intentado crear
+            System.out.println("Se intento crear: " + nombre + " " + color);
+            String error = "{\n\tCodigo de error 100. \n\tDescripcion: Color no permitido\n}";
             System.out.println(error);
         }
         else if(jugadores.isEmpty()==true){ //si esta vacia metemos directo
@@ -298,12 +333,12 @@ public class Menu {
         }else{
             for (int i=0;i<jugadores.size();i++) {
                 if(jugadores.get(i).getNombre().equals(nombre)==true){
-                    String error = "{\n\tCodigo de error 104. \n\tDescripcion: Jugador ya creado.\n}\n";
+                    String error = "{\n\tCodigo de error 104. \n\tDescripcion: Jugador ya creado.\n}";
                     System.out.println(error);
                     flag++;
                 }
                 else if(jugadores.get(i).getColor().equals(color)){
-                    String error = "{\n\tCodigo de error 114. \n\tDescripcion: Color ya asignado.\n}\n";
+                    String error = "{\n\tCodigo de error 114. \n\tDescripcion: Color ya asignado.\n}";
                     System.out.println(error);
                     flag++;
                 }
@@ -313,9 +348,5 @@ public class Menu {
                     jugadores.add(jugador);
                 }
         }
-        /*System.out.println("Array de jugadores despues de la insercion/error:");
-        for (int i=0;i<jugadores.size();i++) {
-            System.out.println(jugadores.get(i).toString());
-        }*/
     }
 }

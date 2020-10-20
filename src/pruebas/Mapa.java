@@ -50,21 +50,7 @@ public class Mapa {
     public ArrayList<Pais> getPaises(){
         return paises;
     }
-
-    //@Override
-    /*public String toString() {
-        String paisMapa = "";
-        String contMapa = "";
-        for (int i = 0; i < paises.size(); i++) {
-            paisMapa += paises.get(i);
-        }
-        for (int i = 0; i < continentes.size(); i++) {
-            contMapa += continentes.get(i);
-        }
-        String texto = "\nContinentes en Mapa: " + contMapa + "\nPaises en Mapa: " + paisMapa;
-        return texto;
-    }*/
-
+    
     private void crearAfrica() {
         String color = "VERDE";
         Casilla casilla;
