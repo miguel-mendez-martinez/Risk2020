@@ -46,6 +46,10 @@ public class Mapa {
     public ArrayList<Continente> getContinentes() {
         return continentes;
     }
+    
+    public ArrayList<Pais> getPaises(){
+        return paises;
+    }
 
     //@Override
     /*public String toString() {

@@ -103,15 +103,15 @@ public class Menu {
                     case "obtener": // Comandos sobre el mapa
                         if(partes.length!=3) {
                             System.out.println("\nComando incorrecto.");
+                            
                         }else if(partes[1].equals("frontera")){
-                        
+                            obtenerFronteras(partes[2]);  
                             
-                        
                         }else if(partes[1].equals("continente")){
-                            
+                            obtenerContinente(partes[2]);
                             
                         }else if(partes[1].equals("color")){
-                            
+                            obtenerColor(partes[2]);
                             
                         }else if(partes[1].equals("paises")){
                         
@@ -187,22 +187,67 @@ public class Menu {
     public void crearMapa() {
         // Código necesario para crear el mapa
         Mapa mapa = new Mapa();
+        paises = mapa.getPaises();
         //System.out.println(mapa);
     }
     
-    public void obtenerFronteras(Pais pais){
+    public void obtenerFronteras(String npais){
     
-        System.out.println("Las fronteras del pais" + pais.getNombre() + "son:");
+        int flagPais = 0; // flag para controlar si el pais que se inserto existe o no
+        for(Pais pais:paises){
+        
+            if(pais.getAbreviatura().equals(npais)){
+                flagPais = 1;
+                System.out.println("Las fronteras del pais " + pais.getNombre() + " son:");
               
-        for(int i=0; i<pais.getFronteras().size(); i++){
-        
-            System.out.println(" - Frontera " + (i+1) + ": " + pais.getFronteras().get(i).getNombre());
-        
+                for(Pais frontera : pais.getFronteras()){
+                    System.out.println(" - Frontera: " + frontera.getNombre());        
+                }  
+            }          
         }
+        if(flagPais == 0){ // Error      
+            System.out.println("Codigo de error: 109");
+            System.out.println("Descripcion: El pais no existe");       
+        }      
+    }
     
+    public void obtenerContinente(String npais){
     
-    
+        int flagPais = 0; // flag para controlar si el pais que se inserto existe o no
+        for(Pais pais:paises){
         
+            if(pais.getAbreviatura().equals(npais)){
+                flagPais = 1;
+                System.out.println("El continente al que pertenece el país " + pais.getNombre() + " es: " + pais.getContinente().getNombre());
+                
+            }          
+        }
+        if(flagPais == 0){ // Error      
+            System.out.println("Codigo de error: 109");
+            System.out.println("Descripcion: El pais no existe");       
+        }      
+    }
+    
+    public void obtenerColor(String npais){
+    
+        int flagPais = 0;// flag para controlar si el pais que se inserto existe o no
+        
+        
+        for(Pais pais:paises){
+        
+            if(pais.getAbreviatura().equals(npais)){
+                flagPais = 1;
+                String color = pais.getContinente().getColor();
+                if((color.equals("AMARILLO") || color.equals("ROJO") || color.equals("AZUL")
+                || color.equals("CYAN") || color.equals("VERDE") || color.equals("VIOLETA"))){
+                    System.out.println("El color del país " + pais.getNombre() + " es: " + color);
+                }else System.out.println("{\n\tCodigo de error 100. \n\tDescripcion: Color no permitido\n}\n");
+            }          
+        }
+        if(flagPais == 0){ // Error      
+            System.out.println("Codigo de error: 109");
+            System.out.println("Descripcion: El pais no existe");       
+        }      
     }
         
     /**

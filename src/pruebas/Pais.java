@@ -50,7 +50,7 @@ public class Pais {
         this.fronteras.add(f);
     }
 
-    public ArrayList getFronteras(){
+    public ArrayList<Pais> getFronteras(){
         return fronteras;
     }
     
