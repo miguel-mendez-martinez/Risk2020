@@ -479,7 +479,7 @@ public class Mapa {
                     if ((cBucle.getX() == i) && (cBucle.getY() == j)){
                         System.out.print(cBucle.getPais().getContinente().printColor());
                         //System.out.print("\033[0m" );  
-                        System.out.printf(String.format("\u001B[1m%1$-11s", cBucle.getPais().getAbreviatura()));
+                        System.out.printf(String.format("%1$-11s", cBucle.getPais().getAbreviatura()));
                         System.out.print("\033[0m");
                         oceano = 1;
                     }

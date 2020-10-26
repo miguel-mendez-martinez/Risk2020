@@ -34,6 +34,7 @@ public class Menu {
          // Con fichero:
         this.mapa = null;
         jugadores = new ArrayList<>();
+        paises = new ArrayList<>();
         int checker = 0;
         String orden= null;
         BufferedReader bufferLector= null;
@@ -71,6 +72,7 @@ public class Menu {
                             if(partes[1].equals("mapa")){
                                 if(this.mapa == null){
                                     crearMapa();
+                                    this.paises = this.mapa.getPaises();
                                     if(this.mapa == null){
                                         System.out.println("Error en la creacion de mapa.");
                                     }else
@@ -148,8 +150,6 @@ public class Menu {
                             String error = "{\n\tCodigo de error 106. \n\tDescripcion: El mapa no esta creado.\n}";
                             System.out.println(error);
                         }
-                        
-                        
                         break;
                     default:
                         System.out.println("\nComando incorrecto.");
@@ -207,8 +207,34 @@ public class Menu {
      */
     public void asignarPaises(String nombrePais, String nombreJugador) {
         // Código necesario para asignar un país a un jugador
-
-
+        /*dos for, uno va entre todos los jugadores y comprueba que exista y otro 
+        recorre los paises para ver si existe, si el nombre pasado coicide con
+        alguno de los paises del array del mapa, se añade a jugador y se setea su
+        jugador al nombre qie ha pasado por la lista*/
+        int checkJug=0, checkPais=0;
+        for(Jugador j : this.jugadores){
+            //primero debemos comprobar que el jugador exista dentro del array de jugadores
+            if(j.getNombre().equals(nombreJugador)==true){
+                    checkJug++;//comprobante de que el jugador exista
+                }    
+        }
+        if(checkJug == 0){
+                String error = "{\n\tCodigo de error 103. \n\tDescripcion: Jugador no existente.\n}";
+                System.out.println(error);
+            }else{
+            //Si el jugador existe lo siguiente es comprobar que exista el pais
+                for(Pais p : this.paises){
+                    if(p.getNombre().equals(nombrePais)==true){
+                        checkPais++;//comprobante de que el jugador exista
+                    }
+                }
+                if(checkPais == 0){
+                    String error = "{\n\tCodigo de error 109. \n\tDescripcion: Pais no existente.\n}";
+                    System.out.println(error);
+                }else{
+                    //pasamos a ver si los paises ya estan en el jugador etc etc etc
+                }
+            }
 
      // mirar en casa tengo el cerebro frito
 
