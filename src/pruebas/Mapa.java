@@ -56,14 +56,14 @@ public class Mapa {
         Continente africa = new Continente("África", color);
 
         casilla = new Casilla(5, 4);
-        Pais anorte = new Pais("África del Norte", "anorte", casilla, africa);
+        Pais anorte = new Pais("África del Norte", "ANorte", casilla, africa);
         africa.setPais(anorte);
         casilla.setPais(anorte);
         casillas.add(casilla);
         paises.add(anorte);
 
         casilla = new Casilla(6, 5);
-        Pais aoriental = new Pais("Africa Oriental", "aoriental", casilla, africa);
+        Pais aoriental = new Pais("Africa Oriental", "AOriental", casilla, africa);
         africa.setPais(aoriental);
         casilla.setPais(aoriental);
         casillas.add(casilla);
@@ -84,14 +84,14 @@ public class Mapa {
         paises.add(egipto);
 
         casilla = new Casilla(7, 6);
-        Pais madagascar = new Pais("Madagascar", "madagascar", casilla, africa);
+        Pais madagascar = new Pais("Madagascar", "Madagasca", casilla, africa);
         africa.setPais(madagascar);
         casilla.setPais(madagascar);
         casillas.add(casilla);
         paises.add(madagascar);
 
         casilla = new Casilla(6, 6);
-        Pais sudafrica = new Pais("Sudafrica", "sudafrica", casilla, africa);
+        Pais sudafrica = new Pais("Sudafrica", "Sudáfrica", casilla, africa);
         africa.setPais(sudafrica);
         casilla.setPais(sudafrica);
         casillas.add(casilla);
@@ -205,7 +205,7 @@ public class Mapa {
         paises.add(USAEste);
 
         casilla = new Casilla(1, 3);
-        Pais AmeCentral = new Pais("America Central", "AmeCentral", casilla, Anorte);
+        Pais AmeCentral = new Pais("America Central", "AmeCentra", casilla, Anorte);
         Anorte.setPais(AmeCentral);
         casilla.setPais(AmeCentral);
         casillas.add(casilla);
@@ -234,7 +234,7 @@ public class Mapa {
         Continente Asur = new Continente("América del Sur", color);
 
         casilla = new Casilla(1, 4);
-        Pais venezuela = new Pais("venezuela", "venezuela", casilla, Asur);
+        Pais venezuela = new Pais("Venezuela", "Venezuela", casilla, Asur);
         Asur.setPais(venezuela);
         casilla.setPais(venezuela);
         casillas.add(casilla);
@@ -270,7 +270,7 @@ public class Mapa {
         Continente oceania = new Continente("Oceanía", color);
 
         casilla = new Casilla(9, 6);
-        Pais Indonesia = new Pais("Indonesia", "Indosedia", casilla, oceania);
+        Pais Indonesia = new Pais("Indonesia", "Indonesia", casilla, oceania);
         oceania.setPais(Indonesia);
         casilla.setPais(Indonesia);
         casillas.add(casilla);

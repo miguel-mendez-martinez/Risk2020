@@ -72,7 +72,6 @@ public class Menu {
                             if(partes[1].equals("mapa")){
                                 if(this.mapa == null){
                                     crearMapa();
-                                    this.paises = this.mapa.getPaises();
                                     if(this.mapa == null){
                                         System.out.println("Error en la creacion de mapa.");
                                     }else
@@ -118,11 +117,21 @@ public class Menu {
                     case "asignar":
                         if(partes.length!=3) {
                             System.out.println("\nComando incorrecto.");
-                        } else if(partes[1].equals("paises")) {
-                            // asignarPaises es un método de la clase Menu que recibe como entrada el fichero
-                            // en el que se encuentra la asignación de países a jugadores. Dentro de este
-                            // método se invocará a otros métodos de las clases que contienen los atributos
-                            // y los métodos necesarios para realizar esa invocación
+                        }else if(partes[1].equals("misiones")){
+                            if(checker >= 2){
+                                if(partes[1].equals("misiones")){
+                                    asignarMisiones(new File(partes[2]));
+                                }else{
+                                    asignarMisiones(partes[1], partes[2]);
+                                }
+                                checker += 1;
+                            }else{
+                                String error = "{\n\tCodigo de error 105. \n\tDescripcion: Los jugadores no estan creados.\n}";
+                                System.out.println(error);
+                            }
+                            //primero tenemos que asignar misiones antes de paises
+                        }else if(partes[1].equals("paises")) {
+                            
                             asignarPaises(new File(partes[2]));
                         } else {
                             asignarPaises(partes[1], partes[2]);
@@ -164,6 +173,13 @@ public class Menu {
      * 
      * @param file 
      */
+    
+    public void asignarMisiones(File file){
+        
+    }
+    public void asignarMisiones(String Jugador, String Codigo){
+        
+    }
     public void asignarPaises(File file) {
         // Código necesario para asignar países
 
@@ -224,7 +240,7 @@ public class Menu {
             }else{
             //Si el jugador existe lo siguiente es comprobar que exista el pais
                 for(Pais p : this.paises){
-                    if(p.getNombre().equals(nombrePais)==true){
+                    if(p.getAbreviatura().equals(nombrePais)==true){
                         checkPais++;//comprobante de que el jugador exista
                     }
                 }
@@ -246,7 +262,7 @@ public class Menu {
     public void crearMapa() {
         // Código necesario para crear el mapa
         this.mapa = new Mapa();
-        paises = this.mapa.getPaises();
+        this.paises = this.mapa.getPaises();
         //System.out.println(mapa);
     }
     
