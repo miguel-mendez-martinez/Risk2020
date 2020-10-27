@@ -261,10 +261,13 @@ public class Menu {
                             if(p.getJugador().equals(j.getNombre())) checkPaisAsig=1;
                         }
                     }
-                    if(checkPaisAsig == 0){ // El pais no está asignado a ningun jugador, por lo que asignamos
+                    if(checkPaisAsig == 0){ // El pais no está asignado a ningun jugador, por lo que asignamos e imprimimos
 
                         pais.setJugador(jugador);
                         jugador.setPaises(pais);
+                        // Falta imprirmir fronteras bien
+                        String exito = "{\n\tnombre: " + nombreJugador +"\n\tpaís: " + nombrePais + "\n\tcontinente: " + pais.getContinente().getNombre() + "frontera:\n}";
+                        System.out.println(exito);
 
                     }else{ // COdigo de error pais asignado
                         String error = "{\n\tCodigo de error 113. \n\tDescripcion: El país ya está asignado.\n}";
