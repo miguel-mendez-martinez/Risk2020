@@ -222,7 +222,7 @@ public class Menu {
      * @param nombrePais
      * @param nombreJugador 
      */
-    public void asignarPaises(String nombrePais, String nombreJugador) {
+    public void asignarPaises(String nombreJugador, String nombrePais) {
         // Código necesario para asignar un país a un jugador
         /*dos for, uno va entre todos los jugadores y comprueba que exista y otro 
         recorre los paises para ver si existe, si el nombre pasado coicide con
@@ -258,7 +258,7 @@ public class Menu {
 
                     for(Pais p:paises){
                         for(Jugador j:jugadores){
-                            if(p.getJugador().equals(j.getNombre())) checkPaisAsig=1;
+                            if(p.getJugador().equals(j) == true) checkPaisAsig=1;
                         }
                     }
                     if(checkPaisAsig == 0){ // El pais no está asignado a ningun jugador, por lo que asignamos e imprimimos
