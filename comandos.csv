@@ -5,15 +5,12 @@ crear jugadores jugadores.csv
 asignar misiones misiones.csv
 asignar Hooker M42
 crear mapa
+crear jugadores jugadores.csv
+asignar Gondorff Siberia
 obtener frontera Egipto
 obtener continente Egipto
 obtener frontera casamigueloh
 obtener color Brasil
 ver mapa
 crear mapa
-crear jugadores jugadores.csv
-asignar misiones misiones.csv
-asignar Hooker M42
-asignar Hooker AlbertoMarica
-asignar paises asignaciones.csv
 

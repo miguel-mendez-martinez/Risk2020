@@ -42,6 +42,14 @@ public class Pais {
         this.continente = continente;
     }
 
+    public Jugador getJugador() {
+        return jugador;
+    }
+
+    public void setJugador(Jugador jugador) {
+        this.jugador = jugador;
+    }
+
     public Casilla getCasilla() {
         return casilla;
     }
@@ -61,7 +69,11 @@ public class Pais {
     public String getNombre() {
         return nombre;
     }
-    
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public int getEjercitos() {
         return ejercitos;
     }
