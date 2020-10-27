@@ -89,10 +89,14 @@ public class Menu {
                             if(checker >= 1){
                                 if(partes[1].equals("jugadores")) { 
                                     crearJugador(new File(partes[2]));
-                                    checker = 2; //tras crear los jugadores, el resto de comandos de prioridad 2 ya podran ser ejecutados
+                                    if(checker < 2){
+                                        checker = 2;
+                                    }
                                 } else {
                                     crearJugador(partes[1], partes[2]);
-                                    checker = 2;
+                                    if(checker < 2){
+                                        checker = 2;
+                                    }
                                 }
                                 /*System.out.print("Lista de jugadores tras el comando: $>" + orden);
                                 for (int i=0;i<jugadores.size();i++) {
@@ -110,7 +114,7 @@ public class Menu {
                         break;
                     case "ver":
                         if(partes[1].equals("mapa")){
-                            if(checker == 1){
+                            if(checker >= 1){
                                 this.mapa.printMapa();
                             }else{
                                 String error = "{\n\tCodigo de error 106. \n\tDescripcion: El mapa no esta creado.\n}";
@@ -125,7 +129,9 @@ public class Menu {
                             if(checker >= 2){
                                 if(partes[1].equals("misiones")){
                                     asignarMisiones(new File(partes[2]));
-                                    checker = 3;
+                                    if(checker < 3){
+                                        checker = 3;
+                                    }
                                 }
                             }else{
                                 String error = "{\n\tCodigo de error 105. \n\tDescripcion: Los jugadores no estan creados.\n}";
@@ -135,29 +141,44 @@ public class Menu {
                         }else if(partes[1].equals("paises")){
                             if(checker >= 3){
                                 asignarPaises(new File(partes[2]));
+                                if(checker < 4){
+                                        checker = 4;
+                                    }
                             }else{
                                 String error = "{\n\tCodigo de error 118. \n\tDescripcion: Misiones no asignadas.\n}";
                                 System.out.println(error);
                             }
-                        }else{
+                        }else if(partes[2].charAt(0) == 'M'){
                             //Estas operaciones por ahora no cambian el checker ya que no asignan cosas a todos los jugadores
                             if(checker >= 2){
-                                asignarMisiones(partes[1], partes[2]);
+                                if(partes[2].charAt(1) == '1' ||
+                                    partes[2].charAt(1) == '2' ||
+                                    partes[2].charAt(1) == '3' ||
+                                    partes[2].charAt(1) == '4'){
+                                    asignarMisiones(partes[1], partes[2]);
+                                }else{
+                                    if(checker >= 3){
+                                        asignarPaises(partes[1], partes[2]);
+                                    }else{
+                                        String error = "{\n\tCodigo de error 118. \n\tDescripcion: Misiones no asignadas.\n}";
+                                        System.out.println(error);
+                                    }   
+                                }
                             }else{
                                 String error = "{\n\tCodigo de error 105. \n\tDescripcion: Los jugadores no estan creados.\n}";
                                 System.out.println(error);
                             }
-                            if(checker >= 3){
-                                asignarPaises(partes[1], partes[2]);
-                            }else{
-                                String error = "{\n\tCodigo de error 118. \n\tDescripcion: Misiones no asignadas.\n}";
-                                System.out.println(error);
-                            }
+                        }else if(checker >= 3){
+                            asignarPaises(partes[1], partes[2]);
+                        }else{
+                            String error = "{\n\tCodigo de error 118. \n\tDescripcion: Misiones no asignadas.\n}";
+                            System.out.println(error);
                         }
+                        
                         break;
                         
                     case "obtener": // Comandos sobre el mapa
-                        if(checker == 1){
+                        if(checker >= 1){
                             if(partes.length!=3) {
                                 System.out.println("\nComando incorrecto.");
                             
