@@ -1,6 +1,9 @@
+asignar misiones misiones.csv
 obtener frontera venezuela
 ver mapa
 crear jugadores jugadores.csv
+asignar misiones misiones.csv
+asignar Hooker M42
 crear mapa
 obtener frontera Egipto
 obtener continente Egipto
@@ -9,5 +12,8 @@ obtener color Brasil
 ver mapa
 crear mapa
 crear jugadores jugadores.csv
+asignar misiones misiones.csv
+asignar Hooker M42
+asignar Hooker AlbertoMarica
 asignar paises asignaciones.csv
 

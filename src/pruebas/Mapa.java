@@ -158,7 +158,7 @@ public class Mapa {
     }
 
     private void crearANorte() {
-        String color = "MORADO";
+        String color = "VIOLETA";
         Casilla casilla;
         Continente Anorte = new Continente("América del Norte", color);
 

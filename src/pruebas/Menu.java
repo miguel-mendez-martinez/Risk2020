@@ -33,6 +33,7 @@ public class Menu {
         // Iniciar juego
          // Con fichero:
         this.mapa = null;
+        Mision mision;
         jugadores = new ArrayList<>();
         paises = new ArrayList<>();
         int checker = 0;
@@ -75,7 +76,7 @@ public class Menu {
                                     if(this.mapa == null){
                                         System.out.println("Error en la creacion de mapa.");
                                     }else
-                                    checker +=1;//tras crear el mapa, los comandos de maxima prioridad han terminado, por lo que se pueden ejecutar los siguientes
+                                    checker = 1;//tras crear el mapa, los comandos de maxima prioridad han terminado, por lo que se pueden ejecutar los siguientes
                                 }else{
                                     String error = "{\n\tCodigo de error 107. \n\tDescripcion: El mapa ya ha sido creado.\n}";
                                     System.out.println(error);
@@ -86,15 +87,17 @@ public class Menu {
                         }else if(partes.length==3) {
                             if(checker >= 1){
                                 if(partes[1].equals("jugadores")) { 
-                                crearJugador(new File(partes[2]));
+                                    crearJugador(new File(partes[2]));
+                                    checker = 2; //tras crear los jugadores, el resto de comandos de prioridad 2 ya podran ser ejecutados
                                 } else {
                                     crearJugador(partes[1], partes[2]);
+                                    checker = 2;
                                 }
-                                System.out.print("Lista de jugadores tras el comando: $>" + orden);
+                                /*System.out.print("Lista de jugadores tras el comando: $>" + orden);
                                 for (int i=0;i<jugadores.size();i++) {
                                     System.out.println(jugadores.get(i).toString());
-                                }
-                                checker += 1; //tras crear los jugadores, el resto de comandos de prioridad 2 ya podran ser ejecutados
+                                }*/
+                                
                             }else{
                                 String error = "{\n\tCodigo de error 106. \n\tDescripcion: El mapa no esta creado.\n}";
                                 System.out.println(error);
@@ -121,20 +124,34 @@ public class Menu {
                             if(checker >= 2){
                                 if(partes[1].equals("misiones")){
                                     asignarMisiones(new File(partes[2]));
-                                }else{
-                                    asignarMisiones(partes[1], partes[2]);
+                                    checker = 3;
                                 }
-                                checker += 1;
                             }else{
                                 String error = "{\n\tCodigo de error 105. \n\tDescripcion: Los jugadores no estan creados.\n}";
                                 System.out.println(error);
                             }
                             //primero tenemos que asignar misiones antes de paises
-                        }else if(partes[1].equals("paises")) {
-                            
-                            asignarPaises(new File(partes[2]));
-                        } else {
-                            asignarPaises(partes[1], partes[2]);
+                        }else if(partes[1].equals("paises")){
+                            if(checker >= 3){
+                                asignarPaises(new File(partes[2]));
+                            }else{
+                                String error = "{\n\tCodigo de error 118. \n\tDescripcion: Misiones no asignadas.\n}";
+                                System.out.println(error);
+                            }
+                        }else{
+                            //Estas operaciones por ahora no cambian el checker ya que no asignan cosas a todos los jugadores
+                            if(checker >= 2){
+                                asignarMisiones(partes[1], partes[2]);
+                            }else{
+                                String error = "{\n\tCodigo de error 105. \n\tDescripcion: Los jugadores no estan creados.\n}";
+                                System.out.println(error);
+                            }
+                            if(checker >= 3){
+                                asignarPaises(partes[1], partes[2]);
+                            }else{
+                                String error = "{\n\tCodigo de error 118. \n\tDescripcion: Misiones no asignadas.\n}";
+                                System.out.println(error);
+                            }
                         }
                         break;
                         
@@ -175,10 +192,71 @@ public class Menu {
      */
     
     public void asignarMisiones(File file){
-        
+        String codigoMision;
+        String nombreJugador;
+
+        String jugadorLeido = null;
+        BufferedReader bufferLector = null;
+
+        try {
+
+            File fichero = new File("misiones.csv");
+            FileReader lector = new FileReader(fichero);
+            bufferLector = new BufferedReader(lector);
+
+            while((jugadorLeido= bufferLector.readLine())!=null){
+
+                String[] partes = jugadorLeido.split(";");
+                nombreJugador = partes[0];
+                codigoMision = partes[1];
+                asignarMisiones(nombreJugador, codigoMision);
+                System.out.println();
+
+            }
+        }
+        catch (Exception excepcion){
+            excepcion.printStackTrace();
+        }
+
     }
+    
     public void asignarMisiones(String Jugador, String Codigo){
+        int checkJug=0, checkPais=0;
+        Mision m = new Mision();
         
+        for(Jugador j : this.jugadores){
+            //primero debemos comprobar que el jugador exista dentro del array de jugadores
+            if(j.getNombre().equals(Jugador)==true){
+                    checkJug++;//comprobante de que el jugador exista
+                }    
+        }
+        if(checkJug == 0){
+                String error = "{\n\tCodigo de error 103. \n\tDescripcion: Jugador no existente.\n}";
+                System.out.println(error);
+            }
+        if(m.existeMision(Codigo) == 1){
+            for(Jugador j : this.jugadores){
+            if(j.getNombre().equals(Jugador)==true){
+                    if(j.getMision() == null){
+                        if(m.getJugador() == null){
+                            m = new Mision(Codigo, j);
+                            j.setMision(m);
+                            System.out.println(m.toString());
+                        }else{
+                            String error = "{\n\tCodigo de error 115. \n\tDescripcion: La mision ya esta asignada.\n}";
+                            System.out.println(error);
+                        }
+                    }else{
+                        String error = "{\n\tCodigo de error 117. \n\tDescripcion: El jugador ya tiene mision asignada.\n}";
+                        System.out.println(error);
+                    }
+                     
+                }    
+            }
+        }else{
+            String error = "{\n\tCodigo de error 116. \n\tDescripcion: Mision no existente.\n}";
+            System.out.println(error);
+        }
     }
     public void asignarPaises(File file) {
         // Código necesario para asignar países
@@ -204,7 +282,7 @@ public class Menu {
 
             }
 
-            System.out.println("Array final de jugadores tras la lectura completa del archivo:");
+            System.out.println("Array final de jugadores tras la lectura completa del archivo de Paises:");
             for (int i=0;i<jugadores.size();i++) {
                 System.out.println(jugadores.get(i).toString());
             }
@@ -237,20 +315,20 @@ public class Menu {
         if(checkJug == 0){
                 String error = "{\n\tCodigo de error 103. \n\tDescripcion: Jugador no existente.\n}";
                 System.out.println(error);
-            }else{
-            //Si el jugador existe lo siguiente es comprobar que exista el pais
-                for(Pais p : this.paises){
-                    if(p.getAbreviatura().equals(nombrePais)==true){
-                        checkPais++;//comprobante de que el jugador exista
-                    }
-                }
-                if(checkPais == 0){
-                    String error = "{\n\tCodigo de error 109. \n\tDescripcion: Pais no existente.\n}";
-                    System.out.println(error);
-                }else{
-                    //pasamos a ver si los paises ya estan en el jugador etc etc etc
+        }else{
+        //Si el jugador existe lo siguiente es comprobar que exista el pais
+            for(Pais p : this.paises){
+                if(p.getAbreviatura().equals(nombrePais)==true){
+                    checkPais++;//comprobante de que el jugador exista
                 }
             }
+            if(checkPais == 0){
+                String error = "{\n\tCodigo de error 109. \n\tDescripcion: Pais no existente.\n}";
+                System.out.println(error);
+            }else{
+                //pasamos a ver si los paises ya estan en el jugador etc etc etc
+            }
+        }
 
      // mirar en casa tengo el cerebro frito
 
@@ -371,7 +449,9 @@ public class Menu {
         }
         else if(jugadores.isEmpty()==true){ //si esta vacia metemos directo
             Jugador jugador= new Jugador(nombre, color);
-            jugadores.add(jugador); 
+            jugadores.add(jugador);
+            System.out.println(jugador.toString());
+            //aqui tenemos que printear el jugador cada vez, hay que hacerlo como en el pdf
         }else{
             for (int i=0;i<jugadores.size();i++) {
                 if(jugadores.get(i).getNombre().equals(nombre)==true){
@@ -388,6 +468,7 @@ public class Menu {
             if(flag==0){
                     Jugador jugador= new Jugador(nombre, color);
                     jugadores.add(jugador);
+                    System.out.println(jugador.toString());
                 }
         }
     }

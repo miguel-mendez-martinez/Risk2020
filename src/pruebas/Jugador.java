@@ -19,6 +19,7 @@ public class Jugador {
     private String color;
     private int tropas;
     private ArrayList<Pais> paises;
+    private Mision mision;
 	
     // Constructores
     public Jugador(){
@@ -30,10 +31,10 @@ public class Jugador {
     }
 
     public Jugador(String nombre, String color){
-	    this.nombre= nombre;
+        this.nombre= nombre;
         this.color= color;
         this.paises = new ArrayList<>();
-        //ahora faltaria hacer todas las comprobaciones, es decir toda la mierda, pero eso mejor se hace en el menu, porque si no devuelve nulls y no son bonitos ok xd
+        this.mision = null; //este valor lo usaremos para comprobar a la hora de asignarle una mision
     }
 
     /*public Jugador(String nombre, String color, ArrayList<Pais> paises){
@@ -52,6 +53,14 @@ public class Jugador {
     
     public String getNombre() {
         return nombre;
+    }
+
+    public void setMision(Mision mision) {
+        this.mision = mision;
+    }
+
+    public Mision getMision() {
+        return mision;
     }
     
     public void setNombre(String nombre){
