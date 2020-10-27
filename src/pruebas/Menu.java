@@ -23,6 +23,7 @@ public class Menu {
     // el mapa o los jugadores
     ArrayList<Jugador> jugadores;
     ArrayList<Pais> paises;
+    ArrayList<Continente> continentes;
     String eleccion;
     Mapa mapa;
     /**
@@ -153,7 +154,7 @@ public class Menu {
                                 obtenerColor(partes[2]);
 
                             }else if(partes[1].equals("paises")){
-
+                                obtenerPaises(partes[2]);
                             }
                         }else{
                             String error = "{\n\tCodigo de error 106. \n\tDescripcion: El mapa no esta creado.\n}";
@@ -226,13 +227,17 @@ public class Menu {
         /*dos for, uno va entre todos los jugadores y comprueba que exista y otro 
         recorre los paises para ver si existe, si el nombre pasado coicide con
         alguno de los paises del array del mapa, se añade a jugador y se setea su
-        jugador al nombre qie ha pasado por la lista*/
-        int checkJug=0, checkPais=0;
+        jugador al nombre que ha pasado por la lista*/
+        int checkJug=0, checkPais=0, checkPaisAsig=0;
+        Pais pais = new Pais();
+        Jugador jugador = new Jugador();
+
         for(Jugador j : this.jugadores){
             //primero debemos comprobar que el jugador exista dentro del array de jugadores
             if(j.getNombre().equals(nombreJugador)==true){
-                    checkJug++;//comprobante de que el jugador exista
-                }    
+                jugador = j;
+                checkJug++;//comprobante de que el jugador exista
+            }
         }
         if(checkJug == 0){
                 String error = "{\n\tCodigo de error 103. \n\tDescripcion: Jugador no existente.\n}";
@@ -241,14 +246,32 @@ public class Menu {
             //Si el jugador existe lo siguiente es comprobar que exista el pais
                 for(Pais p : this.paises){
                     if(p.getAbreviatura().equals(nombrePais)==true){
-                        checkPais++;//comprobante de que el jugador exista
+                        pais = p;
+                        checkPais++;//comprobante de que el pais exista
                     }
                 }
                 if(checkPais == 0){
                     String error = "{\n\tCodigo de error 109. \n\tDescripcion: Pais no existente.\n}";
                     System.out.println(error);
-                }else{
+                }else{ // Existe el pais y existe el jugador, comprobar que ese pais no este asignado ya
                     //pasamos a ver si los paises ya estan en el jugador etc etc etc
+
+                    for(Pais p:paises){
+                        for(Jugador j:jugadores){
+                            if(p.getJugador().equals(j.getNombre())) checkPaisAsig=1;
+                        }
+                    }
+                    if(checkPaisAsig == 0){ // El pais no está asignado a ningun jugador, por lo que asignamos
+
+                        pais.setJugador(jugador);
+                        jugador.setPaises(pais);
+
+                    }else{ // COdigo de error pais asignado
+                        String error = "{\n\tCodigo de error 113. \n\tDescripcion: El país ya está asignado.\n}";
+                        System.out.println(error);
+                    }
+// Queda pendiente error de misiones
+
                 }
             }
 
@@ -263,6 +286,7 @@ public class Menu {
         // Código necesario para crear el mapa
         this.mapa = new Mapa();
         this.paises = this.mapa.getPaises();
+        this.continentes = this.mapa.getContinentes();
         //System.out.println(mapa);
     }
     
@@ -324,7 +348,19 @@ public class Menu {
             System.out.println(error);       
         }      
     }
-        
+
+    public void obtenerPaises(String abCont){
+
+        int flagContinente = 0;
+        for(Continente c:continentes){
+            if(c.getNombre().equals(abCont)){
+                c.toString();
+                flagContinente = 1;
+            }
+        }
+        if(flagContinente == 0) System.out.println("{\n\tCodigo de error 102. \n\tDescripcion: El continente no existe.\n}");
+    }
+
     /**
      * 
      * @param file 
