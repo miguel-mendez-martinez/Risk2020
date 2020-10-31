@@ -90,7 +90,7 @@ public class Mision {
     public String toString(){
         String texto;
         
-        texto = "{\n\tNombre: " + this.jugador.getNombre() + "\n\tMision: " + this.descripcion;
+        texto = "{\n nombre: \"" + this.jugador.getNombre() + "\"\n mision: \"" + this.descripcion + "\"\n}";
         
         return texto;
     }

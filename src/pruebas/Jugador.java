@@ -91,8 +91,10 @@ public class Jugador {
         this.paises.add(pais);
     }
 
-    
-    
+    public String printColorNom(){
+        String texto = "{\n nombre: \"" + this.nombre + "\",\n color: \"" + this.color + "\"\n}";
+        return texto;
+    }   
     @Override
     public String toString(){
         //String result = "";
