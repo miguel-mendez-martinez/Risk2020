@@ -40,6 +40,7 @@ public class Pais {
         this.ejercitos = 0;
         fronteras = new ArrayList<>();
         this.continente = continente;
+        this.jugador = null; //esto hara de comprobante para saber si esta asignado a algun jugador
     }
 
     public Jugador getJugador() {
@@ -89,7 +90,13 @@ public class Pais {
         return this.getContinente().getColor();
     }
 
-
+    public int estaAsignado(){
+        if(this.jugador == null){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
 
     public String printNombre(){
         String texto = "\"" + this.nombre + "\"";

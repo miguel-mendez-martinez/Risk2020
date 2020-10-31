@@ -216,7 +216,7 @@ public class Menu {
         if(jugadores.isEmpty()==true){
             return 0;
         }else{
-            for(Jugador j : this.jugadores){
+            for(Jugador j : jugadores){
                 if(j.getNombre().equals(jugador)==true){
                        return 1;
                     }    
@@ -229,7 +229,7 @@ public class Menu {
         if(paises.isEmpty()==true){
             return 0;
         }else{
-            for(Pais p : this.paises){
+            for(Pais p : paises){
                 if(p.getNombre().equals(pais)==true){
                        return 1;
                     }    
@@ -316,7 +316,7 @@ public class Menu {
                 String[] partes = jugadorLeido.split(";");
                 nombreJugador = partes[0];
                 nombrePais = partes[1];
-                asignarPaises(nombrePais, nombreJugador);
+                asignarPaises(nombreJugador, nombrePais);
 
             }
 
@@ -347,56 +347,35 @@ public class Menu {
         Pais pais = new Pais();
         Jugador jugador = new Jugador();
 
-        for(Jugador j : this.jugadores){
-            //primero debemos comprobar que el jugador exista dentro del array de jugadores
-            if(j.getNombre().equals(nombreJugador)==true){
-                jugador = j;
-                checkJug++;//comprobante de que el jugador exista
-            }
-        }
-        if(checkJug == 0){
+        if(existeJugador(this.jugadores, nombreJugador) == 0){
                 Salida error = new Salida(103);
                 System.out.println(error.toString());
             }else{
             //Si el jugador existe lo siguiente es comprobar que exista el pais
-                for(Pais p : this.paises){
-                    if(p.getAbreviatura().equals(nombrePais)==true){
-                        pais = p;
-                        checkPais++;//comprobante de que el pais exista
-                    }
-                }
-                if(checkPais == 0){
+                if(existePais(this.paises, nombrePais) == 0){
                     Salida error = new Salida(109);
                     System.out.println(error.toString());
                 }else{ // Existe el pais y existe el jugador, comprobar que ese pais no este asignado ya
                     //pasamos a ver si los paises ya estan en el jugador etc etc etc
-
                     for(Pais p:paises){
-                        for(Jugador j:jugadores){
-                            if(p.getJugador().equals(j) == true) checkPaisAsig=1;
+                        if(p.getAbreviatura().equals(nombrePais)){
+                            if((p.estaAsignado())==0){ // El pais no está asignado a ningun jugador, por lo que asignamos e imprimimos
+                                pais.setJugador(jugador);
+                                jugador.setPaises(pais);
+                                // Falta imprirmir fronteras bien
+                                String exito = "{\n\tnombre: " + nombreJugador +"\n\tpaís: " + nombrePais + "\n\tcontinente: " + pais.getContinente().getNombre() + "frontera:\n}";
+                                System.out.println(exito);
+
+                            }else{ // COdigo de error pais asignado
+                                Salida error = new Salida(113);
+                                System.out.println(error.toString());
+                            }
                         }
-                    }
-                    if(checkPaisAsig == 0){ // El pais no está asignado a ningun jugador, por lo que asignamos e imprimimos
-
-                        pais.setJugador(jugador);
-                        jugador.setPaises(pais);
-                        // Falta imprirmir fronteras bien
-                        String exito = "{\n\tnombre: " + nombreJugador +"\n\tpaís: " + nombrePais + "\n\tcontinente: " + pais.getContinente().getNombre() + "frontera:\n}";
-                        System.out.println(exito);
-
-                    }else{ // COdigo de error pais asignado
-                        Salida error = new Salida(113);
-                        System.out.println(error.toString());
+                        
                     }
 // Queda pendiente error de misiones
 
                 }
-            }
-            if(checkPais == 0){
-                Salida error = new Salida(109);
-                System.out.println(error.toString());
-            }else{
-                //pasamos a ver si los paises ya estan en el jugador etc etc etc
             }
         }
 

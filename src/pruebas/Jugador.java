@@ -36,18 +36,6 @@ public class Jugador {
         this.paises = new ArrayList<>();
         this.mision = null; //este valor lo usaremos para comprobar a la hora de asignarle una mision
     }
-
-    /*public Jugador(String nombre, String color, ArrayList<Pais> paises){
-	this.nombre= nombre;
-        this.color= color;
-        this.paises = paises;
-    }
-    public Jugador(String nombre, String color, ArrayList<Pais> paises, int tropas){
-	this.nombre= nombre;
-        this.color= color;
-        this.paises = paises;
-        this.tropas = tropas;
-    }*/
     
     // setters & getters
     
