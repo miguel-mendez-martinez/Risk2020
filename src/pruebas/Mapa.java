@@ -475,7 +475,6 @@ public class Mapa {
                 //ponemos esto, por si el color no ha sido parado en allguno de los ifs, pare ahora antes de imprimir nada mas
                 System.out.print("\033[0m");
                 for(Casilla cBucle : casillas){
-                    
                     if ((cBucle.getX() == i) && (cBucle.getY() == j)){
                         System.out.print(cBucle.getPais().getContinente().printColor());
                         //System.out.print("\033[0m" );  

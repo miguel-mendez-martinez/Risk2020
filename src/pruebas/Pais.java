@@ -91,7 +91,10 @@ public class Pais {
 
 
 
-
+    public String printNombre(){
+        String texto = "\"" + this.nombre + "\"";
+        return texto;
+    }
     @Override
     public String toString(){
         String texto="\n\t "+ this.nombre + ", Tropas en pais: " + this.ejercitos;

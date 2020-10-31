@@ -89,12 +89,17 @@ public class Continente {
         // mirar codigo de error o algo para ver que hacer si color es invalido como migueloh else System.out.println();
     }
 
-    public String toString(){
+    public String printPaises(){
         String paisCont = "";
         for (int i=0;i<paises.size();i++) {
-            paisCont += paises.get(i);
+            if(i == 0){
+                paisCont += "{\n paises: [ " + paises.get(i).printNombre() + ",\n";
+            }else if(i==(paises.size())-1){
+                paisCont += "\t " + paises.get(i).printNombre() + "\n\t ]";
+            }else{
+                paisCont += "\t " + paises.get(i).printNombre() + ",\n";
+            }
         }
-        String texto = "\n" + this.nombre + " con paises: " + paisCont;
-        return texto;
+        return paisCont;
     }
 }

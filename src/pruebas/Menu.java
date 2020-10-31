@@ -24,7 +24,6 @@ public class Menu {
     ArrayList<Jugador> jugadores;
     ArrayList<Pais> paises;
     ArrayList<Continente> continentes;
-    String eleccion;
     Mapa mapa;
     /**
      * 
@@ -420,20 +419,27 @@ public class Menu {
     
         int flagPais = 0; // flag para controlar si el pais que se inserto existe o no
         for(Pais pais:paises){
-        
             if(pais.getAbreviatura().equals(npais)){
                 flagPais = 1;
-                System.out.println("Las fronteras del pais " + pais.getNombre() + " son:");
-              
-                for(Pais frontera : pais.getFronteras()){
-                    System.out.println(" - Frontera: " + frontera.getNombre());        
-                }  
+                String fronteras = "";
+                for (int i=0;i<pais.getFronteras().size();i++) {
+                    if(i == 0){
+                        fronteras += "frontera: [ " + pais.getFronteras().get(i).printNombre() + ", ";
+                    }else if(i==(pais.getFronteras().size())-1){
+                        fronteras += pais.getFronteras().get(i).printNombre() + " ]";
+                    }else{
+                        fronteras += pais.getFronteras().get(i).printNombre() + ", ";
+                    }
+                    
+                }
+                System.out.println(fronteras);
+                //imrpimir en archivo
             }          
         }
         if(flagPais == 0){ // Error      
             Salida error = new Salida(109);
             System.out.println(error.toString());      
-        }      
+        } 
     }
     
     public void obtenerContinente(String npais){
@@ -443,8 +449,9 @@ public class Menu {
         
             if(pais.getAbreviatura().equals(npais)){
                 flagPais = 1;
-                System.out.println("El continente al que pertenece el país " + pais.getNombre() + " es: " + pais.getContinente().getNombre());
-                
+                String salida = "{ continente:  \"" + pais.getContinente().getNombre() + "\" }";
+                System.out.println(salida);
+                //imprimir al archivo
             }          
         }
         if(flagPais == 0){ // Error      
@@ -465,8 +472,13 @@ public class Menu {
                 String color = pais.getContinente().getColor();
                 if((color.equals("AMARILLO") || color.equals("ROJO") || color.equals("AZUL")
                 || color.equals("CYAN") || color.equals("VERDE") || color.equals("VIOLETA"))){
-                    System.out.println("El color del país " + pais.getNombre() + " es: " + color);
-                }else System.out.println("{\n\tCodigo de error 100. \n\tDescripcion: Color no permitido\n}\n");
+                    String salida = "{ color: \"" + color + "\" }";
+                    System.out.println(salida);
+                    //imprimir al archivo
+                }else{
+                    Salida error = new Salida(100);
+                    System.out.println(error.toString());
+                }
             }          
         }
         if(flagPais == 0){ // Error      
@@ -480,8 +492,10 @@ public class Menu {
         int flagContinente = 0;
         for(Continente c:continentes){
             if(c.getNombre().equals(abCont)){
-                c.toString();
-                flagContinente = 1;
+                String salida = c.printPaises();
+                System.out.println(salida);
+                //imprimir al archivo
+                flagContinente = 1;//para que no imrpima el error
             }
         }
         if(flagContinente == 0){
