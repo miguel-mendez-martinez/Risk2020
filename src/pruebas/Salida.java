@@ -34,7 +34,7 @@ public class Salida {
             if(archivo.createNewFile()){
                 System.out.println("Creando el archivo de salidas...");
             }
-            //iniciamos el escritor en el archivo, buscado en internet xd
+            //iniciamos el escritor en el archivo, buscado en internet 
             FileOutputStream fos = new FileOutputStream(archivo, true);
             OutputStreamWriter osw = new OutputStreamWriter(fos, StandardCharsets.UTF_8);
             Writer writer = new BufferedWriter(osw);
@@ -143,7 +143,7 @@ public class Salida {
                 this.descripcion = "Carta de equipamiento ya asignada";
                 break;
             default:
-                System.out.println("Codigo de error no existente.");
+                System.out.println("Código de error no existente.");
             
         }
     }

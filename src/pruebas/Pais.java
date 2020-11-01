@@ -90,11 +90,11 @@ public class Pais {
         return this.getContinente().getColor();
     }
 
-    public int estaAsignado(){
+    public boolean estaAsignado(){
         if(this.jugador == null){
-            return 1;
+            return false;
         }else{
-            return 0;
+            return true;
         }
     }
 

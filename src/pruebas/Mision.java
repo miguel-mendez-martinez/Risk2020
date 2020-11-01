@@ -79,7 +79,7 @@ public class Mision {
             codigo.equals("M45") ||
             codigo.equals("M46") ) {
             
-            return 1;
+            return 1; // Existe
                    
         }else{
             return 0;

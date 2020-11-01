@@ -44,14 +44,15 @@ public class Menu {
         File file = new File("salida.txt"); 
         if(file.delete()) 
         { 
-            System.out.println("Existia archivo, ha sido eliminado correctamente"); 
+            System.out.println("Existía archivo, ha sido eliminado correctamente"); 
         } 
         else
         { 
-            System.out.println("No existia archivo por lo que no elimino nada."); 
+            System.out.println("No existía archivo, por lo que no elimino nada."); 
         }
         
         //preguntar al weon si esto de arriba deberiamos imprimirlo tmb en salidas
+        // weon xddd
         
         
         try {
@@ -225,26 +226,30 @@ public class Menu {
         }
     }
 
-    public int existeJugador(ArrayList<Jugador> jugadores, String jugador){
+    public int existeJugador(ArrayList<Jugador> jugadores, String jugador, Jugador nj){ // en nj guardamos el jugador si este existeque existe
         if(jugadores.isEmpty()==true){
+            nj = null;
             return 0;
         }else{
             for(Jugador j : jugadores){
                 if(j.getNombre().equals(jugador)==true){
-                       return 1;
+                    nj = j;
+                    return 1;
                     }    
             }
             return 0;
         }
     }
     
-    public int existePais(ArrayList<Pais> paises, String pais){
+    public int existePais(ArrayList<Pais> paises, String pais, Pais np){ // mismo que nj
         if(paises.isEmpty()==true){
+            np = null;
             return 0;
         }else{
             for(Pais p : paises){
                 if(p.getNombre().equals(pais)==true){
-                       return 1;
+                    np = p;
+                    return 1;
                     }    
             }
             return 0;
@@ -282,7 +287,7 @@ public class Menu {
     public void asignarMisiones(String Jugador, String Codigo){
         int checkJug=0, checkPais=0;
         Mision m = new Mision();
-        if(existeJugador(this.jugadores, Jugador) == 0){
+        if(existeJugador(this.jugadores, Jugador, null) == 0){ 
                 Salida error = new Salida(103);
                 System.out.println(error.toString());
         }else if(m.existeMision(Codigo) == 1){
@@ -362,19 +367,19 @@ public class Menu {
         Pais pais = new Pais();
         Jugador jugador = new Jugador();
 
-        if(existeJugador(this.jugadores, nombreJugador) == 0){
+        if(existeJugador(this.jugadores, nombreJugador, jugador) == 0){
                 Salida error = new Salida(103);
                 System.out.println(error.toString());
             }else{
             //Si el jugador existe lo siguiente es comprobar que exista el pais
-                if(existePais(this.paises, nombrePais) == 0){
+                if(existePais(this.paises, nombrePais, pais) == 0){
                     Salida error = new Salida(109);
                     System.out.println(error.toString());
                 }else{ // Existe el pais y existe el jugador, comprobar que ese pais no este asignado ya
                     //pasamos a ver si los paises ya estan en el jugador etc etc etc
-                    for(Pais p:paises){
-                        if(p.getAbreviatura().equals(nombrePais)){
-                            if((p.estaAsignado())==0){ // El pais no está asignado a ningun jugador, por lo que asignamos e imprimimos
+                    //for(Pais p:paises){
+                        //if(p.getAbreviatura().equals(nombrePais)){
+                            if(!pais.estaAsignado()){ // El pais no está asignado a ningun jugador, por lo que asignamos e imprimimos
                                 pais.setJugador(jugador);
                                 jugador.setPaises(pais);
                                 // Falta imprirmir fronteras bien
@@ -385,9 +390,9 @@ public class Menu {
                                 Salida error = new Salida(113);
                                 System.out.println(error.toString());
                             }
-                        }
+                        //}
                         
-                    }
+                    //}
 // Queda pendiente error de misiones
 
                 }
