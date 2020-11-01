@@ -39,6 +39,21 @@ public class Menu {
         int checker = 0;
         String orden= null;
         BufferedReader bufferLector= null;
+        
+        //debemos ver si ya existe un fichero salida y eliminarlo si lo hace, ya que si existe escribiremos en el y tendremos las salidas de ejecuciones distintas en el mismo archivo
+        File file = new File("salida.txt"); 
+        if(file.delete()) 
+        { 
+            System.out.println("Existia archivo, ha sido eliminado correctamente"); 
+        } 
+        else
+        { 
+            System.out.println("No existia archivo por lo que no elimino nada."); 
+        }
+        
+        //preguntar al weon si esto de arriba deberiamos imprimirlo tmb en salidas
+        
+        
         try {
             File fichero=  new File("comandos.csv"); // fichero será comandos.csv
             FileReader lector= new FileReader(fichero); // Creacion de objeto que lee "fichero"
