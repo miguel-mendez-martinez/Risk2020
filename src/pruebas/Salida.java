@@ -5,6 +5,13 @@
  */
 package pruebas;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
+import java.nio.charset.StandardCharsets;
+
 /**
  *
  * @author migue
@@ -16,14 +23,38 @@ public class Salida {
     public Salida(int code) {
         this.code = code;
     }
+
+    public Salida() {
+        //esto lo utilizaremos para imprimir al archivo salidas que no sean error, y que por lo tanto no tengan codigo
+    }
     
-    
+    public void imprimirArchivo(String salida){
+        try{
+            File archivo = new File("salida.txt");
+            if(archivo.createNewFile()){
+                System.out.println("Creando el archivo de salidas...");
+            }
+            //iniciamos el escritor en el archivo, buscado en internet xd
+            FileOutputStream fos = new FileOutputStream(archivo, true);
+            OutputStreamWriter osw = new OutputStreamWriter(fos, StandardCharsets.UTF_8);
+            Writer writer = new BufferedWriter(osw);
+            
+            writer.append(salida).append("\n");
+            
+            writer.close();
+            osw.close();
+            fos.close();
+        }catch(Exception excepcion) {
+            excepcion.printStackTrace();
+        }
+    }
     
     
    @Override
     public String toString(){
         codeToDesc(this.code);
         String error = "{\n código de error: " + this.code + ",\n descripción: \"" + this.descripcion + "\"\n{";
+        this.imprimirArchivo(error);
         return error;
     }
     

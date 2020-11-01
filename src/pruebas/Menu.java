@@ -44,7 +44,10 @@ public class Menu {
             FileReader lector= new FileReader(fichero); // Creacion de objeto que lee "fichero"
             bufferLector= new BufferedReader(lector); // Usamos objeto de la clase BufferedReader ya que permite leer lineas completas
             while((orden= bufferLector.readLine())!=null) { // Mientras las líneas no estén en blanco:
-                System.out.println("\n$> " + orden);
+                String comandoArchivo = "\n$> " + orden;
+                System.out.println(comandoArchivo);
+                Salida s = new Salida();
+                s.imprimirArchivo(comandoArchivo);
                 String[] partes=orden.split(" "); // Separa en diferentes strings los elementos de la linea separados por espacios
                 String comando= partes[0]; // Definimos como comando la primera palabra de la linea
                 // COMANDOS INICIALES PARA EMPEZAR A JUGAR
@@ -98,11 +101,6 @@ public class Menu {
                                         checker = 2;
                                     }
                                 }
-                                /*System.out.print("Lista de jugadores tras el comando: $>" + orden);
-                                for (int i=0;i<jugadores.size();i++) {
-                                    System.out.println(jugadores.get(i).toString());
-                                }*/
-                                
                             }else{
                                 Salida error = new Salida(106);
                                 System.out.println(error.toString());
@@ -280,6 +278,8 @@ public class Menu {
                             m = new Mision(Codigo, j);
                             j.setMision(m);
                             System.out.println(m.toString());
+                            Salida salida = new Salida();
+                            salida.imprimirArchivo(m.toString());
                         }else{
                             Salida error = new Salida(115);
                             System.out.println(error.toString());
@@ -412,7 +412,8 @@ public class Menu {
                     
                 }
                 System.out.println(fronteras);
-                //imrpimir en archivo
+                Salida salida = new Salida();
+                salida.imprimirArchivo(fronteras);
             }          
         }
         if(flagPais == 0){ // Error      
@@ -428,9 +429,10 @@ public class Menu {
         
             if(pais.getAbreviatura().equals(npais)){
                 flagPais = 1;
-                String salida = "{ continente:  \"" + pais.getContinente().getNombre() + "\" }";
-                System.out.println(salida);
-                //imprimir al archivo
+                String continente = "{ continente:  \"" + pais.getContinente().getNombre() + "\" }";
+                System.out.println(continente);
+                Salida salida = new Salida();
+                salida.imprimirArchivo(continente);
             }          
         }
         if(flagPais == 0){ // Error      
@@ -451,9 +453,10 @@ public class Menu {
                 String color = pais.getContinente().getColor();
                 if((color.equals("AMARILLO") || color.equals("ROJO") || color.equals("AZUL")
                 || color.equals("CYAN") || color.equals("VERDE") || color.equals("VIOLETA"))){
-                    String salida = "{ color: \"" + color + "\" }";
-                    System.out.println(salida);
-                    //imprimir al archivo
+                    String exito = "{ color: \"" + color + "\" }";
+                    System.out.println(exito);
+                    Salida salida = new Salida();
+                salida.imprimirArchivo(exito);
                 }else{
                     Salida error = new Salida(100);
                     System.out.println(error.toString());
@@ -471,9 +474,10 @@ public class Menu {
         int flagContinente = 0;
         for(Continente c:continentes){
             if(c.getNombre().equals(abCont)){
-                String salida = c.printPaises();
-                System.out.println(salida);
-                //imprimir al archivo
+                String paises = c.printPaises();
+                System.out.println(paises);
+                Salida salida = new Salida();
+                salida.imprimirArchivo(paises);
                 flagContinente = 1;//para que no imrpima el error
             }
         }
@@ -530,6 +534,8 @@ public class Menu {
             Jugador jugador= new Jugador(nombre, color);
             jugadores.add(jugador);
             System.out.println(jugador.printColorNom());
+            Salida salida = new Salida();
+            salida.imprimirArchivo(jugador.printColorNom());
             //utilizamos el metodo que solo imprime nombre y color
         }else{
             for (int i=0;i<jugadores.size();i++) {
@@ -548,6 +554,8 @@ public class Menu {
                     Jugador jugador= new Jugador(nombre, color);
                     jugadores.add(jugador);
                     System.out.println(jugador.printColorNom());
+                    Salida salida = new Salida();
+                    salida.imprimirArchivo(jugador.printColorNom());
                 }
         }
     }

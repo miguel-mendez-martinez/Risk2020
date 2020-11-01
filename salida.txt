@@ -1,0 +1,147 @@
+
+$> asignar misiones misiones.csv
+{
+ código de error: 105,
+ descripción: "Los jugadores no están creados"
+{
+
+$> obtener frontera venezuela
+{
+ código de error: 106,
+ descripción: "El mapa no está creado"
+{
+
+$> ver mapa
+{
+ código de error: 106,
+ descripción: "El mapa no está creado"
+{
+
+$> crear jugadores jugadores.csv
+{
+ código de error: 106,
+ descripción: "El mapa no está creado"
+{
+
+$> asignar misiones misiones.csv
+{
+ código de error: 105,
+ descripción: "Los jugadores no están creados"
+{
+
+$> asignar Hooker M42
+{
+ código de error: 105,
+ descripción: "Los jugadores no están creados"
+{
+
+$> crear mapa
+
+$> crear jugadores jugadores.csv
+{
+ nombre: "Gondorff",
+ color: "VERDE"
+}
+{
+ código de error: 114,
+ descripción: "El color ya está asignado"
+{
+{
+ nombre: "Hooker",
+ color: "AMARILLO"
+}
+{
+ nombre: "Lonnegan",
+ color: "ROJO"
+}
+{
+ código de error: 104,
+ descripción: "El jugador ya existe"
+{
+{
+ código de error: 114,
+ descripción: "El color ya está asignado"
+{
+
+$> asignar misiones misiones.csv
+{
+ código de error: 103,
+ descripción: "El jugador no existe"
+{
+{
+ nombre: "Gondorff"
+ mision: "Conquistar 24 países de la preferencia del jugador"
+}
+{
+ nombre: "Hooker"
+ mision: "Conquistar Asia y América del Sur"
+}
+{
+ nombre: "Lonnegan"
+ mision: "Destruir el ejército AZUL"
+}
+{
+ código de error: 116,
+ descripción: "La misión no existe"
+{
+
+$> asignar Hooker M34
+{
+ código de error: 117,
+ descripción: "El jugador ya tiene asignada una misión"
+{
+
+$> crear Miguel Rojo
+{
+ código de error: 100,
+ descripción: "Color no permitido"
+{
+
+$> crear Miguel CYAN
+{
+ nombre: "Miguel",
+ color: "CYAN"
+}
+
+$> asignar Miguel M2
+{
+ nombre: "Miguel"
+ mision: "Conquistar 18 países de la preferencia del jugador con un mínimo de dos ejércitos"
+}
+
+$> obtener frontera Egipto
+frontera: [ "África del Norte", "Africa Oriental", "Europa Sur", "Oriente Medio" ]
+
+$> obtener continente Egipto
+{ continente:  "África" }
+
+$> obtener paises Oceanía
+{
+ paises: [ "Indonesia",
+	 "Australia Occidental",
+	 "Nueva Guinea",
+	 "Australia Oriental"
+	 ]
+
+$> obtener frontera casamigueloh
+{
+ código de error: 109,
+ descripción: "El país no existe"
+{
+
+$> obtener color Brasil
+{ color: "ROJO" }
+
+$> ver mapa
+
+$> crear mapa
+{
+ código de error: 107,
+ descripción: "El mapa ya ha sido creado"
+{
+
+$> 
+{
+ código de error: 101,
+ descripción: "Comando incorrecto"
+{
