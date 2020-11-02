@@ -97,12 +97,266 @@ $> asignar misiones misiones.csv
  descripción: "La misión no existe"
 {
 
-$> asignar Gondorff Siberia
+$> asignar paises asignaciones.csv
+{
+	nombre: Gondorff
+	país: Alaska
+	continente: América del Norte
+	frontera: [ "Alberta", "Territorios del Noroeste", "Kamchatka" ]
+}
+{
+ código de error: 103,
+ descripción: "El jugador no existe"
+{
+{
+ código de error: 109,
+ descripción: "El país no existe"
+{
+{
+	nombre: Gondorff
+	país: TNoroeste
+	continente: América del Norte
+	frontera: [ "Alaska", "Ontario", "Groenlandia" ]
+}
+{
+	nombre: Gondorff
+	país: Groenlan
+	continente: América del Norte
+	frontera: [ "Islandia", "Territorios del Noroeste", "Quebec" ]
+}
+{
+	nombre: Gondorff
+	país: Islandia
+	continente: Europa
+	frontera: [ "Escandinavia", "Groenlandia" ]
+}
+{
+	nombre: Gondorff
+	país: Escandina
+	continente: Europa
+	frontera: [ "Islandia", "Gran Bretaña", "Siberia" ]
+}
 {
 	nombre: Gondorff
 	país: Siberia
 	continente: Asia
 	frontera: [ "Escandinavia", "Europa Norte", "Yakustsk" ]
+}
+{
+	nombre: Gondorff
+	país: Yakustsk
+	continente: Asia
+	frontera: [ "Rusia", "Siberia", "Kamchatka" ]
+}
+{
+	nombre: Gondorff
+	país: Kamchatka
+	continente: Asia
+	frontera: [ "Alaska", "Yakustsk", "Irkutsk" ]
+}
+{
+	nombre: Gondorff
+	país: Alberta
+	continente: América del Norte
+	frontera: [ "Alaska", "Estados Unidos del Oeste", "Ontario" ]
+}
+{
+	nombre: Gondorff
+	país: Ontario
+	continente: América del Norte
+	frontera: [ "Alberta", "Territorios del Noroeste", "Estados Unidos del Este", "Quebec" ]
+}
+{
+	nombre: Gondorff
+	país: Quebec
+	continente: América del Norte
+	frontera: [ "Ontario", "Groenlandia" ]
+}
+{
+	nombre: Gondorff
+	país: GBretaña
+	continente: Europa
+	frontera: [ "Escandinavia", "Europa Occidental", "Europa Norte" ]
+}
+{
+	nombre: Gondorff
+	país: EurNorte
+	continente: Europa
+	frontera: [ "Gran Bretaña", "Europa Sur", "Rusia", "Siberia" ]
+}
+{
+	nombre: Gondorff
+	país: Rusia
+	continente: Europa
+	frontera: [ "Europa Norte", "Yakustsk", "Urales", "Irkutsk" ]
+}
+{
+	nombre: Hooker
+	país: Irkutsk
+	continente: Asia
+	frontera: [ "Rusia", "Kamchatka", "Mongolia" ]
+}
+{
+	nombre: Hooker
+	país: USAOeste
+	continente: América del Norte
+	frontera: [ "Alberta", "Estados Unidos del Este" ]
+}
+{
+	nombre: Hooker
+	país: USAEste
+	continente: América del Norte
+	frontera: [ "Estados Unidos del Oeste", "Ontario", "America Central" ]
+}
+{
+	nombre: Hooker
+	país: EurOcc
+	continente: Europa
+	frontera: [ "Gran Bretaña", "Europa Sur" ]
+}
+{
+	nombre: Hooker
+	país: EurSur
+	continente: Europa
+	frontera: [ "Egipto", "Europa Occidental", "Europa Norte", "Urales" ]
+}
+{
+	nombre: Hooker
+	país: Urales
+	continente: Asia
+	frontera: [ "Europa Sur", "Rusia", "Afganistan", "Mongolia" ]
+}
+{
+	nombre: Hooker
+	país: Mongolia
+	continente: Asia
+	frontera: [ "Urales", "Irkutsk", "China", "Japón" ]
+}
+{
+	nombre: Hooker
+	país: Japón
+	continente: Asia
+	frontera: [ "Mongolia", 
+}
+{
+	nombre: Hooker
+	país: AmeCentra
+	continente: América del Norte
+	frontera: [ "Estados Unidos del Este", "Venezuela" ]
+}
+{
+	nombre: Hooker
+	país: Afgan
+	continente: Asia
+	frontera: [ "Urales", "Oriente Medio", "China" ]
+}
+{
+	nombre: Hooker
+	país: China
+	continente: Asia
+	frontera: [ "Afganistan", "Mongolia", "India" ]
+}
+{
+	nombre: Hooker
+	país: Venezuela
+	continente: América del Sur
+	frontera: [ "America Central", "Perú" ]
+}
+{
+	nombre: Hooker
+	país: ANorte
+	continente: África
+	frontera: [ "Congo", "Egipto" ]
+}
+{
+	nombre: Hooker
+	país: Egipto
+	continente: África
+	frontera: [ "África del Norte", "Africa Oriental", "Europa Sur", "Oriente Medio" ]
+}
+{
+	nombre: Lonnegan
+	país: OMedio
+	continente: Asia
+	frontera: [ "Egipto", "Afganistan", "India" ]
+}
+{
+	nombre: Lonnegan
+	país: India
+	continente: Asia
+	frontera: [ "Oriente Medio", "China", "Sureste Asiático" ]
+}
+{
+	nombre: Lonnegan
+	país: SAsiático
+	continente: Asia
+	frontera: [ "Indonesia", "India" ]
+}
+{
+	nombre: Lonnegan
+	país: Perú
+	continente: América del Sur
+	frontera: [ "Venezuela", "Argentina", "Brasil" ]
+}
+{
+	nombre: Lonnegan
+	país: Brasil
+	continente: América del Sur
+	frontera: [ "Perú", 
+}
+{
+	nombre: Lonnegan
+	país: Congo
+	continente: África
+	frontera: [ "África del Norte", "Africa Oriental" ]
+}
+{
+	nombre: Lonnegan
+	país: AOriental
+	continente: África
+	frontera: [ "Congo", "Egipto", "Sudafrica" ]
+}
+{
+	nombre: Lonnegan
+	país: Argentina
+	continente: América del Sur
+	frontera: [ "Perú", 
+}
+{
+	nombre: Lonnegan
+	país: Sudáfrica
+	continente: África
+	frontera: [ "Africa Oriental", "Madagascar" ]
+}
+{
+	nombre: Lonnegan
+	país: Madagasca
+	continente: África
+	frontera: [ "Sudafrica", 
+}
+{
+	nombre: Lonnegan
+	país: Indonesia
+	continente: Oceanía
+	frontera: [ "Australia Occidental", "Nueva Guinea", "Sureste Asiático" ]
+}
+{
+	nombre: Lonnegan
+	país: NGuinea
+	continente: Oceanía
+	frontera: [ "Indonesia", "Australia Oriental" ]
+}
+{
+	nombre: Lonnegan
+	país: AusOccid
+	continente: Oceanía
+	frontera: [ "Indonesia", "Australia Oriental" ]
+}
+{
+	nombre: Lonnegan
+	país: AusOrient
+	continente: Oceanía
+	frontera: [ "Australia Occidental", "Nueva Guinea" ]
 }
 
 $> asignar Hooker M34

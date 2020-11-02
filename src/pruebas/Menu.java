@@ -246,7 +246,7 @@ public class Menu {
             return null;
         }else{
             for(Pais p : paises){
-                if(p.getNombre().equals(pais)==true){
+                if(p.getAbreviatura().equals(pais)==true){
                  
                     return p;
                     }    

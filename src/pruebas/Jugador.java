@@ -83,6 +83,19 @@ public class Jugador {
         String texto = "{\n nombre: \"" + this.nombre + "\",\n color: \"" + this.color + "\"\n}";
         return texto;
     }   
+    
+    public String printColor(){
+
+        if("AMARILLO".equals(this.color)) return "\033[43m" + "\033[1;90m";
+        else if("AZUL".equals(this.color)) return "\033[44m" + "\033[1;90m";
+        else if("CYAN".equals(this.color)) return "\033[46m" + "\033[1;90m";
+        else if("ROJO".equals(this.color)) return "\033[41m" + "\033[1;90m";
+        else if("VERDE".equals(this.color)) return "\033[42m" + "\033[1;90m";
+        else if("VIOLETA".equals(this.color)) return "\033[45m" + "\033[1;90m";
+        else return " ";
+        // mirar codigo de error o algo para ver que hacer si color es invalido como migueloh else System.out.println();
+    }
+    
     @Override
     public String toString(){
         //String result = "";

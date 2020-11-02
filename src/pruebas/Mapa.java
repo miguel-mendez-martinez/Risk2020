@@ -499,10 +499,40 @@ public class Mapa {
                 else if(oceano == 0){
                     System.out.print("           ");
                 }
-            
+            }
+            System.out.println();
+            for(int i=0; i<11; i++){
+                /*cada vez que vayamos a comprobar una casilla ponemos oceano a 0. Si esta cambia a 1 significa que 
+                en esa posicion hay pais, si se mantiene a 0 es que hay un oceano porque nada ha sido impreso*/
+                oceano = 0; 
+                System.out.print("|"); //columnas
+                //ponemos esto, por si el color no ha sido parado en allguno de los ifs, pare ahora antes de imprimir nada mas
+                System.out.print("\033[0m");
+                for(Casilla cBucle : casillas){
+                    if ((cBucle.getX() == i) && (cBucle.getY() == j)){
+                        if(cBucle.getPais().getJugador() == null){
+                            System.out.printf(String.format("%1$-11s", cBucle.getPais().getEjercitos()));
+                        }else{
+                            System.out.print(cBucle.getPais().getJugador().printColor());
+                            System.out.printf(String.format("%1$-11s", cBucle.getPais().getEjercitos()));
+                        }
+                        //System.out.print(cBucle.getPais().getContinente().printColor());
+                        //System.out.print("\033[0m" );  
+                        
+                        System.out.print("\033[0m");
+                        oceano = 1;
+                    }
+                }if(i==3 && j==4){
+                    System.out.print("           \033[0;31m");
+                }else if(((i==5 || i==6)&& j==3) || (i==9 && j==5)){
+                    System.out.print("     \033[0;31m|\033[0m     ");
+                }else if(oceano == 0){
+                    System.out.print("           ");
+                }
             }
         System.out.print("|");
         }
+        
         System.out.println("\n|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|\n");
         
     }
