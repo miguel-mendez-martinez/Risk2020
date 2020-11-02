@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Miguel
+ * @author Miguel 
  * 
  */
 public class Menu {
@@ -226,33 +226,32 @@ public class Menu {
         }
     }
 
-    public int existeJugador(ArrayList<Jugador> jugadores, String jugador, Jugador nj){ // en nj guardamos el jugador si este existeque existe
+    public Jugador existeJugador(ArrayList<Jugador> jugadores, String jugador){ // en nj guardamos el jugador si este existeque existe
         if(jugadores.isEmpty()==true){
-            nj = null;
-            return 0;
+            
+            return null;
         }else{
             for(Jugador j : jugadores){
                 if(j.getNombre().equals(jugador)==true){
-                    nj = j;
-                    return 1;
+                    return j;
                     }    
             }
-            return 0;
+            return null;
         }
     }
     
-    public int existePais(ArrayList<Pais> paises, String pais, Pais np){ // mismo que nj
+    public Pais existePais(ArrayList<Pais> paises, String pais){ // mismo que nj
         if(paises.isEmpty()==true){
-            np = null;
-            return 0;
+            
+            return null;
         }else{
             for(Pais p : paises){
                 if(p.getNombre().equals(pais)==true){
-                    np = p;
-                    return 1;
+                 
+                    return p;
                     }    
             }
-            return 0;
+            return null;
         }
         
     }
@@ -287,7 +286,7 @@ public class Menu {
     public void asignarMisiones(String Jugador, String Codigo){
         int checkJug=0, checkPais=0;
         Mision m = new Mision();
-        if(existeJugador(this.jugadores, Jugador, null) == 0){ 
+        if(existeJugador(this.jugadores, Jugador) == null){ 
                 Salida error = new Salida(103);
                 System.out.println(error.toString());
         }else if(m.existeMision(Codigo) == 1){
@@ -364,27 +363,28 @@ public class Menu {
         alguno de los paises del array del mapa, se añade a jugador y se setea su
         jugador al nombre que ha pasado por la lista*/
         int checkJug=0, checkPais=0, checkPaisAsig=0;
-        Pais pais = new Pais();
-        Jugador jugador = new Jugador();
+        Pais pais = existePais(this.paises, nombrePais);
+        Jugador jugador = existeJugador(this.jugadores, nombreJugador);
 
-        if(existeJugador(this.jugadores, nombreJugador, jugador) == 0){
+        if(jugador == null){
                 Salida error = new Salida(103);
                 System.out.println(error.toString());
             }else{
             //Si el jugador existe lo siguiente es comprobar que exista el pais
-                if(existePais(this.paises, nombrePais, pais) == 0){
+                if(pais == null){
                     Salida error = new Salida(109);
                     System.out.println(error.toString());
                 }else{ // Existe el pais y existe el jugador, comprobar que ese pais no este asignado ya
                     //pasamos a ver si los paises ya estan en el jugador etc etc etc
-                    //for(Pais p:paises){
-                        //if(p.getAbreviatura().equals(nombrePais)){
+                    
                             if(!pais.estaAsignado()){ // El pais no está asignado a ningun jugador, por lo que asignamos e imprimimos
                                 pais.setJugador(jugador);
                                 jugador.setPaises(pais);
-                                // Falta imprirmir fronteras bien
-                                String exito = "{\n\tnombre: " + nombreJugador +"\n\tpaís: " + nombrePais + "\n\tcontinente: " + pais.getContinente().getNombre() + "frontera:\n}";
+                                String fronteras = pais.fronterasToString();
+                                String exito = "{\n\tnombre: " + nombreJugador +"\n\tpaís: " + nombrePais + "\n\tcontinente: " + pais.getContinente().getNombre() + "\n\t" + fronteras + "\n}";
                                 System.out.println(exito);
+                                Salida salida = new Salida();
+                                salida.imprimirArchivo(exito);
 
                             }else{ // COdigo de error pais asignado
                                 Salida error = new Salida(113);

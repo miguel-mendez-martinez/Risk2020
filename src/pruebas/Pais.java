@@ -97,6 +97,22 @@ public class Pais {
             return true;
         }
     }
+    
+    public String fronterasToString(){
+    
+        String fronteras = "";
+                for (int i=0;i<this.getFronteras().size();i++) {
+                    if(i == 0){
+                        fronteras += "frontera: [ " + this.getFronteras().get(i).printNombre() + ", ";
+                    }else if(i==(this.getFronteras().size())-1){
+                        fronteras += this.getFronteras().get(i).printNombre() + " ]";
+                    }else{
+                        fronteras += this.getFronteras().get(i).printNombre() + ", ";
+                    }
+                }
+    
+        return fronteras;
+    }
 
     public String printNombre(){
         String texto = "\"" + this.nombre + "\"";
