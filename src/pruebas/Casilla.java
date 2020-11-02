@@ -33,11 +33,6 @@ public class Casilla {
 
     public int getY() {
         return y;
-    }
-
-    
-    
-    
-    
+    }    
 }
 
