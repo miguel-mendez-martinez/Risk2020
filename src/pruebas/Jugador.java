@@ -18,6 +18,7 @@ public class Jugador {
     private String nombre;
     private String color;
     private int tropas;
+    private int ejercitos_disponibles;
     private ArrayList<Pais> paises;
     private Mision mision;
 	
@@ -38,7 +39,16 @@ public class Jugador {
     }
     
     // setters & getters
-    
+
+
+    public void setEjercitos_disponibles(int ejercitos_disponibles) {
+        this.ejercitos_disponibles = ejercitos_disponibles;
+    }
+
+    public int getEjercitos_disponibles() {
+        return ejercitos_disponibles;
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -95,6 +105,9 @@ public class Jugador {
         else return " ";
         // mirar codigo de error o algo para ver que hacer si color es invalido como migueloh else System.out.println();
     }
+
+
+
     
     @Override
     public String toString(){

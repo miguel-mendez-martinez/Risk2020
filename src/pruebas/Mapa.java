@@ -55,6 +55,8 @@ public class Mapa {
         Casilla casilla;
         Continente africa = new Continente("África", color);
 
+        africa.setNumPaises(6);
+
         casilla = new Casilla(5, 4);
         Pais anorte = new Pais("África del Norte", "ANorte", casilla, africa);
         africa.setPais(anorte);
@@ -104,6 +106,8 @@ public class Mapa {
         String color = "AMARILLO";
         Casilla casilla;
         Continente europa = new Continente("Europa", color);
+
+        europa.setNumPaises(7);
 
         casilla = new Casilla(4, 0);
         Pais islandia = new Pais("Islandia", "Islandia", casilla, europa);
@@ -161,6 +165,8 @@ public class Mapa {
         String color = "VIOLETA";
         Casilla casilla;
         Continente Anorte = new Continente("América del Norte", color);
+
+        Anorte.setNumPaises(9);
 
         casilla = new Casilla(0, 0);
         Pais Alaska = new Pais("Alaska", "Alaska", casilla, Anorte);
@@ -233,6 +239,8 @@ public class Mapa {
         Casilla casilla;
         Continente Asur = new Continente("América del Sur", color);
 
+        Asur.setNumPaises(4);
+
         casilla = new Casilla(1, 4);
         Pais venezuela = new Pais("Venezuela", "Venezuela", casilla, Asur);
         Asur.setPais(venezuela);
@@ -269,6 +277,8 @@ public class Mapa {
         Casilla casilla;
         Continente oceania = new Continente("Oceanía", color);
 
+        oceania.setNumPaises(4);
+
         casilla = new Casilla(9, 6);
         Pais Indonesia = new Pais("Indonesia", "Indonesia", casilla, oceania);
         oceania.setPais(Indonesia);
@@ -304,6 +314,8 @@ public class Mapa {
         String color = "CYAN";
         Casilla casilla;
         Continente asia = new Continente("Asia", color);
+
+        asia.setNumPaises(12);
 
         casilla = new Casilla(6, 0);
         Pais Siberia = new Pais("Siberia", "Siberia", casilla, asia);

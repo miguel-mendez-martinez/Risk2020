@@ -83,6 +83,11 @@ public class Pais {
         this.ejercitos = ejercitos ;
     }
 
+    public void addEjercitos(int ejercitos){
+        this.ejercitos += ejercitos;
+    }
+
+
     public Continente getContinente() {
         return continente;
     }

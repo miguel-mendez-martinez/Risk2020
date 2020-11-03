@@ -262,7 +262,7 @@ public class Menu {
     }
     
     public Pais existePais(ArrayList<Pais> paises, String pais){ // mismo que nj
-        if(paises.isEmpty()==true){
+        if(paises.isEmpty()){
             
             return null;
         }else{
@@ -602,4 +602,76 @@ public class Menu {
                 }
         }
     }
+
+
+    pu
+
+
+    public int contarJugadores(ArrayList<Jugador> jugadores){
+        int contador=0;
+
+        for(Jugador j:jugadores){
+            contador++;
+        }
+        return contador;
+    }
+
+
+
+
+
+    public void repartirEjercitos(){
+
+        int numJugadores;
+        numJugadores = contarJugadores(this.jugadores);
+
+        // Asignar numero de tropas que tendrá cada jugador en funcion del numero de jugadores
+        switch (numJugadores){
+
+            case 3:
+                for (Jugador j: jugadores){
+                    j.setTropas(35);
+                }
+                break;
+
+            case 4:
+                for (Jugador j: jugadores){
+                    j.setTropas(30);
+                }
+                break;
+
+            case 5:
+                for (Jugador j: jugadores){
+                    j.setTropas(25);
+                }
+                break;
+
+            case 6:
+                for (Jugador j: jugadores){
+                    j.setTropas(20);
+                }
+                break;
+
+        }
+
+        // Asignar un ejercito a cada pais:
+        for(Pais p:paises){
+            p.setEjercitos(1);
+            p.getJugador().setEjercitos_disponibles(p.getJugador().getTropas() - 1); // se le resta 1 a los ejercitos disponibles del jugador al que pertenece ese pais
+        }
+
+        // R1
+
+        for(Continente c:continentes){
+
+
+        }
+
+
+
+    }
+
+
+
+
 }

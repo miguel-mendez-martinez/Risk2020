@@ -19,7 +19,7 @@ public class Continente {
     private int bonus;
     private ArrayList<Pais> paises;
     private String color;
-    
+    private int numPaises; // numero de paises de cada continente
     // Constructores, recordar siempre reservar memoria para el array
     
     public Continente(){
@@ -76,7 +76,16 @@ public class Continente {
 
     public String getColor() {
         return color;
-    } 
+    }
+
+    public int getNumPaises() {
+        return numPaises;
+    }
+
+    public void setNumPaises(int numPaises) {
+        this.numPaises = numPaises;
+    }
+
     public String printColor(){
 
         if("AMARILLO".equals(this.color)) return "\033[43m" + "\033[1;90m";
