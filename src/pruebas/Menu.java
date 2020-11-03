@@ -291,23 +291,23 @@ public class Menu {
                 System.out.println(error.toString());
         }else if(m.existeMision(Codigo) == 1){
             for(Jugador j : this.jugadores){
-            if(j.getNombre().equals(Jugador)==true){
-                    if(j.getMision() == null){
-                        if(m.getJugador() == null){
-                            m = new Mision(Codigo, j);
-                            j.setMision(m);
-                            System.out.println(m.toString());
-                            Salida salida = new Salida();
-                            salida.imprimirArchivo(m.toString());
+                if(j.getNombre().equals(Jugador)==true){
+                        if(j.getMision() == null){
+                            if(m.getJugador() == null){
+                                m = new Mision(Codigo, j);
+                                j.setMision(m);
+                                System.out.println(m.toString());
+                                Salida salida = new Salida();
+                                salida.imprimirArchivo(m.toString());
+                            }else{
+                                Salida error = new Salida(115);
+                                System.out.println(error.toString());
+                            }
                         }else{
-                            Salida error = new Salida(115);
+                            Salida error = new Salida(117);
                             System.out.println(error.toString());
                         }
-                    }else{
-                        Salida error = new Salida(117);
-                        System.out.println(error.toString());
-                    }
-                     
+
                 }    
             }
         }else{
