@@ -713,10 +713,13 @@ public class Menu {
 
 
 
+
+
     public void repartirEjercitos(){
 
         int numJugadores;
         numJugadores = contarJugadores(this.jugadores);
+        int numPaisesJugEnC; // numero de paises que tiene un jugador en cada continete
 
         // Asignar numero de tropas que tendrá cada jugador en funcion del numero de jugadores
         switch (numJugadores){
@@ -724,24 +727,28 @@ public class Menu {
             case 3:
                 for (Jugador j: jugadores){
                     j.setTropas(35);
+                    j.setEjercitos_disponibles(35);
                 }
                 break;
 
             case 4:
                 for (Jugador j: jugadores){
                     j.setTropas(30);
+                    j.setEjercitos_disponibles(30);
                 }
                 break;
 
             case 5:
                 for (Jugador j: jugadores){
                     j.setTropas(25);
+                    j.setEjercitos_disponibles(25);
                 }
                 break;
 
             case 6:
                 for (Jugador j: jugadores){
                     j.setTropas(20);
+                    j.setEjercitos_disponibles(20);
                 }
                 break;
 
@@ -757,13 +764,34 @@ public class Menu {
 
         for(Continente c:continentes){
 
+            for (Jugador j:jugadores){
+                numPaisesJugEnC = j.calcularNumPaisesEnC(c);
+                if(numPaisesJugEnC > (c.getNumPaises()/2)){ // Mismo jugador tiene mas de la mitad de los paises de un continente
 
-        }
+                    for (Pais p:c.getPaises()){ // en cada pais del continente se asigna el dato dado en el enunciado
+                        if(p.getJugador().equals(j)){
+
+                            if(c.getNombre().equals("Oceanía") || c.getNombre().equals("Asur")){
+
+                                p.addEjercitos((int) (j.getEjercitos_disponibles() /(1.5* numPaisesJugEnC)));
+                                j.setEjercitos_disponibles(j.getEjercitos_disponibles() - ((int)(j.getEjercitos_disponibles() /(1.5* numPaisesJugEnC))));
+
+                            }else{
+
+                                p.addEjercitos((int) (j.getEjercitos_disponibles() /(1 * numPaisesJugEnC)));
+                                j.setEjercitos_disponibles(j.getEjercitos_disponibles() -((int) (j.getEjercitos_disponibles() /(1 * numPaisesJugEnC))));
+                            }
 
 
 
-    }
 
+                        }
+
+
+                    }
+                }
+
+            }
 
 
 
