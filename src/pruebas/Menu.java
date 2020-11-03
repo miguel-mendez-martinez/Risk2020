@@ -237,19 +237,6 @@ public class Menu {
                             System.out.println(error.toString());
                         }
                         break;
-                    case "repartir":
-                        if(checker>=4){
-                            if(partes[2] == null){
-                                //esto es todos
-                            }else{
-                                //manual
-                                //repartirEjercitos(partes[2], partes[3]);
-                            }
-                        }else{
-                            Salida error = new Salida(99);
-                            System.out.println(error.toString());
-                        }
-                        break;
                     default:
                         Salida error = new Salida(101);
                         System.out.println(error.toString());
@@ -432,6 +419,13 @@ public class Menu {
                 }
             }
         }
+
+     // mirar en casa tengo el cerebro frito
+
+    public void asignarEjercitos(String nombrePais, int ejercitos){
+        
+    }
+
     /**
      * 
      */
@@ -608,6 +602,78 @@ public class Menu {
                 }
         }
     }
+
+
+    public void repartirEjercitos(int num, String nombrePais) {
+
+        Pais pais = existePais(this.paises, nombrePais);
+        int ejDisp = pais.getJugador().getEjercitos_disponibles();
+
+
+        if (pais == null) {
+
+            Salida error = new Salida(109);
+            System.out.println(error.toString());
+            //error de que pais no existe 109
+
+        }else if(pais.getJugador() == null){
+
+            // jugador no asignado 110
+
+        }else
+
+            switch (numJugadores){
+
+                case 3:
+                    for (Jugador j: jugadores){
+                        j.setTropas(35);
+                        j.setEjercitos_disponibles(35);
+
+                    }
+                    break;
+
+                case 4:
+                    for (Jugador j: jugadores){
+                        j.setTropas(30);
+                        j.setEjercitos_disponibles(30);
+                    }
+                    break;
+
+                case 5:
+                    for (Jugador j: jugadores){
+                        j.setTropas(25);
+                        j.setEjercitos_disponibles(25);
+                    }
+                    break;
+
+                case 6:
+                    for (Jugador j: jugadores){
+                        j.setTropas(20);
+                        j.setEjercitos_disponibles(20);
+                    }
+                    break;
+
+            }
+
+        if(ejDisp == 0) {
+
+            //error 119 y eso
+        }else if(num > ejDisp){
+
+            pais.setEjercitos(ejDisp);
+            pais.getJugador().setEjercitos_disponibles(0); // si se quieren asignar mas de los disponibles se asignan solo estos y pasa a haber 0 disponibles
+
+        }else { // caso todo correcto
+
+            pais.setEjercitos(num);
+            pais.getJugador().setEjercitos_disponibles(ejDisp - num);
+
+        }
+
+
+    }
+
+
     public int contarJugadores(ArrayList<Jugador> jugadores){
         int contador=0;
 
