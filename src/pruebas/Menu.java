@@ -237,6 +237,19 @@ public class Menu {
                             System.out.println(error.toString());
                         }
                         break;
+                    case "repartir":
+                        if(checker>=4){
+                            if(partes[2] == null){
+                                //esto es todos
+                            }else{
+                                //manual
+                                //repartirEjercitos(partes[2], partes[3]);
+                            }
+                        }else{
+                            Salida error = new Salida(99);
+                            System.out.println(error.toString());
+                        }
+                        break;
                     default:
                         Salida error = new Salida(101);
                         System.out.println(error.toString());
@@ -419,13 +432,6 @@ public class Menu {
                 }
             }
         }
-
-     // mirar en casa tengo el cerebro frito
-
-    public void asignarEjercitos(String nombrePais, int ejercitos){
-        
-    }
-
     /**
      * 
      */
@@ -602,11 +608,6 @@ public class Menu {
                 }
         }
     }
-
-
-    pu
-
-
     public int contarJugadores(ArrayList<Jugador> jugadores){
         int contador=0;
 
