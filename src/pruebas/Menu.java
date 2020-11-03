@@ -237,6 +237,23 @@ public class Menu {
                             System.out.println(error.toString());
                         }
                         break;
+                    case "repartir":
+                        if(checker >= 4){
+                            if(checker > 5){
+                                Salida error = new Salida(99);
+                                System.out.println(error.toString());
+                            }else{
+                                if(partes[2] == null){
+                                    //auto
+                                }else{
+                                    repartirEjercitos(partes[2], partes[3]);
+                                }
+                            }
+                        }else{
+                            Salida error = new Salida(99);
+                            System.out.println(error.toString());
+                        }
+                        break;
                     default:
                         Salida error = new Salida(101);
                         System.out.println(error.toString());
@@ -604,11 +621,14 @@ public class Menu {
     }
 
 
-    public void repartirEjercitos(int num, String nombrePais) {
+    public void repartirEjercitos(String num, String nombrePais) {
 
+        int numJugadores;
+        numJugadores = contarJugadores(this.jugadores);
         Pais pais = existePais(this.paises, nombrePais);
-        int ejDisp = pais.getJugador().getEjercitos_disponibles();
-
+        
+        
+        int numEjer = Integer.parseInt(num);
 
         if (pais == null) {
 
@@ -617,18 +637,16 @@ public class Menu {
             //error de que pais no existe 109
 
         }else if(pais.getJugador() == null){
-
+            Salida error = new Salida(110);
+            System.out.println(error.toString());
             // jugador no asignado 110
 
-        }else
-
+        }else{
             switch (numJugadores){
-
                 case 3:
                     for (Jugador j: jugadores){
                         j.setTropas(35);
                         j.setEjercitos_disponibles(35);
-
                     }
                     break;
 
@@ -652,26 +670,34 @@ public class Menu {
                         j.setEjercitos_disponibles(20);
                     }
                     break;
-
             }
-
-        if(ejDisp == 0) {
-
-            //error 119 y eso
-        }else if(num > ejDisp){
-
-            pais.setEjercitos(ejDisp);
-            pais.getJugador().setEjercitos_disponibles(0); // si se quieren asignar mas de los disponibles se asignan solo estos y pasa a haber 0 disponibles
-
-        }else { // caso todo correcto
-
-            pais.setEjercitos(num);
-            pais.getJugador().setEjercitos_disponibles(ejDisp - num);
-
         }
-
-
+        int ejDisp = pais.getJugador().getEjercitos_disponibles();
+        if(ejDisp == 0){
+            Salida error = new Salida(119);
+            System.out.println(error.toString());
+            //error 119 y eso
+        }else if(numEjer > ejDisp){
+            pais.addEjercitos(ejDisp);
+            pais.getJugador().setEjercitos_disponibles(0); // si se quieren asignar mas de los disponibles se asignan solo estos y pasa a haber 0 disponibles
+            String exito = "{\n pais: \"" + pais.getNombre() + "\",\n jugador: \"" + 
+                    pais.getJugador().getNombre() + "\",\n numeroEjercitosAsignados: " 
+                    + ejDisp + ",\n numeroEjercitosTotales: " + pais.getEjercitos() + ",\n paisesOcupadosContinente: " + pais.getContinente().printPaisesEjer();
+            System.out.println(exito);
+            Salida salida = new Salida();
+            salida.imprimirArchivo(exito);
+        }else { // caso todo correcto
+            pais.addEjercitos(numEjer);
+            pais.getJugador().setEjercitos_disponibles(ejDisp - numEjer);
+            String exito = "{\n pais: \"" + pais.getNombre() + "\",\n jugador: \"" + 
+                    pais.getJugador().getNombre() + "\",\n numeroEjercitosAsignados: " 
+                    + numEjer + ",\n numeroEjercitosTotales: " + pais.getEjercitos() + ",\n paisesOcupadosContinente: " + pais.getContinente().printPaisesEjer() + "\n}";
+            System.out.println(exito);
+            Salida salida = new Salida();
+            salida.imprimirArchivo(exito);
+        }
     }
+
 
 
     public int contarJugadores(ArrayList<Jugador> jugadores){

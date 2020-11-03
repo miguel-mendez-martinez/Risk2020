@@ -108,6 +108,20 @@ public class Continente {
             }else{
                 paisCont += "\t " + paises.get(i).printNombre() + ",\n";
             }
+        }  
+        return paisCont;
+    }
+    
+    public String printPaisesEjer(){
+        String paisCont = "";
+        for (int i=0;i<paises.size();i++) {
+            if(i == 0){
+                paisCont += "[ { " + paises.get(i).printNombre() + "," + paises.get(i).getEjercitos() + " },\n";
+            }else if(i==(paises.size())-1){
+                paisCont += "\t\t\t     { " + paises.get(i).printNombre() + "," + paises.get(i).getEjercitos() + " }\n\t\t\t    ]";
+            }else{
+                paisCont += "\t\t\t     { " + paises.get(i).printNombre() + "," + paises.get(i).getEjercitos() + " },\n";
+            }
         }
         return paisCont;
     }
