@@ -106,15 +106,20 @@ public class Menu {
                             }
                         }else if(partes.length==3) {
                             if(checker >= 1){
-                                if(partes[1].equals("jugadores")) { 
-                                    crearJugador(new File(partes[2]));
-                                    if(checker < 2){
-                                        checker = 2;
-                                    }
-                                } else {
-                                    crearJugador(partes[1], partes[2]);
-                                    if(checker < 2){
-                                        checker = 2;
+                                if(checker >2){ //si la siguiente instruccion en prioridad ha sido ejecutada no podra ejecutar esta, pero si podra volver a ejecutarse despues de un crear jugador
+                                    Salida error = new Salida(99);
+                                    System.out.println(error.toString());
+                                }else{
+                                    if(partes[1].equals("jugadores")) { 
+                                        crearJugador(new File(partes[2]));
+                                        if(checker < 2){
+                                            checker = 2;
+                                        }
+                                    } else {
+                                        crearJugador(partes[1], partes[2]);
+                                        if(checker < 2){
+                                            checker = 2;
+                                        }
                                     }
                                 }
                             }else{
@@ -132,7 +137,7 @@ public class Menu {
                             if(checker >= 1){
                                 this.mapa.printMapa();
                             }else{
-                                Salida error = new Salida(106);
+                                Salida error = new Salida(99);
                                 System.out.println(error.toString());
                             }
                         }
@@ -143,10 +148,15 @@ public class Menu {
                             System.out.println(error.toString());
                         }else if(partes[1].equals("misiones")){
                             if(checker >= 2){
-                                if(partes[1].equals("misiones")){
-                                    asignarMisiones(new File(partes[2]));
-                                    if(checker < 3){
-                                        checker = 3;
+                                if(checker > 3){ //si la siguiente instruccion ya ha sido ejecutada, no podra volver a ejecutar asignar
+                                    Salida error = new Salida(99);
+                                    System.out.println(error.toString());
+                                }else{
+                                    if(partes[1].equals("misiones")){
+                                        asignarMisiones(new File(partes[2]));
+                                        if(checker < 3){
+                                            checker = 3;
+                                        }
                                     }
                                 }
                             }else{
@@ -156,10 +166,16 @@ public class Menu {
                             //primero tenemos que asignar misiones antes de paises
                         }else if(partes[1].equals("paises")){
                             if(checker >= 3){
-                                asignarPaises(new File(partes[2]));
-                                if(checker < 4){
-                                        checker = 4;
-                                    }
+                                if(checker > 4){
+                                    Salida error = new Salida(99);
+                                    System.out.println(error.toString());
+                                }
+                                else{
+                                    asignarPaises(new File(partes[2]));
+                                    if(checker < 4){
+                                            checker = 4;
+                                        }
+                                }
                             }else{
                                 Salida error = new Salida(118);
                                 System.out.println(error.toString());
@@ -167,18 +183,23 @@ public class Menu {
                         }else if(partes[2].charAt(0) == 'M'){
                             //Estas operaciones por ahora no cambian el checker ya que no asignan cosas a todos los jugadores
                             if(checker >= 2){
-                                if(partes[2].charAt(1) == '1' ||
+                                if(checker > 3){
+                                    Salida error = new Salida(99);
+                                    System.out.println(error.toString());
+                                }else{
+                                    if(partes[2].charAt(1) == '1' ||
                                     partes[2].charAt(1) == '2' ||
                                     partes[2].charAt(1) == '3' ||
                                     partes[2].charAt(1) == '4'){
-                                    asignarMisiones(partes[1], partes[2]);
-                                }else{
-                                    if(checker >= 3){
-                                        asignarPaises(partes[1], partes[2]);
+                                        asignarMisiones(partes[1], partes[2]);
                                     }else{
-                                        Salida error = new Salida(118);
-                                        System.out.println(error.toString());
-                                    }   
+                                        if(checker >= 3){
+                                            asignarPaises(partes[1], partes[2]);
+                                        }else{
+                                            Salida error = new Salida(118);
+                                            System.out.println(error.toString());
+                                        }   
+                                    }
                                 }
                             }else{
                                 Salida error = new Salida(105);

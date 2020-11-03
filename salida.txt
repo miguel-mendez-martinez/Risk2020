@@ -13,8 +13,8 @@ $> obtener frontera venezuela
 
 $> ver mapa
 {
- código de error: 106,
- descripción: "El mapa no está creado"
+ código de error: 99,
+ descripción: "Comando no permitido en este momento"
 {
 
 $> crear jugadores jugadores.csv
@@ -74,6 +74,12 @@ $> crear jugadores jugadores.csv
  código de error: 114,
  descripción: "El color ya está asignado"
 {
+
+$> crear miguel CYAN
+{
+ nombre: "miguel",
+ color: "CYAN"
+}
 
 $> asignar misiones misiones.csv
 {
@@ -361,27 +367,27 @@ $> asignar paises asignaciones.csv
 
 $> asignar Hooker M34
 {
- código de error: 117,
- descripción: "El jugador ya tiene asignada una misión"
+ código de error: 99,
+ descripción: "Comando no permitido en este momento"
 {
 
 $> crear Miguel Rojo
 {
- código de error: 100,
- descripción: "Color no permitido"
+ código de error: 99,
+ descripción: "Comando no permitido en este momento"
 {
 
 $> crear Miguel CYAN
 {
- nombre: "Miguel",
- color: "CYAN"
-}
+ código de error: 99,
+ descripción: "Comando no permitido en este momento"
+{
 
 $> asignar Miguel M2
 {
- nombre: "Miguel"
- mision: "Conquistar 18 países de la preferencia del jugador con un mínimo de dos ejércitos"
-}
+ código de error: 99,
+ descripción: "Comando no permitido en este momento"
+{
 
 $> obtener frontera Egipto
 frontera: [ "África del Norte", "Africa Oriental", "Europa Sur", "Oriente Medio" ]
