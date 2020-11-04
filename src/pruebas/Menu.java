@@ -25,6 +25,8 @@ public class Menu {
     ArrayList<Pais> paises;
     ArrayList<Continente> continentes;
     Mapa mapa;
+    Jugador jugadorActual;
+    Turno t;
     /**
      * 
      */
@@ -32,13 +34,16 @@ public class Menu {
         // Inicialización de algunos atributos
         // Iniciar juego
          // Con fichero:
+        this.t = new Turno(); 
         this.mapa = null;
         Mision mision;
-        jugadores = new ArrayList<>();
-        paises = new ArrayList<>();
+        this.jugadores = new ArrayList<>();
+        this.paises = new ArrayList<>();
+        this.continentes = new ArrayList<>();
         int checker = 0;
         String orden= null;
         BufferedReader bufferLector= null;
+        //Jugador jugadorActual = new Jugador();
         
         //debemos ver si ya existe un fichero salida y eliminarlo si lo hace, ya que si existe escribiremos en el y tendremos las salidas de ejecuciones distintas en el mismo archivo
         File file = new File("salida.txt"); 
@@ -112,11 +117,18 @@ public class Menu {
                                 }else{
                                     if(partes[1].equals("jugadores")) { 
                                         crearJugador(new File(partes[2]));
+                                        //en cuanto creamos un jugador o varios, el actual será siempre el primero se añadan los que se añadan
+                                        
+                                        int i=0;
+                                        this.jugadorActual = this.jugadores.get(i);
                                         if(checker < 2){
                                             checker = 2;
                                         }
                                     } else {
                                         crearJugador(partes[1], partes[2]);
+                                        //idem arriba
+                                        int i=0;
+                                        this.jugadorActual = this.jugadores.get(i);
                                         if(checker < 2){
                                             checker = 2;
                                         }
@@ -140,6 +152,36 @@ public class Menu {
                                 Salida error = new Salida(99);
                                 System.out.println(error.toString());
                             }
+                        }
+                        break;
+                    case "jugador":
+                        //esto es describir toda la mierda del jugador del turno actual
+                        break;
+                    case "describir":
+                        if(partes[1].equals("Jugador")){
+                            //descripcion del jugador
+                            
+                        }else if(partes[1].equals("Pais")){
+                            //descripcion del pais
+                            Pais pais = existePais(this.paises, partes[2]);
+                            
+                        }else if(partes[1].equals("Continente")){
+                            //descripcion del continente
+                        }else{
+                            Salida error = new Salida(101);
+                            System.out.println(error.toString());
+                        }
+                    case "acabar":
+                        if(checker >= 5){
+                            this.jugadorActual = this.t.pasarTurno(this.jugadorActual);
+                            this.jugadorActual.printNomEjerR();
+                            System.out.println(this.jugadorActual.printNomEjerR());
+                            Salida salida = new Salida();
+                            salida.imprimirArchivo(this.jugadorActual.printNomEjerR());
+                            
+                        }else{
+                            Salida error = new Salida(99);
+                            System.out.println(error.toString());
                         }
                         break;
                     case "asignar":
@@ -244,9 +286,11 @@ public class Menu {
                                 System.out.println(error.toString());
                             }else{
                                 if(partes[2] == null){
-                                    //auto
+                                    //auto, esta es la importante parra empezar la partida, deben estar repartidos entre los paises pa empezar todo
+                                    checker = 5;
                                 }else{
                                     repartirEjercitos(partes[2], partes[3]);
+                                    checker = 5;
                                 }
                             }
                         }else{
@@ -277,7 +321,19 @@ public class Menu {
             return null;
         }
     }
-    
+    public Continente existeContinente(ArrayList<Continente> continentes, String abCont){ // en nj guardamos el jugador si este existeque existe
+        if(continentes.isEmpty()==true){
+            
+            return null;
+        }else{
+            for(Continente c : continentes){
+                if(c.getNombre().equals(abCont)==true){
+                    return c;
+                    }    
+            }
+            return null;
+        }
+    }
     public Pais existePais(ArrayList<Pais> paises, String pais){ // mismo que nj
         if(paises.isEmpty()){
             
@@ -374,14 +430,7 @@ public class Menu {
                 nombreJugador = partes[0];
                 nombrePais = partes[1];
                 asignarPaises(nombreJugador, nombrePais);
-
             }
-
-            System.out.println("Array final de jugadores tras la lectura completa del archivo de Paises:");
-            for (int i=0;i<jugadores.size();i++) {
-                System.out.println(jugadores.get(i).toString());
-            }
-
         }
         catch (Exception excepcion){
             excepcion.printStackTrace();
@@ -418,7 +467,7 @@ public class Menu {
                             if(!pais.estaAsignado()){ // El pais no está asignado a ningun jugador, por lo que asignamos e imprimimos
                                 pais.setJugador(jugador);
                                 jugador.setPaises(pais);
-                                String fronteras = pais.fronterasToString();
+                                String fronteras = pais.fronterasToString(0);
                                 String exito = "{\n\tnombre: " + nombreJugador +"\n\tpaís: " + nombrePais + "\n\tcontinente: " + pais.getContinente().getNombre() + "\n\t" + fronteras + "\n}";
                                 System.out.println(exito);
                                 Salida salida = new Salida();
@@ -455,95 +504,66 @@ public class Menu {
     }
     
     public void obtenerFronteras(String npais){
-    
-        int flagPais = 0; // flag para controlar si el pais que se inserto existe o no
-        for(Pais pais:paises){
-            if(pais.getAbreviatura().equals(npais)){
-                flagPais = 1;
-                String fronteras = "";
-                for (int i=0;i<pais.getFronteras().size();i++) {
-                    if(i == 0){
-                        fronteras += "frontera: [ " + pais.getFronteras().get(i).printNombre() + ", ";
-                    }else if(i==(pais.getFronteras().size())-1){
-                        fronteras += pais.getFronteras().get(i).printNombre() + " ]";
-                    }else{
-                        fronteras += pais.getFronteras().get(i).printNombre() + ", ";
-                    }
-                    
-                }
-                System.out.println(fronteras);
-                Salida salida = new Salida();
-                salida.imprimirArchivo(fronteras);
-            }          
-        }
-        if(flagPais == 0){ // Error      
+        Pais pais = existePais(this.paises,npais);
+        if(pais == null){
             Salida error = new Salida(109);
-            System.out.println(error.toString());      
-        } 
+            System.out.println(error.toString());
+        }else{
+            String fronteras = "";
+            fronteras = pais.fronterasToString(0);
+            System.out.println(fronteras);
+            Salida salida = new Salida();
+            salida.imprimirArchivo(fronteras);
+        }
     }
     
     public void obtenerContinente(String npais){
-    
-        int flagPais = 0; // flag para controlar si el pais que se inserto existe o no
-        for(Pais pais:paises){
-        
-            if(pais.getAbreviatura().equals(npais)){
-                flagPais = 1;
-                String continente = "{ continente:  \"" + pais.getContinente().getNombre() + "\" }";
-                System.out.println(continente);
-                Salida salida = new Salida();
-                salida.imprimirArchivo(continente);
-            }          
-        }
-        if(flagPais == 0){ // Error      
+        Pais pais = existePais(this.paises,npais);
+        if(pais == null){
             Salida error = new Salida(109);
-            System.out.println(error.toString());      
-        }      
-    }
+            System.out.println(error.toString());
+        }else{
+            String continente = "{ continente: ";
+            continente += pais.printCont() + " }";
+            System.out.println(continente);
+            Salida salida = new Salida();
+            salida.imprimirArchivo(continente);
+        }
+}
     
     public void obtenerColor(String npais){
-    
-        int flagPais = 0;// flag para controlar si el pais que se inserto existe o no
-        
-        
-        for(Pais pais:paises){
-        
-            if(pais.getAbreviatura().equals(npais)){
-                flagPais = 1;
-                String color = pais.getContinente().getColor();
-                if((color.equals("AMARILLO") || color.equals("ROJO") || color.equals("AZUL")
-                || color.equals("CYAN") || color.equals("VERDE") || color.equals("VIOLETA"))){
-                    String exito = "{ color: \"" + color + "\" }";
-                    System.out.println(exito);
-                    Salida salida = new Salida();
-                salida.imprimirArchivo(exito);
-                }else{
-                    Salida error = new Salida(100);
-                    System.out.println(error.toString());
-                }
-            }          
-        }
-        if(flagPais == 0){ // Error      
+        Pais pais = existePais(this.paises, npais);
+        if(pais == null){
             Salida error = new Salida(109);
-            System.out.println(error.toString());       
-        }      
+            System.out.println(error.toString());
+        }else{
+            String color = "{ color: ";
+            color += pais.printColor() + " }";
+            System.out.println(color);
+            Salida salida = new Salida();
+            salida.imprimirArchivo(color);
+        }
     }
 
     public void obtenerPaises(String abCont){
-
-        int flagContinente = 0;
-        for(Continente c:continentes){
-            if(c.getNombre().equals(abCont)){
-                String paises = c.printPaises();
-                System.out.println(paises);
-                Salida salida = new Salida();
-                salida.imprimirArchivo(paises);
-                flagContinente = 1;//para que no imrpima el error
+        Continente c = existeContinente(this.continentes, abCont);
+        if(c == null){
+            Salida error = new Salida(109);
+            System.out.println(error.toString());
+        }else{
+            String paises = "{ paises: [ ";
+            for(int i=0; i<c.getPaises().size(); i++){
+                if(i == c.getPaises().size()-1){
+                    paises += c.getPaises().get(i).printNombre() + "\n";
+                }else{
+                    paises += c.getPaises().get(i).printNombre() + ",\n\t    ";
+                }
+                
             }
-        }
-        if(flagContinente == 0){
-            Salida error = new Salida(102);
-            System.out.println(error.toString()); 
+            paises += "\t  ] \n}";
+            System.out.println(paises);
+            Salida salida = new Salida();
+            salida.imprimirArchivo(paises);
         }
     }
 
@@ -593,6 +613,7 @@ public class Menu {
         else if(jugadores.isEmpty()==true){ //si esta vacia metemos directo
             Jugador jugador= new Jugador(nombre, color);
             jugadores.add(jugador);
+            this.t.addJugador(jugador);
             System.out.println(jugador.printColorNom());
             Salida salida = new Salida();
             salida.imprimirArchivo(jugador.printColorNom());
@@ -613,6 +634,7 @@ public class Menu {
             if(flag==0){
                     Jugador jugador= new Jugador(nombre, color);
                     jugadores.add(jugador);
+                    this.t.addJugador(jugador);
                     System.out.println(jugador.printColorNom());
                     Salida salida = new Salida();
                     salida.imprimirArchivo(jugador.printColorNom());
@@ -708,15 +730,7 @@ public class Menu {
         }
         return contador;
     }
-
-
-
-
-
-    // MIguel marciob
-
-
-    public void repartirEjercitos(){
+    /*public void repartirEjercitos(){
 
         int numJugadores;
         numJugadores = contarJugadores(this.jugadores);
@@ -793,7 +807,7 @@ public class Menu {
                 }
 
             }
+        }
 
-
-
+    }*/
 }

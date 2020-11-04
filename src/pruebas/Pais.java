@@ -103,24 +103,56 @@ public class Pais {
         }
     }
     
-    public String fronterasToString(){
+    public String fronterasToString(int check){
     
         String fronteras = "";
-                for (int i=0;i<this.getFronteras().size();i++) {
-                    if(i == 0){
-                        fronteras += "frontera: [ " + this.getFronteras().get(i).printNombre() + ", ";
-                    }else if(i==(this.getFronteras().size())-1){
-                        fronteras += this.getFronteras().get(i).printNombre() + " ]";
-                    }else{
-                        fronteras += this.getFronteras().get(i).printNombre() + ", ";
-                    }
+        if(check == 0){
+            for (int i=0;i<this.getFronteras().size();i++) {
+                if(i == 0){
+                    fronteras += "frontera: [ " + this.getFronteras().get(i).printNombre() + ", ";
+                }else if(i==(this.getFronteras().size())-1){
+                    fronteras += this.getFronteras().get(i).printNombre() + " ]";
+                }else{
+                    fronteras += this.getFronteras().get(i).printNombre() + ", ";
                 }
+            }
+        }else{
+            for (int i=0;i<this.getFronteras().size();i++) {
+                if(i == 0){
+                    fronteras += "frontera: [ " + this.getFronteras().get(i).printNombre() + ",\n ";
+                }else if(i==(this.getFronteras().size())-1){
+                    fronteras += this.getFronteras().get(i).printNombre() + " ]";
+                }else{
+                    fronteras += this.getFronteras().get(i).printNombre() + ",\n ";
+                }
+            }
+        }
+        
     
         return fronteras;
     }
 
     public String printNombre(){
         String texto = "\"" + this.nombre + "\"";
+        return texto;
+    }
+    public String printAbre(){
+        String texto = "\"" + this.abreviatura + "\"";
+        return texto;
+    }
+    
+    public String printCont(){
+        String texto = "\"" + this.continente.getNombre() + "\"";
+        return texto;
+    }
+    public String printColor(){
+        String texto = "\"" + this.continente.getColor() + "\"";
+        return texto;
+    }
+    public String descPais(){
+        String texto = "{\n nombre: " + this.printNombre() + 
+                ",\n abreviatura: " + this.printAbre() + ",\n continente: " 
+                + this.printCont() + ",\n frontera : " + this.fronterasToString(1);
         return texto;
     }
     @Override

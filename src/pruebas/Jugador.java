@@ -21,9 +21,11 @@ public class Jugador {
     private int ejercitos_disponibles;
     private ArrayList<Pais> paises;
     private Mision mision;
+    private int ejerRearme;
 	
     // Constructores
     public Jugador(){
+        
     }
     
     public Jugador(String nombre){
@@ -36,6 +38,7 @@ public class Jugador {
         this.color= color;
         this.paises = new ArrayList<>();
         this.mision = null; //este valor lo usaremos para comprobar a la hora de asignarle una mision
+        this.ejerRearme = 0;
     }
     
     // setters & getters
@@ -106,7 +109,10 @@ public class Jugador {
         // mirar codigo de error o algo para ver que hacer si color es invalido como migueloh else System.out.println();
     }
 
-
+    public String printNomEjerR(){
+        String texto = "{\n nombre: \"" + this.nombre + "\",\n numeroEjercitosRearmar: " + this.ejerRearme + "\n}";
+        return texto;
+    }
 
     
     @Override

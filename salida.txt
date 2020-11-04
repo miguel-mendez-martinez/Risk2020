@@ -456,15 +456,15 @@ $> obtener frontera Egipto
 frontera: [ "África del Norte", "Africa Oriental", "Europa Sur", "Oriente Medio" ]
 
 $> obtener continente Egipto
-{ continente:  "África" }
+{ continente: "África" }
 
 $> obtener paises Oceanía
-{
- paises: [ "Indonesia",
-	 "Australia Occidental",
-	 "Nueva Guinea",
-	 "Australia Oriental"
-	 ]
+{ paises: [ "Indonesia",
+	    "Australia Occidental",
+	    "Nueva Guinea",
+	    "Australia Oriental"
+	  ] 
+}
 
 $> obtener frontera casamigueloh
 {
@@ -482,6 +482,18 @@ $> crear mapa
  código de error: 107,
  descripción: "El mapa ya ha sido creado"
 {
+
+$> acabar turno
+{
+ nombre: "Hooker",
+ numeroEjercitosRearmar: 0
+}
+
+$> acabar turno
+{
+ nombre: "Lonnegan",
+ numeroEjercitosRearmar: 0
+}
 
 $> 
 {
