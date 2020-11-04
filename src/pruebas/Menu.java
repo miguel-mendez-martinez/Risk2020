@@ -160,7 +160,7 @@ public class Menu {
                     case "describir":
                         if(partes[1].equals("Jugador")){
                             //descripcion del jugador
-                            
+                            Jugador jugador = existeJugador(this.jugadores, partes[2]);
                         }else if(partes[1].equals("pais")){
                             //descripcion del pais
                             Pais pais = existePais(this.paises, partes[2]);
@@ -852,5 +852,5 @@ public class Menu {
             }
         }
 
-    }
-}
+
+
