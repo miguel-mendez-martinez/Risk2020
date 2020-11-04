@@ -159,7 +159,7 @@ public class Pais {
         String texto = "{\n nombre: " + this.printNombre() + 
                 ",\n abreviatura: " + this.printAbre() + ",\n continente: " 
                 + this.printCont() + this.fronterasToString(1)
-                + "\n jugador: " + this.printJug() + ",\n numeroEjercitos: " 
+                + ",\n jugador: " + this.printJug() + ",\n numeroEjercitos: " 
                 + this.ejercitos + ",\n numeroVecesOcupado: " + this.vecesOcupado + "\n}";
         return texto;
     }

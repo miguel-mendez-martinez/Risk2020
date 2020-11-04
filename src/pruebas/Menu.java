@@ -156,11 +156,17 @@ public class Menu {
                         break;
                     case "jugador":
                         //esto es describir toda la mierda del jugador del turno actual
+                        System.out.println(this.jugadorActual);
+                        Salida x = new Salida();
+                        x.imprimirArchivo(this.jugadorActual.toString());
                         break;
                     case "describir":
-                        if(partes[1].equals("Jugador")){
+                        if(partes[1].equals("jugador")){
                             //descripcion del jugador
-                            
+                            Jugador jugador = existeJugador(this.jugadores, partes[2]);
+                            System.out.println(jugador);
+                            Salida salida = new Salida();
+                            salida.imprimirArchivo(jugador.toString());
                         }else if(partes[1].equals("pais")){
                             //descripcion del pais
                             Pais pais = existePais(this.paises, partes[2]);
@@ -169,7 +175,8 @@ public class Menu {
                                 System.out.println(error.toString());
                             }else{
                                 System.out.println(pais.descPais());
-                                
+                                Salida salida = new Salida();
+                                salida.imprimirArchivo(pais.descPais());
                             }
                             
                         }else if(partes[1].equals("Continente")){

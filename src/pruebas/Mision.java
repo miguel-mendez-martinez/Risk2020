@@ -34,7 +34,10 @@ public class Mision {
         return jugador;
     }
     
-    
+    public String printDesc(){
+        String texto = "\"" + this.descripcion + "\"";
+        return texto;
+    }
     
     public String codigoToDesc(String codigo){
         if( codigo.equals("M1")){

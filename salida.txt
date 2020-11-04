@@ -496,6 +496,43 @@ $> acabar turno
 }
 
 $> describir pais Brasil
+{
+ nombre: "Brasil",
+ abreviatura: "Brasil",
+ continente: "América del Sur"
+ frontera: [ "África del Norte",
+ 	     "Perú"
+	   ],
+ jugador: "Lonnegan",
+ numeroEjercitos: 0,
+ numeroVecesOcupado: 0
+}
+
+$> describir jugador Hooker
+{
+ nombre: "Hooker",
+ color: "AMARILLO",
+ mision: "Conquistar Asia y América del Sur",
+ numeroEjercitos: 30,
+ paises: [ "Irkutsk",
+ 	   "Estados Unidos del Oeste",
+	   "Estados Unidos del Este",
+	   "Europa Occidental",
+	   "Europa Sur",
+	   "Urales",
+	   "Mongolia",
+	   "Japón",
+	   "America Central",
+	   "Afganistan",
+	   "China",
+	   "Venezuela",
+	   "África del Norte",
+	   "Egipto"
+	  ],
+ continentes: ,
+ cartas: ,
+ numeroEjercitosRearmar: 0
+}
 
 $> 
 {

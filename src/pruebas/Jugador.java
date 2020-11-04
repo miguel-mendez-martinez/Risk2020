@@ -20,9 +20,9 @@ public class Jugador {
     private int tropas;
     private int ejercitos_disponibles;
     private ArrayList<Pais> paises;
+    private ArrayList<Pais> continentes;
     private Mision mision;
     private int ejerRearme;
-	
     // Constructores
     public Jugador(){
         
@@ -37,6 +37,7 @@ public class Jugador {
         this.nombre= nombre;
         this.color= color;
         this.paises = new ArrayList<>();
+        this.continentes = new ArrayList<>();
         this.mision = null; //este valor lo usaremos para comprobar a la hora de asignarle una mision
         this.ejerRearme = 0;
     }
@@ -114,16 +115,33 @@ public class Jugador {
         return texto;
     }
 
-    
+    public String printNombre(){
+        String texto = "\"" + this.nombre + "\"";
+        return texto;
+    }
+    public String prinColor(){
+        String texto = "\"" + this.color + "\"";
+        return texto;
+    }
+    public String printPaises(){
+        String paisCont = "";
+        for (int i=0;i<paises.size();i++) {
+            if(i == 0){
+                paisCont += "[ " + paises.get(i).printNombre() + ",\n ";
+            }else if(i==(paises.size())-1){
+                paisCont += "\t   " + paises.get(i).printNombre() + "\n\t  ]";
+            }else{
+                paisCont += "\t   " + paises.get(i).printNombre() + ",\n";
+            }
+        }
+        return paisCont;
+    }
     @Override
     public String toString(){
-        //String result = "";
-        //for (Pais pais ; this.paises){
-          //  result += pais.toString();
-        //}
-
-        
-        String texto="\nNombre: "+ this.nombre + "\nColor: " + this.color+ "\nPaises: " + /*result*/ this.paises + "\nTropas Jugador: " +this.tropas;
+        String texto = "{\n nombre: " + this.printNombre() + ",\n color: " + 
+                this.prinColor() + ",\n mision: " + this.mision.printDesc() + 
+                ",\n numeroEjercitos: " + this.tropas + ",\n paises: " + this.printPaises()
+                + ",\n continentes: " + ",\n cartas: " + ",\n numeroEjercitosRearmar: " + this.ejerRearme + "\n}";
         return texto;
     }
 
