@@ -740,9 +740,7 @@ public class Menu {
     }
     public void repartirEjercitos(){
 
-        Jugador jugadorMenosFronteras = new Jugador(); // jugador que tiene mas paises en el continente con menos fronteras
         Continente masPaisesOcupados = new Continente();
-        Continente menosFronteras = new Continente();
         ArrayList<Continente> contCumpR1 = new ArrayList<>(); // continentes que cumplen la condicion R!
         ArrayList<Jugador> jugCumpR1 = new ArrayList<>();
         ArrayList<Continente> mismoPorcPaisOc = new ArrayList<>();
@@ -833,7 +831,7 @@ public class Menu {
             }
             if(mismoPorcPaisOc.size()==1){ // Asignar ejercitos al continente que tiene el mayor porcentaje de paises ocupados
                 for (Pais p:mismoPorcPaisOc.get(0).getPaises()) { // recorremos paises de ese continente
-                        if (p.getJugador().equals(jMismoPorcPaisOc.get(0))) { // Si el jugador del pais es el mismo que el jugador que cumple la condicion de continetnte
+                        if (p.getJugador().equals(jMismoPorcPaisOc.get(0))) { // Si
                             if (mismoPorcPaisOc.get(0).getNombre().equals("Oceanía") || mismoPorcPaisOc.get(0).getNombre().equals("Asur")) { // Cambia 1.5 o 1 dependiendo del continente
                                 p.addEjercitos((int) (jMismoPorcPaisOc.get(0).getEjercitos_disponibles() / (1.5 * numPaisesJugEnC)));
                                 jMismoPorcPaisOc.get(0).setEjercitos_disponibles(jMismoPorcPaisOc.get(0).getEjercitos_disponibles() - ((int) (jMismoPorcPaisOc.get(0).getEjercitos_disponibles() / (1.5 * numPaisesJugEnC))));
@@ -847,34 +845,6 @@ public class Menu {
 
             }else if (mismoPorcPaisOc.size()>1){ // Si hay varios con el mismo porcentaje de asignados hay que comprobar fronteras
 
-                for(int i=0; i<mismoPorcPaisOc.size(); i++){
-                    if(i==0){
-                        menosFronteras = mismoPorcPaisOc.get(i); // Primera iteracion
-                        jugadorMenosFronteras = jMismoPorcPaisOc.get(i);
-                    }
-                    if(mismoPorcPaisOc.get(i).fronterasContinente() < menosFronteras.fronterasContinente()){
-                        menosFronteras = mismoPorcPaisOc.get(i); // Si el siguiente continente de la lista tiene menos fronteras este es el nuevo que menos tiene
-                        jugadorMenosFronteras = jMismoPorcPaisOc.get(i);
-                    }
-                }
-
-                // Asignar ejercitos al pais que menos fronteras tiene
-                for (Pais p:menosFronteras.getPaises()) { // recorremos paises de ese continente
-                    if (p.getJugador().equals(jugadorMenosFronteras)) { // Si el jugador del pais es el mismo que el jugador que cumple la condicion de continetnte
-                        if (menosFronteras.getNombre().equals("Oceanía") || menosFronteras.getNombre().equals("Asur")) { // Cambia 1.5 o 1 dependiendo del continente
-                            p.addEjercitos((int) (jugadorMenosFronteras.getEjercitos_disponibles() / (1.5 * numPaisesJugEnC)));
-                            jugadorMenosFronteras.setEjercitos_disponibles(jugadorMenosFronteras.getEjercitos_disponibles() - ((int) (jugadorMenosFronteras.getEjercitos_disponibles() / (1.5 * numPaisesJugEnC))));
-                        } else {
-                            p.addEjercitos((int) (jugadorMenosFronteras.getEjercitos_disponibles() / (1 * numPaisesJugEnC)));
-                            jugadorMenosFronteras.setEjercitos_disponibles(jugadorMenosFronteras.getEjercitos_disponibles() - ((int) (jugadorMenosFronteras.getEjercitos_disponibles() / (1 * numPaisesJugEnC))));
-                        }
-                    }
-                }
-
-
-
-
-
 
             }
         }
@@ -882,3 +852,5 @@ public class Menu {
             }
         }
 
+    }
+}
