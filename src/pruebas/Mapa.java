@@ -415,8 +415,10 @@ public class Mapa {
                             || p.getCasilla().getX() - f.getCasilla().getX() == 1) {
                         p.addFront(f);
                     }
-                    //Fronteras indirectas: //revisar nombres //cambiar segundas partes de la igualdad a pej "anorte"
-                 if((p.getAbreviatura().equals("anorte")) && (f.getAbreviatura().equals("Brasil"))){            
+                    
+                }
+                //Fronteras indirectas: //revisar nombres //cambiar segundas partes de la igualdad a pej "anorte"
+                 if((p.getAbreviatura().equals("ANorte")) && (f.getAbreviatura().equals("Brasil"))){            
                     p.addFront(f);  
                     f.addFront(p);
                  } 
@@ -424,7 +426,7 @@ public class Mapa {
                     p.addFront(f);  
                     f.addFront(p);
                  }
-                 if((p.getAbreviatura().equals("anorte")) && (f.getAbreviatura().equals("EurOcc"))){            
+                 if((p.getAbreviatura().equals("ANorte")) && (f.getAbreviatura().equals("EurOcc"))){            
                     p.addFront(f);  
                     f.addFront(p);
                  }
@@ -440,7 +442,6 @@ public class Mapa {
                     p.addFront(f);  
                     f.addFront(p);
                  }
-                }
             }
         }
 

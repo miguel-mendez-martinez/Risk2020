@@ -218,7 +218,7 @@ $> asignar paises asignaciones.csv
 	nombre: Hooker
 	país: EurOcc
 	continente: Europa
-	frontera: [ "Gran Bretaña", "Europa Sur" ]
+	frontera: [ "África del Norte", "Gran Bretaña", "Europa Sur" ]
 }
 {
 	nombre: Hooker
@@ -272,7 +272,7 @@ $> asignar paises asignaciones.csv
 	nombre: Hooker
 	país: ANorte
 	continente: África
-	frontera: [ "Congo", "Egipto" ]
+	frontera: [ "Congo", "Egipto", "Europa Occidental", "Brasil" ]
 }
 {
 	nombre: Hooker
@@ -308,7 +308,7 @@ $> asignar paises asignaciones.csv
 	nombre: Lonnegan
 	país: Brasil
 	continente: América del Sur
-	frontera: [ "Perú", 
+	frontera: [ "África del Norte", "Perú" ]
 }
 {
 	nombre: Lonnegan
@@ -452,11 +452,17 @@ $> repartir ejercitos 10 Siberia
 			    ]
 }
 
-$> obtener frontera Egipto
-frontera: [ "África del Norte", "Africa Oriental", "Europa Sur", "Oriente Medio" ]
+$> obtener frontera Brasil
+frontera: [ "África del Norte", "Perú" ]
 
-$> obtener continente Egipto
-{ continente: "África" }
+$> obtener frontera Groenlan
+frontera: [ "Islandia", "Territorios del Noroeste", "Quebec" ]
+
+$> obtener frontera ANorte
+frontera: [ "Congo", "Egipto", "Europa Occidental", "Brasil" ]
+
+$> obtener continente Brasil
+{ continente: "América del Sur" }
 
 $> obtener paises Oceanía
 { paises: [ "Indonesia",
@@ -489,11 +495,7 @@ $> acabar turno
  numeroEjercitosRearmar: 0
 }
 
-$> acabar turno
-{
- nombre: "Lonnegan",
- numeroEjercitosRearmar: 0
-}
+$> describir pais Brasil
 
 $> 
 {

@@ -22,6 +22,7 @@ public class Pais {
     private Jugador jugador;
     private Continente continente;
     private ArrayList<Pais> fronteras;
+    private int vecesOcupado;
     
     // Constructores
     
@@ -35,6 +36,7 @@ public class Pais {
    
     public Pais(String nombre, String abreviatura, Casilla casilla, Continente continente) {
         this.nombre = nombre;
+        this.vecesOcupado = 0;
         this.casilla = casilla;
         this.abreviatura = abreviatura;
         this.ejercitos = 0;
@@ -119,9 +121,9 @@ public class Pais {
         }else{
             for (int i=0;i<this.getFronteras().size();i++) {
                 if(i == 0){
-                    fronteras += "frontera: [ " + this.getFronteras().get(i).printNombre() + ",\n ";
+                    fronteras += "\n frontera: [ " + this.getFronteras().get(i).printNombre() + ",\n ";
                 }else if(i==(this.getFronteras().size())-1){
-                    fronteras += this.getFronteras().get(i).printNombre() + " ]";
+                    fronteras += "\t     " + this.getFronteras().get(i).printNombre() + "\n\t   ]";
                 }else{
                     fronteras += this.getFronteras().get(i).printNombre() + ",\n ";
                 }
@@ -149,10 +151,16 @@ public class Pais {
         String texto = "\"" + this.continente.getColor() + "\"";
         return texto;
     }
+    public String printJug(){
+        String texto = "\"" + this.jugador.getNombre() + "\"";
+        return texto;
+    }
     public String descPais(){
         String texto = "{\n nombre: " + this.printNombre() + 
                 ",\n abreviatura: " + this.printAbre() + ",\n continente: " 
-                + this.printCont() + ",\n frontera : " + this.fronterasToString(1);
+                + this.printCont() + this.fronterasToString(1)
+                + "\n jugador: " + this.printJug() + ",\n numeroEjercitos: " 
+                + this.ejercitos + ",\n numeroVecesOcupado: " + this.vecesOcupado + "\n}";
         return texto;
     }
     @Override

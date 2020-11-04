@@ -161,9 +161,16 @@ public class Menu {
                         if(partes[1].equals("Jugador")){
                             //descripcion del jugador
                             
-                        }else if(partes[1].equals("Pais")){
+                        }else if(partes[1].equals("pais")){
                             //descripcion del pais
                             Pais pais = existePais(this.paises, partes[2]);
+                            if(pais == null){
+                                Salida error = new Salida(109);
+                                System.out.println(error.toString());
+                            }else{
+                                System.out.println(pais.descPais());
+                                
+                            }
                             
                         }else if(partes[1].equals("Continente")){
                             //descripcion del continente
@@ -171,6 +178,7 @@ public class Menu {
                             Salida error = new Salida(101);
                             System.out.println(error.toString());
                         }
+                        break;
                     case "acabar":
                         if(checker >= 5){
                             this.jugadorActual = this.t.pasarTurno(this.jugadorActual);
