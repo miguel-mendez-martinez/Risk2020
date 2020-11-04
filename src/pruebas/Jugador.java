@@ -127,4 +127,14 @@ public class Jugador {
         return texto;
     }
 
+    public int calcularNumPaisesEnC(Continente c) {
+        int contador = 0;
+        for (Pais p:this.paises){
+            if (p.getContinente().equals(c)){
+                contador++;
+            }
+
+        }
+        return contador;
+    }
 }

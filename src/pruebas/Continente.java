@@ -125,4 +125,15 @@ public class Continente {
         }
         return paisCont;
     }
+
+
+    public float porcentajePaisesOcupados(){
+        int contador = 0;
+        for (Pais p:this.paises){
+            if(p.estaAsignado()) contador++;
+        }
+       return (this.paises.size()/contador) * 100;
+    }
+
+
 }
