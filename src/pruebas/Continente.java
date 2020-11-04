@@ -126,6 +126,19 @@ public class Continente {
         return paisCont;
     }
 
+    public int fronterasContinente(){
+        int resultado=0;
+
+        for(Pais p: this.paises){
+
+            for (int i=0; i< p.getFronteras().size(); i++){
+                resultado++;
+            }
+
+        }
+
+        return resultado;
+    }
 
     public float porcentajePaisesOcupados(){
         int contador = 0;
