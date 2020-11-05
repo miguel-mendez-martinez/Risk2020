@@ -501,11 +501,6 @@ public class Menu {
             }
         }
 
-     // mirar en casa tengo el cerebro frito
-
-    public void asignarEjercitos(String nombrePais, int ejercitos){
-        
-    }
 
     /**
      * 

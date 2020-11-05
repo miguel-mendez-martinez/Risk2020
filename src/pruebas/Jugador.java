@@ -20,7 +20,7 @@ public class Jugador {
     private int tropas;
     private int ejercitos_disponibles;
     private ArrayList<Pais> paises;
-    private ArrayList<Pais> continentes;
+    private ArrayList<Continente> continentes;
     private Mision mision;
     private int ejerRearme;
     // Constructores
@@ -141,7 +141,7 @@ public class Jugador {
         String texto = "{\n nombre: " + this.printNombre() + ",\n color: " + 
                 this.prinColor() + ",\n mision: " + this.mision.printDesc() + 
                 ",\n numeroEjercitos: " + this.tropas + ",\n paises: " + this.printPaises()
-                + ",\n continentes: " + ",\n cartas: " + ",\n numeroEjercitosRearmar: " + this.ejerRearme + "\n}";
+                + ",\n continentes: " + printContinentes() + ",\n cartas: " + ",\n numeroEjercitosRearmar: " + this.ejerRearme + "\n}";
         return texto;
     }
 
@@ -165,5 +165,31 @@ public class Jugador {
 
         return flag;
     }
+
+    public ArrayList<Continente> continentesJugador(ArrayList<Continente> todosLosContinentes){
+
+        for (Continente c:todosLosContinentes){
+            if(this.esDueño(c)){
+                this.continentes.add(c);
+            }
+        }
+
+        return this.continentes;
+    }
+
+    public String printContinentes(){
+        String cont = "";
+        for (int i=0;i<this.continentes.size();i++) {
+            if(i == 0){
+                cont += "[ " + continentes.get(i).printNombre() + ",\n ";
+            }else if(i==(continentes.size())-1){
+                cont += "\t   " + continentes.get(i).printNombre() + "\n\t  ]";
+            }else{
+                cont += "\t   " + continentes.get(i).printNombre() + ",\n";
+            }
+        }
+        return cont;
+    }
+
 
 }

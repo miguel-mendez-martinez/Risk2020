@@ -149,4 +149,9 @@ public class Continente {
     }
 
 
+    public String printNombre(){
+        String texto = "\"" + this.nombre + "\"";
+        return texto;
+    }
+
 }
