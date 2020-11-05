@@ -627,6 +627,7 @@ public class Menu {
             System.out.println(jugador.printColorNom());
             Salida salida = new Salida();
             salida.imprimirArchivo(jugador.printColorNom());
+            jugador.setAllContinentes(continentes);
             //utilizamos el metodo que solo imprime nombre y color
         }else{
             for (int i=0;i<jugadores.size();i++) {
@@ -648,6 +649,7 @@ public class Menu {
                     System.out.println(jugador.printColorNom());
                     Salida salida = new Salida();
                     salida.imprimirArchivo(jugador.printColorNom());
+                jugador.setAllContinentes(continentes);
                 }
         }
     }

@@ -21,13 +21,14 @@ public class Jugador {
     private int ejercitos_disponibles;
     private ArrayList<Pais> paises;
     private ArrayList<Continente> continentes;
+    private ArrayList<Continente> allContinentes;
     private Mision mision;
     private int ejerRearme;
     // Constructores
     public Jugador(){
         
     }
-    
+
     public Jugador(String nombre){
         this.nombre= nombre;
         this.color= "rojo";
@@ -91,6 +92,10 @@ public class Jugador {
     
     public void setPaises(Pais pais){
         this.paises.add(pais);
+    }
+
+    public void setAllContinentes(ArrayList<Continente> allContinentes) {
+        this.allContinentes = allContinentes;
     }
 
     public String printColorNom(){
@@ -166,9 +171,9 @@ public class Jugador {
         return flag;
     }
 
-    public ArrayList<Continente> continentesJugador(ArrayList<Continente> todosLosContinentes){
+    public ArrayList<Continente> continentesJugador(ArrayList<Continente> allContinentes){
 
-        for (Continente c:todosLosContinentes){
+        for (Continente c:allContinentes){
             if(this.esDueño(c)){
                 this.continentes.add(c);
             }
