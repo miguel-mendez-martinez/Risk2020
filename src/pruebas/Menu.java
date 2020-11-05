@@ -747,144 +747,146 @@ public class Menu {
     }
     public void repartirEjercitos(){
 
-        Jugador jugadorMenosFronteras = new Jugador(); // jugador que tiene mas paises en el continente con menos fronteras
-        Continente masPaisesOcupados = new Continente();
-        Continente menosFronteras = new Continente();
-        ArrayList<Continente> contCumpR1 = new ArrayList<>(); // continentes que cumplen la condicion R!
-        ArrayList<Jugador> jugCumpR1 = new ArrayList<>();
-        ArrayList<Continente> mismoPorcPaisOc = new ArrayList<>();
-        ArrayList<Jugador> jMismoPorcPaisOc = new ArrayList<>();// continentes con el mismo porcentaje de paises ocupados
-        int numJugadores;
-        numJugadores = contarJugadores(this.jugadores);
-        int numPaisesJugEnC = 0; // numero de paises que tiene un jugador en cada continete
-        Jugador jugador = new Jugador(); // jugador al que se le asignan ejercitos
+            Jugador jugadorMenosFronteras = new Jugador(); // jugador que tiene mas paises en el continente con menos fronteras
+            Continente masPaisesOcupados = new Continente();
+            Continente menosFronteras = new Continente();
+            ArrayList<Continente> contCumpR1 = new ArrayList<>(); // continentes que cumplen la condicion R!
+            ArrayList<Jugador> jugCumpR1 = new ArrayList<>();
+            ArrayList<Continente> mismoPorcPaisOc = new ArrayList<>();
+            ArrayList<Jugador> jMismoPorcPaisOc = new ArrayList<>();// continentes con el mismo porcentaje de paises ocupados
+            int numJugadores;
+            numJugadores = contarJugadores(this.jugadores);
+            int numPaisesJugEnC = 0; // numero de paises que tiene un jugador en cada continete
+            Jugador jugador = new Jugador(); // jugador al que se le asignan ejercitos
 
-        // Asignar numero de tropas que tendrá cada jugador en funcion del numero de jugadores
-        switch (numJugadores){
+            // Asignar numero de tropas que tendrá cada jugador en funcion del numero de jugadores
+            switch (numJugadores){
 
-            case 3:
-                for (Jugador j: jugadores){
-                    j.setTropas(35);
-                    j.setEjercitos_disponibles(35);
-                }
-                break;
+                case 3:
+                    for (Jugador j: jugadores){
+                        j.setTropas(35);
+                        j.setEjercitos_disponibles(35);
+                    }
+                    break;
 
-            case 4:
-                for (Jugador j: jugadores){
-                    j.setTropas(30);
-                    j.setEjercitos_disponibles(30);
-                }
-                break;
+                case 4:
+                    for (Jugador j: jugadores){
+                        j.setTropas(30);
+                        j.setEjercitos_disponibles(30);
+                    }
+                    break;
 
-            case 5:
-                for (Jugador j: jugadores){
-                    j.setTropas(25);
-                    j.setEjercitos_disponibles(25);
-                }
-                break;
+                case 5:
+                    for (Jugador j: jugadores){
+                        j.setTropas(25);
+                        j.setEjercitos_disponibles(25);
+                    }
+                    break;
 
-            case 6:
-                for (Jugador j: jugadores){
-                    j.setTropas(20);
-                    j.setEjercitos_disponibles(20);
-                }
-                break;
+                case 6:
+                    for (Jugador j: jugadores){
+                        j.setTropas(20);
+                        j.setEjercitos_disponibles(20);
+                    }
+                    break;
 
-        }
-
-        // Asignar un ejercito a cada pais:
-        for(Pais p:paises){
-            p.setEjercitos(1);
-            p.getJugador().setEjercitos_disponibles(p.getJugador().getTropas() - 1); // se le resta 1 a los ejercitos disponibles del jugador al que pertenece ese pais
-        }
-
-        // R1
-
-        for(Continente c:continentes) {
-            for (Jugador j : jugadores) {
-                numPaisesJugEnC = j.calcularNumPaisesEnC(c);
-                if (numPaisesJugEnC > (c.getNumPaises() / 2)) { // Mismo jugador tiene mas de la mitad de los paises de un continente
-                    contCumpR1.add(c); // Se añade continente
-                    jugCumpR1.add(j);
-                }
             }
-        }
 
-        if(contCumpR1.size() == 1){ // Solo un continente cumple la condicion
-            for (Pais p:contCumpR1.get(0).getPaises()) { // en cada pais del continente se asigna el dato dado en el enunciado
-                if (p.getJugador().equals(jugCumpR1.get(0))) {
-                    if (contCumpR1.get(0).getNombre().equals("Oceanía") || contCumpR1.get(0).getNombre().equals("Asur")) { // Cambia 1.5 o 1 dependiendo del continente
-                        p.addEjercitos((int) (jugCumpR1.get(0).getEjercitos_disponibles() / (1.5 * numPaisesJugEnC)));
-                        jugCumpR1.get(0).setEjercitos_disponibles(jugCumpR1.get(0).getEjercitos_disponibles() - ((int) (jugCumpR1.get(0).getEjercitos_disponibles() / (1.5 * numPaisesJugEnC))));
-                    } else {
-                        p.addEjercitos((int) (jugCumpR1.get(0).getEjercitos_disponibles() / (1 * numPaisesJugEnC)));
-                        jugCumpR1.get(0).setEjercitos_disponibles(jugCumpR1.get(0).getEjercitos_disponibles() - ((int) (jugCumpR1.get(0).getEjercitos_disponibles() / (1 * numPaisesJugEnC))));
+            // Asignar un ejercito a cada pais:
+            for(Pais p:paises){
+                p.setEjercitos(1);
+                p.getJugador().setEjercitos_disponibles(p.getJugador().getTropas() - 1); // se le resta 1 a los ejercitos disponibles del jugador al que pertenece ese pais
+            }
+
+            // R1
+
+            for(Continente c:continentes) {
+                for (Jugador j : jugadores) {
+                    numPaisesJugEnC = j.calcularNumPaisesEnC(c);
+                    if (numPaisesJugEnC > (c.getNumPaises() / 2)) { // Mismo jugador tiene mas de la mitad de los paises de un continente
+                        contCumpR1.add(c); // Se añade continente
+                        jugCumpR1.add(j);
                     }
                 }
+            }
 
-            }
-        }else if(contCumpR1.size() > 1){ // mas de 1 continente cumple r1
-
-            for(int i=0; i<contCumpR1.size(); i++){
-                if(i==0)  masPaisesOcupados = contCumpR1.get(i); // Primera iteracion
-                if(contCumpR1.get(i).porcentajePaisesOcupados() > masPaisesOcupados.porcentajePaisesOcupados()){
-                    masPaisesOcupados = contCumpR1.get(i); // Si el siguiente continente de la lista tiene mas porcentaje de paises asignados este es el nuevo que mas tiene
-                }
-            }
-            mismoPorcPaisOc.add(masPaisesOcupados);
-            for(int i=0; i < contCumpR1.size(); i++){ // Hay que comprobar si hay varios con el mismo porcentaje de ocupados
-                if(contCumpR1.get(i).porcentajePaisesOcupados() == masPaisesOcupados.porcentajePaisesOcupados()){
-                    mismoPorcPaisOc.add(contCumpR1.get(i));
-                    jMismoPorcPaisOc.add(jugCumpR1.get(i)); // Se guarda el jugador que cumple R1 para el conttiennte cumple r1
-                }
-            }
-            if(mismoPorcPaisOc.size()==1){ // Asignar ejercitos al continente que tiene el mayor porcentaje de paises ocupados
-                for (Pais p:mismoPorcPaisOc.get(0).getPaises()) { // recorremos paises de ese continente
-                    if (p.getJugador().equals(jMismoPorcPaisOc.get(0))) { // Si el jugador del pais es el mismo que el jugador que cumple la condicion de continetnte
-                        if (mismoPorcPaisOc.get(0).getNombre().equals("Oceanía") || mismoPorcPaisOc.get(0).getNombre().equals("Asur")) { // Cambia 1.5 o 1 dependiendo del continente
-                            p.addEjercitos((int) (jMismoPorcPaisOc.get(0).getEjercitos_disponibles() / (1.5 * numPaisesJugEnC)));
-                            jMismoPorcPaisOc.get(0).setEjercitos_disponibles(jMismoPorcPaisOc.get(0).getEjercitos_disponibles() - ((int) (jMismoPorcPaisOc.get(0).getEjercitos_disponibles() / (1.5 * numPaisesJugEnC))));
+            if(contCumpR1.size() == 1){ // Solo un continente cumple la condicion
+                for (Pais p:contCumpR1.get(0).getPaises()) { // en cada pais del continente se asigna el dato dado en el enunciado
+                    if (p.getJugador().equals(jugCumpR1.get(0))) {
+                        if (contCumpR1.get(0).getNombre().equals("Oceanía") || contCumpR1.get(0).getNombre().equals("Asur")) { // Cambia 1.5 o 1 dependiendo del continente
+                            p.addEjercitos((int) (jugCumpR1.get(0).getEjercitos_disponibles() / (1.5 * numPaisesJugEnC)));
+                            jugCumpR1.get(0).setEjercitos_disponibles(jugCumpR1.get(0).getEjercitos_disponibles() - ((int) (jugCumpR1.get(0).getEjercitos_disponibles() / (1.5 * numPaisesJugEnC))));
                         } else {
-                            p.addEjercitos((int) (jMismoPorcPaisOc.get(0).getEjercitos_disponibles() / (1 * numPaisesJugEnC)));
-                            jMismoPorcPaisOc.get(0).setEjercitos_disponibles(jMismoPorcPaisOc.get(0).getEjercitos_disponibles() - ((int) (jMismoPorcPaisOc.get(0).getEjercitos_disponibles() / (1 * numPaisesJugEnC))));
+                            p.addEjercitos((int) (jugCumpR1.get(0).getEjercitos_disponibles() / (1 * numPaisesJugEnC)));
+                            jugCumpR1.get(0).setEjercitos_disponibles(jugCumpR1.get(0).getEjercitos_disponibles() - ((int) (jugCumpR1.get(0).getEjercitos_disponibles() / (1 * numPaisesJugEnC))));
                         }
                     }
+
                 }
+            }else if(contCumpR1.size() > 1){ // mas de 1 continente cumple r1
 
-
-            }else if (mismoPorcPaisOc.size()>1){ // Si hay varios con el mismo porcentaje de asignados hay que comprobar fronteras
-
-                for(int i=0; i<mismoPorcPaisOc.size(); i++){
-                    if(i==0){
-                        menosFronteras = mismoPorcPaisOc.get(i); // Primera iteracion
-                        jugadorMenosFronteras = jMismoPorcPaisOc.get(i);
-                    }
-                    if(mismoPorcPaisOc.get(i).fronterasContinente() < menosFronteras.fronterasContinente()){
-                        menosFronteras = mismoPorcPaisOc.get(i); // Si el siguiente continente de la lista tiene menos fronteras este es el nuevo que menos tiene
-                        jugadorMenosFronteras = jMismoPorcPaisOc.get(i);
+                for(int i=0; i<contCumpR1.size(); i++){
+                    if(i==0)  masPaisesOcupados = contCumpR1.get(i); // Primera iteracion
+                    if(contCumpR1.get(i).porcentajePaisesOcupados() > masPaisesOcupados.porcentajePaisesOcupados()){
+                        masPaisesOcupados = contCumpR1.get(i); // Si el siguiente continente de la lista tiene mas porcentaje de paises asignados este es el nuevo que mas tiene
                     }
                 }
-
-                // Asignar ejercitos al pais que menos fronteras tiene
-                for (Pais p:menosFronteras.getPaises()) { // recorremos paises de ese continente
-                    if (p.getJugador().equals(jugadorMenosFronteras)) { // Si el jugador del pais es el mismo que el jugador que cumple la condicion de continetnte
-                        if (menosFronteras.getNombre().equals("Oceanía") || menosFronteras.getNombre().equals("Asur")) { // Cambia 1.5 o 1 dependiendo del continente
-                            p.addEjercitos((int) (jugadorMenosFronteras.getEjercitos_disponibles() / (1.5 * numPaisesJugEnC)));
-                            jugadorMenosFronteras.setEjercitos_disponibles(jugadorMenosFronteras.getEjercitos_disponibles() - ((int) (jugadorMenosFronteras.getEjercitos_disponibles() / (1.5 * numPaisesJugEnC))));
-                        } else {
-                            p.addEjercitos((int) (jugadorMenosFronteras.getEjercitos_disponibles() / (1 * numPaisesJugEnC)));
-                            jugadorMenosFronteras.setEjercitos_disponibles(jugadorMenosFronteras.getEjercitos_disponibles() - ((int) (jugadorMenosFronteras.getEjercitos_disponibles() / (1 * numPaisesJugEnC))));
+                mismoPorcPaisOc.add(masPaisesOcupados);
+                for(int i=0; i < contCumpR1.size(); i++){ // Hay que comprobar si hay varios con el mismo porcentaje de ocupados
+                    if(contCumpR1.get(i).porcentajePaisesOcupados() == masPaisesOcupados.porcentajePaisesOcupados()){
+                        mismoPorcPaisOc.add(contCumpR1.get(i));
+                        jMismoPorcPaisOc.add(jugCumpR1.get(i)); // Se guarda el jugador que cumple R1 para el conttiennte cumple r1
+                    }
+                }
+                if(mismoPorcPaisOc.size()==1){ // Asignar ejercitos al continente que tiene el mayor porcentaje de paises ocupados
+                    for (Pais p:mismoPorcPaisOc.get(0).getPaises()) { // recorremos paises de ese continente
+                        if (p.getJugador().equals(jMismoPorcPaisOc.get(0))) { // Si el jugador del pais es el mismo que el jugador que cumple la condicion de continetnte
+                            if (mismoPorcPaisOc.get(0).getNombre().equals("Oceanía") || mismoPorcPaisOc.get(0).getNombre().equals("Asur")) { // Cambia 1.5 o 1 dependiendo del continente
+                                p.addEjercitos((int) (jMismoPorcPaisOc.get(0).getEjercitos_disponibles() / (1.5 * numPaisesJugEnC)));
+                                jMismoPorcPaisOc.get(0).setEjercitos_disponibles(jMismoPorcPaisOc.get(0).getEjercitos_disponibles() - ((int) (jMismoPorcPaisOc.get(0).getEjercitos_disponibles() / (1.5 * numPaisesJugEnC))));
+                            } else {
+                                p.addEjercitos((int) (jMismoPorcPaisOc.get(0).getEjercitos_disponibles() / (1 * numPaisesJugEnC)));
+                                jMismoPorcPaisOc.get(0).setEjercitos_disponibles(jMismoPorcPaisOc.get(0).getEjercitos_disponibles() - ((int) (jMismoPorcPaisOc.get(0).getEjercitos_disponibles() / (1 * numPaisesJugEnC))));
+                            }
                         }
                     }
+
+
+                }else if (mismoPorcPaisOc.size()>1){ // Si hay varios con el mismo porcentaje de asignados hay que comprobar fronteras
+
+                    for(int i=0; i<mismoPorcPaisOc.size(); i++){
+                        if(i==0){
+                            menosFronteras = mismoPorcPaisOc.get(i); // Primera iteracion
+                            jugadorMenosFronteras = jMismoPorcPaisOc.get(i);
+                        }
+                        if(mismoPorcPaisOc.get(i).fronterasContinente() < menosFronteras.fronterasContinente()){
+                            menosFronteras = mismoPorcPaisOc.get(i); // Si el siguiente continente de la lista tiene menos fronteras este es el nuevo que menos tiene
+                            jugadorMenosFronteras = jMismoPorcPaisOc.get(i);
+                        }
+                    }
+
+                    // Asignar ejercitos al pais que menos fronteras tiene
+                    for (Pais p:menosFronteras.getPaises()) { // recorremos paises de ese continente
+                        if (p.getJugador().equals(jugadorMenosFronteras)) { // Si el jugador del pais es el mismo que el jugador que cumple la condicion de continetnte
+                            if (menosFronteras.getNombre().equals("Oceanía") || menosFronteras.getNombre().equals("Asur")) { // Cambia 1.5 o 1 dependiendo del continente
+                                p.addEjercitos((int) (jugadorMenosFronteras.getEjercitos_disponibles() / (1.5 * numPaisesJugEnC)));
+                                jugadorMenosFronteras.setEjercitos_disponibles(jugadorMenosFronteras.getEjercitos_disponibles() - ((int) (jugadorMenosFronteras.getEjercitos_disponibles() / (1.5 * numPaisesJugEnC))));
+                            } else {
+                                p.addEjercitos((int) (jugadorMenosFronteras.getEjercitos_disponibles() / (1 * numPaisesJugEnC)));
+                                jugadorMenosFronteras.setEjercitos_disponibles(jugadorMenosFronteras.getEjercitos_disponibles() - ((int) (jugadorMenosFronteras.getEjercitos_disponibles() / (1 * numPaisesJugEnC))));
+                            }
+                        }
+                    }
+
+
+
+
+
+
                 }
-
-
-
-
-
-
             }
-        }
 
+        }
     }
-}
+
+

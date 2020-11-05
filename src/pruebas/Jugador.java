@@ -155,4 +155,15 @@ public class Jugador {
         }
         return contador;
     }
+
+    public boolean esDueño(Continente continente){
+
+        boolean flag = true; // Por defecto es dueño de todo el continente
+        for(Pais p:continente.getPaises()){
+            if(!p.getJugador().equals(this)) flag = false; // Si el jugador de un pais es distinto a this entonces this no tiene todo el continente
+        }
+
+        return flag;
+    }
+
 }
