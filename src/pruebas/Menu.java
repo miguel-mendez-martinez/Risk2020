@@ -156,6 +156,7 @@ public class Menu {
                         break;
                     case "jugador":
                         //esto es describir toda la mierda del jugador del turno actual
+                        //this.jugadorActual.continentesJugador(this.continentes);
                         System.out.println(this.jugadorActual);
                         Salida x = new Salida();
                         x.imprimirArchivo(this.jugadorActual.toString());
@@ -164,6 +165,7 @@ public class Menu {
                         if(partes[1].equals("jugador")){
                             //descripcion del jugador
                             Jugador jugador = existeJugador(this.jugadores, partes[2]);
+                            //jugador.continentesJugador(this.continentes);
                             System.out.println(jugador);
                             Salida salida = new Salida();
                             salida.imprimirArchivo(jugador.toString());
@@ -211,6 +213,7 @@ public class Menu {
                                 }else{
                                     if(partes[1].equals("misiones")){
                                         asignarMisiones(new File(partes[2]));
+                                        
                                         if(checker < 3){
                                             checker = 3;
                                         }
@@ -229,6 +232,9 @@ public class Menu {
                                 }
                                 else{
                                     asignarPaises(new File(partes[2]));
+                                    for(Jugador j: this.jugadores){
+                                        j.continentesJugador(this.continentes);
+                                    }
                                     if(checker < 4){
                                             checker = 4;
                                         }
@@ -252,6 +258,9 @@ public class Menu {
                                     }else{
                                         if(checker >= 3){
                                             asignarPaises(partes[1], partes[2]);
+                                            for(Jugador j: this.jugadores){
+                                                j.continentesJugador(this.continentes);
+                                            }
                                         }else{
                                             Salida error = new Salida(118);
                                             System.out.println(error.toString());

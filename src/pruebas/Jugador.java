@@ -171,18 +171,17 @@ public class Jugador {
         return flag;
     }
 
-    public ArrayList<Continente> continentesJugador(ArrayList<Continente> allContinentes){
+    public void continentesJugador(ArrayList<Continente> allContinentes){
 
         for (Continente c:allContinentes){
-            if(this.esDueño(c)){
+            if(this.esDueño(c) == true){
                 this.continentes.add(c);
             }
         }
-
-        return this.continentes;
     }
 
     public String printContinentes(){
+        
         String cont = "";
         for (int i=0;i<this.continentes.size();i++) {
             if(i == 0){
