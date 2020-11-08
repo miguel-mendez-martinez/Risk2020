@@ -43,6 +43,7 @@ public class Menu {
         int checker = 0;
         String orden= null;
         BufferedReader bufferLector= null;
+        this.jugadorActual = null;
         //Jugador jugadorActual = new Jugador();
         
         //debemos ver si ya existe un fichero salida y eliminarlo si lo hace, ya que si existe escribiremos en el y tendremos las salidas de ejecuciones distintas en el mismo archivo
@@ -156,10 +157,15 @@ public class Menu {
                         break;
                     case "jugador":
                         //esto es describir toda la mierda del jugador del turno actual
-                        //this.jugadorActual.continentesJugador(this.continentes);
-                        System.out.println(this.jugadorActual);
-                        Salida x = new Salida();
-                        x.imprimirArchivo(this.jugadorActual.toString());
+                        if(this.jugadorActual == null){
+                            Salida error = new Salida(99);
+                            System.out.println(error.toString());
+                        }else{
+                            System.out.println(this.jugadorActual);
+                            Salida x = new Salida();
+                            x.imprimirArchivo(this.jugadorActual.toString());
+                        }
+                        
                         break;
                     case "describir":
                         if(partes[1].equals("jugador")){
@@ -199,6 +205,15 @@ public class Menu {
                         }else{
                             Salida error = new Salida(99);
                             System.out.println(error.toString());
+                        }
+                        break;
+                    case "cambiar":
+                        if(this.jugadorActual == null){
+                            Salida error = new Salida(99);
+                            System.out.println(error.toString());
+                        }else{
+                            //aqui se haria la mierda de cartas de cambias todas o cambiar alguna por tropas
+                            //se hace aqui al jugador actual que es quien marca los turnos
                         }
                         break;
                     case "asignar":
@@ -242,6 +257,14 @@ public class Menu {
                             }else{
                                 Salida error = new Salida(118);
                                 System.out.println(error.toString());
+                            }
+                        }else if(partes[2].equals("carta")){
+                            //se le asigna a jugador actual una carta
+                            if(this.jugadorActual == null){
+                                Salida error = new Salida(99);
+                                System.out.println(error.toString());
+                            }else{
+                                //asignas una carta al jugador actual que tendra el turno
                             }
                         }else if(partes[2].charAt(0) == 'M'){
                             //Estas operaciones por ahora no cambian el checker ya que no asignan cosas a todos los jugadores
@@ -304,6 +327,8 @@ public class Menu {
                         }
                         break;
                     case "repartir":
+                        
+                        //en cuanto repartamos ejercitos, debe crearse un nuevo jugador actual, ese sera el que tiene el turno en ese momentoy el que ejecutara los comandos 
                         if(checker >= 4){
                             if(checker > 5){
                                 Salida error = new Salida(99);
@@ -312,8 +337,11 @@ public class Menu {
                                 if(partes[2] == null){
                                     //auto, esta es la importante parra empezar la partida, deben estar repartidos entre los paises pa empezar todo
                                     checker = 5;
+                                    this.jugadorActual = this.jugadores.get(0);
                                 }else{
                                     repartirEjercitos(partes[2], partes[3]);
+                                    this.jugadorActual = this.jugadores.get(0);
+                                    //a partir de aqui es cuando comienzan los turnos
                                     checker = 5;
                                 }
                             }
