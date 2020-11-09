@@ -21,6 +21,7 @@ public class Jugador {
     private int ejercitos_disponibles;
     private ArrayList<Pais> paises;
     private ArrayList<Continente> continentes;
+    private ArrayList<Cartas> cartas;
     private ArrayList<Continente> allContinentes;
     private Mision mision;
     private int ejerRearme;
@@ -39,6 +40,7 @@ public class Jugador {
         this.color= color;
         this.paises = new ArrayList<>();
         this.continentes = new ArrayList<>();
+        this.cartas = new ArrayList<>();
         this.mision = null; //este valor lo usaremos para comprobar a la hora de asignarle una mision
         this.ejerRearme = 0;
     }
@@ -93,6 +95,10 @@ public class Jugador {
     public void setPaises(Pais pais){
         this.paises.add(pais);
     }
+    
+    public void setCartas(Cartas carta){
+        this.cartas.add(carta);
+    }
 
     public void setAllContinentes(ArrayList<Continente> allContinentes) {
         this.allContinentes = allContinentes;
@@ -129,24 +135,36 @@ public class Jugador {
         return texto;
     }
     public String printPaises(){
-        String paisCont = "";
-        for (int i=0;i<paises.size();i++) {
+        String paisJug = "";
+        for (int i=0;i<this.paises.size();i++) {
             if(i == 0){
-                paisCont += "[ " + paises.get(i).printNombre() + ",\n ";
-            }else if(i==(paises.size())-1){
-                paisCont += "\t   " + paises.get(i).printNombre() + "\n\t  ]";
+                paisJug += "[ " + this.paises.get(i).printNombre() + ",\n ";
+            }else if(i==(this.paises.size())-1){
+                paisJug += "\t   " + this.paises.get(i).printNombre() + "\n\t  ]";
             }else{
-                paisCont += "\t   " + paises.get(i).printNombre() + ",\n";
+                paisJug += "\t   " + this.paises.get(i).printNombre() + ",\n";
             }
         }
-        return paisCont;
+        return paisJug;
+    }
+    public String printCartas(){
+        String cartaJug = "";
+        for (int i=0;i<this.cartas.size();i++) {
+            if(i == 0){
+                cartaJug += "[ " + this.cartas.get(i).printCarta();
+            }else{
+                cartaJug +=  ", " + this.cartas.get(i).printCarta() + ", ";
+            }
+        }
+        cartaJug += " ]";
+        return cartaJug;
     }
     @Override
     public String toString(){
         String texto = "{\n nombre: " + this.printNombre() + ",\n color: " + 
                 this.prinColor() + ",\n mision: " + this.mision.printDesc() + 
                 ",\n numeroEjercitos: " + this.tropas + ",\n paises: " + this.printPaises()
-                + ",\n continentes: " + printContinentes() + ",\n cartas: " + ",\n numeroEjercitosRearmar: " + this.ejerRearme + "\n}";
+                + ",\n continentes: " + printContinentes() + ",\n cartas: " + this.printCartas() + ",\n numeroEjercitosRearmar: " + this.ejerRearme + "\n}";
         return texto;
     }
 

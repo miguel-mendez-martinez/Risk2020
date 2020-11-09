@@ -120,16 +120,16 @@ public class Menu {
                                         crearJugador(new File(partes[2]));
                                         //en cuanto creamos un jugador o varios, el actual será siempre el primero se añadan los que se añadan
                                         
-                                        int i=0;
-                                        this.jugadorActual = this.jugadores.get(i);
+                                        /*int i=0;
+                                        this.jugadorActual = this.jugadores.get(i);*/
                                         if(checker < 2){
                                             checker = 2;
                                         }
                                     } else {
                                         crearJugador(partes[1], partes[2]);
                                         //idem arriba
-                                        int i=0;
-                                        this.jugadorActual = this.jugadores.get(i);
+                                        /*int i=0;
+                                        this.jugadorActual = this.jugadores.get(i);*/
                                         if(checker < 2){
                                             checker = 2;
                                         }
@@ -197,7 +197,8 @@ public class Menu {
                     case "acabar":
                         if(checker >= 5){
                             this.jugadorActual = this.t.pasarTurno(this.jugadorActual);
-                            this.jugadorActual.printNomEjerR();
+                            Cartas carta = new Cartas(this.paises);
+                            this.jugadorActual.setCartas(carta);
                             System.out.println(this.jugadorActual.printNomEjerR());
                             Salida salida = new Salida();
                             salida.imprimirArchivo(this.jugadorActual.printNomEjerR());
@@ -263,7 +264,9 @@ public class Menu {
                             if(this.jugadorActual == null){
                                 Salida error = new Salida(99);
                                 System.out.println(error.toString());
+                                
                             }else{
+                                
                                 //asignas una carta al jugador actual que tendra el turno
                             }
                         }else if(partes[2].charAt(0) == 'M'){
