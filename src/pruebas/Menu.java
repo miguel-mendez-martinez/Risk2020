@@ -784,6 +784,16 @@ public class Menu {
     }
     public void repartirEjercitos(){
 
+            int ejercitosDisponibles = 0;
+            boolean hayEjercitos = false;
+            Boolean R1 = false;
+            Boolean R2 = false;
+            Boolean R3 = false;
+            Boolean R4 = false;
+            Boolean R5 = false;
+            Boolean R6 = false;
+            Boolean R7 = false;
+            Boolean R8 = false;
             Jugador jugadorMenosFronteras = new Jugador(); // jugador que tiene mas paises en el continente con menos fronteras
             Continente masPaisesOcupados = new Continente();
             Continente menosFronteras = new Continente();
@@ -853,13 +863,16 @@ public class Menu {
                         if (contCumpR1.get(0).getNombre().equals("Oceanía") || contCumpR1.get(0).getNombre().equals("Asur")) { // Cambia 1.5 o 1 dependiendo del continente
                             p.addEjercitos((int) (jugCumpR1.get(0).getEjercitos_disponibles() / (1.5 * numPaisesJugEnC)));
                             jugCumpR1.get(0).setEjercitos_disponibles(jugCumpR1.get(0).getEjercitos_disponibles() - ((int) (jugCumpR1.get(0).getEjercitos_disponibles() / (1.5 * numPaisesJugEnC))));
+                            R1 = true;
                         } else {
                             p.addEjercitos((int) (jugCumpR1.get(0).getEjercitos_disponibles() / (1 * numPaisesJugEnC)));
                             jugCumpR1.get(0).setEjercitos_disponibles(jugCumpR1.get(0).getEjercitos_disponibles() - ((int) (jugCumpR1.get(0).getEjercitos_disponibles() / (1 * numPaisesJugEnC))));
+                            R1 = true;
                         }
                     }
 
                 }
+                // R2
             }else if(contCumpR1.size() > 1){ // mas de 1 continente cumple r1
 
                 for(int i=0; i<contCumpR1.size(); i++){
@@ -881,9 +894,11 @@ public class Menu {
                             if (mismoPorcPaisOc.get(0).getNombre().equals("Oceanía") || mismoPorcPaisOc.get(0).getNombre().equals("Asur")) { // Cambia 1.5 o 1 dependiendo del continente
                                 p.addEjercitos((int) (jMismoPorcPaisOc.get(0).getEjercitos_disponibles() / (1.5 * numPaisesJugEnC)));
                                 jMismoPorcPaisOc.get(0).setEjercitos_disponibles(jMismoPorcPaisOc.get(0).getEjercitos_disponibles() - ((int) (jMismoPorcPaisOc.get(0).getEjercitos_disponibles() / (1.5 * numPaisesJugEnC))));
+                                R2 = true;
                             } else {
                                 p.addEjercitos((int) (jMismoPorcPaisOc.get(0).getEjercitos_disponibles() / (1 * numPaisesJugEnC)));
                                 jMismoPorcPaisOc.get(0).setEjercitos_disponibles(jMismoPorcPaisOc.get(0).getEjercitos_disponibles() - ((int) (jMismoPorcPaisOc.get(0).getEjercitos_disponibles() / (1 * numPaisesJugEnC))));
+                                R2 = true;
                             }
                         }
                     }
@@ -908,20 +923,36 @@ public class Menu {
                             if (menosFronteras.getNombre().equals("Oceanía") || menosFronteras.getNombre().equals("Asur")) { // Cambia 1.5 o 1 dependiendo del continente
                                 p.addEjercitos((int) (jugadorMenosFronteras.getEjercitos_disponibles() / (1.5 * numPaisesJugEnC)));
                                 jugadorMenosFronteras.setEjercitos_disponibles(jugadorMenosFronteras.getEjercitos_disponibles() - ((int) (jugadorMenosFronteras.getEjercitos_disponibles() / (1.5 * numPaisesJugEnC))));
+                                R2 = true;
                             } else {
                                 p.addEjercitos((int) (jugadorMenosFronteras.getEjercitos_disponibles() / (1 * numPaisesJugEnC)));
                                 jugadorMenosFronteras.setEjercitos_disponibles(jugadorMenosFronteras.getEjercitos_disponibles() - ((int) (jugadorMenosFronteras.getEjercitos_disponibles() / (1 * numPaisesJugEnC))));
+                                R2 = true;
                             }
                         }
                     }
-
-
-
-
-
-
                 }
             }
+            // R3
+        for(Jugador j:jugadores){
+            if(j.getEjercitos_disponibles() > 0){
+                hayEjercitos = true;
+                ejercitosDisponibles++;
+            }
+        }
+        // AHora si R3
+        if((R1 || R2) && hayEjercitos){
+
+            int paisesUnEjercito = 0;
+            for (Pais p:paises){
+                if(p.getEjercitos() == 1) paisesUnEjercito++;
+            }
+
+            if(paisesUnEjercito < ejercitosDisponibles){
+
+                for;
+            }
+        }
 
         }
     }
