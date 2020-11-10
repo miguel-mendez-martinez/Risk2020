@@ -29,6 +29,7 @@ public class Turno {
     
     public Jugador pasarTurno(Jugador jugador){
         int i;
+        
         for(i=0; i<this.jugadores.size(); i++){
             if(jugador.getNombre().equals(this.jugadores.get(i).getNombre())){
                 break;

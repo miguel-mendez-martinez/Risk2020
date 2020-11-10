@@ -950,7 +950,7 @@ public class Menu {
 
             if(paisesUnEjercito < ejercitosDisponibles){
 
-                for;
+                //for;
             }
         }
 
