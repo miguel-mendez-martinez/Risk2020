@@ -116,11 +116,11 @@ public class Continente {
         String paisCont = "";
         for (int i=0;i<paises.size();i++) {
             if(i == 0){
-                paisCont += "[ { " + paises.get(i).printNombre() + "," + paises.get(i).getEjercitos() + " },\n";
+                paisCont += "[ { " + paises.get(i).printNombre() + "," + paises.get(i).getEjercitos() + " }";
             }else if(i==(paises.size())-1){
-                paisCont += "\t\t\t     { " + paises.get(i).printNombre() + "," + paises.get(i).getEjercitos() + " }\n\t\t\t    ]";
+                paisCont += ", { " + paises.get(i).printNombre() + "," + paises.get(i).getEjercitos() + " } ]";
             }else{
-                paisCont += "\t\t\t     { " + paises.get(i).printNombre() + "," + paises.get(i).getEjercitos() + " },\n";
+                paisCont += ", { " + paises.get(i).printNombre() + "," + paises.get(i).getEjercitos() + " }";
             }
         }
         return paisCont;

@@ -13,10 +13,13 @@ import java.util.ArrayList;
  */
 public class Turno {
     private ArrayList<Jugador> jugadores;
+    private ArrayList<Pais> paises;
     
     
-    public Turno(){
+    public Turno(ArrayList<Pais> paisesMundo){
         this.jugadores = new ArrayList<>();
+        //this.paises = new ArrayList<>();
+        this.paises = paisesMundo;
     }
     
     public void addJugador(Jugador jugador){
@@ -29,12 +32,16 @@ public class Turno {
     
     public Jugador pasarTurno(Jugador jugador){
         int i;
-        
         for(i=0; i<this.jugadores.size(); i++){
             if(jugador.getNombre().equals(this.jugadores.get(i).getNombre())){
                 break;
             }
         }
+        /*if(flag == 1){
+            //el jugador a conquistado, le damos carta y pasamos turno
+            Cartas carta = new Cartas(this.paises);
+            this.jugadores.get(i).setCartas(carta);
+        }*/
         i++;
         return this.jugadores.get(i);
         

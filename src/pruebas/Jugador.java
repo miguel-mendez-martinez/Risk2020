@@ -136,27 +136,35 @@ public class Jugador {
     }
     public String printPaises(){
         String paisJug = "";
-        for (int i=0;i<this.paises.size();i++) {
-            if(i == 0){
-                paisJug += "[ " + this.paises.get(i).printNombre() + ",\n ";
-            }else if(i==(this.paises.size())-1){
-                paisJug += "\t   " + this.paises.get(i).printNombre() + "\n\t  ]";
-            }else{
-                paisJug += "\t   " + this.paises.get(i).printNombre() + ",\n";
+        if(this.paises.isEmpty()){
+            paisJug = "[ ]";
+        }else{
+            for (int i=0;i<this.paises.size();i++) {
+                if(i == 0){
+                    paisJug += "[ " + this.paises.get(i).printNombre();
+                }else if(i==(this.paises.size())-1){
+                    paisJug += ", " + this.paises.get(i).printNombre() + " ]";
+                }else{
+                    paisJug += ", " + this.paises.get(i).printNombre();
+                }
             }
         }
         return paisJug;
     }
     public String printCartas(){
         String cartaJug = "";
-        for (int i=0;i<this.cartas.size();i++) {
-            if(i == 0){
-                cartaJug += "[ " + this.cartas.get(i).printCarta();
-            }else{
-                cartaJug +=  ", " + this.cartas.get(i).printCarta() + ", ";
+        if(this.cartas.isEmpty()){
+            cartaJug = "[ ]";
+        }else{
+            for (int i=0;i<this.cartas.size();i++) {
+                if(i == 0){
+                    cartaJug += "[ " + this.cartas.get(i).printCarta();
+                }else{
+                    cartaJug +=  ", " + this.cartas.get(i).printCarta();
+                }
             }
+            cartaJug += " ]";
         }
-        cartaJug += " ]";
         return cartaJug;
     }
     @Override
@@ -201,14 +209,17 @@ public class Jugador {
     public String printContinentes(){
         
         String cont = "";
-        for (int i=0;i<this.continentes.size();i++) {
-            if(i == 0){
-                cont += "[ " + continentes.get(i).printNombre() + ",\n ";
-            }else if(i==(continentes.size())-1){
-                cont += "\t   " + continentes.get(i).printNombre() + "\n\t  ]";
-            }else{
-                cont += "\t   " + continentes.get(i).printNombre() + ",\n";
+        if(this.continentes.isEmpty()){
+            cont = "[ ]";
+        }else{
+            for (int i=0;i<this.continentes.size();i++) {
+                if(i == 0){
+                    cont += "[ " + continentes.get(i).printNombre();
+                }else{
+                    cont += ", " + continentes.get(i).printNombre();
+                }
             }
+            cont += " ]";
         }
         return cont;
     }

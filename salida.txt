@@ -108,7 +108,7 @@ $> asignar Hooker Venezuela
 	nombre: Hooker
 	país: Venezuela
 	continente: América del Sur
-	frontera: [ "America Central", "Perú" ]
+	fronteras: [ "America Central", "Perú" ]
 }
 
 $> asignar Hooker Perú
@@ -116,7 +116,7 @@ $> asignar Hooker Perú
 	nombre: Hooker
 	país: Perú
 	continente: América del Sur
-	frontera: [ "Venezuela", "Argentina", "Brasil" ]
+	fronteras: [ "Venezuela", "Argentina", "Brasil" ]
 }
 
 $> asignar Hooker Argentina
@@ -124,7 +124,7 @@ $> asignar Hooker Argentina
 	nombre: Hooker
 	país: Argentina
 	continente: América del Sur
-	frontera: [ "Perú", 
+	fronteras: [ "Perú" ]
 }
 
 $> asignar Hooker Brasil
@@ -132,7 +132,7 @@ $> asignar Hooker Brasil
 	nombre: Hooker
 	país: Brasil
 	continente: América del Sur
-	frontera: [ "África del Norte", "Perú" ]
+	fronteras: [ "África del Norte", "Perú" ]
 }
 
 $> asignar paises asignaciones.csv
@@ -140,7 +140,7 @@ $> asignar paises asignaciones.csv
 	nombre: Gondorff
 	país: Alaska
 	continente: América del Norte
-	frontera: [ "Alberta", "Territorios del Noroeste", "Kamchatka" ]
+	fronteras: [ "Alberta", "Territorios del Noroeste", "Kamchatka" ]
 }
 {
  código de error: 103,
@@ -154,145 +154,145 @@ $> asignar paises asignaciones.csv
 	nombre: Gondorff
 	país: TNoroeste
 	continente: América del Norte
-	frontera: [ "Alaska", "Ontario", "Groenlandia" ]
+	fronteras: [ "Alaska", "Ontario", "Groenlandia" ]
 }
 {
 	nombre: Gondorff
 	país: Groenlan
 	continente: América del Norte
-	frontera: [ "Islandia", "Territorios del Noroeste", "Quebec" ]
+	fronteras: [ "Islandia", "Territorios del Noroeste", "Quebec" ]
 }
 {
 	nombre: Gondorff
 	país: Islandia
 	continente: Europa
-	frontera: [ "Escandinavia", "Groenlandia" ]
+	fronteras: [ "Escandinavia", "Groenlandia" ]
 }
 {
 	nombre: Gondorff
 	país: Escandina
 	continente: Europa
-	frontera: [ "Islandia", "Gran Bretaña", "Siberia" ]
+	fronteras: [ "Islandia", "Gran Bretaña", "Siberia" ]
 }
 {
 	nombre: Gondorff
 	país: Siberia
 	continente: Asia
-	frontera: [ "Escandinavia", "Europa Norte", "Yakustsk" ]
+	fronteras: [ "Escandinavia", "Europa Norte", "Yakustsk" ]
 }
 {
 	nombre: Gondorff
 	país: Yakustsk
 	continente: Asia
-	frontera: [ "Rusia", "Siberia", "Kamchatka" ]
+	fronteras: [ "Rusia", "Siberia", "Kamchatka" ]
 }
 {
 	nombre: Gondorff
 	país: Kamchatka
 	continente: Asia
-	frontera: [ "Alaska", "Yakustsk", "Irkutsk" ]
+	fronteras: [ "Alaska", "Yakustsk", "Irkutsk" ]
 }
 {
 	nombre: Gondorff
 	país: Alberta
 	continente: América del Norte
-	frontera: [ "Alaska", "Estados Unidos del Oeste", "Ontario" ]
+	fronteras: [ "Alaska", "Estados Unidos del Oeste", "Ontario" ]
 }
 {
 	nombre: Gondorff
 	país: Ontario
 	continente: América del Norte
-	frontera: [ "Alberta", "Territorios del Noroeste", "Estados Unidos del Este", "Quebec" ]
+	fronteras: [ "Alberta", "Territorios del Noroeste", "Estados Unidos del Este", "Quebec" ]
 }
 {
 	nombre: Gondorff
 	país: Quebec
 	continente: América del Norte
-	frontera: [ "Ontario", "Groenlandia" ]
+	fronteras: [ "Ontario", "Groenlandia" ]
 }
 {
 	nombre: Gondorff
 	país: GBretaña
 	continente: Europa
-	frontera: [ "Escandinavia", "Europa Occidental", "Europa Norte" ]
+	fronteras: [ "Escandinavia", "Europa Occidental", "Europa Norte" ]
 }
 {
 	nombre: Gondorff
 	país: EurNorte
 	continente: Europa
-	frontera: [ "Gran Bretaña", "Europa Sur", "Rusia", "Siberia" ]
+	fronteras: [ "Gran Bretaña", "Europa Sur", "Rusia", "Siberia" ]
 }
 {
 	nombre: Gondorff
 	país: Rusia
 	continente: Europa
-	frontera: [ "Europa Norte", "Yakustsk", "Urales", "Irkutsk" ]
+	fronteras: [ "Europa Norte", "Yakustsk", "Urales", "Irkutsk" ]
 }
 {
 	nombre: Hooker
 	país: Irkutsk
 	continente: Asia
-	frontera: [ "Rusia", "Kamchatka", "Mongolia" ]
+	fronteras: [ "Rusia", "Kamchatka", "Mongolia" ]
 }
 {
 	nombre: Hooker
 	país: USAOeste
 	continente: América del Norte
-	frontera: [ "Alberta", "Estados Unidos del Este" ]
+	fronteras: [ "Alberta", "Estados Unidos del Este" ]
 }
 {
 	nombre: Hooker
 	país: USAEste
 	continente: América del Norte
-	frontera: [ "Estados Unidos del Oeste", "Ontario", "America Central" ]
+	fronteras: [ "Estados Unidos del Oeste", "Ontario", "America Central" ]
 }
 {
 	nombre: Hooker
 	país: EurOcc
 	continente: Europa
-	frontera: [ "África del Norte", "Gran Bretaña", "Europa Sur" ]
+	fronteras: [ "África del Norte", "Gran Bretaña", "Europa Sur" ]
 }
 {
 	nombre: Hooker
 	país: EurSur
 	continente: Europa
-	frontera: [ "Egipto", "Europa Occidental", "Europa Norte", "Urales" ]
+	fronteras: [ "Egipto", "Europa Occidental", "Europa Norte", "Urales" ]
 }
 {
 	nombre: Hooker
 	país: Urales
 	continente: Asia
-	frontera: [ "Europa Sur", "Rusia", "Afganistan", "Mongolia" ]
+	fronteras: [ "Europa Sur", "Rusia", "Afganistan", "Mongolia" ]
 }
 {
 	nombre: Hooker
 	país: Mongolia
 	continente: Asia
-	frontera: [ "Urales", "Irkutsk", "China", "Japón" ]
+	fronteras: [ "Urales", "Irkutsk", "China", "Japón" ]
 }
 {
 	nombre: Hooker
 	país: Japón
 	continente: Asia
-	frontera: [ "Mongolia", 
+	fronteras: [ "Mongolia" ]
 }
 {
 	nombre: Hooker
 	país: AmeCentra
 	continente: América del Norte
-	frontera: [ "Estados Unidos del Este", "Venezuela" ]
+	fronteras: [ "Estados Unidos del Este", "Venezuela" ]
 }
 {
 	nombre: Hooker
 	país: Afgan
 	continente: Asia
-	frontera: [ "Urales", "Oriente Medio", "China" ]
+	fronteras: [ "Urales", "Oriente Medio", "China" ]
 }
 {
 	nombre: Hooker
 	país: China
 	continente: Asia
-	frontera: [ "Afganistan", "Mongolia", "India" ]
+	fronteras: [ "Afganistan", "Mongolia", "India" ]
 }
 {
  código de error: 113,
@@ -302,31 +302,31 @@ $> asignar paises asignaciones.csv
 	nombre: Hooker
 	país: ANorte
 	continente: África
-	frontera: [ "Congo", "Egipto", "Europa Occidental", "Brasil" ]
+	fronteras: [ "Congo", "Egipto", "Europa Occidental", "Brasil" ]
 }
 {
 	nombre: Hooker
 	país: Egipto
 	continente: África
-	frontera: [ "África del Norte", "Africa Oriental", "Europa Sur", "Oriente Medio" ]
+	fronteras: [ "África del Norte", "Africa Oriental", "Europa Sur", "Oriente Medio" ]
 }
 {
 	nombre: Lonnegan
 	país: OMedio
 	continente: Asia
-	frontera: [ "Egipto", "Afganistan", "India" ]
+	fronteras: [ "Egipto", "Afganistan", "India" ]
 }
 {
 	nombre: Lonnegan
 	país: India
 	continente: Asia
-	frontera: [ "Oriente Medio", "China", "Sureste Asiático" ]
+	fronteras: [ "Oriente Medio", "China", "Sureste Asiático" ]
 }
 {
 	nombre: Lonnegan
 	país: SAsiático
 	continente: Asia
-	frontera: [ "Indonesia", "India" ]
+	fronteras: [ "Indonesia", "India" ]
 }
 {
  código de error: 113,
@@ -340,13 +340,13 @@ $> asignar paises asignaciones.csv
 	nombre: Lonnegan
 	país: Congo
 	continente: África
-	frontera: [ "África del Norte", "Africa Oriental" ]
+	fronteras: [ "África del Norte", "Africa Oriental" ]
 }
 {
 	nombre: Lonnegan
 	país: AOriental
 	continente: África
-	frontera: [ "Congo", "Egipto", "Sudafrica" ]
+	fronteras: [ "Congo", "Egipto", "Sudafrica" ]
 }
 {
  código de error: 113,
@@ -356,37 +356,37 @@ $> asignar paises asignaciones.csv
 	nombre: Lonnegan
 	país: Sudáfrica
 	continente: África
-	frontera: [ "Africa Oriental", "Madagascar" ]
+	fronteras: [ "Africa Oriental", "Madagascar" ]
 }
 {
 	nombre: Lonnegan
 	país: Madagasca
 	continente: África
-	frontera: [ "Sudafrica", 
+	fronteras: [ "Sudafrica" ]
 }
 {
 	nombre: Lonnegan
 	país: Indonesia
 	continente: Oceanía
-	frontera: [ "Australia Occidental", "Nueva Guinea", "Sureste Asiático" ]
+	fronteras: [ "Australia Occidental", "Nueva Guinea", "Sureste Asiático" ]
 }
 {
 	nombre: Lonnegan
 	país: NGuinea
 	continente: Oceanía
-	frontera: [ "Indonesia", "Australia Oriental" ]
+	fronteras: [ "Indonesia", "Australia Oriental" ]
 }
 {
 	nombre: Lonnegan
 	país: AusOccid
 	continente: Oceanía
-	frontera: [ "Indonesia", "Australia Oriental" ]
+	fronteras: [ "Indonesia", "Australia Oriental" ]
 }
 {
 	nombre: Lonnegan
 	país: AusOrient
 	continente: Oceanía
-	frontera: [ "Australia Occidental", "Nueva Guinea" ]
+	fronteras: [ "Australia Occidental", "Nueva Guinea" ]
 }
 
 $> asignar Hooker M34
@@ -419,19 +419,7 @@ $> repartir ejercitos 2 Siberia
  jugador: "Gondorff",
  numeroEjercitosAsignados: 2,
  numeroEjercitosTotales: 2,
- paisesOcupadosContinente: [ { "Siberia",2 },
-			     { "Yakustsk",0 },
-			     { "Urales",0 },
-			     { "Afganistan",0 },
-			     { "Oriente Medio",0 },
-			     { "Kamchatka",0 },
-			     { "Irkutsk",0 },
-			     { "Mongolia",0 },
-			     { "China",0 },
-			     { "India",0 },
-			     { "Japón",0 },
-			     { "Sureste Asiático",0 }
-			    ]
+ paisesOcupadosContinente: [ { "Siberia",2 }, { "Yakustsk",0 }, { "Urales",0 }, { "Afganistan",0 }, { "Oriente Medio",0 }, { "Kamchatka",0 }, { "Irkutsk",0 }, { "Mongolia",0 }, { "China",0 }, { "India",0 }, { "Japón",0 }, { "Sureste Asiático",0 } ]
 }
 
 $> repartir ejercitos 10 China
@@ -440,19 +428,7 @@ $> repartir ejercitos 10 China
  jugador: "Hooker",
  numeroEjercitosAsignados: 10,
  numeroEjercitosTotales: 10,
- paisesOcupadosContinente: [ { "Siberia",2 },
-			     { "Yakustsk",0 },
-			     { "Urales",0 },
-			     { "Afganistan",0 },
-			     { "Oriente Medio",0 },
-			     { "Kamchatka",0 },
-			     { "Irkutsk",0 },
-			     { "Mongolia",0 },
-			     { "China",10 },
-			     { "India",0 },
-			     { "Japón",0 },
-			     { "Sureste Asiático",0 }
-			    ]
+ paisesOcupadosContinente: [ { "Siberia",2 }, { "Yakustsk",0 }, { "Urales",0 }, { "Afganistan",0 }, { "Oriente Medio",0 }, { "Kamchatka",0 }, { "Irkutsk",0 }, { "Mongolia",0 }, { "China",10 }, { "India",0 }, { "Japón",0 }, { "Sureste Asiático",0 } ]
 }
 
 $> repartir ejercitos 10 Siberia
@@ -461,39 +437,30 @@ $> repartir ejercitos 10 Siberia
  jugador: "Gondorff",
  numeroEjercitosAsignados: 10,
  numeroEjercitosTotales: 12,
- paisesOcupadosContinente: [ { "Siberia",12 },
-			     { "Yakustsk",0 },
-			     { "Urales",0 },
-			     { "Afganistan",0 },
-			     { "Oriente Medio",0 },
-			     { "Kamchatka",0 },
-			     { "Irkutsk",0 },
-			     { "Mongolia",0 },
-			     { "China",10 },
-			     { "India",0 },
-			     { "Japón",0 },
-			     { "Sureste Asiático",0 }
-			    ]
+ paisesOcupadosContinente: [ { "Siberia",12 }, { "Yakustsk",0 }, { "Urales",0 }, { "Afganistan",0 }, { "Oriente Medio",0 }, { "Kamchatka",0 }, { "Irkutsk",0 }, { "Mongolia",0 }, { "China",10 }, { "India",0 }, { "Japón",0 }, { "Sureste Asiático",0 } ]
 }
 
 $> obtener frontera Brasil
-frontera: [ "África del Norte", "Perú" ]
+{
+ fronteras:  [ "África del Norte", "Perú" ]
+}
 
 $> obtener frontera Groenlan
-frontera: [ "Islandia", "Territorios del Noroeste", "Quebec" ]
+{
+ fronteras:  [ "Islandia", "Territorios del Noroeste", "Quebec" ]
+}
 
 $> obtener frontera ANorte
-frontera: [ "Congo", "Egipto", "Europa Occidental", "Brasil" ]
+{
+ fronteras:  [ "Congo", "Egipto", "Europa Occidental", "Brasil" ]
+}
 
 $> obtener continente Brasil
 { continente: "América del Sur" }
 
 $> obtener paises Oceanía
-{ paises: [ "Indonesia",
-	    "Australia Occidental",
-	    "Nueva Guinea",
-	    "Australia Oriental"
-	  ] 
+{
+ paises: [ "Indonesia", "Australia Occidental", "Nueva Guinea", "Australia Oriental" ]
 }
 
 $> obtener frontera casamigueloh
@@ -513,6 +480,14 @@ $> crear mapa
  descripción: "El mapa ya ha sido creado"
 {
 
+$> asignar carta Caballería&Alaska
+{
+ tipoCarta: "Caballería",
+ paisAsociado: "Alaska",
+ perteneceAJugador: "Gondorff",
+ ejercitosDeRearme: 1
+}
+
 $> acabar turno
 {
  nombre: "Hooker",
@@ -523,13 +498,51 @@ $> describir pais Brasil
 {
  nombre: "Brasil",
  abreviatura: "Brasil",
- continente: "América del Sur"
- frontera: [ "África del Norte",
- 	     "Perú"
-	   ],
+ continente: "América del Sur",
+ frontera:  [ "África del Norte", "Perú" ],
  jugador: "Hooker",
  numeroEjercitos: 0,
  numeroVecesOcupado: 0
+}
+
+$> describir jugador Gondorff
+{
+ nombre: "Gondorff",
+ color: "VERDE",
+ mision: "Conquistar 24 países de la preferencia del jugador",
+ numeroEjercitos: 30,
+ paises: [ "Alaska", "Territorios del Noroeste", "Groenlandia", "Islandia", "Escandinavia", "Siberia", "Yakustsk", "Kamchatka", "Alberta", "Ontario", "Quebec", "Gran Bretaña", "Europa Norte", "Rusia" ],
+ continentes: [ ],
+ cartas: [ "Caballería&Alaska" ],
+ numeroEjercitosRearmar: 0
+}
+
+$> asignar carta Caballería&Indonesia
+{
+ tipoCarta: "Caballería",
+ paisAsociado: "Indonesia",
+ perteneceAJugador: "Hooker",
+ ejercitosDeRearme: 0
+}
+
+$> asignar carta Caballería&Alaska
+{
+ código de error: 126,
+ descripción: "Carta de equipamiento ya asignada"
+{
+
+$> asignar carta Caballería&Brasil
+{
+ tipoCarta: "Caballería",
+ paisAsociado: "Brasil",
+ perteneceAJugador: "Hooker",
+ ejercitosDeRearme: 1
+}
+
+$> acabar turno
+{
+ nombre: "Lonnegan",
+ numeroEjercitosRearmar: 0
 }
 
 $> describir jugador Hooker
@@ -538,32 +551,8 @@ $> describir jugador Hooker
  color: "AMARILLO",
  mision: "Conquistar Asia y América del Sur",
  numeroEjercitos: 30,
- paises: [ "Venezuela",
- 	   "Perú",
-	   "Argentina",
-	   "Brasil",
-	   "Irkutsk",
-	   "Estados Unidos del Oeste",
-	   "Estados Unidos del Este",
-	   "Europa Occidental",
-	   "Europa Sur",
-	   "Urales",
-	   "Mongolia",
-	   "Japón",
-	   "America Central",
-	   "Afganistan",
-	   "China",
-	   "África del Norte",
-	   "Egipto"
-	  ],
- continentes: [ "América del Sur",
- ,
- cartas: [ "Artillería&Sudáfrica" ],
+ paises: [ "Venezuela", "Perú", "Argentina", "Brasil", "Irkutsk", "Estados Unidos del Oeste", "Estados Unidos del Este", "Europa Occidental", "Europa Sur", "Urales", "Mongolia", "Japón", "America Central", "Afganistan", "China", "África del Norte", "Egipto" ],
+ continentes: [ "América del Sur" ],
+ cartas: [ "Caballería&Indonesia", "Caballería&Brasil" ],
  numeroEjercitosRearmar: 0
 }
-
-$> 
-{
- código de error: 101,
- descripción: "Comando incorrecto"
-{

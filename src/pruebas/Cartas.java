@@ -20,17 +20,16 @@ public class Cartas {
     private String identificador;
     
     
-    public Cartas(String identif, Jugador jugador){
-        this.identificador = identif;
-        String[] partes=identif.split("&");
-        partes[0] = this.clase;
-        partes[1] = this.pais;
+    public Cartas(String pais, Jugador jugador, String tipo){
+        this.clase = tipo;
+        this.pais = pais;
         this.jugador = jugador;
+        this.identificador = this.clase + "&" + this.pais;
     }
     
     
     //manera random de generacion de cartas
-    public Cartas(ArrayList<Pais> paises){ //habra que pasarle el arraylist de donde pillara los paises
+    /*public Cartas(ArrayList<Pais> paises){ //habra que pasarle el arraylist de donde pillara los paises
         Random rand = new Random();
         int random;
         
@@ -53,10 +52,8 @@ public class Cartas {
         
         //con esto quedaria creada la carta, habra que crear ek identificador
         
-        this.identificador = this.clase + "&" + this.pais;
-        
-        
-    }
+        this.identificador = this.clase + "&" + this.pais;    
+    }*/
 
     public void setJugador(Jugador jugador) {
         this.jugador = jugador;
@@ -65,10 +62,57 @@ public class Cartas {
     public String getPais() {
         return pais;
     }
+
+    public String getClase() {
+        return clase;
+    }
+
+    public Jugador getJugador() {
+        return jugador;
+    }
     
     public String printCarta(){
         String texto = "\"" + this.identificador + "\"";
         return texto;
     }
-    
+    public String printTipo(){
+        String texto = "\"" + this.clase + "\"";
+        return texto;
+    }
+    public String printPais(){
+        String texto = "\"" + this.pais + "\"";
+        return texto;
+    }
+    public int ejercitosCarta(){
+        int ejer;
+        Pais p = paisCoincidente(this.jugador.getPaises(), this.pais);
+        if(p == null){
+            ejer = 0;
+        }else{
+            ejer = 1;
+        }
+        return ejer;
+    }
+    @Override
+    public String toString(){
+        String texto = "{\n tipoCarta: " + this.printTipo() + ",\n paisAsociado: "
+                + this.printPais() + ",\n perteneceAJugador: " + this.jugador.printNombre()
+                + ",\n ejercitosDeRearme: " + this.ejercitosCarta() + "\n}";
+        return texto;
+    }
+    public Pais paisCoincidente(ArrayList<Pais> paises, String pais){ // mismo que nj
+        if(paises.isEmpty()){
+            
+            return null;
+        }else{
+            for(Pais p : paises){
+                if(p.getAbreviatura().equals(pais)==true){
+                 
+                    return p;
+                    }    
+            }
+            return null;
+        }
+        
+    }
 }

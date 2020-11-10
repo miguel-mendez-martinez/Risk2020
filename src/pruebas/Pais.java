@@ -105,32 +105,17 @@ public class Pais {
         }
     }
     
-    public String fronterasToString(int check){
+    public String fronterasToString(){
     
         String fronteras = "";
-        if(check == 0){
-            for (int i=0;i<this.getFronteras().size();i++) {
-                if(i == 0){
-                    fronteras += "frontera: [ " + this.getFronteras().get(i).printNombre() + ", ";
-                }else if(i==(this.getFronteras().size())-1){
-                    fronteras += this.getFronteras().get(i).printNombre() + " ]";
-                }else{
-                    fronteras += this.getFronteras().get(i).printNombre() + ", ";
-                }
-            }
-        }else{
-            for (int i=0;i<this.getFronteras().size();i++) {
-                if(i == 0){
-                    fronteras += "\n frontera: [ " + this.getFronteras().get(i).printNombre() + ",\n ";
-                }else if(i==(this.getFronteras().size())-1){
-                    fronteras += "\t     " + this.getFronteras().get(i).printNombre() + "\n\t   ]";
-                }else{
-                    fronteras += this.getFronteras().get(i).printNombre() + ",\n ";
-                }
+        for (int i=0;i<this.getFronteras().size();i++) {
+            if(i == 0){
+                fronteras += " [ " + this.getFronteras().get(i).printNombre();
+            }else{
+                fronteras += ", " + this.getFronteras().get(i).printNombre();
             }
         }
-        
-    
+        fronteras += " ]";
         return fronteras;
     }
 
@@ -158,7 +143,7 @@ public class Pais {
     public String descPais(){
         String texto = "{\n nombre: " + this.printNombre() + 
                 ",\n abreviatura: " + this.printAbre() + ",\n continente: " 
-                + this.printCont() + this.fronterasToString(1)
+                + this.printCont() + ",\n frontera: " + this.fronterasToString()
                 + ",\n jugador: " + this.printJug() + ",\n numeroEjercitos: " 
                 + this.ejercitos + ",\n numeroVecesOcupado: " + this.vecesOcupado + "\n}";
         return texto;

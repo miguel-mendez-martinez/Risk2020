@@ -24,6 +24,7 @@ public class Menu {
     ArrayList<Jugador> jugadores;
     ArrayList<Pais> paises;
     ArrayList<Continente> continentes;
+    ArrayList<Cartas> cartas;
     Mapa mapa;
     Jugador jugadorActual;
     Turno t;
@@ -34,13 +35,13 @@ public class Menu {
         // Inicialización de algunos atributos
         // Iniciar juego
          // Con fichero:
-        this.t = new Turno(); 
         this.mapa = null;
         Mision mision;
         this.jugadores = new ArrayList<>();
         this.paises = new ArrayList<>();
         this.continentes = new ArrayList<>();
-        int checker = 0;
+        this.cartas = new ArrayList<>();
+        int checker = 0, conquisto=1; //cuando se ataque y se obtenga victoria esto ira a 0, y se pondra siempre a 0 al empezar un turno
         String orden= null;
         BufferedReader bufferLector= null;
         this.jugadorActual = null;
@@ -197,8 +198,7 @@ public class Menu {
                     case "acabar":
                         if(checker >= 5){
                             this.jugadorActual = this.t.pasarTurno(this.jugadorActual);
-                            Cartas carta = new Cartas(this.paises);
-                            this.jugadorActual.setCartas(carta);
+                            conquisto = 0;
                             System.out.println(this.jugadorActual.printNomEjerR());
                             Salida salida = new Salida();
                             salida.imprimirArchivo(this.jugadorActual.printNomEjerR());
@@ -259,15 +259,45 @@ public class Menu {
                                 Salida error = new Salida(118);
                                 System.out.println(error.toString());
                             }
-                        }else if(partes[2].equals("carta")){
+                        }else if(partes[1].equals("carta")){
                             //se le asigna a jugador actual una carta
                             if(this.jugadorActual == null){
                                 Salida error = new Salida(99);
                                 System.out.println(error.toString());
-                                
                             }else{
+                                String[] partes2 = partes[2].split("&"); 
+                                if(partes2[0].equals("Infantería") || partes2[0].equals("Artillería") || partes2[0].equals("Caballería")){
+                                    String pais = partes2[1];
+                                    String clase = partes2[0];
+                                    Pais p = this.existePais(this.paises, pais);
+                                    if(p == null){
+                                        Salida error = new Salida(109);
+                                        System.out.println(error.toString());
+                                    }else{//continuamos
+                                        if(conquisto==1){
+                                            //comprobar si esta asignada
+                                            Cartas c = this.estaAsignada(this.cartas, pais, clase);
+                                            if(c == null){
+                                                c = new Cartas(pais, this.jugadorActual, clase);
+                                                this.jugadorActual.setCartas(c);
+                                                this.cartas.add(c);
+                                                
+                                                System.out.println(c);
+                                                Salida salida = new Salida();
+                                                salida.imprimirArchivo(c.toString());
+                                                
+                                            }else{
+                                                Salida error = new Salida(126);
+                                                System.out.println(error.toString()); 
+                                            }
+                                        }
+                                    }
+                                    
+                                }else{
+                                    Salida error = new Salida(125);
+                                    System.out.println(error.toString());
+                                }
                                 
-                                //asignas una carta al jugador actual que tendra el turno
                             }
                         }else if(partes[2].charAt(0) == 'M'){
                             //Estas operaciones por ahora no cambian el checker ya que no asignan cosas a todos los jugadores
@@ -305,7 +335,26 @@ public class Menu {
                         }
                         
                         break;
-                        
+                    case "atacar":
+                        //el jugador actual atacara a un pais que no sea de su dominio, y que tenga alguna frontera en comun
+                        //dos comandos, el automatico, y el forzado
+                        if(partes.length>5){
+                            Salida error = new Salida(101);
+                            System.out.println(error.toString());
+                        }else if(partes.length == 3){
+                            /*automatico
+                            tendremos que mirar, que exita pais, que pertenezca 
+                            al jugaador, que no pertenezca el que atacamos, si 
+                            son frontera y si hay ejercitos suficientes*/
+                            
+                            //preguntar ataque pdf siberia-rusia
+                        }else if(partes.length == 4){
+                            Salida error = new Salida(101);
+                            System.out.println(error.toString());
+                        }else{
+                            //forzado
+                        }
+                        break;
                     case "obtener": // Comandos sobre el mapa
                         if(checker >= 1){
                             if(partes.length!=3) {
@@ -398,6 +447,24 @@ public class Menu {
                 if(p.getAbreviatura().equals(pais)==true){
                  
                     return p;
+                    }    
+            }
+            return null;
+        }
+        
+    }
+    public Cartas estaAsignada(ArrayList<Cartas> carta, String pais, String clase){
+        //esta funcion retorna null si la carta no esta asignada, la carta si lo esta.
+        if(cartas.isEmpty()){
+            return null;
+        }else{
+            for(Cartas c : carta){
+                if((c.getClase().equals(clase)==true) && (c.getPais().equals(pais))){
+                    if(c.getJugador() == null){
+                        return null;
+                    }else{
+                        return c;
+                    }
                     }    
             }
             return null;
@@ -522,8 +589,8 @@ public class Menu {
                             if(!pais.estaAsignado()){ // El pais no está asignado a ningun jugador, por lo que asignamos e imprimimos
                                 pais.setJugador(jugador);
                                 jugador.setPaises(pais);
-                                String fronteras = pais.fronterasToString(0);
-                                String exito = "{\n\tnombre: " + nombreJugador +"\n\tpaís: " + nombrePais + "\n\tcontinente: " + pais.getContinente().getNombre() + "\n\t" + fronteras + "\n}";
+                                String fronteras = pais.fronterasToString();
+                                String exito = "{\n\tnombre: " + nombreJugador +"\n\tpaís: " + nombrePais + "\n\tcontinente: " + pais.getContinente().getNombre() + "\n\tfronteras:" + fronteras + "\n}";
                                 System.out.println(exito);
                                 Salida salida = new Salida();
                                 salida.imprimirArchivo(exito);
@@ -550,6 +617,7 @@ public class Menu {
         this.mapa = new Mapa();
         this.paises = this.mapa.getPaises();
         this.continentes = this.mapa.getContinentes();
+        this.t = new Turno(this.paises);
         //System.out.println(mapa);
     }
     
@@ -559,8 +627,9 @@ public class Menu {
             Salida error = new Salida(109);
             System.out.println(error.toString());
         }else{
-            String fronteras = "";
-            fronteras = pais.fronterasToString(0);
+            String fronteras = "{\n fronteras: ";
+            fronteras += pais.fronterasToString();
+            fronteras += "\n}";
             System.out.println(fronteras);
             Salida salida = new Salida();
             salida.imprimirArchivo(fronteras);
@@ -601,16 +670,16 @@ public class Menu {
             Salida error = new Salida(109);
             System.out.println(error.toString());
         }else{
-            String paises = "{ paises: [ ";
+            String paises = "{\n paises: [ ";
             for(int i=0; i<c.getPaises().size(); i++){
-                if(i == c.getPaises().size()-1){
-                    paises += c.getPaises().get(i).printNombre() + "\n";
+                if(i==0){
+                    paises += c.getPaises().get(i).printNombre();
                 }else{
-                    paises += c.getPaises().get(i).printNombre() + ",\n\t    ";
+                    paises += ", " + c.getPaises().get(i).printNombre();
                 }
                 
             }
-            paises += "\t  ] \n}";
+            paises += " ]\n}";
             System.out.println(paises);
             Salida salida = new Salida();
             salida.imprimirArchivo(paises);
