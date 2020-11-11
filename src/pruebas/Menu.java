@@ -171,11 +171,16 @@ public class Menu {
                     case "describir":
                         if(partes[1].equals("jugador")){
                             //descripcion del jugador
+                            String exito;
                             Jugador jugador = existeJugador(this.jugadores, partes[2]);
-                            //jugador.continentesJugador(this.continentes);
-                            System.out.println(jugador);
+                            if(jugador.getNombre().equals(this.jugadorActual.getNombre())){
+                                exito = jugador.descJugador(1);
+                            }else{
+                                exito = jugador.descJugador(0);
+                            }
+                            System.out.println(exito);
                             Salida salida = new Salida();
-                            salida.imprimirArchivo(jugador.toString());
+                            salida.imprimirArchivo(exito);
                         }else if(partes[1].equals("pais")){
                             //descripcion del pais
                             Pais pais = existePais(this.paises, partes[2]);
@@ -372,6 +377,10 @@ public class Menu {
                                                 System.out.println(error.toString());
                                             }else{
                                                 System.out.println("hola voy a atacar.");
+                                                Dados dado1 = new Dados();
+                                                System.out.println(dado1);
+                                                Dados dado2 = new Dados();
+                                                System.out.println(dado2);
                                             }
                                         }
                                     }

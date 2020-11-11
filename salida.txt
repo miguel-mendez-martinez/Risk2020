@@ -565,7 +565,6 @@ $> describir jugador Gondorff
 {
  nombre: "Gondorff",
  color: "VERDE",
- mision: "Conquistar 24 países de la preferencia del jugador",
  numeroEjercitos: 30,
  paises: [ "Alaska", "Territorios del Noroeste", "Groenlandia", "Islandia", "Escandinavia", "Siberia", "Yakustsk", "Kamchatka", "Alberta", "Ontario", "Quebec", "Gran Bretaña", "Europa Norte", "Rusia" ],
  continentes: [ ],
@@ -591,12 +590,6 @@ $> asignar carta Caballería&Brasil
  descripción: "El jugador no conquistó ningun pais este turno"
 {
 
-$> acabar turno
-{
- nombre: "Lonnegan",
- numeroEjercitosRearmar: 0
-}
-
 $> describir jugador Hooker
 {
  nombre: "Hooker",
@@ -606,5 +599,11 @@ $> describir jugador Hooker
  paises: [ "Venezuela", "Perú", "Argentina", "Brasil", "Irkutsk", "Estados Unidos del Oeste", "Estados Unidos del Este", "Europa Occidental", "Europa Sur", "Urales", "Mongolia", "Japón", "America Central", "Afganistan", "China", "África del Norte", "Egipto" ],
  continentes: [ "América del Sur" ],
  cartas: [ ],
+ numeroEjercitosRearmar: 0
+}
+
+$> acabar turno
+{
+ nombre: "Lonnegan",
  numeroEjercitosRearmar: 0
 }

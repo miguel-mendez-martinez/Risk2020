@@ -167,6 +167,24 @@ public class Jugador {
         }
         return cartaJug;
     }
+    
+    public String descJugador(int check){
+        String texto;
+        if(check == 1){
+            texto = "{\n nombre: " + this.printNombre() + ",\n color: " + 
+            this.prinColor() + ",\n mision: " + this.mision.printDesc() + 
+            ",\n numeroEjercitos: " + this.tropas + ",\n paises: " + this.printPaises()
+            + ",\n continentes: " + printContinentes() + ",\n cartas: " + 
+            this.printCartas() + ",\n numeroEjercitosRearmar: " + this.ejerRearme + "\n}";
+        }else{
+            texto = "{\n nombre: " + this.printNombre() + ",\n color: " + 
+            this.prinColor() + ",\n numeroEjercitos: " + this.tropas + 
+            ",\n paises: " + this.printPaises() + ",\n continentes: " + 
+            printContinentes() + ",\n cartas: " + this.printCartas() + 
+            ",\n numeroEjercitosRearmar: " + this.ejerRearme + "\n}";
+        }
+        return texto;
+        }
     @Override
     public String toString(){
         String texto = "{\n nombre: " + this.printNombre() + ",\n color: " + 
