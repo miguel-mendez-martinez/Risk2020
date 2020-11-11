@@ -488,6 +488,38 @@ $> asignar carta Caballería&Alaska
  ejercitosDeRearme: 1
 }
 
+$> atacar Alaska Urales
+{
+ código de error: 112,
+ descripción: "Los países no son frontera"
+{
+
+$> atacar Diana Urales
+{
+ código de error: 109,
+ descripción: "El país no existe"
+{
+
+$> atacar Urales Alaska 
+{
+ código de error: 110,
+ descripción: "El país no pertence al jugador"
+{
+
+$> atacar Alaska Siberia
+{
+ código de error: 111,
+ descripción: "El país pertenece al jugador"
+{
+
+$> atacar Alaska Diana
+{
+ código de error: 109,
+ descripción: "El país no existe"
+{
+
+$> atacar Ontario USAEste
+
 $> acabar turno
 {
  nombre: "Hooker",
@@ -518,26 +550,10 @@ $> describir jugador Gondorff
 }
 
 $> asignar carta Caballería&Indonesia
-{
- tipoCarta: "Caballería",
- paisAsociado: "Indonesia",
- perteneceAJugador: "Hooker",
- ejercitosDeRearme: 0
-}
 
 $> asignar carta Caballería&Alaska
-{
- código de error: 126,
- descripción: "Carta de equipamiento ya asignada"
-{
 
 $> asignar carta Caballería&Brasil
-{
- tipoCarta: "Caballería",
- paisAsociado: "Brasil",
- perteneceAJugador: "Hooker",
- ejercitosDeRearme: 1
-}
 
 $> acabar turno
 {
@@ -553,6 +569,6 @@ $> describir jugador Hooker
  numeroEjercitos: 30,
  paises: [ "Venezuela", "Perú", "Argentina", "Brasil", "Irkutsk", "Estados Unidos del Oeste", "Estados Unidos del Este", "Europa Occidental", "Europa Sur", "Urales", "Mongolia", "Japón", "America Central", "Afganistan", "China", "África del Norte", "Egipto" ],
  continentes: [ "América del Sur" ],
- cartas: [ "Caballería&Indonesia", "Caballería&Brasil" ],
+ cartas: [ ],
  numeroEjercitosRearmar: 0
 }

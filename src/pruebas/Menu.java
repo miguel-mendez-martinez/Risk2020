@@ -344,8 +344,38 @@ public class Menu {
                         }else if(partes.length == 3){
                             /*automatico
                             tendremos que mirar, que exita pais, que pertenezca 
-                            al jugaador, que no pertenezca el que atacamos, si 
-                            son frontera y si hay ejercitos suficientes*/
+                            al jugador, que no pertenezca el que atacamos, si 
+                            son frontera y si hay ejercitos suficientes, partes 1 
+                            y partes 2, y ver si tienen suficientes ejercitos
+                            y si son frontera*/
+                            Pais p1 = this.existePais(this.paises, partes[1]);
+                            Pais p2 = this.existePais(this.paises, partes[2]);
+                            if(p1 == null || p2 == null){
+                                Salida error = new Salida(109);
+                                System.out.println(error.toString());
+                            }else{
+                                Pais p3 = this.existePais(this.jugadorActual.getPaises(), p1.getAbreviatura()); //miramos si el primer pais pertenece al jugador
+                                if(p3 == null){
+                                    Salida error = new Salida(110);
+                                    System.out.println(error.toString());
+                                }else{
+                                    Pais p4 = this.existePais(this.jugadorActual.getPaises(), p2.getAbreviatura()); //miramos si el segundo pais NO pertenece al jugador
+                                    if(p4 != null){
+                                        Salida error = new Salida(111);
+                                        System.out.println(error.toString());
+                                    }else{
+                                        //a este punto 1 y 3, 2 y 4 son iguales. 5 sera igual a p2
+                                        Pais p5 = this.existePais(p1.getFronteras(), p2.getAbreviatura());
+                                        if(p5 == null){
+                                            Salida error = new Salida(112);
+                                            System.out.println(error.toString());
+                                        }else{
+                                            System.out.println("Hola voy a atacar.\n");
+                                        }
+                                    }
+                                }
+                            }
+                            
                             
                             //preguntar ataque pdf siberia-rusia
                         }else if(partes.length == 4){
@@ -856,7 +886,7 @@ public class Menu {
         ArrayList<Continente> continentesOrdenadosMenosFronteras = new ArrayList<>();
         int numJugadores;
         // Asignar numero de tropas que tendrá cada jugador en funcion del numero de jugadores
-        switch (numJugadores){ // esto creo que solo va en la funcion de migueloh
+        switch (numJugadores = contarJugadores(this.jugadores)){ // esto creo que solo va en la funcion de migueloh
 
             case 3:
                 for (Jugador j: jugadores){
