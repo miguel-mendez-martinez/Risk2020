@@ -951,6 +951,20 @@ public class Menu {
         }
     }
 
+    public void describirContinente(String nombreContinente){
+        boolean existe;
+        Continente continente = new continente();
+        for (Continente c: continentes){
+            if (c.getNombre().equals(nombreContinente)) existe=true;
+        }
+        if(existe){
+
+
+
+        }else // error de que no existe continente 102
+
+    }
+
 
 
     public int contarJugadores(ArrayList<Jugador> jugadores){
@@ -1327,6 +1341,6 @@ public class Menu {
 
         }
     }
-    }
+}
 
 
