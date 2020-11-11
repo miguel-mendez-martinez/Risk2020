@@ -519,6 +519,30 @@ $> atacar Alaska Diana
 {
 
 $> atacar Ontario USAEste
+{
+ código de error: 124,
+ descripción: "No hay ejercitos suficientes"
+{
+
+$> repartir ejercitos 2 Ontario
+{
+ pais: "Ontario",
+ jugador: "Gondorff",
+ numeroEjercitosAsignados: 2,
+ numeroEjercitosTotales: 2,
+ paisesOcupadosContinente: [ { "Alaska",0 }, { "Alberta",0 }, { "Estados Unidos del Oeste",0 }, { "Territorios del Noroeste",0 }, { "Ontario",2 }, { "Estados Unidos del Este",0 }, { "America Central",0 }, { "Groenlandia",0 }, { "Quebec",0 } ]
+}
+
+$> repartir ejercitos 1 USAEste
+{
+ pais: "Estados Unidos del Este",
+ jugador: "Hooker",
+ numeroEjercitosAsignados: 1,
+ numeroEjercitosTotales: 1,
+ paisesOcupadosContinente: [ { "Alaska",0 }, { "Alberta",0 }, { "Estados Unidos del Oeste",0 }, { "Territorios del Noroeste",0 }, { "Ontario",2 }, { "Estados Unidos del Este",1 }, { "America Central",0 }, { "Groenlandia",0 }, { "Quebec",0 } ]
+}
+
+$> atacar Ontario USAEste
 
 $> acabar turno
 {
@@ -552,19 +576,19 @@ $> describir jugador Gondorff
 $> asignar carta Caballería&Indonesia
 {
  código de error: 127,
- descripción: "El jugador no conquistó ningun pais"
+ descripción: "El jugador no conquistó ningun pais este turno"
 {
 
 $> asignar carta Caballería&Alaska
 {
  código de error: 127,
- descripción: "El jugador no conquistó ningun pais"
+ descripción: "El jugador no conquistó ningun pais este turno"
 {
 
 $> asignar carta Caballería&Brasil
 {
  código de error: 127,
- descripción: "El jugador no conquistó ningun pais"
+ descripción: "El jugador no conquistó ningun pais este turno"
 {
 
 $> acabar turno

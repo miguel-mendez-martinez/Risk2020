@@ -345,12 +345,6 @@ public class Menu {
                             Salida error = new Salida(101);
                             System.out.println(error.toString());
                         }else if(partes.length == 3){
-                            /*automatico
-                            tendremos que mirar, que exita pais, que pertenezca 
-                            al jugador, que no pertenezca el que atacamos, si 
-                            son frontera y si hay ejercitos suficientes, partes 1 
-                            y partes 2, y ver si tienen suficientes ejercitos
-                            y si son frontera*/
                             Pais p1 = this.existePais(this.paises, partes[1]);
                             Pais p2 = this.existePais(this.paises, partes[2]);
                             if(p1 == null || p2 == null){
@@ -373,7 +367,12 @@ public class Menu {
                                             Salida error = new Salida(112);
                                             System.out.println(error.toString());
                                         }else{
-                                            System.out.println("Hola voy a atacar.\n");
+                                            if(p1.getEjercitos() < 1 || p2.getEjercitos() < 1){
+                                                Salida error = new Salida(124);
+                                                System.out.println(error.toString());
+                                            }else{
+                                                System.out.println("hola voy a atacar.");
+                                            }
                                         }
                                     }
                                 }
