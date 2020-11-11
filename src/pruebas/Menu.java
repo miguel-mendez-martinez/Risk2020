@@ -290,6 +290,9 @@ public class Menu {
                                                 Salida error = new Salida(126);
                                                 System.out.println(error.toString()); 
                                             }
+                                        }else{
+                                            Salida error = new Salida(127);
+                                            System.out.println(error.toString());
                                         }
                                     }
                                     

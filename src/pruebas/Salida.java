@@ -142,6 +142,9 @@ public class Salida {
             case 126:
                 this.descripcion = "Carta de equipamiento ya asignada";
                 break;
+            case 127:
+                this.descripcion = "El jugador no conquistó ningun pais este turno";
+                break;
             default:
                 System.out.println("Código de error no existente.");
             

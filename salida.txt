@@ -550,10 +550,22 @@ $> describir jugador Gondorff
 }
 
 $> asignar carta Caballería&Indonesia
+{
+ código de error: 127,
+ descripción: "El jugador no conquistó ningun pais"
+{
 
 $> asignar carta Caballería&Alaska
+{
+ código de error: 127,
+ descripción: "El jugador no conquistó ningun pais"
+{
 
 $> asignar carta Caballería&Brasil
+{
+ código de error: 127,
+ descripción: "El jugador no conquistó ningun pais"
+{
 
 $> acabar turno
 {
