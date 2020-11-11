@@ -544,6 +544,26 @@ $> repartir ejercitos 1 USAEste
 
 $> atacar Ontario USAEste
 
+$> repartir ejercitos 2 Ontario
+{
+ pais: "Ontario",
+ jugador: "Gondorff",
+ numeroEjercitosAsignados: 2,
+ numeroEjercitosTotales: 4,
+ paisesOcupadosContinente: [ { "Alaska",0 }, { "Alberta",0 }, { "Estados Unidos del Oeste",0 }, { "Territorios del Noroeste",0 }, { "Ontario",4 }, { "Estados Unidos del Este",1 }, { "America Central",0 }, { "Groenlandia",0 }, { "Quebec",0 } ]
+}
+
+$> repartir ejercitos 1 USAEste
+{
+ pais: "Estados Unidos del Este",
+ jugador: "Hooker",
+ numeroEjercitosAsignados: 1,
+ numeroEjercitosTotales: 2,
+ paisesOcupadosContinente: [ { "Alaska",0 }, { "Alberta",0 }, { "Estados Unidos del Oeste",0 }, { "Territorios del Noroeste",0 }, { "Ontario",4 }, { "Estados Unidos del Este",2 }, { "America Central",0 }, { "Groenlandia",0 }, { "Quebec",0 } ]
+}
+
+$> atacar Ontario USAEste
+
 $> acabar turno
 {
  nombre: "Hooker",

@@ -377,10 +377,7 @@ public class Menu {
                                                 System.out.println(error.toString());
                                             }else{
                                                 System.out.println("hola voy a atacar.");
-                                                Dados dado1 = new Dados();
-                                                System.out.println(dado1);
-                                                Dados dado2 = new Dados();
-                                                System.out.println(dado2);
+                                                this.atacarPais(p1, p2);
                                             }
                                         }
                                     }
@@ -452,7 +449,79 @@ public class Menu {
             excepcion.printStackTrace();
         }
     }
-
+    public void atacarPais(Pais paisAtt, Pais paisDef){
+        int ejerAtt, ejerDef;
+        Dados dadoAtt1 = new Dados();
+        Dados dadoAtt2 = new Dados();
+        Dados dadoAtt3 = new Dados();
+        Dados dadoDef1 = new Dados();
+        Dados dadoDef2 = new Dados();
+        ejerAtt = paisAtt.getEjercitos();
+        ejerDef = paisDef.getEjercitos();
+        if(ejerAtt == 1){
+            dadoAtt1.genDados();
+            if(ejerDef == 1){
+                dadoDef1.genDados();
+                System.out.println("Ataque:");
+                System.out.println(dadoAtt1);
+                System.out.println("Defensa:");
+                System.out.println(dadoDef1);
+            }else{
+                dadoDef1.genDados();
+                dadoDef2.genDados();
+                System.out.println("Ataque:");
+                System.out.println(dadoAtt1);
+                System.out.println("Defensa:");
+                System.out.println(dadoDef1);
+                System.out.println(dadoDef2);
+            }
+            
+        }else if(ejerAtt == 2){
+            dadoAtt1.genDados();
+            dadoAtt2.genDados();
+            if(ejerDef == 1){
+                dadoDef1.genDados();
+                System.out.println("Ataque:");
+                System.out.println(dadoAtt1);
+                System.out.println(dadoAtt2);
+                System.out.println("Defensa:");
+                System.out.println(dadoDef1);
+            }else{
+                dadoDef1.genDados();
+                dadoDef2.genDados();
+                System.out.println("Ataque:");
+                System.out.println(dadoAtt1);
+                System.out.println(dadoAtt2);
+                System.out.println("Defensa:");
+                System.out.println(dadoDef1);
+                System.out.println(dadoDef2);
+            }
+        }else{
+            dadoAtt1.genDados();
+            dadoAtt2.genDados();
+            dadoAtt3.genDados();
+            if(ejerDef == 1){
+                dadoDef1.genDados();
+                System.out.println("Ataque:");
+                System.out.println(dadoAtt1);
+                System.out.println(dadoAtt2);
+                System.out.println(dadoAtt3);
+                System.out.println("Defensa:");
+                System.out.println(dadoDef1);
+            }else{
+                dadoDef1.genDados();
+                dadoDef2.genDados();
+                System.out.println("Ataque:");
+                System.out.println(dadoAtt1);
+                System.out.println(dadoAtt2);
+                System.out.println(dadoAtt3);
+                System.out.println("Defensa:");
+                System.out.println(dadoDef1);
+                System.out.println(dadoDef2);
+            }
+        }
+        
+    }
     public Jugador existeJugador(ArrayList<Jugador> jugadores, String jugador){ // en nj guardamos el jugador si este existeque existe
         if(jugadores.isEmpty()==true){
             

@@ -11,40 +11,15 @@ package pruebas;
  */
 public class Dados {
     private int x;
-    private int y;
+    
     
     public Dados(){
+    }
+    public void genDados(){
         Random rand = new Random();
         int random;
         
         random = rand.nextInt(6); 
-        
-        switch(random){
-            case 0:
-                this.y = 1;
-                break;
-            case 1:
-                this.y = 2;
-                break;
-            case 2:
-                this.y = 3;
-                break;
-            case 3:
-                this.y = 4;
-                break;
-            case 4:
-                this.y = 5;
-                break;
-            case 5:
-                this.y = 6;
-                break;
-            default:
-                System.out.println("Fallo en la generacion aleatoria.");
-                break;       
-        }
-        
-        random = rand.nextInt(6);
-        
         switch(random){
             case 0:
                 this.x = 1;
@@ -72,7 +47,13 @@ public class Dados {
     
     @Override
     public String toString(){
-        String texto = "Valores dados:" + this.x + " " + this. y;
+        String texto = "Valores dados:" + this.x ;
         return texto;
     }
+
+    public int getX() {
+        return x;
+    }
+    
+    
 }
