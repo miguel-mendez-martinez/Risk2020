@@ -1271,7 +1271,57 @@ public class Menu {
             }
             // Fin R6
 
+            // R7
+            int contadorOcupaCont25 = 0;
+            for(Continente c:continentes) {
+                numPaisesJugEnC = j.calcularNumPaisesEnC(c);
+                if (numPaisesJugEnC < (c.getNumPaises() / 4)) { // Mismo jugador tiene menos del 25% en cada cont
+                    contadorOcupaCont25++; // Se añade continente
+                }
+            }
 
+
+            if(contadorOcupaCont25 == 6){ // si se cumple la condicion en todos los continentes
+                // AHora si R7
+                for (Pais p: j.getPaises()){
+                    if(jugadores.size() == 3 || jugadores.size() == 4){
+
+                        p.addEjercitos(2 * j.calcularNumPaisesEnC(p.getContinente()));
+                        j.setEjercitos_disponibles(j.getEjercitos_disponibles() - (2 * j.calcularNumPaisesEnC(p.getContinente())));
+                        R7 = true;
+
+                    }else if(jugadores.size() == 5 || jugadores.size() == 6){
+
+                        p.addEjercitos(3 * j.calcularNumPaisesEnC(p.getContinente()));
+                        j.setEjercitos_disponibles(j.getEjercitos_disponibles() - (3 * j.calcularNumPaisesEnC(p.getContinente())));
+                        R7 = true;
+
+                    }
+                }
+            }
+
+            // FIn R7
+            // R8
+            if(j.getEjercitos_disponibles() > 0){
+                hayEjercitos = true;
+            }
+            if(R7 && hayEjercitos){
+
+                while (j.getEjercitos_disponibles() > 0){
+                    for(Continente c: continentesOrdenadosMenosFronteras){
+                        for(Pais p: c.getPaises()){
+                            if(p.getJugador().equals(j)){
+                                if(p.getEjercitos() == 1){
+                                    p.addEjercitos(1);
+                                    j.setEjercitos_disponibles(j.getEjercitos_disponibles() - 1);
+                                }
+                            }
+                        }
+
+                    }
+                }
+
+            }
 
 
 
