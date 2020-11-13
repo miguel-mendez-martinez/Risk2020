@@ -459,7 +459,7 @@ public class Menu {
         }else{
             //ganan los atacantes
             ejercitosPerdidos = dadoDef.countDados();
-            ejercitosBef = att.getEjercitos();
+            ejercitosBef = def.getEjercitos();
             ejercitosAft = ejercitosBef - ejercitosPerdidos;
             att.setEjercitos(ejercitosAft);
         }

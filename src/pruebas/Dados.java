@@ -52,12 +52,12 @@ public class Dados {
         return max;
     }
     public int countDados(){
-        if(this.z == 0){
+        if(this.z != 0){
             return 3;
-        }else if(this.y == 0){
+        }else if(this.y != 0){
             return 2;
         }else{
-            return 3;
+            return 1;
         }
     }
     public String printfDado(int numDados){
