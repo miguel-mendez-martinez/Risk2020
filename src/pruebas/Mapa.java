@@ -54,7 +54,7 @@ public class Mapa {
         String color = "VERDE";
         Casilla casilla;
         Continente africa = new Continente("África", color);
-
+        africa.setAbreviatura("África");
         africa.setNumPaises(6);
 
         casilla = new Casilla(5, 4);
@@ -106,7 +106,7 @@ public class Mapa {
         String color = "AMARILLO";
         Casilla casilla;
         Continente europa = new Continente("Europa", color);
-
+        europa.setAbreviatura("Europa");
         europa.setNumPaises(7);
 
         casilla = new Casilla(4, 0);
@@ -165,7 +165,7 @@ public class Mapa {
         String color = "VIOLETA";
         Casilla casilla;
         Continente Anorte = new Continente("América del Norte", color);
-
+        Anorte.setAbreviatura("AméricaNorte");
         Anorte.setNumPaises(9);
 
         casilla = new Casilla(0, 0);
@@ -238,7 +238,7 @@ public class Mapa {
         String color = "ROJO";
         Casilla casilla;
         Continente Asur = new Continente("América del Sur", color);
-
+        Asur.setAbreviatura("AméricaSur");
         Asur.setNumPaises(4);
 
         casilla = new Casilla(1, 4);
@@ -276,7 +276,7 @@ public class Mapa {
         String color = "AZUL";
         Casilla casilla;
         Continente oceania = new Continente("Oceanía", color);
-
+        oceania.setAbreviatura("Oceanía");
         oceania.setNumPaises(4);
 
         casilla = new Casilla(9, 6);
@@ -314,7 +314,7 @@ public class Mapa {
         String color = "CYAN";
         Casilla casilla;
         Continente asia = new Continente("Asia", color);
-
+        asia.setAbreviatura("asia");
         asia.setNumPaises(12);
 
         casilla = new Casilla(6, 0);

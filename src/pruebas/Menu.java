@@ -939,19 +939,25 @@ public class Menu {
         }
     }
 
-    /*public void describirContinente(String nombreContinente){
+    public void describirContinente(String nombreContinente){
         boolean existe;
-        Continente continente = new continente();
+        Continente continente = new Continente();
         for (Continente c: continentes){
-            if (c.getNombre().equals(nombreContinente)) existe=true;
+            if (c.getNombre().equals(nombreContinente)){
+                existe=true;
+                continente = c;
+            }
         }
         if(existe){
+
+            String exito;
+            exito ="{\n\tnombre: " + continente.getNombre() + ",\n\tabreviatura: " + continente.getAbreviatura() + "\n\t"}
 
 
 
         }else // error de que no existe continente 102
 
-    }*/
+    }
 
 
 

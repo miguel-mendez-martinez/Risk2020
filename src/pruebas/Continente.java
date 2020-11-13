@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class Continente {
     
     private String nombre;
+    private String abreviatura;
     private int bonus;
     private ArrayList<Pais> paises;
     private String color;
@@ -57,7 +58,15 @@ public class Continente {
             this.nombre = nombre;            
         }
     }
-    
+
+    public String getAbreviatura() {
+        return this.abreviatura;
+    }
+
+    public void setAbreviatura(String abreviatura) {
+        this.abreviatura = abreviatura;
+    }
+
     public int getBonus(){
         return bonus;
     }
