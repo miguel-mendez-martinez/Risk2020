@@ -119,18 +119,13 @@ public class Menu {
                                 }else{
                                     if(partes[1].equals("jugadores")) { 
                                         crearJugador(new File(partes[2]));
-                                        //en cuanto creamos un jugador o varios, el actual será siempre el primero se añadan los que se añadan
-                                        
-                                        /*int i=0;
-                                        this.jugadorActual = this.jugadores.get(i);*/
+                                        this.setEjercitosInicio();
                                         if(checker < 2){
                                             checker = 2;
                                         }
                                     } else {
                                         crearJugador(partes[1], partes[2]);
-                                        //idem arriba
-                                        /*int i=0;
-                                        this.jugadorActual = this.jugadores.get(i);*/
+                                        this.setEjercitosInicio();
                                         if(checker < 2){
                                             checker = 2;
                                         }
@@ -873,29 +868,11 @@ public class Menu {
         }
     }
 
-
-    public void repartirEjercitos(String num, String nombrePais) {
-
+    private void setEjercitosInicio(){
         int numJugadores;
         numJugadores = contarJugadores(this.jugadores);
-        Pais pais = existePais(this.paises, nombrePais);
         
-        
-        int numEjer = Integer.parseInt(num);
-
-        if (pais == null) {
-
-            Salida error = new Salida(109);
-            System.out.println(error.toString());
-            //error de que pais no existe 109
-
-        }else if(pais.getJugador() == null){
-            Salida error = new Salida(110);
-            System.out.println(error.toString());
-            // jugador no asignado 110
-
-        }else{
-            switch (numJugadores){
+        switch (numJugadores){
                 case 3:
                     for (Jugador j: jugadores){
                         j.setTropas(35);
@@ -924,34 +901,56 @@ public class Menu {
                     }
                     break;
             }
-        }
-        int ejDisp = pais.getJugador().getEjercitos_disponibles();
-        if(ejDisp == 0){
-            Salida error = new Salida(119);
+    }
+    public void repartirEjercitos(String num, String nombrePais) {
+
+        int numJugadores;
+        numJugadores = contarJugadores(this.jugadores);
+        Pais pais = existePais(this.paises, nombrePais);
+        
+        
+        int numEjer = Integer.parseInt(num);
+
+        if (pais == null) {
+
+            Salida error = new Salida(109);
             System.out.println(error.toString());
-            //error 119 y eso
-        }else if(numEjer > ejDisp){
-            pais.addEjercitos(ejDisp);
-            pais.getJugador().setEjercitos_disponibles(0); // si se quieren asignar mas de los disponibles se asignan solo estos y pasa a haber 0 disponibles
-            String exito = "{\n pais: \"" + pais.getNombre() + "\",\n jugador: \"" + 
-                    pais.getJugador().getNombre() + "\",\n numeroEjercitosAsignados: " 
-                    + ejDisp + ",\n numeroEjercitosTotales: " + pais.getEjercitos() + ",\n paisesOcupadosContinente: " + pais.getContinente().printPaisesEjer();
-            System.out.println(exito);
-            Salida salida = new Salida();
-            salida.imprimirArchivo(exito);
-        }else { // caso todo correcto
-            pais.addEjercitos(numEjer);
-            pais.getJugador().setEjercitos_disponibles(ejDisp - numEjer);
-            String exito = "{\n pais: \"" + pais.getNombre() + "\",\n jugador: \"" + 
-                    pais.getJugador().getNombre() + "\",\n numeroEjercitosAsignados: " 
-                    + numEjer + ",\n numeroEjercitosTotales: " + pais.getEjercitos() + ",\n paisesOcupadosContinente: " + pais.getContinente().printPaisesEjer() + "\n}";
-            System.out.println(exito);
-            Salida salida = new Salida();
-            salida.imprimirArchivo(exito);
+            //error de que pais no existe 109
+
+        }else if(pais.getJugador().equals(this.jugadorActual)){
+            
+            int ejDisp = pais.getJugador().getEjercitos_disponibles();
+            if(ejDisp == 0){
+                Salida error = new Salida(119);
+                System.out.println(error.toString());
+                //error 119 y eso
+            }else if(numEjer > ejDisp){
+                pais.addEjercitos(ejDisp);
+                pais.getJugador().setEjercitos_disponibles(0); // si se quieren asignar mas de los disponibles se asignan solo estos y pasa a haber 0 disponibles
+                String exito = "{\n pais: \"" + pais.getNombre() + "\",\n jugador: \"" + 
+                        pais.getJugador().getNombre() + "\",\n numeroEjercitosAsignados: " 
+                        + ejDisp + ",\n numeroEjercitosTotales: " + pais.getEjercitos() + ",\n paisesOcupadosContinente: " + pais.getContinente().printPaisesEjer();
+                System.out.println(exito);
+                Salida salida = new Salida();
+                salida.imprimirArchivo(exito);
+            }else { // caso todo correcto
+                pais.addEjercitos(numEjer);
+                pais.getJugador().setEjercitos_disponibles(ejDisp - numEjer);
+                String exito = "{\n pais: \"" + pais.getNombre() + "\",\n jugador: \"" + 
+                        pais.getJugador().getNombre() + "\",\n numeroEjercitosAsignados: " 
+                        + numEjer + ",\n numeroEjercitosTotales: " + pais.getEjercitos() + ",\n paisesOcupadosContinente: " + pais.getContinente().printPaisesEjer() + "\n}";
+                System.out.println(exito);
+                Salida salida = new Salida();
+                salida.imprimirArchivo(exito);
+            }
+        }else{
+            Salida error = new Salida(110);
+            System.out.println(error.toString());
+            // jugador no asignado 110
         }
     }
 
-    public void describirContinente(String nombreContinente){
+    /*public void describirContinente(String nombreContinente){
         boolean existe;
         Continente continente = new continente();
         for (Continente c: continentes){
@@ -963,7 +962,7 @@ public class Menu {
 
         }else // error de que no existe continente 102
 
-    }
+    }*/
 
 
 

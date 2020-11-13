@@ -415,29 +415,23 @@ $> asignar Miguel M2
 
 $> repartir ejercitos 2 Siberia
 {
- pais: "Siberia",
- jugador: "Gondorff",
- numeroEjercitosAsignados: 2,
- numeroEjercitosTotales: 2,
- paisesOcupadosContinente: [ { "Siberia",2 }, { "Yakustsk",0 }, { "Urales",0 }, { "Afganistan",0 }, { "Oriente Medio",0 }, { "Kamchatka",0 }, { "Irkutsk",0 }, { "Mongolia",0 }, { "China",0 }, { "India",0 }, { "Japón",0 }, { "Sureste Asiático",0 } ]
-}
+ código de error: 110,
+ descripción: "El país no pertence al jugador"
+{
 
 $> repartir ejercitos 10 China
 {
- pais: "China",
- jugador: "Hooker",
- numeroEjercitosAsignados: 10,
- numeroEjercitosTotales: 10,
- paisesOcupadosContinente: [ { "Siberia",2 }, { "Yakustsk",0 }, { "Urales",0 }, { "Afganistan",0 }, { "Oriente Medio",0 }, { "Kamchatka",0 }, { "Irkutsk",0 }, { "Mongolia",0 }, { "China",10 }, { "India",0 }, { "Japón",0 }, { "Sureste Asiático",0 } ]
-}
+ código de error: 110,
+ descripción: "El país no pertence al jugador"
+{
 
 $> repartir ejercitos 10 Siberia
 {
  pais: "Siberia",
  jugador: "Gondorff",
  numeroEjercitosAsignados: 10,
- numeroEjercitosTotales: 12,
- paisesOcupadosContinente: [ { "Siberia",12 }, { "Yakustsk",0 }, { "Urales",0 }, { "Afganistan",0 }, { "Oriente Medio",0 }, { "Kamchatka",0 }, { "Irkutsk",0 }, { "Mongolia",0 }, { "China",10 }, { "India",0 }, { "Japón",0 }, { "Sureste Asiático",0 } ]
+ numeroEjercitosTotales: 10,
+ paisesOcupadosContinente: [ { "Siberia",10 }, { "Yakustsk",0 }, { "Urales",0 }, { "Afganistan",0 }, { "Oriente Medio",0 }, { "Kamchatka",0 }, { "Irkutsk",0 }, { "Mongolia",0 }, { "China",0 }, { "India",0 }, { "Japón",0 }, { "Sureste Asiático",0 } ]
 }
 
 $> obtener frontera Brasil
@@ -533,6 +527,12 @@ $> repartir ejercitos 2 Ontario
  paisesOcupadosContinente: [ { "Alaska",0 }, { "Alberta",0 }, { "Estados Unidos del Oeste",0 }, { "Territorios del Noroeste",0 }, { "Ontario",2 }, { "Estados Unidos del Este",0 }, { "America Central",0 }, { "Groenlandia",0 }, { "Quebec",0 } ]
 }
 
+$> acabar turno
+{
+ nombre: "Hooker",
+ numeroEjercitosRearmar: 0
+}
+
 $> repartir ejercitos 1 USAEste
 {
  pais: "Estados Unidos del Este",
@@ -542,83 +542,9 @@ $> repartir ejercitos 1 USAEste
  paisesOcupadosContinente: [ { "Alaska",0 }, { "Alberta",0 }, { "Estados Unidos del Oeste",0 }, { "Territorios del Noroeste",0 }, { "Ontario",2 }, { "Estados Unidos del Este",1 }, { "America Central",0 }, { "Groenlandia",0 }, { "Quebec",0 } ]
 }
 
-$> atacar Ontario USAEste
-
-$> repartir ejercitos 2 Ontario
-{
- pais: "Ontario",
- jugador: "Gondorff",
- numeroEjercitosAsignados: 2,
- numeroEjercitosTotales: 4,
- paisesOcupadosContinente: [ { "Alaska",0 }, { "Alberta",0 }, { "Estados Unidos del Oeste",0 }, { "Territorios del Noroeste",0 }, { "Ontario",4 }, { "Estados Unidos del Este",1 }, { "America Central",0 }, { "Groenlandia",0 }, { "Quebec",0 } ]
-}
-
-$> repartir ejercitos 1 USAEste
-{
- pais: "Estados Unidos del Este",
- jugador: "Hooker",
- numeroEjercitosAsignados: 1,
- numeroEjercitosTotales: 2,
- paisesOcupadosContinente: [ { "Alaska",0 }, { "Alberta",0 }, { "Estados Unidos del Oeste",0 }, { "Territorios del Noroeste",0 }, { "Ontario",4 }, { "Estados Unidos del Este",2 }, { "America Central",0 }, { "Groenlandia",0 }, { "Quebec",0 } ]
-}
-
-$> atacar Ontario USAEste
-
 $> acabar turno
 {
  nombre: "Hooker",
- numeroEjercitosRearmar: 0
-}
-
-$> describir pais Brasil
-{
- nombre: "Brasil",
- abreviatura: "Brasil",
- continente: "América del Sur",
- frontera:  [ "África del Norte", "Perú" ],
- jugador: "Hooker",
- numeroEjercitos: 0,
- numeroVecesOcupado: 0
-}
-
-$> describir jugador Gondorff
-{
- nombre: "Gondorff",
- color: "VERDE",
- numeroEjercitos: 30,
- paises: [ "Alaska", "Territorios del Noroeste", "Groenlandia", "Islandia", "Escandinavia", "Siberia", "Yakustsk", "Kamchatka", "Alberta", "Ontario", "Quebec", "Gran Bretaña", "Europa Norte", "Rusia" ],
- continentes: [ ],
- cartas: [ "Caballería&Alaska" ],
- numeroEjercitosRearmar: 0
-}
-
-$> asignar carta Caballería&Indonesia
-{
- código de error: 127,
- descripción: "El jugador no conquistó ningun pais este turno"
-{
-
-$> asignar carta Caballería&Alaska
-{
- código de error: 127,
- descripción: "El jugador no conquistó ningun pais este turno"
-{
-
-$> asignar carta Caballería&Brasil
-{
- código de error: 127,
- descripción: "El jugador no conquistó ningun pais este turno"
-{
-
-$> describir jugador Hooker
-{
- nombre: "Hooker",
- color: "AMARILLO",
- mision: "Conquistar Asia y América del Sur",
- numeroEjercitos: 30,
- paises: [ "Venezuela", "Perú", "Argentina", "Brasil", "Irkutsk", "Estados Unidos del Oeste", "Estados Unidos del Este", "Europa Occidental", "Europa Sur", "Urales", "Mongolia", "Japón", "America Central", "Afganistan", "China", "África del Norte", "Egipto" ],
- continentes: [ "América del Sur" ],
- cartas: [ ],
  numeroEjercitosRearmar: 0
 }
 
@@ -627,3 +553,17 @@ $> acabar turno
  nombre: "Lonnegan",
  numeroEjercitosRearmar: 0
 }
+
+$> acabar turno
+{
+ nombre: "miguel",
+ numeroEjercitosRearmar: 0
+}
+
+$> acabar turno
+{
+ nombre: "Gondorff",
+ numeroEjercitosRearmar: 0
+}
+
+$> atacar Ontario USAEste

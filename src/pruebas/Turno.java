@@ -37,12 +37,12 @@ public class Turno {
                 break;
             }
         }
-        /*if(flag == 1){
-            //el jugador a conquistado, le damos carta y pasamos turno
-            Cartas carta = new Cartas(this.paises);
-            this.jugadores.get(i).setCartas(carta);
-        }*/
-        i++;
+        if(i == (this.jugadores.size() - 1)){
+            i = 0;
+        }else{
+            i++;
+        }
+        
         return this.jugadores.get(i);
         
     }
