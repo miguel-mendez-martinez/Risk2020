@@ -153,4 +153,12 @@ public class Pais {
         String texto="\n\t "+ this.nombre + ", Tropas en pais: " + this.ejercitos;
         return texto;
     }
+
+    @Override
+    public boolean equals(Object obj){
+        // Conversion explicita del objeto a tipo pais
+        return this.abreviatura.equals(((Pais) obj).abreviatura);
+
+    }
 }
+
