@@ -372,7 +372,7 @@ public class Menu {
                                                 System.out.println(error.toString());
                                             }else{
                                                 System.out.println("hola voy a atacar.");
-                                                this.atacarPais(p1, p2);
+                                                this.selectDados(p1, p2);
                                             }
                                         }
                                     }
@@ -444,76 +444,65 @@ public class Menu {
             excepcion.printStackTrace();
         }
     }
-    public void atacarPais(Pais paisAtt, Pais paisDef){
+    public void atacar(Pais att, Dados dadoAtt, Pais def, Dados dadoDef){
+        int maxAtt, maxDef, ejercitosPerdidos, ejercitosBef, ejercitosAft;
+        
+        maxAtt = dadoAtt.maxDado();
+        maxDef = dadoDef.maxDado();
+        
+        System.out.println(maxAtt);
+        System.out.println(maxDef);
+        
+        if(maxAtt <= maxDef){
+            //ganan los defensores
+            ejercitosPerdidos = dadoAtt.countDados();
+        }else{
+            //ganan los atacantes
+            ejercitosPerdidos = dadoDef.countDados();
+            ejercitosBef = att.getEjercitos();
+            ejercitosAft = ejercitosBef - ejercitosPerdidos;
+            att.setEjercitos(ejercitosAft);
+        }
+    }
+    public void selectDados(Pais paisAtt, Pais paisDef){
         int ejerAtt, ejerDef;
-        Dados dadoAtt1 = new Dados();
-        Dados dadoAtt2 = new Dados();
-        Dados dadoAtt3 = new Dados();
-        Dados dadoDef1 = new Dados();
-        Dados dadoDef2 = new Dados();
+        Dados dadoAtt = new Dados();
+        Dados dadoDef = new Dados();
         ejerAtt = paisAtt.getEjercitos();
         ejerDef = paisDef.getEjercitos();
         if(ejerAtt == 1){
-            dadoAtt1.genDados();
+            dadoAtt.genDados(1);
             if(ejerDef == 1){
-                dadoDef1.genDados();
-                System.out.println("Ataque:");
-                System.out.println(dadoAtt1);
-                System.out.println("Defensa:");
-                System.out.println(dadoDef1);
+                dadoDef.genDados(1);
+                System.out.println(dadoDef.printfDado(1));
             }else{
-                dadoDef1.genDados();
-                dadoDef2.genDados();
-                System.out.println("Ataque:");
-                System.out.println(dadoAtt1);
-                System.out.println("Defensa:");
-                System.out.println(dadoDef1);
-                System.out.println(dadoDef2);
+                dadoDef.genDados(2);
+                System.out.println(dadoDef.printfDado(2));
             }
-            
+            System.out.println(dadoAtt.printfDado(1));
+            this.atacar(paisAtt, dadoAtt, paisDef, dadoDef);
         }else if(ejerAtt == 2){
-            dadoAtt1.genDados();
-            dadoAtt2.genDados();
+            dadoAtt.genDados(2);
             if(ejerDef == 1){
-                dadoDef1.genDados();
-                System.out.println("Ataque:");
-                System.out.println(dadoAtt1);
-                System.out.println(dadoAtt2);
-                System.out.println("Defensa:");
-                System.out.println(dadoDef1);
+                dadoDef.genDados(1);
+                System.out.println(dadoDef.printfDado(1));
             }else{
-                dadoDef1.genDados();
-                dadoDef2.genDados();
-                System.out.println("Ataque:");
-                System.out.println(dadoAtt1);
-                System.out.println(dadoAtt2);
-                System.out.println("Defensa:");
-                System.out.println(dadoDef1);
-                System.out.println(dadoDef2);
+                dadoDef.genDados(2);
+                System.out.println(dadoDef.printfDado(2));
             }
+            System.out.println(dadoAtt.printfDado(2));
+            this.atacar(paisAtt, dadoAtt, paisDef, dadoDef);
         }else{
-            dadoAtt1.genDados();
-            dadoAtt2.genDados();
-            dadoAtt3.genDados();
+            dadoAtt.genDados(3);
             if(ejerDef == 1){
-                dadoDef1.genDados();
-                System.out.println("Ataque:");
-                System.out.println(dadoAtt1);
-                System.out.println(dadoAtt2);
-                System.out.println(dadoAtt3);
-                System.out.println("Defensa:");
-                System.out.println(dadoDef1);
+                dadoDef.genDados(1);
+                System.out.println(dadoDef.printfDado(1));
             }else{
-                dadoDef1.genDados();
-                dadoDef2.genDados();
-                System.out.println("Ataque:");
-                System.out.println(dadoAtt1);
-                System.out.println(dadoAtt2);
-                System.out.println(dadoAtt3);
-                System.out.println("Defensa:");
-                System.out.println(dadoDef1);
-                System.out.println(dadoDef2);
+                dadoDef.genDados(2);
+                System.out.println(dadoDef.printfDado(2));
             }
+            System.out.println(dadoAtt.printfDado(3));
+            this.atacar(paisAtt, dadoAtt, paisDef, dadoDef);
         }
         
     }
