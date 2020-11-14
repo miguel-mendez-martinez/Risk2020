@@ -16,11 +16,25 @@ asignar Hooker Argentina
 asignar Hooker Brasil
 asignar paises asignaciones.csv
 asignar Hooker M34
-repartir ejercitos 4 Ontario
-repartir ejercitos 10 China
-repartir ejercitos 10 Siberia
-repartir ejercitos 20 Ontario
-repartir ejercitos 4 Ontario
+repartir ejercitos 8 Ontario
+repartir ejercitos 3 Siberia
+repartir ejercitos 6 Alberta
+repartir ejercitos 1 GBretaña
+acabar turno
+jugador
+repartir ejercitos 2 USAEste
+repartir ejercitos 2 USAOeste
+repartir ejercitos 2 AmeCentra
+repartir ejercitos 3 EurOcc
+acabar turno 
+acabar turno
+acabar turno
+atacar Ontario USAEste
+atacar Alberta USAOeste
+repartir ejercitos 3 USAEste
+atacar USAEste AmeCentra
+acabar turno
+atacar EurOcc GBretaña
 obtener frontera Brasil
 obtener frontera Groenlan
 obtener frontera ANorte

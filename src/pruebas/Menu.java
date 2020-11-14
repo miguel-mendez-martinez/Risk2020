@@ -122,12 +122,14 @@ public class Menu {
                                     if(partes[1].equals("jugadores")) { 
                                         crearJugador(new File(partes[2]));
                                         this.setEjercitosInicio();
+                                        this.jugadorActual = this.jugadores.get(0);
                                         if(checker < 2){
                                             checker = 2;
                                         }
                                     } else {
                                         crearJugador(partes[1], partes[2]);
                                         this.setEjercitosInicio();
+                                        this.jugadorActual = this.jugadores.get(0);
                                         if(checker < 2){
                                             checker = 2;
                                         }
@@ -369,20 +371,16 @@ public class Menu {
                                             Salida error = new Salida(112);
                                             System.out.println(error.toString());
                                         }else{
-                                            if(p1.getEjercitos() < 1 || p2.getEjercitos() < 1){
+                                            if(p1.getEjercitos() <= 1 || p2.getEjercitos() <= 1){
                                                 Salida error = new Salida(124);
                                                 System.out.println(error.toString());
                                             }else{
-                                                System.out.println("hola voy a atacar.");
                                                 this.selectDados(p1, p2);
                                             }
                                         }
                                     }
                                 }
                             }
-                            
-                            
-                            //preguntar ataque pdf siberia-rusia
                         }else if(partes.length == 4){
                             Salida error = new Salida(101);
                             System.out.println(error.toString());
@@ -421,7 +419,7 @@ public class Menu {
                                 Salida error = new Salida(99);
                                 System.out.println(error.toString());
                             }else{
-                                this.jugadorActual = this.jugadores.get(0);
+                                
                                 if(partes.length == 2){
                                     //auto, esta es la importante parra empezar la partida, deben estar repartidos entre los paises pa empezar todo
                                     repartirEjercitos();
@@ -448,68 +446,66 @@ public class Menu {
         }
     }
     public void atacar(Pais att, Dados dadoAtt, Pais def, Dados dadoDef){
-        int maxAtt, maxDef, ejercitosPerdidos, ejercitosBef, ejercitosAft, cont=0, victorias;
-        
-        maxAtt = dadoAtt.maxDado();
-        maxDef = dadoDef.maxDado();
+        int ejercitosPerdidos, ejercitosBefA=0, ejercitosAftA=0, ejercitosAftD=0, ejercitosBefD=0, victorias;
+        String cont = "\"null\"";
         
         //en vez de comarar maximos, por victorias, si es 2, se eliminan 2 de los defensores, si es 1 se elimina 1 de cada y si es 0 se eliminan dos de los atacantes
         victorias = dadoAtt.compDado(dadoDef);
-        System.out.println(maxAtt);
-        System.out.println(maxDef);
-        
+        System.out.println(victorias);
         if(victorias == 0){
             //ganan los defensores
             ejercitosPerdidos = dadoAtt.countDados();
-            ejercitosBef = att.getEjercitos();
-            ejercitosAft = ejercitosBef - ejercitosPerdidos;
-            if(ejercitosAft <= 0){
+            ejercitosBefA = att.getEjercitos();
+            ejercitosAftA = ejercitosBefA - ejercitosPerdidos;
+            if(ejercitosAftA <= 0){
                 att.getJugador().getPaises().remove(att);
                 att.setJugador(def.getJugador());
                 def.getJugador().setPaises(att);
                 ejercitosPerdidos = dadoDef.countDados();
-                ejercitosBef = def.getEjercitos();
-                ejercitosAft = ejercitosBef - ejercitosPerdidos;
-                if(ejercitosAft <= 0){
-                    ejercitosAft = ejercitosBef - 1;
+                ejercitosBefD = def.getEjercitos();
+                ejercitosAftD = ejercitosBefD - ejercitosPerdidos;
+                if(ejercitosAftD <= 0){
+                    ejercitosAftA = ejercitosBefD - 1;
+                    ejercitosAftD = 1;
                     def.setEjercitos(1);
-                    att.setEjercitos(ejercitosAft);
+                    att.setEjercitos(ejercitosAftA);
                 }else{
-                    def.setEjercitos(ejercitosAft);
+                    def.setEjercitos(ejercitosAftD);
                     att.setEjercitos(ejercitosPerdidos);
                 }
                 if(def.getJugador().esDueño(att.getContinente())){
-                    cont += 1;
+                    cont = att.getContinente().printNombre();
                 }
                 
             }else{
-                att.setEjercitos(ejercitosAft);
+                att.setEjercitos(ejercitosAftA);
             }
         }else if(victorias == 1){
-            ejercitosBef = att.getEjercitos();
-            ejercitosAft = ejercitosBef - 1;
-            att.setEjercitos(ejercitosAft);
-            ejercitosBef = def.getEjercitos();
-            ejercitosAft = ejercitosBef - 1;
-            def.setEjercitos(ejercitosAft);
+            ejercitosBefA = att.getEjercitos();
+            ejercitosAftA = ejercitosBefA - 1;
+            att.setEjercitos(ejercitosAftA);
+            ejercitosBefD = def.getEjercitos();
+            ejercitosAftD = ejercitosBefD - 1;
+            def.setEjercitos(ejercitosAftD);
             if(att.getEjercitos() == 0){
                 //se conquista el atacante
                 att.getJugador().getPaises().remove(att);
                 att.setJugador(def.getJugador());
                 def.getJugador().setPaises(att);
                 ejercitosPerdidos = dadoDef.countDados();
-                ejercitosBef = def.getEjercitos();
-                ejercitosAft = ejercitosBef - ejercitosPerdidos;
-                if(ejercitosAft <= 0){
-                    ejercitosAft = ejercitosBef - 1;
+                ejercitosBefD = def.getEjercitos();
+                ejercitosAftD = ejercitosBefD - ejercitosPerdidos;
+                if(ejercitosAftD <= 0){
+                    ejercitosAftA = ejercitosBefD - 1;
+                    ejercitosAftD = 1;
                     def.setEjercitos(1);
-                    att.setEjercitos(ejercitosAft);
+                    att.setEjercitos(ejercitosAftA);
                 }else{
-                    def.setEjercitos(ejercitosAft);
+                    def.setEjercitos(ejercitosAftD);
                     att.setEjercitos(ejercitosPerdidos);
                 }
                 if(def.getJugador().esDueño(att.getContinente())){
-                    cont += 1;
+                    cont = att.getContinente().printNombre();
                 }
             }else if(def.getEjercitos() == 0){
                 //se conquista el defensor
@@ -518,57 +514,63 @@ public class Menu {
                 def.setJugador(att.getJugador());
                 att.getJugador().setPaises(def);
                 ejercitosPerdidos = dadoAtt.countDados();
-                ejercitosBef = att.getEjercitos();
-                ejercitosAft = ejercitosBef - ejercitosPerdidos;
-                if(ejercitosAft <= 0){
-                    ejercitosAft = ejercitosBef - 1;
+                ejercitosBefA = att.getEjercitos();
+                ejercitosAftA = ejercitosBefA - ejercitosPerdidos;
+                if(ejercitosAftA <= 0){
+                    ejercitosAftD = ejercitosBefA - 1;
+                    ejercitosAftA = 1;
                     att.setEjercitos(1);
-                    def.setEjercitos(ejercitosAft);
+                    def.setEjercitos(ejercitosAftD);
                 }else{
-                    att.setEjercitos(ejercitosAft);
+                    att.setEjercitos(ejercitosAftA);
                     def.setEjercitos(ejercitosPerdidos);
                 }
                 if(att.getJugador().esDueño(def.getContinente())){
-                    cont += 1;
+                    cont = att.getContinente().printNombre();
                 }
             }
         }else{
             //ganan los atacantes
             this.conquisto = 1; //el jugador puede recibir cartas
             ejercitosPerdidos = dadoDef.countDados();
-            ejercitosBef = def.getEjercitos();
-            ejercitosAft = ejercitosBef - ejercitosPerdidos;
-            if(ejercitosAft <= 0){
+            ejercitosBefD = def.getEjercitos();
+            ejercitosAftD = ejercitosBefD - ejercitosPerdidos;
+            if(ejercitosAftD <= 0){
                 //el pais defensor pasa a ser del jugador que ataco
                 def.getJugador().getPaises().remove(def);
                 def.setJugador(att.getJugador());
                 att.getJugador().setPaises(def);
                 ejercitosPerdidos = dadoAtt.countDados();
-                ejercitosBef = att.getEjercitos();
-                ejercitosAft = ejercitosBef - ejercitosPerdidos;
-                if(ejercitosAft <= 0){
-                    ejercitosAft = ejercitosBef - 1;
+                ejercitosBefA = att.getEjercitos();
+                ejercitosAftA = ejercitosBefA - ejercitosPerdidos;
+                if(ejercitosAftA <= 0){
+                    ejercitosAftD = ejercitosBefA - 1;
+                    ejercitosAftA = 1;
                     att.setEjercitos(1);
-                    def.setEjercitos(ejercitosAft);
+                    def.setEjercitos(ejercitosAftD);
                 }else{
-                    att.setEjercitos(ejercitosAft);
+                    att.setEjercitos(ejercitosAftA);
                     def.setEjercitos(ejercitosPerdidos);
                 }
                 if(att.getJugador().esDueño(def.getContinente())){
-                    cont += 1;
+                    cont = att.getContinente().printNombre();
                 }
             }else{
-                def.setEjercitos(ejercitosAft);
+                def.setEjercitos(ejercitosAftD);
             }
         }
         //impresion de resultado
         int dadAtt = dadoAtt.countDados();
         int dadDef = dadoDef.countDados();
         String exito = "";
-        exito += "{\n dadosAtaque: [ " + dadoAtt.printfDado(dadAtt) + " ]\n dadosDefensa: [ " 
-                + dadoDef.printfDado(dadDef) + " ]\n ejercitosPaisAtaque: {" + 
-                ejercitosBef + ", " + ejercitosAft + " }\n ejercitosPaisAtaque: {" + 
-                ejercitosBef + ", " + ejercitosAft;
+        exito += "{\n dadosAtaque: [ " + dadoAtt.printfDado(dadAtt) + " ],\n dadosDefensa: [ " 
+                + dadoDef.printfDado(dadDef) + " ],\n ejercitosPaisAtaque: {" + 
+                ejercitosBefA + ", " + ejercitosAftA + " },\n ejercitosPaisDefensa: {" + 
+                ejercitosBefD + ", " + ejercitosAftD + "},\n paisAtaquePerteneceA: "
+                + att.getJugador().printNombre() + ",\n paisDefensaPerteneceA: " +
+                def.getJugador().printNombre() + ",\n continenteConquistado: " + 
+                cont + "\n}";
+        System.out.println(exito);
     }
     public void selectDados(Pais paisAtt, Pais paisDef){
         int ejerAtt, ejerDef;
@@ -580,34 +582,25 @@ public class Menu {
             dadoAtt.genDados(1);
             if(ejerDef == 1){
                 dadoDef.genDados(1);
-                System.out.println(dadoDef.printfDado(1));
             }else{
                 dadoDef.genDados(2);
-                System.out.println(dadoDef.printfDado(2));
             }
-            System.out.println(dadoAtt.printfDado(1));
             this.atacar(paisAtt, dadoAtt, paisDef, dadoDef);
         }else if(ejerAtt == 2){
             dadoAtt.genDados(2);
             if(ejerDef == 1){
                 dadoDef.genDados(1);
-                System.out.println(dadoDef.printfDado(1));
             }else{
                 dadoDef.genDados(2);
-                System.out.println(dadoDef.printfDado(2));
             }
-            System.out.println(dadoAtt.printfDado(2));
             this.atacar(paisAtt, dadoAtt, paisDef, dadoDef);
         }else{
             dadoAtt.genDados(3);
             if(ejerDef == 1){
                 dadoDef.genDados(1);
-                System.out.println(dadoDef.printfDado(1));
             }else{
                 dadoDef.genDados(2);
-                System.out.println(dadoDef.printfDado(2));
             }
-            System.out.println(dadoAtt.printfDado(3));
             this.atacar(paisAtt, dadoAtt, paisDef, dadoDef);
         }
         
