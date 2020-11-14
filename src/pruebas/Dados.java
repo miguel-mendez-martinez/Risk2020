@@ -36,6 +36,44 @@ public class Dados {
         }
         
     }
+    /*public boolean esMayor(int max){
+        //si es mayor que alguna de las componentes de los dados devuelve true
+        if(max > this.x){
+            return true;
+        }
+        if(max > this.y){
+            return true;
+        }
+        if(max > this.z){
+            return true;
+        }
+        return false;
+    }*/
+    
+    public int compDado(Dados dado2){
+        int result=0;
+        
+        if(this.x <= dado2.getX()){
+            result = 0;
+            //ya una victoria para defensores, se devolvera 1 o 0
+            if(this.y <= dado2.getY() && this.z <= dado2.getY()){
+                //significa que tanto la x como la y del segundo dado son mayores a todo lo del primero
+                result = 0;
+            }else{
+                //el dado2 tiene la x mayor pero a la y menor que la y o z de los atacantes
+                result = 1;
+            }
+        }else{
+            result = 2;
+            if(this.y <= dado2.getY() && this.z <= dado2.getY()){
+                //una de las dos coordenadas del dado 2 es mayor que del dado 1, 1 victoria cada 1
+                result = 1;
+            }else{
+                result = 2;
+            }
+        }
+        return result;
+    }
     public int maxDado(){
         int max;
         if(this.x < this.y){
@@ -65,15 +103,19 @@ public class Dados {
         if(numDados == 1){
             texto += this.x;
         }else if(numDados == 2){
-            texto += this.x + " " + this.y;
+            texto += this.x + ", " + this.y;
         }else{
-            texto += this.x + " " + this.y + " " + this.z;
+            texto += this.x + ", " + this.y + ", " + this.z;
         }
         return texto;
     }
 
     public int getX() {
         return x;
+    }
+
+    public int getY() {
+        return y;
     }
     
     

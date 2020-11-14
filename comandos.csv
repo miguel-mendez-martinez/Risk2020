@@ -16,12 +16,11 @@ asignar Hooker Argentina
 asignar Hooker Brasil
 asignar paises asignaciones.csv
 asignar Hooker M34
-crear Miguel Rojo
-crear Miguel CYAN
-asignar Miguel M2
-repartir ejercitos 2 Siberia
+repartir ejercitos 4 Ontario
 repartir ejercitos 10 China
 repartir ejercitos 10 Siberia
+repartir ejercitos 20 Ontario
+repartir ejercitos 4 Ontario
 obtener frontera Brasil
 obtener frontera Groenlan
 obtener frontera ANorte
@@ -31,29 +30,11 @@ obtener frontera casamigueloh
 obtener color Brasil
 ver mapa
 crear mapa
-asignar carta Caballería&Alaska
-atacar Alaska Urales
-atacar Diana Urales
-atacar Urales Alaska 
-atacar Alaska Siberia
-atacar Alaska Diana
-atacar Ontario USAEste
-repartir ejercitos 2 Ontario
-acabar turno
-repartir ejercitos 1 USAEste
-acabar turno
-acabar turno
-acabar turno
-acabar turno
-atacar Ontario USAEste
-repartir ejercitos 2 Ontario
-repartir ejercitos 1 USAEste
-atacar Ontario USAEste
-acabar turno
 describir pais Brasil
 describir jugador Gondorff
 asignar carta Caballería&Indonesia
 asignar carta Caballería&Alaska
 asignar carta Caballería&Brasil
 describir jugador Hooker
+ver mapa
 acabar turno

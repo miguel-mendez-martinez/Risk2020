@@ -28,6 +28,7 @@ public class Menu {
     Mapa mapa;
     Jugador jugadorActual;
     Turno t;
+    int conquisto;
     /**
      * 
      */
@@ -41,10 +42,11 @@ public class Menu {
         this.paises = new ArrayList<>();
         this.continentes = new ArrayList<>();
         this.cartas = new ArrayList<>();
-        int checker = 0, conquisto=1; //cuando se ataque y se obtenga victoria esto ira a 0, y se pondra siempre a 0 al empezar un turno
+        int checker = 0; //cuando se ataque y se obtenga victoria esto ira a 0, y se pondra siempre a 0 al empezar un turno
         String orden= null;
         BufferedReader bufferLector= null;
         this.jugadorActual = null;
+        this.conquisto=0;
         //Jugador jugadorActual = new Jugador();
         
         //debemos ver si ya existe un fichero salida y eliminarlo si lo hace, ya que si existe escribiremos en el y tendremos las salidas de ejecuciones distintas en el mismo archivo
@@ -198,7 +200,7 @@ public class Menu {
                     case "acabar":
                         if(checker >= 5){
                             this.jugadorActual = this.t.pasarTurno(this.jugadorActual);
-                            conquisto = 0;
+                            this.conquisto = 0;
                             System.out.println(this.jugadorActual.printNomEjerR());
                             Salida salida = new Salida();
                             salida.imprimirArchivo(this.jugadorActual.printNomEjerR());
@@ -274,7 +276,7 @@ public class Menu {
                                         Salida error = new Salida(109);
                                         System.out.println(error.toString());
                                     }else{//continuamos
-                                        if(conquisto==1){
+                                        if(this.conquisto==1){
                                             //comprobar si esta asignada
                                             Cartas c = this.estaAsignada(this.cartas, pais, clase);
                                             if(c == null){
@@ -419,13 +421,14 @@ public class Menu {
                                 Salida error = new Salida(99);
                                 System.out.println(error.toString());
                             }else{
-                                if(partes[2] == null){
+                                this.jugadorActual = this.jugadores.get(0);
+                                if(partes.length == 2){
                                     //auto, esta es la importante parra empezar la partida, deben estar repartidos entre los paises pa empezar todo
+                                    repartirEjercitos();
                                     checker = 5;
-                                    this.jugadorActual = this.jugadores.get(0);
                                 }else{
                                     repartirEjercitos(partes[2], partes[3]);
-                                    this.jugadorActual = this.jugadores.get(0);
+                                    
                                     //a partir de aqui es cuando comienzan los turnos
                                     checker = 5;
                                 }
@@ -445,24 +448,127 @@ public class Menu {
         }
     }
     public void atacar(Pais att, Dados dadoAtt, Pais def, Dados dadoDef){
-        int maxAtt, maxDef, ejercitosPerdidos, ejercitosBef, ejercitosAft;
+        int maxAtt, maxDef, ejercitosPerdidos, ejercitosBef, ejercitosAft, cont=0, victorias;
         
         maxAtt = dadoAtt.maxDado();
         maxDef = dadoDef.maxDado();
         
+        //en vez de comarar maximos, por victorias, si es 2, se eliminan 2 de los defensores, si es 1 se elimina 1 de cada y si es 0 se eliminan dos de los atacantes
+        victorias = dadoAtt.compDado(dadoDef);
         System.out.println(maxAtt);
         System.out.println(maxDef);
         
-        if(maxAtt <= maxDef){
+        if(victorias == 0){
             //ganan los defensores
             ejercitosPerdidos = dadoAtt.countDados();
+            ejercitosBef = att.getEjercitos();
+            ejercitosAft = ejercitosBef - ejercitosPerdidos;
+            if(ejercitosAft <= 0){
+                att.getJugador().getPaises().remove(att);
+                att.setJugador(def.getJugador());
+                def.getJugador().setPaises(att);
+                ejercitosPerdidos = dadoDef.countDados();
+                ejercitosBef = def.getEjercitos();
+                ejercitosAft = ejercitosBef - ejercitosPerdidos;
+                if(ejercitosAft <= 0){
+                    ejercitosAft = ejercitosBef - 1;
+                    def.setEjercitos(1);
+                    att.setEjercitos(ejercitosAft);
+                }else{
+                    def.setEjercitos(ejercitosAft);
+                    att.setEjercitos(ejercitosPerdidos);
+                }
+                if(def.getJugador().esDueño(att.getContinente())){
+                    cont += 1;
+                }
+                
+            }else{
+                att.setEjercitos(ejercitosAft);
+            }
+        }else if(victorias == 1){
+            ejercitosBef = att.getEjercitos();
+            ejercitosAft = ejercitosBef - 1;
+            att.setEjercitos(ejercitosAft);
+            ejercitosBef = def.getEjercitos();
+            ejercitosAft = ejercitosBef - 1;
+            def.setEjercitos(ejercitosAft);
+            if(att.getEjercitos() == 0){
+                //se conquista el atacante
+                att.getJugador().getPaises().remove(att);
+                att.setJugador(def.getJugador());
+                def.getJugador().setPaises(att);
+                ejercitosPerdidos = dadoDef.countDados();
+                ejercitosBef = def.getEjercitos();
+                ejercitosAft = ejercitosBef - ejercitosPerdidos;
+                if(ejercitosAft <= 0){
+                    ejercitosAft = ejercitosBef - 1;
+                    def.setEjercitos(1);
+                    att.setEjercitos(ejercitosAft);
+                }else{
+                    def.setEjercitos(ejercitosAft);
+                    att.setEjercitos(ejercitosPerdidos);
+                }
+                if(def.getJugador().esDueño(att.getContinente())){
+                    cont += 1;
+                }
+            }else if(def.getEjercitos() == 0){
+                //se conquista el defensor
+                this.conquisto = 1; //el jugador puede recibir cartas
+                def.getJugador().getPaises().remove(def);
+                def.setJugador(att.getJugador());
+                att.getJugador().setPaises(def);
+                ejercitosPerdidos = dadoAtt.countDados();
+                ejercitosBef = att.getEjercitos();
+                ejercitosAft = ejercitosBef - ejercitosPerdidos;
+                if(ejercitosAft <= 0){
+                    ejercitosAft = ejercitosBef - 1;
+                    att.setEjercitos(1);
+                    def.setEjercitos(ejercitosAft);
+                }else{
+                    att.setEjercitos(ejercitosAft);
+                    def.setEjercitos(ejercitosPerdidos);
+                }
+                if(att.getJugador().esDueño(def.getContinente())){
+                    cont += 1;
+                }
+            }
         }else{
             //ganan los atacantes
+            this.conquisto = 1; //el jugador puede recibir cartas
             ejercitosPerdidos = dadoDef.countDados();
             ejercitosBef = def.getEjercitos();
             ejercitosAft = ejercitosBef - ejercitosPerdidos;
-            att.setEjercitos(ejercitosAft);
+            if(ejercitosAft <= 0){
+                //el pais defensor pasa a ser del jugador que ataco
+                def.getJugador().getPaises().remove(def);
+                def.setJugador(att.getJugador());
+                att.getJugador().setPaises(def);
+                ejercitosPerdidos = dadoAtt.countDados();
+                ejercitosBef = att.getEjercitos();
+                ejercitosAft = ejercitosBef - ejercitosPerdidos;
+                if(ejercitosAft <= 0){
+                    ejercitosAft = ejercitosBef - 1;
+                    att.setEjercitos(1);
+                    def.setEjercitos(ejercitosAft);
+                }else{
+                    att.setEjercitos(ejercitosAft);
+                    def.setEjercitos(ejercitosPerdidos);
+                }
+                if(att.getJugador().esDueño(def.getContinente())){
+                    cont += 1;
+                }
+            }else{
+                def.setEjercitos(ejercitosAft);
+            }
         }
+        //impresion de resultado
+        int dadAtt = dadoAtt.countDados();
+        int dadDef = dadoDef.countDados();
+        String exito = "";
+        exito += "{\n dadosAtaque: [ " + dadoAtt.printfDado(dadAtt) + " ]\n dadosDefensa: [ " 
+                + dadoDef.printfDado(dadDef) + " ]\n ejercitosPaisAtaque: {" + 
+                ejercitosBef + ", " + ejercitosAft + " }\n ejercitosPaisAtaque: {" + 
+                ejercitosBef + ", " + ejercitosAft;
     }
     public void selectDados(Pais paisAtt, Pais paisDef){
         int ejerAtt, ejerDef;
@@ -940,7 +1046,7 @@ public class Menu {
     }
 
     public void describirContinente(String nombreContinente){
-        boolean existe;
+        boolean existe=false;
         Continente continente = new Continente();
         for (Continente c: continentes){
             if (c.getNombre().equals(nombreContinente)){
@@ -951,11 +1057,11 @@ public class Menu {
         if(existe){
 
             String exito;
-            exito ="{\n\tnombre: " + continente.getNombre() + ",\n\tabreviatura: " + continente.getAbreviatura() + "\n\t"}
+            exito ="{\n\tnombre: " + continente.getNombre() + ",\n\tabreviatura: " + continente.getAbreviatura() + "\n\t}";
 
 
 
-        }else // error de que no existe continente 102
+        }//else // error de que no existe continente 102
 
     }
 
@@ -974,37 +1080,7 @@ public class Menu {
         ArrayList<Continente> continentesOrdenadosMenosFronteras = new ArrayList<>();
         int numJugadores;
         // Asignar numero de tropas que tendrá cada jugador en funcion del numero de jugadores
-        switch (numJugadores = contarJugadores(this.jugadores)){ // esto creo que solo va en la funcion de migueloh
-
-            case 3:
-                for (Jugador j: jugadores){
-                    j.setTropas(35);
-                    j.setEjercitos_disponibles(35);
-                }
-                break;
-
-            case 4:
-                for (Jugador j: jugadores){
-                    j.setTropas(30);
-                    j.setEjercitos_disponibles(30);
-                }
-                break;
-
-            case 5:
-                for (Jugador j: jugadores){
-                    j.setTropas(25);
-                    j.setEjercitos_disponibles(25);
-                }
-                break;
-
-            case 6:
-                for (Jugador j: jugadores){
-                    j.setTropas(20);
-                    j.setEjercitos_disponibles(20);
-                }
-                break;
-
-        }
+        //ya lo hacemos al crear jugadores
 
         // Asignar un ejercito a cada pais:
         for(Pais p:paises){
@@ -1015,9 +1091,10 @@ public class Menu {
 
         for(int k=0; k<6; k++){
             Continente cAux = new Continente();
+            //cAux = this.continentes.get(k); tienes que meter una declaracion tipo esto pero ns donde la querras meter
             for (int i = 0; i< continentes.size(); i++){
                 if(continentesOrdenadosMenosFronteras.contains(continentes.get(i))) i++;
-                if(continentes.get(i).fronterasContinente() < cAux.fronterasContinente()) cAux = continentes.get(i);
+                if(this.continentes.get(i).fronterasContinente() < cAux.fronterasContinente()) cAux = continentes.get(i);
 
             }
             continentesOrdenadosMenosFronteras.add(cAux);
