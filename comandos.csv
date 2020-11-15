@@ -29,10 +29,10 @@ repartir ejercitos 3 EurOcc
 acabar turno 
 acabar turno
 acabar turno
-atacar Ontario 6x5x2 USAEste 5x5
-atacar Alberta USAOeste
+atacar Ontario 6x5x2 USAEste 4x3
+atacar Alberta 6x6x6 USAOeste 1x1
 repartir ejercitos 3 USAEste
-atacar USAEste AmeCentra
+atacar USAEste 6x6x6 AmeCentra 1x1
 acabar turno
 atacar EurOcc GBretaña
 obtener frontera Brasil

@@ -209,7 +209,9 @@ public class Jugador {
 
         boolean flag = true; // Por defecto es dueño de todo el continente
         for(Pais p:continente.getPaises()){
-            if(!p.getJugador().equals(this)) flag = false; // Si el jugador de un pais es distinto a this entonces this no tiene todo el continente
+            if(p.getJugador() == null){
+                flag = false;
+            }else if(!p.getJugador().equals(this)) flag = false; // Si el jugador de un pais es distinto a this entonces this no tiene todo el continente
         }
 
         return flag;
@@ -218,7 +220,7 @@ public class Jugador {
     public void continentesJugador(ArrayList<Continente> allContinentes){
 
         for (Continente c:allContinentes){
-            if(this.esDueño(c) == true){
+            if(this.esDueño(c) == true && this.continentes.contains(c) == false){
                 this.continentes.add(c);
             }
         }

@@ -162,6 +162,7 @@ public class Menu {
                             Salida error = new Salida(99);
                             System.out.println(error.toString());
                         }else{
+                            this.jugadorActual.continentesJugador(this.continentes);
                             System.out.println(this.jugadorActual);
                             Salida x = new Salida();
                             x.imprimirArchivo(this.jugadorActual.toString());
@@ -180,14 +181,20 @@ public class Menu {
                             //descripcion del jugador
                             String exito;
                             Jugador jugador = existeJugador(this.jugadores, partes[2]);
-                            if(jugador.getNombre().equals(this.jugadorActual.getNombre())){
-                                exito = jugador.descJugador(1);
+                            if(jugador == null){
+                                Salida error = new Salida(103);
+                                System.out.println(error.toString());
                             }else{
-                                exito = jugador.descJugador(0);
+                                jugador.continentesJugador(this.continentes);
+                                if(jugador.getNombre().equals(this.jugadorActual.getNombre())){
+                                    exito = jugador.descJugador(1);
+                                }else{
+                                    exito = jugador.descJugador(0);
+                                }
+                                System.out.println(exito);
+                                Salida salida = new Salida();
+                                salida.imprimirArchivo(exito);
                             }
-                            System.out.println(exito);
-                            Salida salida = new Salida();
-                            salida.imprimirArchivo(exito);
                         }else if(partes[1].equals("pais")){
                             //descripcion del pais
                             Pais pais = existePais(this.paises, partes[2]);
@@ -212,6 +219,7 @@ public class Menu {
                             this.jugadorActual = this.t.pasarTurno(this.jugadorActual);
                             this.conquisto = 0;
                             rearmo = 0;
+                            this.jugadorActual.continentesJugador(this.continentes);
                             System.out.println(this.jugadorActual.printNomEjerR());
                             Salida salida = new Salida();
                             salida.imprimirArchivo(this.jugadorActual.printNomEjerR());
@@ -322,27 +330,22 @@ public class Menu {
                                     Salida error = new Salida(99);
                                     System.out.println(error.toString());
                                 }else{
-                                    asignarMisiones(partes[1], partes[2]);
+                                    asignarMisiones(partes[2], partes[3]);
                                 }
                             }else{
                                 Salida error = new Salida(105);
                                 System.out.println(error.toString());
                             }
                         }else if(partes[1].equals("pais")){
-                            if(checker >= 2){
-                                if(checker >= 3){
-                                    asignarPaises(partes[1], partes[2]);
-                                    for(Jugador j: this.jugadores){
-                                        j.continentesJugador(this.continentes);
-                                    }
-                                }else{
-                                    Salida error = new Salida(118);
-                                    System.out.println(error.toString());
-                                } 
+                            
+                            if(checker >= 3){
+                                asignarPaises(partes[2], partes[3]);
+                                
                             }else{
-                                Salida error = new Salida(105);
+                                Salida error = new Salida(118);
                                 System.out.println(error.toString());
-                            }
+                            } 
+                            
                         }
                         break;
                     case "atacar":
@@ -847,7 +850,7 @@ public class Menu {
                                 System.out.println(exito);
                                 Salida salida = new Salida();
                                 salida.imprimirArchivo(exito);
-
+                                jugador.continentesJugador(this.continentes);
                             }else{ // COdigo de error pais asignado
                                 Salida error = new Salida(113);
                                 System.out.println(error.toString());
