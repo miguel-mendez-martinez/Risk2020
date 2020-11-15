@@ -422,13 +422,13 @@ $> repartir ejercitos 6 Alberta
  paisesOcupadosContinente: [ { "Alaska",0 }, { "Alberta",6 }, { "Estados Unidos del Oeste",0 }, { "Territorios del Noroeste",0 }, { "Ontario",8 }, { "Estados Unidos del Este",0 }, { "America Central",0 }, { "Groenlandia",0 }, { "Quebec",0 } ]
 }
 
-$> repartir ejercitos 1 GBretaña
+$> repartir ejercitos 2 GBretaña
 {
  pais: "Gran Bretaña",
  jugador: "Gondorff",
- numeroEjercitosAsignados: 1,
- numeroEjercitosTotales: 1,
- paisesOcupadosContinente: [ { "Islandia",0 }, { "Escandinavia",0 }, { "Gran Bretaña",1 }, { "Europa Occidental",0 }, { "Europa Norte",0 }, { "Europa Sur",0 }, { "Rusia",0 } ]
+ numeroEjercitosAsignados: 2,
+ numeroEjercitosTotales: 2,
+ paisesOcupadosContinente: [ { "Islandia",0 }, { "Escandinavia",0 }, { "Gran Bretaña",2 }, { "Europa Occidental",0 }, { "Europa Norte",0 }, { "Europa Sur",0 }, { "Rusia",0 } ]
 }
 
 $> acabar turno
@@ -482,7 +482,7 @@ $> repartir ejercitos 3 EurOcc
  jugador: "Hooker",
  numeroEjercitosAsignados: 3,
  numeroEjercitosTotales: 3,
- paisesOcupadosContinente: [ { "Islandia",0 }, { "Escandinavia",0 }, { "Gran Bretaña",1 }, { "Europa Occidental",3 }, { "Europa Norte",0 }, { "Europa Sur",0 }, { "Rusia",0 } ]
+ paisesOcupadosContinente: [ { "Islandia",0 }, { "Escandinavia",0 }, { "Gran Bretaña",2 }, { "Europa Occidental",3 }, { "Europa Norte",0 }, { "Europa Sur",0 }, { "Rusia",0 } ]
 }
 
 $> acabar turno 
@@ -503,20 +503,21 @@ $> acabar turno
  numeroEjercitosRearmar: 0
 }
 
-$> atacar Ontario USAEste
+$> atacar Ontario 6x5x2 USAEste 5x5
 
 $> atacar Alberta USAOeste
 
 $> repartir ejercitos 3 USAEste
 {
- pais: "Estados Unidos del Este",
- jugador: "Gondorff",
- numeroEjercitosAsignados: 3,
- numeroEjercitosTotales: 6,
- paisesOcupadosContinente: [ { "Alaska",0 }, { "Alberta",3 }, { "Estados Unidos del Oeste",3 }, { "Territorios del Noroeste",0 }, { "Ontario",5 }, { "Estados Unidos del Este",6 }, { "America Central",2 }, { "Groenlandia",0 }, { "Quebec",0 } ]
-}
+ código de error: 110,
+ descripción: "El país no pertence al jugador"
+{
 
 $> atacar USAEste AmeCentra
+{
+ código de error: 110,
+ descripción: "El país no pertence al jugador"
+{
 
 $> acabar turno
 {
@@ -525,10 +526,6 @@ $> acabar turno
 }
 
 $> atacar EurOcc GBretaña
-{
- código de error: 124,
- descripción: "No hay ejercitos suficientes"
-{
 
 $> obtener frontera Brasil
 {
@@ -586,7 +583,7 @@ $> describir jugador Gondorff
  nombre: "Gondorff",
  color: "VERDE",
  numeroEjercitos: 30,
- paises: [ "Alaska", "Territorios del Noroeste", "Groenlandia", "Islandia", "Escandinavia", "Siberia", "Yakustsk", "Kamchatka", "Alberta", "Ontario", "Quebec", "Gran Bretaña", "Europa Norte", "Rusia", "Estados Unidos del Este", "Estados Unidos del Oeste", "America Central" ],
+ paises: [ "Alaska", "Territorios del Noroeste", "Groenlandia", "Islandia", "Escandinavia", "Siberia", "Yakustsk", "Kamchatka", "Alberta", "Ontario", "Quebec", "Gran Bretaña", "Europa Norte", "Rusia" ],
  continentes: [ ],
  cartas: [ ],
  numeroEjercitosRearmar: 0
@@ -616,7 +613,7 @@ $> describir jugador Hooker
  color: "AMARILLO",
  mision: "Conquistar Asia y América del Sur",
  numeroEjercitos: 30,
- paises: [ "Venezuela", "Perú", "Argentina", "Brasil", "Irkutsk", "Europa Occidental", "Europa Sur", "Urales", "Mongolia", "Japón", "Afganistan", "China", "África del Norte", "Egipto" ],
+ paises: [ "Venezuela", "Perú", "Argentina", "Brasil", "Irkutsk", "Estados Unidos del Oeste", "Estados Unidos del Este", "Europa Occidental", "Europa Sur", "Urales", "Mongolia", "Japón", "America Central", "Afganistan", "China", "África del Norte", "Egipto" ],
  continentes: [ "América del Sur" ],
  cartas: [ ],
  numeroEjercitosRearmar: 0

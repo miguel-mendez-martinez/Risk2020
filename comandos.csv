@@ -19,7 +19,7 @@ asignar Hooker M34
 repartir ejercitos 8 Ontario
 repartir ejercitos 3 Siberia
 repartir ejercitos 6 Alberta
-repartir ejercitos 1 GBretaña
+repartir ejercitos 2 GBretaña
 acabar turno
 jugador
 repartir ejercitos 2 USAEste
@@ -29,7 +29,7 @@ repartir ejercitos 3 EurOcc
 acabar turno 
 acabar turno
 acabar turno
-atacar Ontario USAEste
+atacar Ontario 6x5x2 USAEste 5x5
 atacar Alberta USAOeste
 repartir ejercitos 3 USAEste
 atacar USAEste AmeCentra

@@ -37,6 +37,7 @@ public class Menu {
         // Iniciar juego
          // Con fichero:
         this.mapa = null;
+        int rearmo = 0;
         Mision mision;
         this.jugadores = new ArrayList<>();
         this.paises = new ArrayList<>();
@@ -157,7 +158,7 @@ public class Menu {
                         break;
                     case "jugador":
                         //esto es describir toda la mierda del jugador del turno actual
-                        if(this.jugadorActual == null){
+                        if(checker < 5){
                             Salida error = new Salida(99);
                             System.out.println(error.toString());
                         }else{
@@ -166,6 +167,13 @@ public class Menu {
                             x.imprimirArchivo(this.jugadorActual.toString());
                         }
                         
+                        break;
+                    case "rearmar":
+                        if(checker < 5){
+                            
+                        }else{
+                            rearmo = 1;
+                        }
                         break;
                     case "describir":
                         if(partes[1].equals("jugador")){
@@ -203,6 +211,7 @@ public class Menu {
                         if(checker >= 5){
                             this.jugadorActual = this.t.pasarTurno(this.jugadorActual);
                             this.conquisto = 0;
+                            rearmo = 0;
                             System.out.println(this.jugadorActual.printNomEjerR());
                             Salida salida = new Salida();
                             salida.imprimirArchivo(this.jugadorActual.printNomEjerR());
@@ -265,7 +274,7 @@ public class Menu {
                             }
                         }else if(partes[1].equals("carta")){
                             //se le asigna a jugador actual una carta
-                            if(this.jugadorActual == null){
+                            if(checker < 5){
                                 Salida error = new Salida(99);
                                 System.out.println(error.toString());
                             }else{
@@ -345,47 +354,102 @@ public class Menu {
                     case "atacar":
                         //el jugador actual atacara a un pais que no sea de su dominio, y que tenga alguna frontera en comun
                         //dos comandos, el automatico, y el forzado
-                        if(partes.length>5){
-                            Salida error = new Salida(101);
+                        if(checker < 5 || rearmo == 1){ //solo se puede atacar entre repartir ejercitos y rearmar
+                            Salida error = new Salida(99);
                             System.out.println(error.toString());
-                        }else if(partes.length == 3){
-                            Pais p1 = this.existePais(this.paises, partes[1]);
-                            Pais p2 = this.existePais(this.paises, partes[2]);
-                            if(p1 == null || p2 == null){
-                                Salida error = new Salida(109);
+                        }
+                        else{
+                            if(partes.length>5){
+                                Salida error = new Salida(101);
                                 System.out.println(error.toString());
-                            }else{
-                                Pais p3 = this.existePais(this.jugadorActual.getPaises(), p1.getAbreviatura()); //miramos si el primer pais pertenece al jugador
-                                if(p3 == null){
-                                    Salida error = new Salida(110);
+                            }else if(partes.length == 3){
+                                Pais p1 = this.existePais(this.paises, partes[1]);
+                                Pais p2 = this.existePais(this.paises, partes[2]);
+                                if(p1 == null || p2 == null){
+                                    Salida error = new Salida(109);
                                     System.out.println(error.toString());
                                 }else{
-                                    Pais p4 = this.existePais(this.jugadorActual.getPaises(), p2.getAbreviatura()); //miramos si el segundo pais NO pertenece al jugador
-                                    if(p4 != null){
-                                        Salida error = new Salida(111);
+                                    Pais p3 = this.existePais(this.jugadorActual.getPaises(), p1.getAbreviatura()); //miramos si el primer pais pertenece al jugador
+                                    if(p3 == null){
+                                        Salida error = new Salida(110);
                                         System.out.println(error.toString());
                                     }else{
-                                        //a este punto 1 y 3, 2 y 4 son iguales. 5 sera igual a p2
-                                        Pais p5 = this.existePais(p1.getFronteras(), p2.getAbreviatura());
-                                        if(p5 == null){
-                                            Salida error = new Salida(112);
+                                        Pais p4 = this.existePais(this.jugadorActual.getPaises(), p2.getAbreviatura()); //miramos si el segundo pais NO pertenece al jugador
+                                        if(p4 != null){
+                                            Salida error = new Salida(111);
                                             System.out.println(error.toString());
                                         }else{
-                                            if(p1.getEjercitos() <= 1 || p2.getEjercitos() <= 1){
-                                                Salida error = new Salida(124);
+                                            //a este punto 1 y 3, 2 y 4 son iguales. 5 sera igual a p2
+                                            Pais p5 = this.existePais(p1.getFronteras(), p2.getAbreviatura());
+                                            if(p5 == null){
+                                                Salida error = new Salida(112);
                                                 System.out.println(error.toString());
                                             }else{
-                                                this.selectDados(p1, p2);
+                                                if(p1.getEjercitos() <= 1 || p2.getEjercitos() < 1){
+                                                    Salida error = new Salida(124);
+                                                    System.out.println(error.toString());
+                                                }else{
+                                                    this.selectDados(p1, p2);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }else if(partes.length == 4){
+                                Salida error = new Salida(101);
+                                System.out.println(error.toString());
+                            }else{
+                                //la forma de leer el comando es pais dados pais dado
+                                Pais p1 = this.existePais(this.paises, partes[1]);
+                                Pais p2 = this.existePais(this.paises, partes[3]);
+                                if(p1 == null || p2 == null){
+                                    Salida error = new Salida(109);
+                                    System.out.println(error.toString());
+                                }else{
+                                    Pais p3 = this.existePais(this.jugadorActual.getPaises(), p1.getAbreviatura()); //miramos si el primer pais pertenece al jugador
+                                    if(p3 == null){
+                                        Salida error = new Salida(110);
+                                        System.out.println(error.toString());
+                                    }else{
+                                        Pais p4 = this.existePais(this.jugadorActual.getPaises(), p2.getAbreviatura()); //miramos si el segundo pais NO pertenece al jugador
+                                        if(p4 != null){
+                                            Salida error = new Salida(111);
+                                            System.out.println(error.toString());
+                                        }else{
+                                            //a este punto 1 y 3, 2 y 4 son iguales. 5 sera igual a p2
+                                            Pais p5 = this.existePais(p1.getFronteras(), p2.getAbreviatura());
+                                            if(p5 == null){
+                                                Salida error = new Salida(112);
+                                                System.out.println(error.toString());
+                                            }else{
+                                                if(p1.getEjercitos() <= 1 || p2.getEjercitos() < 1){
+                                                    Salida error = new Salida(124);
+                                                    System.out.println(error.toString());
+                                                }else{
+                                                    String dado1 = partes[2];
+                                                    String dado2 = partes[4];
+                                                    String[] partesDado1=dado1.split("x");
+                                                    String[] partesDado2=dado2.split("x");
+
+                                                    Dados dadoAt = new Dados();
+                                                    Dados dadoDef = new Dados();
+
+                                                    //ahora seteas todo
+                                                    dadoAt.setX(Integer.parseInt(partesDado1[0]));
+                                                    dadoAt.setY(Integer.parseInt(partesDado1[1]));
+                                                    dadoAt.setZ(Integer.parseInt(partesDado1[2]));
+
+                                                    dadoDef.setX(Integer.parseInt(partesDado2[0]));
+                                                    dadoDef.setY(Integer.parseInt(partesDado2[1]));
+
+                                                    this.atacar(p1, dadoAt, p2, dadoDef);
+
+                                                }
                                             }
                                         }
                                     }
                                 }
                             }
-                        }else if(partes.length == 4){
-                            Salida error = new Salida(101);
-                            System.out.println(error.toString());
-                        }else{
-                            //forzado
                         }
                         break;
                     case "obtener": // Comandos sobre el mapa
@@ -479,6 +543,8 @@ public class Menu {
                 
             }else{
                 att.setEjercitos(ejercitosAftA);
+                ejercitosBefD = def.getEjercitos();
+                ejercitosAftD = def.getEjercitos();
             }
         }else if(victorias == 1){
             ejercitosBefA = att.getEjercitos();
@@ -564,9 +630,9 @@ public class Menu {
         int dadDef = dadoDef.countDados();
         String exito = "";
         exito += "{\n dadosAtaque: [ " + dadoAtt.printfDado(dadAtt) + " ],\n dadosDefensa: [ " 
-                + dadoDef.printfDado(dadDef) + " ],\n ejercitosPaisAtaque: {" + 
-                ejercitosBefA + ", " + ejercitosAftA + " },\n ejercitosPaisDefensa: {" + 
-                ejercitosBefD + ", " + ejercitosAftD + "},\n paisAtaquePerteneceA: "
+                + dadoDef.printfDado(dadDef) + " ],\n ejercitosPaisAtaque: { " + 
+                ejercitosBefA + ", " + ejercitosAftA + " },\n ejercitosPaisDefensa: { " + 
+                ejercitosBefD + ", " + ejercitosAftD + " },\n paisAtaquePerteneceA: "
                 + att.getJugador().printNombre() + ",\n paisDefensaPerteneceA: " +
                 def.getJugador().printNombre() + ",\n continenteConquistado: " + 
                 cont + "\n}";

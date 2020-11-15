@@ -20,9 +20,22 @@ public class Dados {
         y = 0;
         z = 0;
     }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public void setZ(int z) {
+        this.z = z;
+    }
+    
+    
     public void genDados(int numDados){
         Random rand = new Random();
-        
         
         if(numDados == 1){
             this.x = rand.nextInt(6) + 1; 
@@ -36,19 +49,6 @@ public class Dados {
         }
         
     }
-    /*public boolean esMayor(int max){
-        //si es mayor que alguna de las componentes de los dados devuelve true
-        if(max > this.x){
-            return true;
-        }
-        if(max > this.y){
-            return true;
-        }
-        if(max > this.z){
-            return true;
-        }
-        return false;
-    }*/
     
     public int compDado(Dados dado2){
         int result=0;
