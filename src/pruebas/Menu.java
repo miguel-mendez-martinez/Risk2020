@@ -1131,23 +1131,29 @@ public class Menu {
     public void repartirEjercitos(){
 
         ArrayList<Continente> continentesOrdenadosMenosFronteras = new ArrayList<>();
-        int numJugadores;
+        int numJugadores=0;
         // Asignar numero de tropas que tendrá cada jugador en funcion del numero de jugadores
         //ya lo hacemos al crear jugadores
 
-        // Asignar un ejercito a cada pais:
-        for(Pais p:paises){
-            p.setEjercitos(1);
-            p.getJugador().setEjercitos_disponibles(p.getJugador().getTropas() - 1); // se le resta 1 a los ejercitos disponibles del jugador al que pertenece ese pais
-        }
+     
 
 
-        for(int k=0; k<6; k++){
-            Continente cAux = new Continente();
+      Continente cAux = new Continente();
+        for(int k=0; k<continentes.size(); k++){
+            cAux = this.continentes.get(1);
+            
             //cAux = this.continentes.get(k); tienes que meter una declaracion tipo esto pero ns donde la querras meter
             for (int i = 0; i< continentes.size(); i++){
-                if(continentesOrdenadosMenosFronteras.contains(continentes.get(i))) i++;
-                if(this.continentes.get(i).fronterasContinente() < cAux.fronterasContinente()) cAux = continentes.get(i);
+                while(continentesOrdenadosMenosFronteras.contains(continentes.get(i))){
+                    i++;
+                    if(i == continentes.size()-1) break;
+                }
+                if(continentesOrdenadosMenosFronteras.contains(continentes.get(i)) && i == 5){
+                    break;
+                }
+                
+                if(this.continentes.get(i).fronterasContinente() <= cAux.fronterasContinente()) 
+                    cAux = continentes.get(i);
 
             }
             continentesOrdenadosMenosFronteras.add(cAux);
