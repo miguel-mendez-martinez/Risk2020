@@ -138,12 +138,27 @@ public class Continente {
     public int fronterasContinente(){
         int resultado=0;
 
-        for(Pais p: this.paises){
-
-            for (int i=0; i< p.getFronteras().size(); i++){
-                resultado++;
-            }
-
+        switch(this.abreviatura){
+        
+            case "África":
+                resultado = 4;
+                break;
+            case "Asia":
+                resultado = 7;
+                break;
+            case "AméricaNorte":
+                resultado = 3;
+                break;
+            case "AméricaSur":
+                resultado = 2;
+                break;
+            case "Europa":
+                resultado = 7;
+                break;
+            case "Oceanía":
+                resultado = 1;
+                break;
+        
         }
 
         return resultado;

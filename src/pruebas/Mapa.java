@@ -314,7 +314,7 @@ public class Mapa {
         String color = "CYAN";
         Casilla casilla;
         Continente asia = new Continente("Asia", color);
-        asia.setAbreviatura("asia");
+        asia.setAbreviatura("Asia");
         asia.setNumPaises(12);
 
         casilla = new Casilla(6, 0);
