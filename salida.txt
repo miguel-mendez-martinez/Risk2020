@@ -514,6 +514,14 @@ $> repartir ejercitos 3 USAEste
 
 $> atacar USAEste 6x6x6 AmeCentra 1x1
 
+$> rearmar AmeCentra 2 USAEste
+
+$> atacar USAEste 6x6x6 AmeCentra 1x1
+{
+ código de error: 99,
+ descripción: "Comando no permitido en este momento"
+{
+
 $> acabar turno
 {
  nombre: "Hooker",
@@ -578,7 +586,7 @@ $> describir jugador Gondorff
  nombre: "Gondorff",
  color: "VERDE",
  numeroEjercitos: 30,
- paises: [ "Alaska", "Territorios del Noroeste", "Groenlandia", "Islandia", "Escandinavia", "Siberia", "Yakustsk", "Kamchatka", "Alberta", "Ontario", "Quebec", "Gran Bretaña", "Europa Norte", "Rusia", "Estados Unidos del Este", "Estados Unidos del Oeste", "America Central", "Europa Occidental" ],
+ paises: [ "Alaska", "Territorios del Noroeste", "Groenlandia", "Islandia", "Escandinavia", "Siberia", "Yakustsk", "Kamchatka", "Alberta", "Ontario", "Quebec", "Gran Bretaña", "Europa Norte", "Rusia", "Estados Unidos del Este", "Estados Unidos del Oeste", "America Central" ],
  continentes: [ "América del Norte" ],
  cartas: [ ],
  numeroEjercitosRearmar: 0
@@ -608,7 +616,7 @@ $> describir jugador Hooker
  color: "AMARILLO",
  mision: "Conquistar Asia y América del Sur",
  numeroEjercitos: 30,
- paises: [ "Venezuela", "Perú", "Argentina", "Brasil", "Irkutsk", "Europa Sur", "Urales", "Mongolia", "Japón", "Afganistan", "China", "África del Norte", "Egipto" ],
+ paises: [ "Venezuela", "Perú", "Argentina", "Brasil", "Irkutsk", "Europa Occidental", "Europa Sur", "Urales", "Mongolia", "Japón", "Afganistan", "China", "África del Norte", "Egipto" ],
  continentes: [ "América del Sur" ],
  cartas: [ ],
  numeroEjercitosRearmar: 0

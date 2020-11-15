@@ -171,9 +171,48 @@ public class Menu {
                         break;
                     case "rearmar":
                         if(checker < 5){
-                            
+                            Salida error = new Salida(99);
+                            System.out.println(error.toString());
                         }else{
-                            rearmo = 1;
+                            if(partes.length!=4){
+                                Salida error = new Salida(101);
+                                System.out.println(error.toString());
+                            }else{
+                                Pais p1 = this.existePais(this.paises, partes[1]);
+                                Pais p2 = this.existePais(this.paises, partes[3]);
+                                if(p1 == null || p2 == null){
+                                    Salida error = new Salida(109);
+                                    System.out.println(error.toString());
+                                }else{
+                                    Pais p3 = this.existePais(this.jugadorActual.getPaises(), p1.getAbreviatura()); //miramos si el primer pais pertenece al jugador
+                                    if(p3 == null){
+                                        Salida error = new Salida(110);
+                                        System.out.println(error.toString());
+                                    }else{
+                                        Pais p4 = this.existePais(this.jugadorActual.getPaises(), p2.getAbreviatura()); //miramos si el segundo pais pertenece al jugador
+                                        if(p4 == null){
+                                            Salida error = new Salida(111);
+                                            System.out.println(error.toString());
+                                        }else{
+                                            //a este punto 1 y 3, 2 y 4 son iguales. 5 sera igual a p2
+                                            Pais p5 = this.existePais(p1.getFronteras(), p2.getAbreviatura());
+                                            if(p5 == null){
+                                                Salida error = new Salida(112);
+                                                System.out.println(error.toString());
+                                            }else{
+                                                //en este punto, existen, pertenecen al jugador y son frontera
+                                                if(p1.getEjercitos() == 1){
+                                                    Salida error = new Salida(124);
+                                                    System.out.println(error.toString());
+                                                }else{
+                                                   System.out.println("rearme permitido");
+                                                    rearmo = 1; 
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                         break;
                     case "describir":
@@ -230,7 +269,7 @@ public class Menu {
                         }
                         break;
                     case "cambiar":
-                        if(this.jugadorActual == null){
+                        if(checker < 5 || rearmo == 1){
                             Salida error = new Salida(99);
                             System.out.println(error.toString());
                         }else{
@@ -512,7 +551,6 @@ public class Menu {
         
         //en vez de comarar maximos, por victorias, si es 2, se eliminan 2 de los defensores, si es 1 se elimina 1 de cada y si es 0 se eliminan dos de los atacantes
         victorias = dadoAtt.compDado(dadoDef);
-        System.out.println(victorias);
         if(victorias == 0){
             //ganan los defensores
             ejercitosPerdidos = dadoAtt.countDados();
@@ -533,6 +571,7 @@ public class Menu {
                 }else{
                     def.setEjercitos(ejercitosAftD);
                     att.setEjercitos(ejercitosPerdidos);
+                    ejercitosAftA = ejercitosPerdidos;
                 }
                 if(def.getJugador().esDueño(att.getContinente())){
                     cont = att.getContinente().printNombre();
@@ -566,6 +605,7 @@ public class Menu {
                 }else{
                     def.setEjercitos(ejercitosAftD);
                     att.setEjercitos(ejercitosPerdidos);
+                    ejercitosAftA = ejercitosPerdidos;
                 }
                 if(def.getJugador().esDueño(att.getContinente())){
                     cont = att.getContinente().printNombre();
@@ -587,13 +627,14 @@ public class Menu {
                 }else{
                     att.setEjercitos(ejercitosAftA);
                     def.setEjercitos(ejercitosPerdidos);
+                    ejercitosAftD = ejercitosPerdidos;
                 }
                 if(att.getJugador().esDueño(def.getContinente())){
                     cont = att.getContinente().printNombre();
                 }
             }
         }else{
-            //ganan los atacantes
+            //ganan los atacantes con 2 vicotrias
             this.conquisto = 1; //el jugador puede recibir cartas
             ejercitosPerdidos = dadoDef.countDados();
             ejercitosBefD = def.getEjercitos();
@@ -614,12 +655,15 @@ public class Menu {
                 }else{
                     att.setEjercitos(ejercitosAftA);
                     def.setEjercitos(ejercitosPerdidos);
+                    ejercitosAftD = ejercitosPerdidos;
                 }
                 if(att.getJugador().esDueño(def.getContinente())){
                     cont = att.getContinente().printNombre();
                 }
             }else{
                 def.setEjercitos(ejercitosAftD);
+                ejercitosBefA = att.getEjercitos();
+                ejercitosAftA = att.getEjercitos();
             }
         }
         //impresion de resultado
