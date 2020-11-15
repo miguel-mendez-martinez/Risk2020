@@ -231,7 +231,7 @@ public class Menu {
                         }
                         break;
                     case "asignar":
-                        if(partes.length!=3) {
+                        if(partes.length > 4) {
                             Salida error = new Salida(101);
                             System.out.println(error.toString());
                         }else if(partes[1].equals("misiones")){
@@ -315,41 +315,35 @@ public class Menu {
                                 }
                                 
                             }
-                        }else if(partes[2].charAt(0) == 'M'){
+                        }else if(partes[1].equals("mision")){
                             //Estas operaciones por ahora no cambian el checker ya que no asignan cosas a todos los jugadores
                             if(checker >= 2){
                                 if(checker > 3){
                                     Salida error = new Salida(99);
                                     System.out.println(error.toString());
                                 }else{
-                                    if(partes[2].charAt(1) == '1' ||
-                                    partes[2].charAt(1) == '2' ||
-                                    partes[2].charAt(1) == '3' ||
-                                    partes[2].charAt(1) == '4'){
-                                        asignarMisiones(partes[1], partes[2]);
-                                    }else{
-                                        if(checker >= 3){
-                                            asignarPaises(partes[1], partes[2]);
-                                            for(Jugador j: this.jugadores){
-                                                j.continentesJugador(this.continentes);
-                                            }
-                                        }else{
-                                            Salida error = new Salida(118);
-                                            System.out.println(error.toString());
-                                        }   
-                                    }
+                                    asignarMisiones(partes[1], partes[2]);
                                 }
                             }else{
                                 Salida error = new Salida(105);
                                 System.out.println(error.toString());
                             }
-                        }else if(checker >= 3){
-                            asignarPaises(partes[1], partes[2]);
-                        }else{
-                            Salida error = new Salida(118);
-                            System.out.println(error.toString());
+                        }else if(partes[1].equals("pais")){
+                            if(checker >= 2){
+                                if(checker >= 3){
+                                    asignarPaises(partes[1], partes[2]);
+                                    for(Jugador j: this.jugadores){
+                                        j.continentesJugador(this.continentes);
+                                    }
+                                }else{
+                                    Salida error = new Salida(118);
+                                    System.out.println(error.toString());
+                                } 
+                            }else{
+                                Salida error = new Salida(105);
+                                System.out.println(error.toString());
+                            }
                         }
-                        
                         break;
                     case "atacar":
                         //el jugador actual atacara a un pais que no sea de su dominio, y que tenga alguna frontera en comun
