@@ -1175,6 +1175,7 @@ public class Menu {
         }
         return contador;
     }
+    
     public void repartirEjercitos(){
 
         ArrayList<Continente> continentesOrdenadosMenosFronteras = new ArrayList<>();
@@ -1497,6 +1498,21 @@ public class Menu {
                 hayEjercitos = true;
             }
             if(R7 && hayEjercitos){
+                
+                int paisesUnEjercito = 0;
+                for (Pais p:j.getPaises()){
+                    if(p.getEjercitos() == 1) paisesUnEjercito++;
+                }
+
+                if(paisesUnEjercito <= j.getEjercitos_disponibles()){ // Si hay mas o los mismos ejercitos disponibles que paises con un ejercito se asigna uno y ya
+                    for (Pais p:j.getPaises()){
+                        if(p.getEjercitos() == 1){
+                            p.addEjercitos(1);
+                            j.setEjercitos_disponibles(j.getEjercitos_disponibles() - 1);
+                        }
+                    }
+
+                }else{ // mas paises con un ejercito que ejercitos disponibles
 
                 while (j.getEjercitos_disponibles() > 0){
                     for(Continente c: continentesOrdenadosMenosFronteras){
@@ -1518,6 +1534,9 @@ public class Menu {
 
         }
     }
+        mapa.printMapa();
+    }
+    
 }
 
 
