@@ -191,7 +191,7 @@ public class Menu {
                                     }else{
                                         Pais p4 = this.existePais(this.jugadorActual.getPaises(), p2.getAbreviatura()); //miramos si el segundo pais pertenece al jugador
                                         if(p4 == null){
-                                            Salida error = new Salida(111);
+                                            Salida error = new Salida(110);
                                             System.out.println(error.toString());
                                         }else{
                                             //a este punto 1 y 3, 2 y 4 son iguales. 5 sera igual a p2
@@ -201,11 +201,11 @@ public class Menu {
                                                 System.out.println(error.toString());
                                             }else{
                                                 //en este punto, existen, pertenecen al jugador y son frontera
-                                                if(p1.getEjercitos() == 1){
+                                                if(p1.getEjercitos() <= 1){ //no se podran transferir tropas si el primer pais tiene el minimo
                                                     Salida error = new Salida(124);
                                                     System.out.println(error.toString());
                                                 }else{
-                                                   System.out.println("rearme permitido");
+                                                    rearme(p1,p2,partes[2]);
                                                     rearmo = 1; 
                                                 }
                                             }
@@ -259,6 +259,8 @@ public class Menu {
                             this.conquisto = 0;
                             rearmo = 0;
                             this.jugadorActual.continentesJugador(this.continentes);
+                            //aqui asignamos cuantas recibe
+                            this.ejercitosTurno(this.jugadorActual);
                             System.out.println(this.jugadorActual.printNomEjerR());
                             Salida salida = new Salida();
                             salida.imprimirArchivo(this.jugadorActual.printNomEjerR());
@@ -289,7 +291,6 @@ public class Menu {
                                 }else{
                                     if(partes[1].equals("misiones")){
                                         asignarMisiones(new File(partes[2]));
-                                        
                                         if(checker < 3){
                                             checker = 3;
                                         }
@@ -470,11 +471,14 @@ public class Menu {
                                                     Dados dadoAt = new Dados();
                                                     Dados dadoDef = new Dados();
 
-                                                    //ahora seteas todo
+                                                    //ahora seteas todo:
+                                                    
+                                                    //ataque
                                                     dadoAt.setX(Integer.parseInt(partesDado1[0]));
                                                     dadoAt.setY(Integer.parseInt(partesDado1[1]));
                                                     dadoAt.setZ(Integer.parseInt(partesDado1[2]));
 
+                                                    //defensa
                                                     dadoDef.setX(Integer.parseInt(partesDado2[0]));
                                                     dadoDef.setY(Integer.parseInt(partesDado2[1]));
 
@@ -544,6 +548,63 @@ public class Menu {
         } catch(Exception excepcion) {
             excepcion.printStackTrace();
         }
+    }
+    private void ejercitosTurno(Jugador jugador){
+        int minimo;
+        
+        minimo = (jugador.getPaises().size())/3;
+        
+        //ahora debemos mirar si es dueño de algun continente
+
+        for(Continente c : this.continentes){
+            if(c.getNombre().equals("Asia") && jugador.esDueño(c)){
+                minimo += 7;
+            }
+            if(c.getNombre().equals("Oceanía") && jugador.esDueño(c)){
+                minimo += 2;
+            }
+            if(c.getNombre().equals("Europa") && jugador.esDueño(c)){
+                minimo += 5;
+            }
+            if(c.getNombre().equals("América del Sur") && jugador.esDueño(c)){
+                minimo += 2;
+            }
+            if(c.getNombre().equals("América del Norte") && jugador.esDueño(c)){
+                minimo += 5;
+            }
+            if(c.getNombre().equals("África") && jugador.esDueño(c)){
+                minimo += 3;
+            }
+        }
+        jugador.setEjercitos_disponibles(minimo);
+    }
+    private void rearme(Pais donante, Pais receptor, String Ejer){
+        int ejercitos, ejerBefD, ejerAftD, ejerBefR, ejerAftR;
+        
+        ejercitos = Integer.parseInt(Ejer);
+        
+        ejerBefD = donante.getEjercitos();
+        ejerBefR = receptor.getEjercitos();
+        
+        ejerAftD = ejerBefD - ejercitos;
+        if(ejerAftD <= 0){
+            ejerAftD = 1;
+            donante.setEjercitos(ejerAftD);
+            ejerAftR = ejerBefD - 1;
+            receptor.setEjercitos(ejerAftR);
+            
+        }else{
+            ejerAftR = ejerBefR + ejercitos;
+            donante.setEjercitos(ejerAftD);
+            receptor.setEjercitos(ejerAftR);
+        }
+        String exito = "{\n numeroEjercitosInicialesOrigen: " + ejerBefD + 
+                ",\n numeroEjercitosInicialesDestino: " + ejerBefR + 
+                ",\n numeroEjercitosFinalesOrigen: " + ejerAftD + 
+                ",\n numeroEjercitosFinalesDestino: " + ejerAftR + "\n}";
+        System.out.println(exito);
+        Salida s = new Salida();
+        s.imprimirArchivo(exito);
     }
     public void atacar(Pais att, Dados dadoAtt, Pais def, Dados dadoDef){
         int ejercitosPerdidos, ejercitosBefA=0, ejercitosAftA=0, ejercitosAftD=0, ejercitosBefD=0, victorias;
@@ -678,6 +739,8 @@ public class Menu {
                 def.getJugador().printNombre() + ",\n continenteConquistado: " + 
                 cont + "\n}";
         System.out.println(exito);
+        Salida s = new Salida();
+        s.imprimirArchivo(exito);
     }
     public void selectDados(Pais paisAtt, Pais paisDef){
         int ejerAtt, ejerDef;
@@ -1070,28 +1133,28 @@ public class Menu {
         switch (numJugadores){
                 case 3:
                     for (Jugador j: jugadores){
-                        j.setTropas(35);
+                        //j.setTropas(35);
                         j.setEjercitos_disponibles(35);
                     }
                     break;
 
                 case 4:
                     for (Jugador j: jugadores){
-                        j.setTropas(30);
+                        //j.setTropas(30);
                         j.setEjercitos_disponibles(30);
                     }
                     break;
 
                 case 5:
                     for (Jugador j: jugadores){
-                        j.setTropas(25);
+                        //j.setTropas(25);
                         j.setEjercitos_disponibles(25);
                     }
                     break;
 
                 case 6:
                     for (Jugador j: jugadores){
-                        j.setTropas(20);
+                        //j.setTropas(20);
                         j.setEjercitos_disponibles(20);
                     }
                     break;

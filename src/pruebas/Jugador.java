@@ -111,18 +111,18 @@ public class Jugador {
     
     public String printColor(){
 
-        if("AMARILLO".equals(this.color)) return "\033[43m" + "\033[1;90m";
-        else if("AZUL".equals(this.color)) return "\033[44m" + "\033[1;90m";
-        else if("CYAN".equals(this.color)) return "\033[46m" + "\033[1;90m";
-        else if("ROJO".equals(this.color)) return "\033[41m" + "\033[1;90m";
-        else if("VERDE".equals(this.color)) return "\033[42m" + "\033[1;90m";
-        else if("VIOLETA".equals(this.color)) return "\033[45m" + "\033[1;90m";
+        if("AMARILLO".equals(this.color)) return "\033[1;33m" + "\033[1;90m";
+        else if("AZUL".equals(this.color)) return "\033[1;34m" + "\033[1;90m";
+        else if("CYAN".equals(this.color)) return "\033[1;36m" + "\033[1;90m";
+        else if("ROJO".equals(this.color)) return "\033[4;31m" + "\033[1;90m";
+        else if("VERDE".equals(this.color)) return "\033[4;32m" + "\033[1;90m";
+        else if("VIOLETA".equals(this.color)) return "033[4;35m" + "\033[1;90m";
         else return " ";
         // mirar codigo de error o algo para ver que hacer si color es invalido como migueloh else System.out.println();
     }
 
     public String printNomEjerR(){
-        String texto = "{\n nombre: \"" + this.nombre + "\",\n numeroEjercitosRearmar: " + this.ejerRearme + "\n}";
+        String texto = "{\n nombre: \"" + this.nombre + "\",\n numeroEjercitosRearmar: " + this.ejercitos_disponibles + "\n}";
         return texto;
     }
 
@@ -167,21 +167,29 @@ public class Jugador {
         }
         return cartaJug;
     }
-    
+    public int countTropas(){
+        int tropas=0;
+        
+        for(Pais p : this.paises){
+            tropas += p.getEjercitos();
+        }
+        this.setTropas(tropas);
+        return tropas;
+    }
     public String descJugador(int check){
         String texto;
         if(check == 1){
             texto = "{\n nombre: " + this.printNombre() + ",\n color: " + 
             this.prinColor() + ",\n mision: " + this.mision.printDesc() + 
-            ",\n numeroEjercitos: " + this.tropas + ",\n paises: " + this.printPaises()
+            ",\n numeroEjercitos: " + this.countTropas() + ",\n paises: " + this.printPaises()
             + ",\n continentes: " + printContinentes() + ",\n cartas: " + 
-            this.printCartas() + ",\n numeroEjercitosRearmar: " + this.ejerRearme + "\n}";
+            this.printCartas() + ",\n numeroEjercitosRearmar: " + this.ejercitos_disponibles + "\n}";
         }else{
             texto = "{\n nombre: " + this.printNombre() + ",\n color: " + 
-            this.prinColor() + ",\n numeroEjercitos: " + this.tropas + 
+            this.prinColor() + ",\n numeroEjercitos: " + this.countTropas() + 
             ",\n paises: " + this.printPaises() + ",\n continentes: " + 
             printContinentes() + ",\n cartas: " + this.printCartas() + 
-            ",\n numeroEjercitosRearmar: " + this.ejerRearme + "\n}";
+            ",\n numeroEjercitosRearmar: " + this.ejercitos_disponibles + "\n}";
         }
         return texto;
         }
@@ -189,8 +197,9 @@ public class Jugador {
     public String toString(){
         String texto = "{\n nombre: " + this.printNombre() + ",\n color: " + 
                 this.prinColor() + ",\n mision: " + this.mision.printDesc() + 
-                ",\n numeroEjercitos: " + this.tropas + ",\n paises: " + this.printPaises()
-                + ",\n continentes: " + printContinentes() + ",\n cartas: " + this.printCartas() + ",\n numeroEjercitosRearmar: " + this.ejerRearme + "\n}";
+                ",\n numeroEjercitos: " + this.countTropas() + ",\n paises: " + this.printPaises()
+                + ",\n continentes: " + printContinentes() + ",\n cartas: " + 
+                this.printCartas() + ",\n numeroEjercitosRearmar: " + this.ejerRearme + "\n}";
         return texto;
     }
 
@@ -243,6 +252,4 @@ public class Jugador {
         }
         return cont;
     }
-
-
 }

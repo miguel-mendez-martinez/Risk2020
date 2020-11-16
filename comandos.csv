@@ -8,35 +8,20 @@ asignar pais Gondorff Siberia
 asignar mision Hooker M42
 crear mapa
 crear jugadores jugadores.csv
-crear miguel CYAN
 asignar misiones misiones.csv
 asignar pais Hooker Venezuela
 asignar pais Hooker Perú
 asignar pais Hooker Argentina
 asignar pais Hooker Brasil
 asignar paises asignaciones.csv
-asignar Hooker M34
-repartir ejercitos 8 Ontario
-repartir ejercitos 3 Siberia
-repartir ejercitos 6 Alberta
-repartir ejercitos 2 GBretaña
+repartir ejercitos
+jugador
 acabar turno
 jugador
-repartir ejercitos 2 USAEste
-repartir ejercitos 2 USAOeste
-repartir ejercitos 2 AmeCentra
-repartir ejercitos 3 EurOcc
-acabar turno 
 acabar turno
+jugador
 acabar turno
-atacar Ontario 6x5x2 USAEste 4x3
-atacar Alberta 6x6x6 USAOeste 1x1
-repartir ejercitos 3 USAEste
-atacar USAEste 6x6x6 AmeCentra 1x1
-rearmar AmeCentra 2 USAEste
-atacar USAEste 6x6x6 AmeCentra 1x1
-acabar turno
-atacar EurOcc GBretaña
+jugador
 obtener frontera Brasil
 obtener frontera Groenlan
 obtener frontera ANorte
@@ -48,9 +33,7 @@ ver mapa
 crear mapa
 describir pais Brasil
 describir jugador Gondorff
-asignar carta Caballería&Indonesia
-asignar carta Caballería&Alaska
-asignar carta Caballería&Brasil
 describir jugador Hooker
+describir jugador Lonnegan
 ver mapa
 acabar turno

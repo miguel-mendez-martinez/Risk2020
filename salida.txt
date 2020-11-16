@@ -60,7 +60,7 @@ $> crear jugadores jugadores.csv
 {
 {
  nombre: "Hooker",
- color: "AMARILLO"
+ color: "AZUL"
 }
 {
  nombre: "Lonnegan",
@@ -74,12 +74,6 @@ $> crear jugadores jugadores.csv
  código de error: 114,
  descripción: "El color ya está asignado"
 {
-
-$> crear miguel CYAN
-{
- nombre: "miguel",
- color: "CYAN"
-}
 
 $> asignar misiones misiones.csv
 {
@@ -389,146 +383,73 @@ $> asignar paises asignaciones.csv
 	fronteras: [ "Australia Occidental", "Nueva Guinea" ]
 }
 
-$> asignar Hooker M34
+$> repartir ejercitos
 
-$> repartir ejercitos 8 Ontario
+$> jugador
 {
- pais: "Ontario",
- jugador: "Gondorff",
- numeroEjercitosAsignados: 8,
- numeroEjercitosTotales: 8,
- paisesOcupadosContinente: [ { "Alaska",0 }, { "Alberta",0 }, { "Estados Unidos del Oeste",0 }, { "Territorios del Noroeste",0 }, { "Ontario",8 }, { "Estados Unidos del Este",0 }, { "America Central",0 }, { "Groenlandia",0 }, { "Quebec",0 } ]
-}
-
-$> repartir ejercitos 3 Siberia
-{
- pais: "Siberia",
- jugador: "Gondorff",
- numeroEjercitosAsignados: 3,
- numeroEjercitosTotales: 3,
- paisesOcupadosContinente: [ { "Siberia",3 }, { "Yakustsk",0 }, { "Urales",0 }, { "Afganistan",0 }, { "Oriente Medio",0 }, { "Kamchatka",0 }, { "Irkutsk",0 }, { "Mongolia",0 }, { "China",0 }, { "India",0 }, { "Japón",0 }, { "Sureste Asiático",0 } ]
-}
-
-$> repartir ejercitos 6 Alberta
-{
- pais: "Alberta",
- jugador: "Gondorff",
- numeroEjercitosAsignados: 6,
- numeroEjercitosTotales: 6,
- paisesOcupadosContinente: [ { "Alaska",0 }, { "Alberta",6 }, { "Estados Unidos del Oeste",0 }, { "Territorios del Noroeste",0 }, { "Ontario",8 }, { "Estados Unidos del Este",0 }, { "America Central",0 }, { "Groenlandia",0 }, { "Quebec",0 } ]
-}
-
-$> repartir ejercitos 2 GBretaña
-{
- pais: "Gran Bretaña",
- jugador: "Gondorff",
- numeroEjercitosAsignados: 2,
- numeroEjercitosTotales: 2,
- paisesOcupadosContinente: [ { "Islandia",0 }, { "Escandinavia",0 }, { "Gran Bretaña",2 }, { "Europa Occidental",0 }, { "Europa Norte",0 }, { "Europa Sur",0 }, { "Rusia",0 } ]
+ nombre: "Gondorff",
+ color: "VERDE",
+ mision: "Conquistar 24 países de la preferencia del jugador",
+ numeroEjercitos: 31,
+ paises: [ "Alaska", "Territorios del Noroeste", "Groenlandia", "Islandia", "Escandinavia", "Siberia", "Yakustsk", "Kamchatka", "Alberta", "Ontario", "Quebec", "Gran Bretaña", "Europa Norte", "Rusia" ],
+ continentes: [ ],
+ cartas: [ ],
+ numeroEjercitosRearmar: 0
 }
 
 $> acabar turno
 {
  nombre: "Hooker",
- numeroEjercitosRearmar: 0
+ numeroEjercitosRearmar: 7
 }
 
 $> jugador
 {
  nombre: "Hooker",
- color: "AMARILLO",
+ color: "AZUL",
  mision: "Conquistar Asia y América del Sur",
- numeroEjercitos: 30,
+ numeroEjercitos: 17,
  paises: [ "Venezuela", "Perú", "Argentina", "Brasil", "Irkutsk", "Estados Unidos del Oeste", "Estados Unidos del Este", "Europa Occidental", "Europa Sur", "Urales", "Mongolia", "Japón", "America Central", "Afganistan", "China", "África del Norte", "Egipto" ],
  continentes: [ "América del Sur" ],
  cartas: [ ],
  numeroEjercitosRearmar: 0
 }
 
-$> repartir ejercitos 2 USAEste
-{
- pais: "Estados Unidos del Este",
- jugador: "Hooker",
- numeroEjercitosAsignados: 2,
- numeroEjercitosTotales: 2,
- paisesOcupadosContinente: [ { "Alaska",0 }, { "Alberta",6 }, { "Estados Unidos del Oeste",0 }, { "Territorios del Noroeste",0 }, { "Ontario",8 }, { "Estados Unidos del Este",2 }, { "America Central",0 }, { "Groenlandia",0 }, { "Quebec",0 } ]
-}
-
-$> repartir ejercitos 2 USAOeste
-{
- pais: "Estados Unidos del Oeste",
- jugador: "Hooker",
- numeroEjercitosAsignados: 2,
- numeroEjercitosTotales: 2,
- paisesOcupadosContinente: [ { "Alaska",0 }, { "Alberta",6 }, { "Estados Unidos del Oeste",2 }, { "Territorios del Noroeste",0 }, { "Ontario",8 }, { "Estados Unidos del Este",2 }, { "America Central",0 }, { "Groenlandia",0 }, { "Quebec",0 } ]
-}
-
-$> repartir ejercitos 2 AmeCentra
-{
- pais: "America Central",
- jugador: "Hooker",
- numeroEjercitosAsignados: 2,
- numeroEjercitosTotales: 2,
- paisesOcupadosContinente: [ { "Alaska",0 }, { "Alberta",6 }, { "Estados Unidos del Oeste",2 }, { "Territorios del Noroeste",0 }, { "Ontario",8 }, { "Estados Unidos del Este",2 }, { "America Central",2 }, { "Groenlandia",0 }, { "Quebec",0 } ]
-}
-
-$> repartir ejercitos 3 EurOcc
-{
- pais: "Europa Occidental",
- jugador: "Hooker",
- numeroEjercitosAsignados: 3,
- numeroEjercitosTotales: 3,
- paisesOcupadosContinente: [ { "Islandia",0 }, { "Escandinavia",0 }, { "Gran Bretaña",2 }, { "Europa Occidental",3 }, { "Europa Norte",0 }, { "Europa Sur",0 }, { "Rusia",0 } ]
-}
-
-$> acabar turno 
-{
- nombre: "Lonnegan",
- numeroEjercitosRearmar: 0
-}
-
 $> acabar turno
 {
- nombre: "miguel",
+ nombre: "Lonnegan",
+ numeroEjercitosRearmar: 5
+}
+
+$> jugador
+{
+ nombre: "Lonnegan",
+ color: "ROJO",
+ mision: "Destruir el ejército AZUL",
+ numeroEjercitos: 21,
+ paises: [ "Oriente Medio", "India", "Sureste Asiático", "Congo", "Africa Oriental", "Sudafrica", "Madagascar", "Indonesia", "Nueva Guinea", "Australia Occidental", "Australia Oriental" ],
+ continentes: [ "Oceanía" ],
+ cartas: [ ],
  numeroEjercitosRearmar: 0
 }
 
 $> acabar turno
 {
  nombre: "Gondorff",
+ numeroEjercitosRearmar: 4
+}
+
+$> jugador
+{
+ nombre: "Gondorff",
+ color: "VERDE",
+ mision: "Conquistar 24 países de la preferencia del jugador",
+ numeroEjercitos: 31,
+ paises: [ "Alaska", "Territorios del Noroeste", "Groenlandia", "Islandia", "Escandinavia", "Siberia", "Yakustsk", "Kamchatka", "Alberta", "Ontario", "Quebec", "Gran Bretaña", "Europa Norte", "Rusia" ],
+ continentes: [ ],
+ cartas: [ ],
  numeroEjercitosRearmar: 0
 }
-
-$> atacar Ontario 6x5x2 USAEste 4x3
-
-$> atacar Alberta 6x6x6 USAOeste 1x1
-
-$> repartir ejercitos 3 USAEste
-{
- pais: "Estados Unidos del Este",
- jugador: "Gondorff",
- numeroEjercitosAsignados: 3,
- numeroEjercitosTotales: 6,
- paisesOcupadosContinente: [ { "Alaska",0 }, { "Alberta",3 }, { "Estados Unidos del Oeste",3 }, { "Territorios del Noroeste",0 }, { "Ontario",5 }, { "Estados Unidos del Este",6 }, { "America Central",2 }, { "Groenlandia",0 }, { "Quebec",0 } ]
-}
-
-$> atacar USAEste 6x6x6 AmeCentra 1x1
-
-$> rearmar AmeCentra 2 USAEste
-
-$> atacar USAEste 6x6x6 AmeCentra 1x1
-{
- código de error: 99,
- descripción: "Comando no permitido en este momento"
-{
-
-$> acabar turno
-{
- nombre: "Hooker",
- numeroEjercitosRearmar: 0
-}
-
-$> atacar EurOcc GBretaña
 
 $> obtener frontera Brasil
 {
@@ -577,7 +498,7 @@ $> describir pais Brasil
  continente: "América del Sur",
  frontera:  [ "África del Norte", "Perú" ],
  jugador: "Hooker",
- numeroEjercitos: 0,
+ numeroEjercitos: 3,
  numeroVecesOcupado: 0
 }
 
@@ -585,47 +506,40 @@ $> describir jugador Gondorff
 {
  nombre: "Gondorff",
  color: "VERDE",
- numeroEjercitos: 30,
- paises: [ "Alaska", "Territorios del Noroeste", "Groenlandia", "Islandia", "Escandinavia", "Siberia", "Yakustsk", "Kamchatka", "Alberta", "Ontario", "Quebec", "Gran Bretaña", "Europa Norte", "Rusia", "Estados Unidos del Este", "Estados Unidos del Oeste", "America Central" ],
- continentes: [ "América del Norte" ],
+ mision: "Conquistar 24 países de la preferencia del jugador",
+ numeroEjercitos: 31,
+ paises: [ "Alaska", "Territorios del Noroeste", "Groenlandia", "Islandia", "Escandinavia", "Siberia", "Yakustsk", "Kamchatka", "Alberta", "Ontario", "Quebec", "Gran Bretaña", "Europa Norte", "Rusia" ],
+ continentes: [ ],
  cartas: [ ],
- numeroEjercitosRearmar: 0
+ numeroEjercitosRearmar: 4
 }
-
-$> asignar carta Caballería&Indonesia
-{
- código de error: 127,
- descripción: "El jugador no conquistó ningun pais este turno"
-{
-
-$> asignar carta Caballería&Alaska
-{
- código de error: 127,
- descripción: "El jugador no conquistó ningun pais este turno"
-{
-
-$> asignar carta Caballería&Brasil
-{
- código de error: 127,
- descripción: "El jugador no conquistó ningun pais este turno"
-{
 
 $> describir jugador Hooker
 {
  nombre: "Hooker",
- color: "AMARILLO",
- mision: "Conquistar Asia y América del Sur",
- numeroEjercitos: 30,
- paises: [ "Venezuela", "Perú", "Argentina", "Brasil", "Irkutsk", "Europa Occidental", "Europa Sur", "Urales", "Mongolia", "Japón", "Afganistan", "China", "África del Norte", "Egipto" ],
+ color: "AZUL",
+ numeroEjercitos: 17,
+ paises: [ "Venezuela", "Perú", "Argentina", "Brasil", "Irkutsk", "Estados Unidos del Oeste", "Estados Unidos del Este", "Europa Occidental", "Europa Sur", "Urales", "Mongolia", "Japón", "America Central", "Afganistan", "China", "África del Norte", "Egipto" ],
  continentes: [ "América del Sur" ],
  cartas: [ ],
- numeroEjercitosRearmar: 0
+ numeroEjercitosRearmar: 7
+}
+
+$> describir jugador Lonnegan
+{
+ nombre: "Lonnegan",
+ color: "ROJO",
+ numeroEjercitos: 21,
+ paises: [ "Oriente Medio", "India", "Sureste Asiático", "Congo", "Africa Oriental", "Sudafrica", "Madagascar", "Indonesia", "Nueva Guinea", "Australia Occidental", "Australia Oriental" ],
+ continentes: [ "Oceanía" ],
+ cartas: [ ],
+ numeroEjercitosRearmar: 5
 }
 
 $> ver mapa
 
 $> acabar turno
 {
- nombre: "Lonnegan",
- numeroEjercitosRearmar: 0
+ nombre: "Hooker",
+ numeroEjercitosRearmar: 7
 }
