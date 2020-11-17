@@ -26,11 +26,11 @@ public class Mapa {
         casillas = new ArrayList<>();
 
         /*for (int i = 0; i < 11; i++) {
-            this.casillas.add(new ArrayList<>());
-            for (int j = 0; j < 8; j++) {
-                this.casillas.get(i).add(new Casilla(i, j));
-            }
-        }*/
+         this.casillas.add(new ArrayList<>());
+         for (int j = 0; j < 8; j++) {
+         this.casillas.get(i).add(new Casilla(i, j));
+         }
+         }*/
         crearAfrica();
         crearEuropa();
         crearANorte();
@@ -46,10 +46,11 @@ public class Mapa {
     public ArrayList<Continente> getContinentes() {
         return continentes;
     }
-    
-    public ArrayList<Pais> getPaises(){
+
+    public ArrayList<Pais> getPaises() {
         return paises;
     }
+
     private void crearAfrica() {
         String color = "VERDE";
         Casilla casilla;
@@ -415,33 +416,33 @@ public class Mapa {
                             || p.getCasilla().getX() - f.getCasilla().getX() == 1) {
                         p.addFront(f);
                     }
-                    
+
                 }
                 //Fronteras indirectas: //revisar nombres //cambiar segundas partes de la igualdad a pej "anorte"
-                 if((p.getAbreviatura().equals("ANorte")) && (f.getAbreviatura().equals("Brasil"))){            
-                    p.addFront(f);  
+                if ((p.getAbreviatura().equals("ANorte")) && (f.getAbreviatura().equals("Brasil"))) {
+                    p.addFront(f);
                     f.addFront(p);
-                 } 
-                 if((p.getAbreviatura().equals("Groenlan")) && (f.getAbreviatura().equals("Islandia"))){            
-                    p.addFront(f);  
+                }
+                if ((p.getAbreviatura().equals("Groenlan")) && (f.getAbreviatura().equals("Islandia"))) {
+                    p.addFront(f);
                     f.addFront(p);
-                 }
-                 if((p.getAbreviatura().equals("ANorte")) && (f.getAbreviatura().equals("EurOcc"))){            
-                    p.addFront(f);  
+                }
+                if ((p.getAbreviatura().equals("ANorte")) && (f.getAbreviatura().equals("EurOcc"))) {
+                    p.addFront(f);
                     f.addFront(p);
-                 }
-                 if((p.getAbreviatura().equals("Egipto")) && (f.getAbreviatura().equals("EurSur"))){            
-                    p.addFront(f);  
+                }
+                if ((p.getAbreviatura().equals("Egipto")) && (f.getAbreviatura().equals("EurSur"))) {
+                    p.addFront(f);
                     f.addFront(p);
-                 }
-                  if((p.getAbreviatura().equals("Kamchatka")) && (f.getAbreviatura().equals("Alaska"))){            
-                    p.addFront(f);  
+                }
+                if ((p.getAbreviatura().equals("Kamchatka")) && (f.getAbreviatura().equals("Alaska"))) {
+                    p.addFront(f);
                     f.addFront(p);
-                 }
-                   if((p.getAbreviatura().equals("SAsiático")) && (f.getAbreviatura().equals("Indonesia"))){            
-                    p.addFront(f);  
+                }
+                if ((p.getAbreviatura().equals("SAsiático")) && (f.getAbreviatura().equals("Indonesia"))) {
+                    p.addFront(f);
                     f.addFront(p);
-                 }
+                }
             }
         }
 
@@ -454,41 +455,34 @@ public class Mapa {
     //islandia.addFront(Groenalndia);
     //Pais Alaska.addFront(Kamchatka);
     //indonesia.addFront(sasiatico);
-
-
 // voy a ver las fronteras
     /*public void printFronterasP(){
 
-            for(Pais p:paises){
-                System.out.println("Pais:" + p.getNombre());
-                for(int i=0; i<p.getFronteras().size();i++){    
-                   System.out.println("Frontera" + i+1 + ": " + p.getFronteras().get(i).getNombre());  
-                }
-            }
-    }*/
-
-
-
-
-
+     for(Pais p:paises){
+     System.out.println("Pais:" + p.getNombre());
+     for(int i=0; i<p.getFronteras().size();i++){    
+     System.out.println("Frontera" + i+1 + ": " + p.getFronteras().get(i).getNombre());  
+     }
+     }
+     }*/
     //@Override
-
-    public void printMapa(){ //si haces to string hay que hacer return de un string, ya veremos como hacerlo
+    public void printMapa() { //si haces to string hay que hacer return de un string, ya veremos como hacerlo
         int oceano;
-        for(int j=0; j<8; j++){
-            if(j == 5){ //impresion linea vertical que une brasil y anorte
+        for (int j = 0; j < 8; j++) {
+            if (j == 5) { //impresion linea vertical que une brasil y anorte
                 System.out.print("\n|-----------|-----------|-----------|-----------\033[0;31m|\033[0m-----------|-----------|-----------|-----------|-----------|-----------|-----------|\n");
-            }else
+            } else {
                 System.out.print("\n|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|\n");
-            for(int i=0; i<11; i++){
+            }
+            for (int i = 0; i < 11; i++) {
                 /*cada vez que vayamos a comprobar una casilla ponemos oceano a 0. Si esta cambia a 1 significa que 
-                en esa posicion hay pais, si se mantiene a 0 es que hay un oceano porque nada ha sido impreso*/
-                oceano = 0; 
+                 en esa posicion hay pais, si se mantiene a 0 es que hay un oceano porque nada ha sido impreso*/
+                oceano = 0;
                 System.out.print("|"); //columnas
                 //ponemos esto, por si el color no ha sido parado en allguno de los ifs, pare ahora antes de imprimir nada mas
                 System.out.print("\033[0m");
-                for(Casilla cBucle : casillas){
-                    if ((cBucle.getX() == i) && (cBucle.getY() == j)){
+                for (Casilla cBucle : casillas) {
+                    if ((cBucle.getX() == i) && (cBucle.getY() == j)) {
                         System.out.print(cBucle.getPais().getContinente().printColor());
                         //System.out.print("\033[0m" );  
                         System.out.printf(String.format("%1$-11s", cBucle.getPais().getAbreviatura()));
@@ -496,57 +490,56 @@ public class Mapa {
                         oceano = 1;
                     }
                 }
-                if((i==3 || i==9 || i==10) && j == 0){
+                if ((i == 3 || i == 9 || i == 10) && j == 0) {
                     System.out.print("\033[0;31m-----------\033[0m");
-                }else if((i==3 && j==5)){
+                } else if ((i == 3 && j == 5)) {
                     System.out.print("\033[0;31m-----------");
                 }/*los dos siguientes ifs, componen las lineas rojas que unen brasil y anorte, ya que hay que hacer que la 
-                linea vertical de la anterior de anorte sea roja y la siguiente a brasil igual*/
-                else if(i==3 && j==4){
+                 linea vertical de la anterior de anorte sea roja y la siguiente a brasil igual*/ else if (i == 3 && j == 4) {
                     System.out.print("           \033[0;31m");
-                }else if(i==4 && j==4){
+                } else if (i == 4 && j == 4) {
                     System.out.print("\033[0;31m-----------\033[0m");
-                }else if(((i==5 || i==6)&& j==3) || (i==9 && j==5)){
+                } else if (((i == 5 || i == 6) && j == 3) || (i == 9 && j == 5)) {
                     System.out.print("     \033[0;31m|\033[0m     ");
-                }
-                else if(oceano == 0){
+                } else if (oceano == 0) {
                     System.out.print("           ");
                 }
             }
             System.out.println();
-            for(int i=0; i<11; i++){
+            for (int i = 0; i < 11; i++) {
                 /*cada vez que vayamos a comprobar una casilla ponemos oceano a 0. Si esta cambia a 1 significa que 
-                en esa posicion hay pais, si se mantiene a 0 es que hay un oceano porque nada ha sido impreso*/
-                oceano = 0; 
+                 en esa posicion hay pais, si se mantiene a 0 es que hay un oceano porque nada ha sido impreso*/
+                oceano = 0;
                 System.out.print("|"); //columnas
                 //ponemos esto, por si el color no ha sido parado en allguno de los ifs, pare ahora antes de imprimir nada mas
                 System.out.print("\033[0m");
-                for(Casilla cBucle : casillas){
-                    if ((cBucle.getX() == i) && (cBucle.getY() == j)){
-                        if(cBucle.getPais().getJugador() == null){
+                for (Casilla cBucle : casillas) {
+                    if ((cBucle.getX() == i) && (cBucle.getY() == j)) {
+                        if (cBucle.getPais().getJugador() == null) {
                             System.out.printf(String.format("%1$-11s", cBucle.getPais().getEjercitos()));
-                        }else{
+                        } else {
                             System.out.print(cBucle.getPais().getJugador().printColor());
                             System.out.printf(String.format("%1$-11s", cBucle.getPais().getEjercitos()));
                         }
                         //System.out.print(cBucle.getPais().getContinente().printColor());
                         //System.out.print("\033[0m" );  
-                        
+
                         System.out.print("\033[0m");
                         oceano = 1;
                     }
-                }if(i==3 && j==4){
+                }
+                if (i == 3 && j == 4) {
                     System.out.print("           \033[0;31m");
-                }else if(((i==5 || i==6)&& j==3) || (i==9 && j==5)){
+                } else if (((i == 5 || i == 6) && j == 3) || (i == 9 && j == 5)) {
                     System.out.print("     \033[0;31m|\033[0m     ");
-                }else if(oceano == 0){
+                } else if (oceano == 0) {
                     System.out.print("           ");
                 }
             }
-        System.out.print("|");
+            System.out.print("|");
         }
-        
+
         System.out.println("\n|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|\n");
-        
+
     }
 }

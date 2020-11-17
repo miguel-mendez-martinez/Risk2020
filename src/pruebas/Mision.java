@@ -10,6 +10,7 @@ package pruebas;
  * @author migue
  */
 public class Mision {
+
     private String codigo;
     private String descripcion;
     private Jugador jugador;
@@ -23,8 +24,6 @@ public class Mision {
     public Mision(String codigo) {
         this.codigo = codigo;
     }
-    
-    
 
     public Mision() {
         this.jugador = null;
@@ -33,68 +32,68 @@ public class Mision {
     public Jugador getJugador() {
         return jugador;
     }
-    
-    public String printDesc(){
+
+    public String printDesc() {
         String texto = "\"" + this.descripcion + "\"";
         return texto;
     }
-    
-    public String codigoToDesc(String codigo){
-        if( codigo.equals("M1")){
+
+    public String codigoToDesc(String codigo) {
+        if (codigo.equals("M1")) {
             return "Conquistar 24 países de la preferencia del jugador";
-        }else if( codigo.equals("M2")){
+        } else if (codigo.equals("M2")) {
             return "Conquistar 18 países de la preferencia del jugador con un mínimo de dos ejércitos";
-        }else if( codigo.equals("M31")){
+        } else if (codigo.equals("M31")) {
             return "Conquistar Asia y América del Sur";
-        }else if( codigo.equals("M32")){
+        } else if (codigo.equals("M32")) {
             return "Conquistar Asia y África";
-        }else if( codigo.equals("M33")){
+        } else if (codigo.equals("M33")) {
             return "Conquistar América del Norte y África";
-        }else if( codigo.equals("M34")){
+        } else if (codigo.equals("M34")) {
             return "Conquistar América del Norte y Oceanía";
-        }else if( codigo.equals("M41")){
+        } else if (codigo.equals("M41")) {
             return "Destruir el ejército AMARILLO";
-        }else if( codigo.equals("M42")){
+        } else if (codigo.equals("M42")) {
             return "Destruir el ejército AZUL";
-        }else if( codigo.equals("M43")){
+        } else if (codigo.equals("M43")) {
             return "Destruir el ejército CYAN";
-        }else if( codigo.equals("M44")){
+        } else if (codigo.equals("M44")) {
             return "Destruir el ejército ROJO";
-        }else if( codigo.equals("M45")){
+        } else if (codigo.equals("M45")) {
             return "Destruir el ejército VERDE";
-        }else if( codigo.equals("M46")){
+        } else if (codigo.equals("M46")) {
             return "Destruir el ejército VIOLETA";
         }
         return "fallo";
     }
-    
-    public int existeMision(String codigo){
-        if( codigo.equals("M1") ||
-            codigo.equals("M2") ||
-            codigo.equals("M31") ||
-            codigo.equals("M32") ||
-            codigo.equals("M33") ||
-            codigo.equals("M34") ||
-            codigo.equals("M41") ||
-            codigo.equals("M42") ||
-            codigo.equals("M43") ||
-            codigo.equals("M44") ||
-            codigo.equals("M45") ||
-            codigo.equals("M46") ) {
-            
+
+    public int existeMision(String codigo) {
+        if (codigo.equals("M1")
+                || codigo.equals("M2")
+                || codigo.equals("M31")
+                || codigo.equals("M32")
+                || codigo.equals("M33")
+                || codigo.equals("M34")
+                || codigo.equals("M41")
+                || codigo.equals("M42")
+                || codigo.equals("M43")
+                || codigo.equals("M44")
+                || codigo.equals("M45")
+                || codigo.equals("M46")) {
+
             return 1; // Existe
-                   
-        }else{
+
+        } else {
             return 0;
         }
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         String texto;
-        
+
         texto = "{\n nombre: \"" + this.jugador.getNombre() + "\"\n mision: \"" + this.descripcion + "\"\n}";
-        
+
         return texto;
     }
 }

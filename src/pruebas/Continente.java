@@ -9,12 +9,10 @@ package pruebas;
  *
  * @author migue
  */
-
 import java.util.ArrayList;
 
-
 public class Continente {
-    
+
     private String nombre;
     private String abreviatura;
     private int bonus;
@@ -22,40 +20,40 @@ public class Continente {
     private String color;
     private int numPaises; // numero de paises de cada continente
     // Constructores, recordar siempre reservar memoria para el array
-    
-    public Continente(){
+
+    public Continente() {
     }
-    public Continente(String nombre, String color){
+
+    public Continente(String nombre, String color) {
         this.paises = new ArrayList<>(); //inicio el array
         //en vez de esta mierda tenemos que hacer que lea un fichero donde esten las asignaciones de los continentes y paises y ver que esta bien
-        if( nombre.equals("África") ||
-            nombre.equals("América del Norte") ||
-            nombre.equals("América del Sur") ||
-            nombre.equals("Asia") ||
-            nombre.equals("Europa") ||
-            nombre.equals("Oceanía")) {
-            
+        if (nombre.equals("África")
+                || nombre.equals("América del Norte")
+                || nombre.equals("América del Sur")
+                || nombre.equals("Asia")
+                || nombre.equals("Europa")
+                || nombre.equals("Oceanía")) {
+
             this.nombre = nombre;
-                   
+
         }
         this.color = color;
     }
-    
+
     // setters & getters
-    
-    public String getNombre(){
+    public String getNombre() {
         return nombre;
     }
-    
-    public void setNombre(String nombre){
-        if( nombre.equals("África") ||
-            nombre.equals("América del Norte") ||
-            nombre.equals("América del Sur") ||
-            nombre.equals("Asia") ||
-            nombre.equals("Europa") ||
-            nombre.equals("Oceanía")) {
-            
-            this.nombre = nombre;            
+
+    public void setNombre(String nombre) {
+        if (nombre.equals("África")
+                || nombre.equals("América del Norte")
+                || nombre.equals("América del Sur")
+                || nombre.equals("Asia")
+                || nombre.equals("Europa")
+                || nombre.equals("Oceanía")) {
+
+            this.nombre = nombre;
         }
     }
 
@@ -67,19 +65,19 @@ public class Continente {
         this.abreviatura = abreviatura;
     }
 
-    public int getBonus(){
+    public int getBonus() {
         return bonus;
     }
-    
-    public void setBonus(int bonus){
+
+    public void setBonus(int bonus) {
         this.bonus = bonus;
     }
-    
-    public ArrayList<Pais> getPaises(){
+
+    public ArrayList<Pais> getPaises() {
         return paises;
     }
-    
-    public void setPais(Pais pais){
+
+    public void setPais(Pais pais) {
         this.paises.add(pais);
     }
 
@@ -95,51 +93,59 @@ public class Continente {
         this.numPaises = numPaises;
     }
 
-    public String printColor(){
+    public String printColor() {
 
-        if("AMARILLO".equals(this.color)) return "\033[43m" + "\033[1;90m";
-        else if("AZUL".equals(this.color)) return "\033[44m" + "\033[1;90m";
-        else if("CYAN".equals(this.color)) return "\033[46m" + "\033[1;90m";
-        else if("ROJO".equals(this.color)) return "\033[41m" + "\033[1;90m";
-        else if("VERDE".equals(this.color)) return "\033[42m" + "\033[1;90m";
-        else if("VIOLETA".equals(this.color)) return "\033[45m" + "\033[1;90m";
-        else return " ";
+        if ("AMARILLO".equals(this.color)) {
+            return "\033[43m" + "\033[1;90m";
+        } else if ("AZUL".equals(this.color)) {
+            return "\033[44m" + "\033[1;90m";
+        } else if ("CYAN".equals(this.color)) {
+            return "\033[46m" + "\033[1;90m";
+        } else if ("ROJO".equals(this.color)) {
+            return "\033[41m" + "\033[1;90m";
+        } else if ("VERDE".equals(this.color)) {
+            return "\033[42m" + "\033[1;90m";
+        } else if ("VIOLETA".equals(this.color)) {
+            return "\033[45m" + "\033[1;90m";
+        } else {
+            return " ";
+        }
         // mirar codigo de error o algo para ver que hacer si color es invalido como migueloh else System.out.println();
     }
 
-    public String printPaises(){
+    public String printPaises() {
         String paisCont = "";
-        for (int i=0;i<paises.size();i++) {
-            if(i == 0){
+        for (int i = 0; i < paises.size(); i++) {
+            if (i == 0) {
                 paisCont += "{\n paises: [ " + paises.get(i).printNombre() + ",\n";
-            }else if(i==(paises.size())-1){
+            } else if (i == (paises.size()) - 1) {
                 paisCont += "\t " + paises.get(i).printNombre() + "\n\t ]";
-            }else{
+            } else {
                 paisCont += "\t " + paises.get(i).printNombre() + ",\n";
             }
-        }  
+        }
         return paisCont;
     }
-    
-    public String printPaisesEjer(){
+
+    public String printPaisesEjer() {
         String paisCont = "";
-        for (int i=0;i<paises.size();i++) {
-            if(i == 0){
+        for (int i = 0; i < paises.size(); i++) {
+            if (i == 0) {
                 paisCont += "[ { " + paises.get(i).printNombre() + "," + paises.get(i).getEjercitos() + " }";
-            }else if(i==(paises.size())-1){
+            } else if (i == (paises.size()) - 1) {
                 paisCont += ", { " + paises.get(i).printNombre() + "," + paises.get(i).getEjercitos() + " } ]";
-            }else{
+            } else {
                 paisCont += ", { " + paises.get(i).printNombre() + "," + paises.get(i).getEjercitos() + " }";
             }
         }
         return paisCont;
     }
 
-    public int fronterasContinente(){
-        int resultado=0;
+    public int fronterasContinente() {
+        int resultado = 0;
 
-        switch(this.abreviatura){
-        
+        switch (this.abreviatura) {
+
             case "África":
                 resultado = 4;
                 break;
@@ -158,22 +164,23 @@ public class Continente {
             case "Oceanía":
                 resultado = 1;
                 break;
-        
+
         }
 
         return resultado;
     }
 
-    public float porcentajePaisesOcupados(){
+    public float porcentajePaisesOcupados() {
         int contador = 0;
-        for (Pais p:this.paises){
-            if(p.estaAsignado()) contador++;
+        for (Pais p : this.paises) {
+            if (p.estaAsignado()) {
+                contador++;
+            }
         }
-       return (this.paises.size()/contador) * 100;
+        return (this.paises.size() / contador) * 100;
     }
 
-
-    public String printNombre(){
+    public String printNombre() {
         String texto = "\"" + this.nombre + "\"";
         return texto;
     }

@@ -17,6 +17,7 @@ import java.nio.charset.StandardCharsets;
  * @author migue
  */
 public class Salida {
+
     private int code;
     private String descripcion;
 
@@ -27,40 +28,38 @@ public class Salida {
     public Salida() {
         //esto lo utilizaremos para imprimir al archivo salidas que no sean error, y que por lo tanto no tengan codigo
     }
-    
-    public void imprimirArchivo(String salida){
-        try{
+
+    public void imprimirArchivo(String salida) {
+        try {
             File archivo = new File("salida.txt");
-            if(archivo.createNewFile()){
+            if (archivo.createNewFile()) {
                 System.out.println("Creando el archivo de salidas...");
             }
             //iniciamos el escritor en el archivo, buscado en internet 
             FileOutputStream fos = new FileOutputStream(archivo, true);
             OutputStreamWriter osw = new OutputStreamWriter(fos, StandardCharsets.UTF_8);
             Writer writer = new BufferedWriter(osw);
-            
+
             writer.append(salida).append("\n");
-            
+
             writer.close();
             osw.close();
             fos.close();
-        }catch(Exception excepcion) {
+        } catch (Exception excepcion) {
             excepcion.printStackTrace();
         }
     }
-    
-    
-   @Override
-    public String toString(){
+
+    @Override
+    public String toString() {
         codeToDesc(this.code);
         String error = "{\n código de error: " + this.code + ",\n descripción: \"" + this.descripcion + "\"\n{";
         this.imprimirArchivo(error);
         return error;
     }
-    
-    
-    public void codeToDesc(int code){
-        switch(code){
+
+    public void codeToDesc(int code) {
+        switch (code) {
             case 99:
                 this.descripcion = "Comando no permitido en este momento";
                 break;
@@ -147,7 +146,7 @@ public class Salida {
                 break;
             default:
                 System.out.println("Código de error no existente.");
-            
+
         }
     }
 }

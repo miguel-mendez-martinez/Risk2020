@@ -10,6 +10,7 @@ package pruebas;
  * @author migue
  */
 public class Casilla {
+
     private Pais pais;
     private int x;
     private int y;
@@ -19,7 +20,7 @@ public class Casilla {
         this.y = y;
     }
 
-    public Pais getPais(){
+    public Pais getPais() {
         return pais;
     }
 
@@ -33,6 +34,5 @@ public class Casilla {
 
     public int getY() {
         return y;
-    }    
+    }
 }
-
