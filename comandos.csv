@@ -13,8 +13,8 @@ asignar paises asignaciones.csv
 repartir ejercitos
 jugador
 acabar turno
-repartir ejercitos 2 ANorte 
-repartir ejerctios 2 Egipto
+repartir ejercitos 3 ANorte 
+repartir ejerctios 3 Egipto
 jugador
 acabar turno
 repartir ejercitos 1 Congo
@@ -23,8 +23,9 @@ jugador
 acabar turno
 jugador
 acabar turno
-atacar ANorte 2x2 Congo 6
-atacar Egipto 2x2 AOriental 6
+repartir ejerctios 2 Egipto
+atacar ANorte 6x6x6 Congo 6
+atacar Egipto 6x6x6 AOriental 6
 obtener frontera Brasil
 obtener frontera Groenlan
 obtener frontera ANorte

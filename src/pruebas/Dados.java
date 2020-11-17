@@ -56,7 +56,7 @@ public class Dados {
         if(this.x <= dado2.getX()){
             result = 0;
             //ya una victoria para defensores, se devolvera 1 o 0
-            if(dado2.getY() == 0){
+            if(dado2.getY() == 0){ //si la y es 0 la z tmb por lo tanto el otro dado solo lanzo 1 variable
                 result = 0;
             }else{
                 if(this.y <= dado2.getY() && this.z <= dado2.getY()){

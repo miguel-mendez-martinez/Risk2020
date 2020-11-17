@@ -379,23 +379,22 @@ $> acabar turno
  numeroEjercitosRearmar: 4
 }
 
-$> repartir ejercitos 2 ANorte 
+$> repartir ejercitos 3 ANorte 
 {
  pais: "África del Norte",
  jugador: "Hooker",
- numeroEjercitosAsignados: 2,
- numeroEjercitosTotales: 2,
- paisesOcupadosContinente: [ { "África del Norte",2 }, { "Africa Oriental",0 }, { "Congo",0 }, { "Egipto",0 }, { "Madagascar",0 }, { "Sudafrica",0 } ]
+ numeroEjercitosAsignados: 3,
+ numeroEjercitosTotales: 3,
+ paisesOcupadosContinente: [ { "África del Norte",3 }, { "Africa Oriental",0 }, { "Congo",0 }, { "Egipto",0 }, { "Madagascar",0 }, { "Sudafrica",0 } ]
 }
 
-$> repartir ejerctios 2 Egipto
+$> repartir ejerctios 3 Egipto
 {
  pais: "Egipto",
  jugador: "Hooker",
- numeroEjercitosAsignados: 2,
- numeroEjercitosTotales: 2,
- paisesOcupadosContinente: [ { "África del Norte",2 }, { "Africa Oriental",0 }, { "Congo",0 }, { "Egipto",2 }, { "Madagascar",0 }, { "Sudafrica",0 } ]
-}
+ numeroEjercitosAsignados: 1,
+ numeroEjercitosTotales: 1,
+ paisesOcupadosContinente: [ { "África del Norte",3 }, { "Africa Oriental",0 }, { "Congo",0 }, { "Egipto",1 }, { "Madagascar",0 }, { "Sudafrica",0 } ]
 
 $> jugador
 {
@@ -421,7 +420,7 @@ $> repartir ejercitos 1 Congo
  jugador: "Lonnegan",
  numeroEjercitosAsignados: 1,
  numeroEjercitosTotales: 1,
- paisesOcupadosContinente: [ { "África del Norte",2 }, { "Africa Oriental",0 }, { "Congo",1 }, { "Egipto",2 }, { "Madagascar",0 }, { "Sudafrica",0 } ]
+ paisesOcupadosContinente: [ { "África del Norte",3 }, { "Africa Oriental",0 }, { "Congo",1 }, { "Egipto",1 }, { "Madagascar",0 }, { "Sudafrica",0 } ]
 }
 
 $> repartir ejerctios 1 AOriental
@@ -430,7 +429,7 @@ $> repartir ejerctios 1 AOriental
  jugador: "Lonnegan",
  numeroEjercitosAsignados: 1,
  numeroEjercitosTotales: 1,
- paisesOcupadosContinente: [ { "África del Norte",2 }, { "Africa Oriental",1 }, { "Congo",1 }, { "Egipto",2 }, { "Madagascar",0 }, { "Sudafrica",0 } ]
+ paisesOcupadosContinente: [ { "África del Norte",3 }, { "Africa Oriental",1 }, { "Congo",1 }, { "Egipto",1 }, { "Madagascar",0 }, { "Sudafrica",0 } ]
 }
 
 $> jugador
@@ -469,22 +468,31 @@ $> acabar turno
  numeroEjercitosRearmar: 4
 }
 
-$> atacar ANorte 2x2 Congo 6
+$> repartir ejerctios 2 Egipto
 {
- dadosAtaque: [ 2, 2 ],
+ pais: "Egipto",
+ jugador: "Hooker",
+ numeroEjercitosAsignados: 2,
+ numeroEjercitosTotales: 3,
+ paisesOcupadosContinente: [ { "África del Norte",3 }, { "Africa Oriental",1 }, { "Congo",1 }, { "Egipto",3 }, { "Madagascar",0 }, { "Sudafrica",0 } ]
+}
+
+$> atacar ANorte 6x6x6 Congo 6
+{
+ dadosAtaque: [ 6, 6, 6 ],
  dadosDefensa: [ 6 ],
- ejercitosPaisAtaque: { 2, 1 },
+ ejercitosPaisAtaque: { 3, 1 },
  ejercitosPaisDefensa: { 1, 0 },
  paisAtaquePerteneceA: "Lonnegan",
  paisDefensaPerteneceA: "Lonnegan",
  continenteConquistado: "null"
 }
 
-$> atacar Egipto 2x2 AOriental 6
+$> atacar Egipto 6x6x6 AOriental 6
 {
- dadosAtaque: [ 2, 2 ],
+ dadosAtaque: [ 6, 6, 6 ],
  dadosDefensa: [ 6 ],
- ejercitosPaisAtaque: { 2, 1 },
+ ejercitosPaisAtaque: { 3, 1 },
  ejercitosPaisDefensa: { 1, 0 },
  paisAtaquePerteneceA: "Lonnegan",
  paisDefensaPerteneceA: "Lonnegan",
@@ -562,7 +570,7 @@ $> describir jugador Hooker
  paises: [ "Irkutsk", "Estados Unidos del Oeste", "Estados Unidos del Este", "Europa Occidental", "Europa Sur", "Urales", "Mongolia", "Japón", "America Central", "Afganistan", "China", "Venezuela" ],
  continentes: [ ],
  cartas: [ ],
- numeroEjercitosRearmar: 4
+ numeroEjercitosRearmar: 2
 }
 
 $> describir jugador Lonnegan

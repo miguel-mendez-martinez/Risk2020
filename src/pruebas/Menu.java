@@ -261,6 +261,7 @@ public class Menu {
                             this.jugadorActual.continentesJugador(this.continentes);
                             //aqui asignamos cuantas recibe
                             this.ejercitosTurno(this.jugadorActual);
+                            //this.jugadorActual.setEjercitos_disponibles(10);
                             System.out.println(this.jugadorActual.printNomEjerR());
                             Salida salida = new Salida();
                             salida.imprimirArchivo(this.jugadorActual.printNomEjerR());
