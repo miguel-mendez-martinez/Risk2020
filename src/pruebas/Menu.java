@@ -497,6 +497,8 @@ public class Menu {
                                                         }else if(p2.getEjercitos() >= 2 && dadoAt != null){
                                                             dadoDef.setX(Integer.parseInt(partesDado2[0]));
                                                             dadoDef.setY(Integer.parseInt(partesDado2[1]));
+                                                            dadoAt.ordenarDados();
+                                                            dadoDef.ordenarDados();
                                                             this.atacar(p1, dadoAt, p2, dadoDef);
                                                         }else{
                                                             if(partesDado2.length > 1){
@@ -504,6 +506,8 @@ public class Menu {
                                                                 System.out.println(error.toString());
                                                             }else if(dadoAt != null){
                                                                 dadoDef.setX(Integer.parseInt(partes[4]));
+                                                                dadoAt.ordenarDados();
+                                                                dadoDef.ordenarDados();
                                                                 this.atacar(p1, dadoAt, p2, dadoDef);
                                                             }
                                                         }

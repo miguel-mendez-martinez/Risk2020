@@ -12,6 +12,7 @@ asignar misiones misiones.csv
 asignar paises asignaciones.csv
 repartir ejercitos
 jugador
+atacar Ontario USAEste
 acabar turno
 repartir ejercitos 3 ANorte 
 repartir ejerctios 3 Egipto
@@ -23,9 +24,9 @@ jugador
 acabar turno
 jugador
 acabar turno
-repartir ejerctios 2 Egipto
-atacar ANorte 6x6x6 Congo 6
-atacar Egipto 6x6x6 AOriental 6
+repartir ejerctios 1 Egipto
+atacar ANorte 4x3x5 Congo 6
+atacar Egipto 2x6x4 AOriental 6
 obtener frontera Brasil
 obtener frontera Groenlan
 obtener frontera ANorte

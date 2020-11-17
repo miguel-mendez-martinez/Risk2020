@@ -33,19 +33,57 @@ public class Dados {
         this.z = z;
     }
     
-    
+    public void ordenarDados(){
+        int aux;
+        if(this.y > this.x){
+            aux = this.x;
+            this.x = this.y;
+            this.y = aux;
+        }
+        if(this.z > this.x){
+            aux = this.x;
+            this.x = this.z;
+            this.z = aux;
+        }
+        if(this.z > this.y){
+            aux = this.y;
+            this.y = this.z;
+            this.z = aux;
+        }
+    }
     public void genDados(int numDados){
         Random rand = new Random();
-        
+        int aux;
         if(numDados == 1){
             this.x = rand.nextInt(6) + 1; 
         }else if(numDados == 2){
             this.x = rand.nextInt(6) + 1; 
             this.y = rand.nextInt(6) + 1; 
+            if(this.y > this.x){
+                aux = this.x;
+                this.x = this.y;
+                this.y = aux;
+            }
+            
         }else{
             this.x = rand.nextInt(6) + 1; 
             this.y = rand.nextInt(6) + 1;
+            if(this.y > this.x){
+                aux = this.x;
+                this.x = this.y;
+                this.y = aux;
+            }
             this.z = rand.nextInt(6) + 1;
+            if(this.z > this.x){
+                aux = this.x;
+                this.x = this.z;
+                this.z = aux;
+            }
+            if(this.z > this.y){
+                aux = this.y;
+                this.y = this.z;
+                this.z = aux;
+            }
         }
         
     }
@@ -92,6 +130,18 @@ public class Dados {
             }
         }
         return max;
+    }
+    public char buscaDado(int valor){
+        char posicion;
+        if(valor == this.x){
+            return 'x';
+        }else if(valor == this.y){
+            return 'y';
+        }else if(valor == this.z){
+            return 'z';
+        }else{
+            return 'e'; //de error
+        }
     }
     public int countDados(){
         if(this.z != 0){
