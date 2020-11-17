@@ -56,12 +56,16 @@ public class Dados {
         if(this.x <= dado2.getX()){
             result = 0;
             //ya una victoria para defensores, se devolvera 1 o 0
-            if(this.y <= dado2.getY() && this.z <= dado2.getY()){
-                //significa que tanto la x como la y del segundo dado son mayores a todo lo del primero
+            if(dado2.getY() == 0){
                 result = 0;
             }else{
-                //el dado2 tiene la x mayor pero a la y menor que la y o z de los atacantes
-                result = 1;
+                if(this.y <= dado2.getY() && this.z <= dado2.getY()){
+                    //significa que tanto la x como la y del segundo dado son mayores a todo lo del primero
+                    result = 0;
+                }else{
+                    //el dado2 tiene la x mayor pero a la y menor que la y o z de los atacantes
+                    result = 1;
+                }
             }
         }else{
             result = 2;

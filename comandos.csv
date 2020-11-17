@@ -9,19 +9,22 @@ asignar mision Hooker M42
 crear mapa
 crear jugadores jugadores.csv
 asignar misiones misiones.csv
-asignar pais Hooker Venezuela
-asignar pais Hooker Perú
-asignar pais Hooker Argentina
-asignar pais Hooker Brasil
 asignar paises asignaciones.csv
 repartir ejercitos
 jugador
 acabar turno
+repartir ejercitos 2 ANorte 
+repartir ejerctios 2 Egipto
+jugador
+acabar turno
+repartir ejercitos 1 Congo
+repartir ejerctios 1 AOriental
 jugador
 acabar turno
 jugador
 acabar turno
-jugador
+atacar ANorte 2x2 Congo 6
+atacar Egipto 2x2 AOriental 6
 obtener frontera Brasil
 obtener frontera Groenlan
 obtener frontera ANorte
@@ -31,7 +34,7 @@ obtener frontera casamigueloh
 obtener color Brasil
 ver mapa
 crear mapa
-describir pais Brasil
+describir pais ANorte
 describir jugador Gondorff
 describir jugador Hooker
 describir jugador Lonnegan

@@ -97,38 +97,6 @@ $> asignar misiones misiones.csv
  descripción: "La misión no existe"
 {
 
-$> asignar pais Hooker Venezuela
-{
-	nombre: Hooker
-	país: Venezuela
-	continente: América del Sur
-	fronteras: [ "America Central", "Perú" ]
-}
-
-$> asignar pais Hooker Perú
-{
-	nombre: Hooker
-	país: Perú
-	continente: América del Sur
-	fronteras: [ "Venezuela", "Argentina", "Brasil" ]
-}
-
-$> asignar pais Hooker Argentina
-{
-	nombre: Hooker
-	país: Argentina
-	continente: América del Sur
-	fronteras: [ "Perú" ]
-}
-
-$> asignar pais Hooker Brasil
-{
-	nombre: Hooker
-	país: Brasil
-	continente: América del Sur
-	fronteras: [ "África del Norte", "Perú" ]
-}
-
 $> asignar paises asignaciones.csv
 {
 	nombre: Gondorff
@@ -289,9 +257,11 @@ $> asignar paises asignaciones.csv
 	fronteras: [ "Afganistan", "Mongolia", "India" ]
 }
 {
- código de error: 113,
- descripción: "El país ya está asignado"
-{
+	nombre: Hooker
+	país: Venezuela
+	continente: América del Sur
+	fronteras: [ "America Central", "Perú" ]
+}
 {
 	nombre: Hooker
 	país: ANorte
@@ -323,13 +293,17 @@ $> asignar paises asignaciones.csv
 	fronteras: [ "Indonesia", "India" ]
 }
 {
- código de error: 113,
- descripción: "El país ya está asignado"
+	nombre: Lonnegan
+	país: Perú
+	continente: América del Sur
+	fronteras: [ "Venezuela", "Argentina", "Brasil" ]
+}
 {
-{
- código de error: 113,
- descripción: "El país ya está asignado"
-{
+	nombre: Lonnegan
+	país: Brasil
+	continente: América del Sur
+	fronteras: [ "África del Norte", "Perú" ]
+}
 {
 	nombre: Lonnegan
 	país: Congo
@@ -343,9 +317,11 @@ $> asignar paises asignaciones.csv
 	fronteras: [ "Congo", "Egipto", "Sudafrica" ]
 }
 {
- código de error: 113,
- descripción: "El país ya está asignado"
-{
+	nombre: Lonnegan
+	país: Argentina
+	continente: América del Sur
+	fronteras: [ "Perú" ]
+}
 {
 	nombre: Lonnegan
 	país: Sudáfrica
@@ -400,7 +376,25 @@ $> jugador
 $> acabar turno
 {
  nombre: "Hooker",
- numeroEjercitosRearmar: 7
+ numeroEjercitosRearmar: 4
+}
+
+$> repartir ejercitos 2 ANorte 
+{
+ pais: "África del Norte",
+ jugador: "Hooker",
+ numeroEjercitosAsignados: 2,
+ numeroEjercitosTotales: 2,
+ paisesOcupadosContinente: [ { "África del Norte",2 }, { "Africa Oriental",0 }, { "Congo",0 }, { "Egipto",0 }, { "Madagascar",0 }, { "Sudafrica",0 } ]
+}
+
+$> repartir ejerctios 2 Egipto
+{
+ pais: "Egipto",
+ jugador: "Hooker",
+ numeroEjercitosAsignados: 2,
+ numeroEjercitosTotales: 2,
+ paisesOcupadosContinente: [ { "África del Norte",2 }, { "Africa Oriental",0 }, { "Congo",0 }, { "Egipto",2 }, { "Madagascar",0 }, { "Sudafrica",0 } ]
 }
 
 $> jugador
@@ -408,9 +402,9 @@ $> jugador
  nombre: "Hooker",
  color: "AZUL",
  mision: "Conquistar Asia y América del Sur",
- numeroEjercitos: 17,
- paises: [ "Venezuela", "Perú", "Argentina", "Brasil", "Irkutsk", "Estados Unidos del Oeste", "Estados Unidos del Este", "Europa Occidental", "Europa Sur", "Urales", "Mongolia", "Japón", "America Central", "Afganistan", "China", "África del Norte", "Egipto" ],
- continentes: [ "América del Sur" ],
+ numeroEjercitos: 10,
+ paises: [ "Irkutsk", "Estados Unidos del Oeste", "Estados Unidos del Este", "Europa Occidental", "Europa Sur", "Urales", "Mongolia", "Japón", "America Central", "Afganistan", "China", "Venezuela", "África del Norte", "Egipto" ],
+ continentes: [ ],
  cartas: [ ],
  numeroEjercitosRearmar: 0
 }
@@ -418,7 +412,25 @@ $> jugador
 $> acabar turno
 {
  nombre: "Lonnegan",
- numeroEjercitosRearmar: 5
+ numeroEjercitosRearmar: 6
+}
+
+$> repartir ejercitos 1 Congo
+{
+ pais: "Congo",
+ jugador: "Lonnegan",
+ numeroEjercitosAsignados: 1,
+ numeroEjercitosTotales: 1,
+ paisesOcupadosContinente: [ { "África del Norte",2 }, { "Africa Oriental",0 }, { "Congo",1 }, { "Egipto",2 }, { "Madagascar",0 }, { "Sudafrica",0 } ]
+}
+
+$> repartir ejerctios 1 AOriental
+{
+ pais: "Africa Oriental",
+ jugador: "Lonnegan",
+ numeroEjercitosAsignados: 1,
+ numeroEjercitosTotales: 1,
+ paisesOcupadosContinente: [ { "África del Norte",2 }, { "Africa Oriental",1 }, { "Congo",1 }, { "Egipto",2 }, { "Madagascar",0 }, { "Sudafrica",0 } ]
 }
 
 $> jugador
@@ -426,8 +438,8 @@ $> jugador
  nombre: "Lonnegan",
  color: "ROJO",
  mision: "Destruir el ejército AZUL",
- numeroEjercitos: 21,
- paises: [ "Oriente Medio", "India", "Sureste Asiático", "Congo", "Africa Oriental", "Sudafrica", "Madagascar", "Indonesia", "Nueva Guinea", "Australia Occidental", "Australia Oriental" ],
+ numeroEjercitos: 23,
+ paises: [ "Oriente Medio", "India", "Sureste Asiático", "Perú", "Brasil", "Congo", "Africa Oriental", "Argentina", "Sudafrica", "Madagascar", "Indonesia", "Nueva Guinea", "Australia Occidental", "Australia Oriental" ],
  continentes: [ "Oceanía" ],
  cartas: [ ],
  numeroEjercitosRearmar: 0
@@ -449,6 +461,34 @@ $> jugador
  continentes: [ ],
  cartas: [ ],
  numeroEjercitosRearmar: 0
+}
+
+$> acabar turno
+{
+ nombre: "Hooker",
+ numeroEjercitosRearmar: 4
+}
+
+$> atacar ANorte 2x2 Congo 6
+{
+ dadosAtaque: [ 2, 2 ],
+ dadosDefensa: [ 6 ],
+ ejercitosPaisAtaque: { 2, 1 },
+ ejercitosPaisDefensa: { 1, 0 },
+ paisAtaquePerteneceA: "Lonnegan",
+ paisDefensaPerteneceA: "Lonnegan",
+ continenteConquistado: "null"
+}
+
+$> atacar Egipto 2x2 AOriental 6
+{
+ dadosAtaque: [ 2, 2 ],
+ dadosDefensa: [ 6 ],
+ ejercitosPaisAtaque: { 2, 1 },
+ ejercitosPaisDefensa: { 1, 0 },
+ paisAtaquePerteneceA: "Lonnegan",
+ paisDefensaPerteneceA: "Lonnegan",
+ continenteConquistado: "África"
 }
 
 $> obtener frontera Brasil
@@ -491,22 +531,21 @@ $> crear mapa
  descripción: "El mapa ya ha sido creado"
 {
 
-$> describir pais Brasil
+$> describir pais ANorte
 {
- nombre: "Brasil",
- abreviatura: "Brasil",
- continente: "América del Sur",
- frontera:  [ "África del Norte", "Perú" ],
- jugador: "Hooker",
- numeroEjercitos: 3,
- numeroVecesOcupado: 0
+ nombre: "África del Norte",
+ abreviatura: "ANorte",
+ continente: "África",
+ frontera:  [ "Congo", "Egipto", "Europa Occidental", "Brasil" ],
+ jugador: "Lonnegan",
+ numeroEjercitos: 1,
+ numeroVecesOcupado: 2
 }
 
 $> describir jugador Gondorff
 {
  nombre: "Gondorff",
  color: "VERDE",
- mision: "Conquistar 24 países de la preferencia del jugador",
  numeroEjercitos: 31,
  paises: [ "Alaska", "Territorios del Noroeste", "Groenlandia", "Islandia", "Escandinavia", "Siberia", "Yakustsk", "Kamchatka", "Alberta", "Ontario", "Quebec", "Gran Bretaña", "Europa Norte", "Rusia" ],
  continentes: [ ],
@@ -518,28 +557,29 @@ $> describir jugador Hooker
 {
  nombre: "Hooker",
  color: "AZUL",
- numeroEjercitos: 17,
- paises: [ "Venezuela", "Perú", "Argentina", "Brasil", "Irkutsk", "Estados Unidos del Oeste", "Estados Unidos del Este", "Europa Occidental", "Europa Sur", "Urales", "Mongolia", "Japón", "America Central", "Afganistan", "China", "África del Norte", "Egipto" ],
- continentes: [ "América del Sur" ],
+ mision: "Conquistar Asia y América del Sur",
+ numeroEjercitos: 6,
+ paises: [ "Irkutsk", "Estados Unidos del Oeste", "Estados Unidos del Este", "Europa Occidental", "Europa Sur", "Urales", "Mongolia", "Japón", "America Central", "Afganistan", "China", "Venezuela" ],
+ continentes: [ ],
  cartas: [ ],
- numeroEjercitosRearmar: 7
+ numeroEjercitosRearmar: 4
 }
 
 $> describir jugador Lonnegan
 {
  nombre: "Lonnegan",
  color: "ROJO",
- numeroEjercitos: 21,
- paises: [ "Oriente Medio", "India", "Sureste Asiático", "Congo", "Africa Oriental", "Sudafrica", "Madagascar", "Indonesia", "Nueva Guinea", "Australia Occidental", "Australia Oriental" ],
- continentes: [ "Oceanía" ],
+ numeroEjercitos: 23,
+ paises: [ "Oriente Medio", "India", "Sureste Asiático", "Perú", "Brasil", "Congo", "Africa Oriental", "Argentina", "Sudafrica", "Madagascar", "Indonesia", "Nueva Guinea", "Australia Occidental", "Australia Oriental", "África del Norte", "Egipto" ],
+ continentes: [ "Oceanía", "África" ],
  cartas: [ ],
- numeroEjercitosRearmar: 5
+ numeroEjercitosRearmar: 4
 }
 
 $> ver mapa
 
 $> acabar turno
 {
- nombre: "Hooker",
- numeroEjercitosRearmar: 7
+ nombre: "Lonnegan",
+ numeroEjercitosRearmar: 10
 }

@@ -36,7 +36,7 @@ public class Pais {
    
     public Pais(String nombre, String abreviatura, Casilla casilla, Continente continente) {
         this.nombre = nombre;
-        this.vecesOcupado = 0;
+        this.vecesOcupado = 1;
         this.casilla = casilla;
         this.abreviatura = abreviatura;
         this.ejercitos = 0;
@@ -44,7 +44,16 @@ public class Pais {
         this.continente = continente;
         this.jugador = null; //esto hara de comprobante para saber si esta asignado a algun jugador
     }
+    
+    public void addOcupacion(){
+        this.vecesOcupado  += 1;
+        this.setVecesOcupado(this.vecesOcupado);
+    }
 
+    public void setVecesOcupado(int vecesOcupado) {
+        this.vecesOcupado = vecesOcupado;
+    }
+    
     public Jugador getJugador() {
         return jugador;
     }

@@ -474,15 +474,39 @@ public class Menu {
                                                     //ahora seteas todo:
                                                     
                                                     //ataque
-                                                    dadoAt.setX(Integer.parseInt(partesDado1[0]));
-                                                    dadoAt.setY(Integer.parseInt(partesDado1[1]));
-                                                    dadoAt.setZ(Integer.parseInt(partesDado1[2]));
+                                                    if(p1.getEjercitos() >= 3){
+                                                        dadoAt.setX(Integer.parseInt(partesDado1[0]));
+                                                        dadoAt.setY(Integer.parseInt(partesDado1[1]));
+                                                        dadoAt.setZ(Integer.parseInt(partesDado1[2]));
+                                                    }else{
+                                                        if(partesDado1.length == 3){
+                                                            Salida error = new Salida(124);
+                                                            System.out.println(error.toString());
+                                                            dadoAt = null;
+                                                        }else{
+                                                            dadoAt.setX(Integer.parseInt(partesDado1[0]));
+                                                            dadoAt.setY(Integer.parseInt(partesDado1[1]));
+                                                        }
+                                                    }
 
                                                     //defensa
-                                                    dadoDef.setX(Integer.parseInt(partesDado2[0]));
-                                                    dadoDef.setY(Integer.parseInt(partesDado2[1]));
-
-                                                    this.atacar(p1, dadoAt, p2, dadoDef);
+                                                    if(partesDado2.length >= 3){
+                                                            Salida error = new Salida(124);
+                                                            System.out.println(error.toString());
+                                                        }else if(p2.getEjercitos() >= 2 && dadoAt != null){
+                                                            dadoDef.setX(Integer.parseInt(partesDado2[0]));
+                                                            dadoDef.setY(Integer.parseInt(partesDado2[1]));
+                                                            this.atacar(p1, dadoAt, p2, dadoDef);
+                                                        }else{
+                                                            if(partesDado2.length > 1){
+                                                                Salida error = new Salida(124);
+                                                                System.out.println(error.toString());
+                                                            }else if(dadoAt != null){
+                                                                dadoDef.setX(Integer.parseInt(partes[4]));
+                                                                this.atacar(p1, dadoAt, p2, dadoDef);
+                                                            }
+                                                        }
+                                                    
 
                                                 }
                                             }
@@ -612,23 +636,34 @@ public class Menu {
         
         //en vez de comarar maximos, por victorias, si es 2, se eliminan 2 de los defensores, si es 1 se elimina 1 de cada y si es 0 se eliminan dos de los atacantes
         victorias = dadoAtt.compDado(dadoDef);
+        System.out.println(victorias);
         if(victorias == 0){
             //ganan los defensores
             ejercitosPerdidos = dadoAtt.countDados();
             ejercitosBefA = att.getEjercitos();
             ejercitosAftA = ejercitosBefA - ejercitosPerdidos;
             if(ejercitosAftA <= 0){
+                //pais atacante conquistado
                 att.getJugador().getPaises().remove(att);
                 att.setJugador(def.getJugador());
+                att.addOcupacion();
                 def.getJugador().setPaises(att);
                 ejercitosPerdidos = dadoDef.countDados();
                 ejercitosBefD = def.getEjercitos();
                 ejercitosAftD = ejercitosBefD - ejercitosPerdidos;
                 if(ejercitosAftD <= 0){
-                    ejercitosAftA = ejercitosBefD - 1;
-                    ejercitosAftD = 1;
-                    def.setEjercitos(1);
-                    att.setEjercitos(ejercitosAftA);
+                    //se necesitan mover demasiados ejercitos
+                    if(ejercitosBefD == 1){
+                        ejercitosAftA = 1;
+                        ejercitosAftD = 0;
+                        att.setEjercitos(ejercitosAftA);
+                        def.setEjercitos(ejercitosAftD);
+                    }else{
+                        ejercitosAftA = ejercitosBefD - 1;
+                        ejercitosAftD = 1;
+                        def.setEjercitos(1);
+                        att.setEjercitos(ejercitosAftA);
+                    }
                 }else{
                     def.setEjercitos(ejercitosAftD);
                     att.setEjercitos(ejercitosPerdidos);
@@ -650,10 +685,11 @@ public class Menu {
             ejercitosBefD = def.getEjercitos();
             ejercitosAftD = ejercitosBefD - 1;
             def.setEjercitos(ejercitosAftD);
-            if(att.getEjercitos() == 0){
+            if(att.getEjercitos() <= 0){
                 //se conquista el atacante
                 att.getJugador().getPaises().remove(att);
                 att.setJugador(def.getJugador());
+                att.addOcupacion();
                 def.getJugador().setPaises(att);
                 ejercitosPerdidos = dadoDef.countDados();
                 ejercitosBefD = def.getEjercitos();
@@ -676,6 +712,7 @@ public class Menu {
                 this.conquisto = 1; //el jugador puede recibir cartas
                 def.getJugador().getPaises().remove(def);
                 def.setJugador(att.getJugador());
+                def.addOcupacion();
                 att.getJugador().setPaises(def);
                 ejercitosPerdidos = dadoAtt.countDados();
                 ejercitosBefA = att.getEjercitos();
@@ -704,6 +741,7 @@ public class Menu {
                 //el pais defensor pasa a ser del jugador que ataco
                 def.getJugador().getPaises().remove(def);
                 def.setJugador(att.getJugador());
+                def.addOcupacion();
                 att.getJugador().setPaises(def);
                 ejercitosPerdidos = dadoAtt.countDados();
                 ejercitosBefA = att.getEjercitos();
