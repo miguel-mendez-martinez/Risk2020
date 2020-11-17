@@ -278,6 +278,51 @@ public class Menu {
                         }else{
                             //aqui se haria la mierda de cartas de cambias todas o cambiar alguna por tropas
                             //se hace aqui al jugador actual que es quien marca los turnos
+                            if(jugadorActual.getCartas().size() < 3){
+                                Salida error = new Salida(99);
+                                System.out.println(error.toString());
+                            }else{
+                                if(partes.length != 5){
+                                    Salida error = new Salida(101);
+                                    System.out.println(error.toString());
+                                }else{
+                                    //creacion de las cartas
+                                    String[] cartaCruda1=partes[2].split("&");
+                                    String[] cartaCruda2=partes[3].split("&");
+                                    String[] cartaCruda3=partes[4].split("&");
+                                    
+                                    if((!"Caballería".equals(cartaCruda1[0]) && !"Infantería".equals(cartaCruda1[0]) && !"Artillería".equals(cartaCruda1[0])) 
+                                        || (!"Caballería".equals(cartaCruda2[0]) && !"Infantería".equals(cartaCruda2[0]) && !"Artillería".equals(cartaCruda2[0]))
+                                        || (!"Caballería".equals(cartaCruda3[0]) && !"Infantería".equals(cartaCruda3[0]) && !"Artillería".equals(cartaCruda3[0]))){
+                                        Salida error = new Salida(123);
+                                        System.out.println(error.toString());
+                                    }else{
+                                        Pais p1 = this.existePais(this.paises, cartaCruda1[1]);
+                                        Pais p2 = this.existePais(this.paises, cartaCruda2[1]);
+                                        Pais p3 = this.existePais(this.paises, cartaCruda3[1]);
+                                        if(p1==null || p2==null || p3==null){
+                                            Salida error = new Salida(123);
+                                            System.out.println(error.toString());
+                                        }else{
+                                            Cartas carta1 = this.estaAsignada(this.jugadorActual.getCartas(), cartaCruda1[0], cartaCruda1[1]);
+                                            Cartas carta2 = this.estaAsignada(this.jugadorActual.getCartas(), cartaCruda2[0], cartaCruda2[1]);
+                                            Cartas carta3 = this.estaAsignada(this.jugadorActual.getCartas(), cartaCruda3[0], cartaCruda3[1]);
+                                            if(carta1 == null || carta2 == null || carta3 == null){
+                                                Salida error = new Salida(122);
+                                                System.out.println(error.toString());
+                                            }else{
+                                                /*las cartas han pasado todas las comprobaciones, existe el tipo, el pais y estan asignadas
+                                                ahora pasamos a ver que tipo de combinacion es 
+                                                1-infanteria
+                                                2-caballeria
+                                                3-artilleria
+                                                4-total
+                                                */
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                         break;
                     case "asignar":

@@ -29,6 +29,10 @@ public class Jugador {
 
     }
 
+    public ArrayList<Cartas> getCartas() {
+        return cartas;
+    }
+
     public Jugador(String nombre) {
         this.nombre = nombre;
         this.color = "rojo";
