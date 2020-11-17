@@ -184,5 +184,16 @@ public class Continente {
         String texto = "\"" + this.nombre + "\"";
         return texto;
     }
+    
+    public int ejercitosColocadosEnContinenteTotal(){
+        int resultado = 0;
+        for(Pais p: this.paises){
+        
+            resultado += p.getEjercitos();
+        
+        }
+    
+    return resultado;
+    }
 
 }
