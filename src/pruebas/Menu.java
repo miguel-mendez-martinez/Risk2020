@@ -304,9 +304,10 @@ public class Menu {
                                             Salida error = new Salida(123);
                                             System.out.println(error.toString());
                                         }else{
-                                            Cartas carta1 = this.estaAsignada(this.jugadorActual.getCartas(), cartaCruda1[0], cartaCruda1[1]);
-                                            Cartas carta2 = this.estaAsignada(this.jugadorActual.getCartas(), cartaCruda2[0], cartaCruda2[1]);
-                                            Cartas carta3 = this.estaAsignada(this.jugadorActual.getCartas(), cartaCruda3[0], cartaCruda3[1]);
+                                            Cartas carta1 = this.estaAsignada(this.jugadorActual.getCartas(), cartaCruda1[1], cartaCruda1[0]);
+                                            Cartas carta2 = this.estaAsignada(this.jugadorActual.getCartas(), cartaCruda2[1], cartaCruda2[0]);
+                                            Cartas carta3 = this.estaAsignada(this.jugadorActual.getCartas(), cartaCruda3[1], cartaCruda3[0]);
+                                            //revisar aqui
                                             if(carta1 == null || carta2 == null || carta3 == null){
                                                 Salida error = new Salida(122);
                                                 System.out.println(error.toString());
@@ -626,7 +627,7 @@ public class Menu {
     }
     public void checkCombi(Cartas carta1, Cartas carta2, Cartas carta3){
         int ejercitos = 0;
-        if((carta1.getClase().equals("Infanteía")) && (carta2.getClase().equals("Infanteía")) && (carta3.getClase().equals("Infanteía"))){  
+        if((carta1.getClase().equals("Infantería")) && (carta2.getClase().equals("Infantería")) && (carta3.getClase().equals("Infantería"))){  
             ejercitos = 6;
         }
         if((carta1.getClase().equals("Caballería")) && (carta2.getClase().equals("Caballería")) && (carta3.getClase().equals("Caballería"))){  
@@ -635,7 +636,7 @@ public class Menu {
         if((carta1.getClase().equals("Artillería")) && (carta2.getClase().equals("Artillería")) && (carta3.getClase().equals("Artillería"))){ 
             ejercitos = 10;
         }
-        if((carta1.getClase().equals("Infanteía") || carta2.getClase().equals("Infanteía") || carta3.getClase().equals("Infanteía")) 
+        if((carta1.getClase().equals("Infantería") || carta2.getClase().equals("Infantería") || carta3.getClase().equals("Infantería")) 
             && (carta1.getClase().equals("Caballería") || carta2.getClase().equals("Caballería") || carta3.getClase().equals("Caballería")) 
             && (carta1.getClase().equals("Artillería") || carta2.getClase().equals("Artillería") || carta3.getClase().equals("Artillería"))){ 
             ejercitos = 12;
@@ -664,7 +665,12 @@ public class Menu {
             this.jugadorActual.getCartas().remove(carta3);
             carta1.setJugador(null);
             String exito = "{\n cartasCambio: " + carta1.printCarta() + carta2.printCarta()
-                    + carta3.printCarta() + ",\n cartasQuedan: " + this.jugadorActual.printCartas();
+                    + carta3.printCarta() + ",\n cartasQuedan: " + this.jugadorActual.printCartas()
+                    + ",\n numeroEjercitosCambiados: " + ejercitos + ",\n numEjercitosRearme: " +
+                    this.jugadorActual.getEjercitos_disponibles() + "\n}";
+            System.out.println(exito);
+            Salida s = new Salida();
+            s.imprimirArchivo(exito);
         }
     }
     private void ejercitosTurno(Jugador jugador){

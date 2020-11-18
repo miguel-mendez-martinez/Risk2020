@@ -558,9 +558,11 @@ $> acabar turno
 
 $> cambiar cartas Caballería&Indonesia Infantería&Congo Artillería&Alaska
 {
- código de error: 122,
- descripción: "Algunas cartas no pertenecen al jugador"
-{
+ cartasCambio: "Caballería&Indonesia""Infantería&Congo""Artillería&Alaska",
+ cartasQuedan: [ "Artillería&Ontario", "Infantería&Alaska" ],
+ numeroEjercitosCambiados: 13,
+ numEjercitosRearme: 18
+}
 
 $> obtener frontera Brasil
 {
@@ -632,8 +634,8 @@ $> describir jugador Hooker
  numeroEjercitos: 11,
  paises: [ "Irkutsk", "Estados Unidos del Oeste", "Estados Unidos del Este", "Europa Occidental", "Europa Sur", "Urales", "Mongolia", "Japón", "America Central", "Afganistan", "China", "Venezuela", "África del Norte", "Egipto", "Congo" ],
  continentes: [ ],
- cartas: [ "Caballería&Indonesia", "Infantería&Congo", "Artillería&Alaska", "Artillería&Ontario", "Infantería&Alaska" ],
- numeroEjercitosRearmar: 5
+ cartas: [ "Artillería&Ontario", "Infantería&Alaska" ],
+ numeroEjercitosRearmar: 18
 }
 
 $> describir jugador Lonnegan
