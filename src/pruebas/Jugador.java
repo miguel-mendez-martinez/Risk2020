@@ -52,7 +52,9 @@ public class Jugador {
     public void setEjercitos_disponibles(int ejercitos_disponibles) {
         this.ejercitos_disponibles = ejercitos_disponibles;
     }
-
+    public void addEjercitos_disponibles(int ejercitos_disponibles) {
+        this.ejercitos_disponibles += ejercitos_disponibles;
+    }
     public int getEjercitos_disponibles() {
         return ejercitos_disponibles;
     }

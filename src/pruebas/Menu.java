@@ -311,6 +311,7 @@ public class Menu {
                                                 Salida error = new Salida(122);
                                                 System.out.println(error.toString());
                                             }else{
+                                                this.checkCombi(carta1, carta2, carta3);
                                                 /*las cartas han pasado todas las comprobaciones, existe el tipo, el pais y estan asignadas
                                                 ahora pasamos a ver que tipo de combinacion es 
                                                 1-infanteria
@@ -621,6 +622,49 @@ public class Menu {
             }
         } catch(Exception excepcion) {
             excepcion.printStackTrace();
+        }
+    }
+    public void checkCombi(Cartas carta1, Cartas carta2, Cartas carta3){
+        int ejercitos = 0;
+        if((carta1.getClase().equals("Infanteía")) && (carta2.getClase().equals("Infanteía")) && (carta3.getClase().equals("Infanteía"))){  
+            ejercitos = 6;
+        }
+        if((carta1.getClase().equals("Caballería")) && (carta2.getClase().equals("Caballería")) && (carta3.getClase().equals("Caballería"))){  
+            ejercitos = 8;
+        }
+        if((carta1.getClase().equals("Artillería")) && (carta2.getClase().equals("Artillería")) && (carta3.getClase().equals("Artillería"))){ 
+            ejercitos = 10;
+        }
+        if((carta1.getClase().equals("Infanteía") || carta2.getClase().equals("Infanteía") || carta3.getClase().equals("Infanteía")) 
+            && (carta1.getClase().equals("Caballería") || carta2.getClase().equals("Caballería") || carta3.getClase().equals("Caballería")) 
+            && (carta1.getClase().equals("Artillería") || carta2.getClase().equals("Artillería") || carta3.getClase().equals("Artillería"))){ 
+            ejercitos = 12;
+        }
+        if(ejercitos == 0){
+            Salida error = new Salida(121);
+            System.out.println(error.toString());
+        }else{
+            Pais p1 = existePais(this.jugadorActual.getPaises(), carta1.getPais());
+            Pais p2 = existePais(this.jugadorActual.getPaises(), carta2.getPais());
+            Pais p3 = existePais(this.jugadorActual.getPaises(), carta3.getPais());
+            if(p1 != null){
+                ejercitos +=1;
+            }
+            if(p2 != null){
+                ejercitos +=1;
+            }
+            if(p3 != null){
+                ejercitos +=1;
+            }
+            this.jugadorActual.addEjercitos_disponibles(ejercitos);
+            this.jugadorActual.getCartas().remove(carta1);
+            carta1.setJugador(null);
+            this.jugadorActual.getCartas().remove(carta2);
+            carta1.setJugador(null);
+            this.jugadorActual.getCartas().remove(carta3);
+            carta1.setJugador(null);
+            String exito = "{\n cartasCambio: " + carta1.printCarta() + carta2.printCarta()
+                    + carta3.printCarta() + ",\n cartasQuedan: " + this.jugadorActual.printCartas();
         }
     }
     private void ejercitosTurno(Jugador jugador){
@@ -1680,14 +1724,8 @@ public class Menu {
                 }
 
             }
-
-
-
         }
     }
         mapa.printMapa();
-    }
-    
+    }   
 }
-
-

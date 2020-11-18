@@ -117,4 +117,15 @@ public class Cartas {
         }
 
     }
+    
+    @Override
+    public boolean equals(Object obj){
+        // Conversion explicita del objeto a tipo pais
+        if(this.clase.equals(((Cartas) obj).clase) && this.pais.equals(((Cartas) obj).pais)){
+            return true;
+        }else{
+           
+        return false; 
+        }
+    }
 }
