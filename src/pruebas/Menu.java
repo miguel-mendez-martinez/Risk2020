@@ -36,6 +36,7 @@ public class Menu {
         // Inicialización de algunos atributos
         // Iniciar juego
          // Con fichero:
+        boolean iniciar;
         this.mapa = null;
         int rearmo = 0;
         Mision mision;
@@ -558,8 +559,6 @@ public class Menu {
                                                                 this.atacar(p1, dadoAt, p2, dadoDef);
                                                             }
                                                         }
-                                                    
-
                                                 }
                                             }
                                         }
@@ -603,10 +602,14 @@ public class Menu {
                                 if(partes.length == 2){
                                     //auto, esta es la importante parra empezar la partida, deben estar repartidos entre los paises pa empezar todo
                                     repartirEjercitos();
+                                    this.jugadorActual.continentesJugador(this.continentes);
+                                    this.ejercitosTurno(jugadorActual);
                                     checker = 5;
+                                    iniciar = true;
+                                    //partida iniciada con exito
                                 }else{
                                     repartirEjercitos(partes[2], partes[3]);
-                                    
+                                    this.ejercitosTurno(jugadorActual);
                                     //a partir de aqui es cuando comienzan los turnos
                                     checker = 5;
                                 }

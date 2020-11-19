@@ -216,7 +216,7 @@ public class Jugador {
                 + this.prinColor() + ",\n mision: " + this.mision.printDesc()
                 + ",\n numeroEjercitos: " + this.countTropas() + ",\n paises: " + this.printPaises()
                 + ",\n continentes: " + printContinentes() + ",\n cartas: "
-                + this.printCartas() + ",\n numeroEjercitosRearmar: " + this.ejerRearme + "\n}";
+                + this.printCartas() + ",\n numeroEjercitosRearmar: " + this.ejercitos_disponibles + "\n}";
         return texto;
     }
 
