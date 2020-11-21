@@ -470,77 +470,62 @@ $> repartir ejerctios 1 Egipto
  paisesOcupadosContinente: [ { "África del Norte",3 }, { "Africa Oriental",1 }, { "Congo",1 }, { "Egipto",4 }, { "Madagascar",0 }, { "Sudafrica",0 } ]
 }
 
-$> atacar ANorte 4x3x5 Congo 1
+$> atacar ANorte 4x3x5 Congo 6
 {
- dadosAtaque: [ 5, 4, 3 ],
- dadosDefensa: [ 1 ],
- ejercitosPaisAtaque: { 3, 1 },
- ejercitosPaisDefensa: { 1, 2 },
- paisAtaquePerteneceA: "Hooker",
- paisDefensaPerteneceA: "Hooker",
- continenteConquistado: "null"
-}
+ código de error: 124,
+ descripción: "No hay ejercitos suficientes"
+{
 
-$> atacar Egipto 2x6x4 AOriental 1
+$> atacar Egipto 2x6x4 AOriental 6
 {
  dadosAtaque: [ 6, 4, 2 ],
- dadosDefensa: [ 1 ],
+ dadosDefensa: [ 6 ],
  ejercitosPaisAtaque: { 4, 1 },
- ejercitosPaisDefensa: { 1, 3 },
+ ejercitosPaisDefensa: { 1, 1 },
  paisAtaquePerteneceA: "Hooker",
- paisDefensaPerteneceA: "Hooker",
+ paisDefensaPerteneceA: "Lonnegan",
  continenteConquistado: "null"
 }
 
 $> asignar carta Caballería&Indonesia
 {
- tipoCarta: "Caballería",
- paisAsociado: "Indonesia",
- perteneceAJugador: "Hooker",
- ejercitosDeRearme: 0
-}
+ código de error: 127,
+ descripción: "El jugador no conquistó ningun pais este turno"
+{
 
 $> asignar carta Infantería&Congo
 {
- tipoCarta: "Infantería",
- paisAsociado: "Congo",
- perteneceAJugador: "Hooker",
- ejercitosDeRearme: 1
-}
+ código de error: 127,
+ descripción: "El jugador no conquistó ningun pais este turno"
+{
 
 $> asignar carta Artillería&Alaska
 {
- tipoCarta: "Artillería",
- paisAsociado: "Alaska",
- perteneceAJugador: "Hooker",
- ejercitosDeRearme: 0
-}
+ código de error: 127,
+ descripción: "El jugador no conquistó ningun pais este turno"
+{
 
 $> asignar carta Artillería&Ontario
 {
- tipoCarta: "Artillería",
- paisAsociado: "Ontario",
- perteneceAJugador: "Hooker",
- ejercitosDeRearme: 0
-}
+ código de error: 127,
+ descripción: "El jugador no conquistó ningun pais este turno"
+{
 
 $> asignar carta Infantería&Alaska
 {
- tipoCarta: "Infantería",
- paisAsociado: "Alaska",
- perteneceAJugador: "Hooker",
- ejercitosDeRearme: 0
-}
+ código de error: 127,
+ descripción: "El jugador no conquistó ningun pais este turno"
+{
 
 $> jugador
 {
  nombre: "Hooker",
  color: "AZUL",
  mision: "Conquistar Asia y América del Sur",
- numeroEjercitos: 13,
- paises: [ "Irkutsk", "Estados Unidos del Oeste", "Estados Unidos del Este", "Europa Occidental", "Europa Sur", "Urales", "Mongolia", "Japón", "America Central", "Afganistan", "China", "Venezuela", "África del Norte", "Egipto", "Congo", "Africa Oriental" ],
+ numeroEjercitos: 10,
+ paises: [ "Irkutsk", "Estados Unidos del Oeste", "Estados Unidos del Este", "Europa Occidental", "Europa Sur", "Urales", "Mongolia", "Japón", "America Central", "Afganistan", "China", "Venezuela", "África del Norte", "Egipto" ],
  continentes: [ ],
- cartas: [ "Caballería&Indonesia", "Infantería&Congo", "Artillería&Alaska", "Artillería&Ontario", "Infantería&Alaska" ],
+ cartas: [ ],
  numeroEjercitosRearmar: 4
 }
 
@@ -559,16 +544,14 @@ $> acabar turno
 $> acabar turno
 {
  nombre: "Hooker",
- numeroEjercitosRearmar: 5
+ numeroEjercitosRearmar: 4
 }
 
 $> cambiar cartas Caballería&Indonesia Infantería&Congo Artillería&Alaska
 {
- cartasCambio: "Caballería&Indonesia""Infantería&Congo""Artillería&Alaska",
- cartasQuedan: [ "Artillería&Ontario", "Infantería&Alaska" ],
- numeroEjercitosCambiados: 13,
- numEjercitosRearme: 18
-}
+ código de error: 99,
+ descripción: "Comando no permitido en este momento"
+{
 
 $> obtener frontera Brasil
 {
@@ -617,7 +600,7 @@ $> describir pais ANorte
  continente: "África",
  frontera:  [ "Congo", "Egipto", "Europa Occidental", "Brasil" ],
  jugador: "Hooker",
- numeroEjercitos: 1,
+ numeroEjercitos: 3,
  numeroVecesOcupado: 1
 }
 
@@ -637,19 +620,19 @@ $> describir jugador Hooker
  nombre: "Hooker",
  color: "AZUL",
  mision: "Conquistar Asia y América del Sur",
- numeroEjercitos: 13,
- paises: [ "Irkutsk", "Estados Unidos del Oeste", "Estados Unidos del Este", "Europa Occidental", "Europa Sur", "Urales", "Mongolia", "Japón", "America Central", "Afganistan", "China", "Venezuela", "África del Norte", "Egipto", "Congo", "Africa Oriental" ],
+ numeroEjercitos: 10,
+ paises: [ "Irkutsk", "Estados Unidos del Oeste", "Estados Unidos del Este", "Europa Occidental", "Europa Sur", "Urales", "Mongolia", "Japón", "America Central", "Afganistan", "China", "Venezuela", "África del Norte", "Egipto" ],
  continentes: [ ],
- cartas: [ "Artillería&Ontario", "Infantería&Alaska" ],
- numeroEjercitosRearmar: 18
+ cartas: [ ],
+ numeroEjercitosRearmar: 4
 }
 
 $> describir jugador Lonnegan
 {
  nombre: "Lonnegan",
  color: "ROJO",
- numeroEjercitos: 21,
- paises: [ "Oriente Medio", "India", "Sureste Asiático", "Perú", "Brasil", "Argentina", "Sudafrica", "Madagascar", "Indonesia", "Nueva Guinea", "Australia Occidental", "Australia Oriental" ],
+ numeroEjercitos: 23,
+ paises: [ "Oriente Medio", "India", "Sureste Asiático", "Perú", "Brasil", "Congo", "Africa Oriental", "Argentina", "Sudafrica", "Madagascar", "Indonesia", "Nueva Guinea", "Australia Occidental", "Australia Oriental" ],
  continentes: [ "Oceanía" ],
  cartas: [ ],
  numeroEjercitosRearmar: 6

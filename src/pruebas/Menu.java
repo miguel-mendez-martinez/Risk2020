@@ -523,7 +523,7 @@ public class Menu {
                                                     //ahora seteas todo:
                                                     
                                                     //ataque
-                                                    if(p1.getEjercitos() >= 3){
+                                                    if(p1.getEjercitos() > 3){
                                                         dadoAt.setX(Integer.parseInt(partesDado1[0]));
                                                         dadoAt.setY(Integer.parseInt(partesDado1[1]));
                                                         dadoAt.setZ(Integer.parseInt(partesDado1[2]));
@@ -897,7 +897,7 @@ public class Menu {
                 dadoDef.genDados(2);
             }
             this.atacar(paisAtt, dadoAtt, paisDef, dadoDef);
-        }else if(ejerAtt == 2){
+        }else if(ejerAtt == 2 && ejerAtt == 3){
             dadoAtt.genDados(2);
             if(ejerDef == 1){
                 dadoDef.genDados(1);
