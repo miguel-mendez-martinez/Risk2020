@@ -1349,24 +1349,33 @@ public class Menu {
         }
     }
 
-    public void describirContinente(String nombreContinente){
-        boolean existe=false;
+
+    public void describirContinente(String nombreContinente) {
+        boolean existe = false;
         Continente continente = new Continente();
-        for (Continente c: continentes){
-            if (c.getNombre().equals(nombreContinente)){
-                existe=true;
+        for (Continente c : continentes) {
+            if (c.getNombre().equals(nombreContinente)) {
+                existe = true;
                 continente = c;
             }
         }
-        if(existe){
+        if (existe) {
+
+            String jugadoresContinente = "[";
+            for (Pais p: continente.getPaises()){
+                jugadoresContinente += "{ " + p.getJugador().getNombre() + "," + p.getJugador().ejercitosColocadosEnContinente(continente) + "},";
+
+            }
+            jugadoresContinente += "],";
 
             String exito;
-            exito ="{\n\tnombre: " + continente.getNombre() + ",\n\tabreviatura: " + continente.getAbreviatura() + "\n\t}";
+            exito = "{\n\tnombre: " + continente.getNombre() + ",\n\tabreviatura: " + continente.getAbreviatura() + ",\n\tjugadores: " + jugadoresContinente + ",\n\tnumeroEjercitos: " + continente.ejercitosColocadosEnContinenteTotal()+"\n}";
 
-
-
-        }//else // error de que no existe continente 102
-
+        }else {// error de que no existe continente 
+            
+             Salida error = new Salida(102);
+            System.out.println(error.toString());
+        }
     }
 
 
