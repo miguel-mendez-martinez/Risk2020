@@ -358,6 +358,7 @@ public class Menu {
                                 }
                                 else{
                                     asignarPaises(new File(partes[2]));
+                                  
                                     for(Jugador j: this.jugadores){
                                         j.continentesJugador(this.continentes);
                                     }
@@ -598,7 +599,7 @@ public class Menu {
                                 Salida error = new Salida(99);
                                 System.out.println(error.toString());
                             }else{
-                                
+                                //this.repartirEjercitosInicio(); // 1 ejercito en cada pais
                                 if(partes.length == 2){
                                     //auto, esta es la importante parra empezar la partida, deben estar repartidos entre los paises pa empezar todo
                                     repartirEjercitos();
@@ -1300,7 +1301,21 @@ public class Menu {
                     }
                     break;
             }
+        
+        
     }
+    
+    public void repartirEjercitosInicio(){
+    
+        // Asignar un ejercito a cada pais:
+        for(Pais p:paises){
+            p.setEjercitos(1);
+            p.getJugador().setEjercitos_disponibles(p.getJugador().getEjercitos_disponibles() - 1); // se le resta 1 a los ejercitos disponibles del jugador al que pertenece ese pais
+        }
+    
+    }
+    
+    
     public void repartirEjercitos(String num, String nombrePais) {
 
         int numJugadores;
