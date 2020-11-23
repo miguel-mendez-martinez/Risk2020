@@ -13,19 +13,14 @@ asignar paises asignaciones.csv
 repartir ejercitos
 jugador
 acabar turno
-repartir ejercitos 3 ANorte 
-repartir ejerctios 3 Egipto
-jugador
-acabar turno
-repartir ejercitos 1 Congo
-repartir ejerctios 1 AOriental
 jugador
 acabar turno
 jugador
 acabar turno
-repartir ejerctios 1 Egipto
-atacar ANorte 4x3x5 Congo 6
-atacar Egipto 2x6x4 AOriental 6
+jugador
+acabar turno
+atacar ANorte 4 Congo 6x6
+atacar Egipto 2 AOriental 6x6
 asignar carta Caballería&Indonesia
 asignar carta Infantería&Congo
 asignar carta Artillería&Alaska
@@ -33,8 +28,18 @@ asignar carta Artillería&Ontario
 asignar carta Infantería&Alaska
 jugador
 acabar turno
+atacar Congo ANorte
+atacar AOriental Egipto 
+asignar carta Caballería&Indonesia
+asignar carta Infantería&Congo
+asignar carta Artillería&Alaska
+asignar carta Artillería&Ontario
+asignar carta Infantería&Alaska
 acabar turno
 acabar turno
+acabar turno
+cambiar cartas Caballería&Indonesia Infantería&Congo Artillería&Alaska
+repartir ejercitos
 cambiar cartas Caballería&Indonesia Infantería&Congo Artillería&Alaska
 obtener frontera Brasil
 obtener frontera Groenlan

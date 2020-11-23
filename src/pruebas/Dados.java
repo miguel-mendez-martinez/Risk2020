@@ -106,12 +106,15 @@ public class Dados {
                 }
             }
         }else{
-            result = 2;
-            if(this.y <= dado2.getY() && this.z <= dado2.getY()){
-                //una de las dos coordenadas del dado 2 es mayor que del dado 1, 1 victoria cada 1
-                result = 1;
-            }else{
+            if(dado2.getY() == 0){ //si la y es 0 la z tmb por lo tanto el otro dado solo lanzo 1 variable
                 result = 2;
+            }else{
+                if(this.y <= dado2.getY() && this.z <= dado2.getY()){
+                    //una de las dos coordenadas del dado 2 es mayor que del dado 1, 1 victoria cada 1
+                    result = 1;
+                }else{
+                    result = 2;
+                }
             }
         }
         return result;

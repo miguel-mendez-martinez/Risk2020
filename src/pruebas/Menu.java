@@ -524,42 +524,80 @@ public class Menu {
                                                     //ahora seteas todo:
                                                     
                                                     //ataque
-                                                    if(p1.getEjercitos() > 3){
-                                                        dadoAt.setX(Integer.parseInt(partesDado1[0]));
-                                                        dadoAt.setY(Integer.parseInt(partesDado1[1]));
-                                                        dadoAt.setZ(Integer.parseInt(partesDado1[2]));
+                                                    if(partesDado1.length > 3){
+                                                        Salida error = new Salida(101); //el comando se ha escrito con demasiados dados
+                                                        System.out.println(error.toString());
+                                                        dadoAt = null;
                                                     }else{
-                                                        if(partesDado1.length == 3){
-                                                            Salida error = new Salida(124);
-                                                            System.out.println(error.toString());
-                                                            dadoAt = null;
+                                                        if(p1.getEjercitos() > 3){
+                                                            if(partesDado1.length == 3){
+                                                                dadoAt.setX(Integer.parseInt(partesDado1[0]));
+                                                                dadoAt.setY(Integer.parseInt(partesDado1[1]));
+                                                                dadoAt.setZ(Integer.parseInt(partesDado1[2]));
+                                                            }else{ //tiramos 3 dados, si el comando tiene un numero erroneo de dados dara error
+                                                                Salida error = new Salida(101); //el comando esta mal escrito
+                                                                System.out.println(error.toString());
+                                                                dadoAt = null;
+                                                            }
                                                         }else{
-                                                            dadoAt.setX(Integer.parseInt(partesDado1[0]));
-                                                            dadoAt.setY(Integer.parseInt(partesDado1[1]));
+                                                            if(partesDado1.length == 3){ //si no se tienen mas de 3 y se tiran 3 dados, error
+                                                                Salida error = new Salida(124);
+                                                                System.out.println(error.toString());
+                                                                dadoAt = null;
+                                                            }else if((p1.getEjercitos() == 3)){ //con 3 tropas se tiran 2 dados
+                                                                if(partesDado1.length == 2){
+                                                                    dadoAt.setX(Integer.parseInt(partesDado1[0]));
+                                                                    dadoAt.setY(Integer.parseInt(partesDado1[1]));
+                                                                }else{ //tiramos 2 dados, si el comando tiene un numero erroneo de dados dara error
+                                                                    Salida error = new Salida(101); //el comando esta mal escrito
+                                                                    System.out.println(error.toString());
+                                                                    dadoAt = null;
+                                                                }
+                                                            }else if((p1.getEjercitos() == 2)){
+                                                                if(partesDado1.length == 1){
+                                                                    dadoAt.setX(Integer.parseInt(partesDado1[0]));
+                                                                }else{ //tiramos 1 dados, si el comando tiene un numero erroneo de dados dara error
+                                                                    Salida error = new Salida(101); //el comando esta mal escrito
+                                                                    System.out.println(error.toString());
+                                                                    dadoAt = null;
+                                                                }
+                                                            }else{
+                                                                Salida error = new Salida(124); //no hay las suficientes tropas para atacar
+                                                                System.out.println(error.toString());
+                                                                dadoAt = null;
+                                                            }
                                                         }
                                                     }
 
                                                     //defensa
                                                     if(partesDado2.length >= 3){
-                                                            Salida error = new Salida(124);
+                                                            Salida error = new Salida(101); //comando mal escrito
                                                             System.out.println(error.toString());
-                                                        }else if(p2.getEjercitos() >= 2 && dadoAt != null){
+                                                    }else if(p2.getEjercitos() >= 2 && dadoAt != null){ //con 2 o mas trpas se lanzan 2 dadps
+                                                        if(partesDado2.length == 2){
                                                             dadoDef.setX(Integer.parseInt(partesDado2[0]));
                                                             dadoDef.setY(Integer.parseInt(partesDado2[1]));
                                                             dadoAt.ordenarDados();
                                                             dadoDef.ordenarDados();
                                                             this.atacar(p1, dadoAt, p2, dadoDef);
+                                                        }else if(partesDado2.length > 2){ //si se ponen mas de 2 valores no hay ejerctios disponibles
+                                                            Salida error = new Salida(124); //no ejercitos
+                                                            System.out.println(error.toString());
                                                         }else{
-                                                            if(partesDado2.length > 1){
-                                                                Salida error = new Salida(124);
-                                                                System.out.println(error.toString());
-                                                            }else if(dadoAt != null){
-                                                                dadoDef.setX(Integer.parseInt(partes[4]));
-                                                                dadoAt.ordenarDados();
-                                                                dadoDef.ordenarDados();
-                                                                this.atacar(p1, dadoAt, p2, dadoDef);
-                                                            }
+                                                            Salida error = new Salida(101); //comando incorrecto
+                                                            System.out.println(error.toString());
                                                         }
+                                                    }else if(p2.getEjercitos() == 1 && dadoAt != null){
+                                                        if(partesDado2.length > 1){
+                                                            Salida error = new Salida(124);
+                                                            System.out.println(error.toString());
+                                                        }else{
+                                                            dadoDef.setX(Integer.parseInt(partes[4]));
+                                                            dadoAt.ordenarDados();
+                                                            dadoDef.ordenarDados();
+                                                            this.atacar(p1, dadoAt, p2, dadoDef);
+                                                        }
+                                                    }
                                                 }
                                             }
                                         }
@@ -594,30 +632,35 @@ public class Menu {
                     case "repartir":
                         
                         //en cuanto repartamos ejercitos, debe crearse un nuevo jugador actual, ese sera el que tiene el turno en ese momentoy el que ejecutara los comandos 
-                        if(checker >= 4){
-                            if(checker > 5){
-                                Salida error = new Salida(99);
-                                System.out.println(error.toString());
-                            }else{
-                                //this.repartirEjercitosInicio(); // 1 ejercito en cada pais
-                                if(partes.length == 2){
+                        if(partes.length == 2){
+                            //comando que reparte todos y no puede ser ejecutado 2 veces
+                            if(checker >= 4){ //los comandos anteriores han sido ejecutados con exito se reparten
+                                if(checker >= 5){ //los ejercitos ya han sido totalmente repartidos no puede volver a suceder
+                                    Salida error = new Salida(99);
+                                    System.out.println(error.toString());
+                                }else{
+                                    //this.repartirEjercitosInicio(); // 1 ejercito en cada pais
                                     //auto, esta es la importante parra empezar la partida, deben estar repartidos entre los paises pa empezar todo
-                                    repartirEjercitos();
+                                    this.repartirEjercitos();
                                     this.jugadorActual.continentesJugador(this.continentes);
                                     this.ejercitosTurno(jugadorActual);
                                     checker = 5;
                                     iniciar = true;
                                     //partida iniciada con exito
-                                }else{
-                                    repartirEjercitos(partes[2], partes[3]);
-                                    this.ejercitosTurno(jugadorActual);
-                                    //a partir de aqui es cuando comienzan los turnos
-                                    checker = 5;
                                 }
+                            }else{
+                                Salida error = new Salida(99);
+                                System.out.println(error.toString());
                             }
                         }else{
-                            Salida error = new Salida(99);
-                            System.out.println(error.toString());
+                            if(checker >= 4){
+                                repartirEjercitos(partes[2], partes[3]);
+                                //this.ejercitosTurno(jugadorActual);
+                                //a partir de aqui es cuando comienzan los turnos, pero, este comando se seguira utilizando no se que hacer
+                            }else{
+                                Salida error = new Salida(99);
+                                System.out.println(error.toString());
+                            }
                         }
                         break;
                     default:
@@ -890,7 +933,7 @@ public class Menu {
         Dados dadoDef = new Dados();
         ejerAtt = paisAtt.getEjercitos();
         ejerDef = paisDef.getEjercitos();
-        if(ejerAtt == 1){
+        if(ejerAtt == 2){
             dadoAtt.genDados(1);
             if(ejerDef == 1){
                 dadoDef.genDados(1);
@@ -898,7 +941,7 @@ public class Menu {
                 dadoDef.genDados(2);
             }
             this.atacar(paisAtt, dadoAtt, paisDef, dadoDef);
-        }else if(ejerAtt == 2 && ejerAtt == 3){
+        }else if(ejerAtt == 3){
             dadoAtt.genDados(2);
             if(ejerDef == 1){
                 dadoDef.genDados(1);
@@ -1076,7 +1119,6 @@ public class Menu {
         recorre los paises para ver si existe, si el nombre pasado coicide con
         alguno de los paises del array del mapa, se añade a jugador y se setea su
         jugador al nombre que ha pasado por la lista*/
-        int checkJug=0, checkPais=0, checkPaisAsig=0;
         Pais pais = existePais(this.paises, nombrePais);
         Jugador jugador = existeJugador(this.jugadores, nombreJugador);
 
@@ -1094,6 +1136,8 @@ public class Menu {
                             if(!pais.estaAsignado()){ // El pais no está asignado a ningun jugador, por lo que asignamos e imprimimos
                                 pais.setJugador(jugador);
                                 jugador.setPaises(pais);
+                                pais.setEjercitos(1);
+                                jugador.setEjercitos_disponibles(jugador.getEjercitos_disponibles()-1);
                                 String fronteras = pais.fronterasToString();
                                 String exito = "{\n\tnombre: " + nombreJugador +"\n\tpaís: " + nombrePais + "\n\tcontinente: " + pais.getContinente().getNombre() + "\n\tfronteras:" + fronteras + "\n}";
                                 System.out.println(exito);
