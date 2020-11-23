@@ -365,6 +365,14 @@ $> jugador
  numeroEjercitosRearmar: 4
 }
 
+$> repartir ejercitos 7 Siberia
+{
+ pais: "Siberia",
+ jugador: "Gondorff",
+ numeroEjercitosAsignados: 4,
+ numeroEjercitosTotales: 6,
+ paisesOcupadosContinente: [ { "Siberia",6 }, { "Yakustsk",2 }, { "Urales",2 }, { "Afganistan",2 }, { "Oriente Medio",2 }, { "Kamchatka",2 }, { "Irkutsk",2 }, { "Mongolia",2 }, { "China",2 }, { "India",2 }, { "Japón",2 }, { "Sureste Asiático",2 } ]
+
 $> acabar turno
 {
  nombre: "Hooker",
@@ -412,7 +420,7 @@ $> jugador
  nombre: "Gondorff",
  color: "VERDE",
  mision: "Conquistar 24 países de la preferencia del jugador",
- numeroEjercitos: 40,
+ numeroEjercitos: 44,
  paises: [ "Alaska", "Territorios del Noroeste", "Groenlandia", "Islandia", "Escandinavia", "Siberia", "Yakustsk", "Kamchatka", "Alberta", "Ontario", "Quebec", "Gran Bretaña", "Europa Norte", "Rusia" ],
  continentes: [ ],
  cartas: [ ],
@@ -497,24 +505,24 @@ $> acabar turno
 
 $> atacar Congo ANorte
 {
- dadosAtaque: [ 2 ],
- dadosDefensa: [ 1 ],
+ dadosAtaque: [ 1 ],
+ dadosDefensa: [ 5 ],
  ejercitosPaisAtaque: { 2, 1 },
  ejercitosPaisDefensa: { 1, 1 },
  paisAtaquePerteneceA: "Lonnegan",
- paisDefensaPerteneceA: "Lonnegan",
+ paisDefensaPerteneceA: "Hooker",
  continenteConquistado: "null"
 }
 
 $> atacar AOriental Egipto 
 {
- dadosAtaque: [ 2 ],
- dadosDefensa: [ 1 ],
+ dadosAtaque: [ 5 ],
+ dadosDefensa: [ 4 ],
  ejercitosPaisAtaque: { 2, 1 },
  ejercitosPaisDefensa: { 1, 1 },
  paisAtaquePerteneceA: "Lonnegan",
  paisDefensaPerteneceA: "Lonnegan",
- continenteConquistado: "África"
+ continenteConquistado: "null"
 }
 
 $> asignar carta Caballería&Indonesia
@@ -572,7 +580,7 @@ $> acabar turno
 $> acabar turno
 {
  nombre: "Lonnegan",
- numeroEjercitosRearmar: 10
+ numeroEjercitosRearmar: 7
 }
 
 $> cambiar cartas Caballería&Indonesia Infantería&Congo Artillería&Alaska
@@ -580,7 +588,7 @@ $> cambiar cartas Caballería&Indonesia Infantería&Congo Artillería&Alaska
  cartasCambio: "Caballería&Indonesia""Infantería&Congo""Artillería&Alaska",
  cartasQuedan: [ "Artillería&Ontario", "Infantería&Alaska" ],
  numeroEjercitosCambiados: 14,
- numEjercitosRearme: 24
+ numEjercitosRearme: 21
 }
 
 $> repartir ejercitos
@@ -641,16 +649,16 @@ $> describir pais ANorte
  abreviatura: "ANorte",
  continente: "África",
  frontera:  [ "Congo", "Egipto", "Europa Occidental", "Brasil" ],
- jugador: "Lonnegan",
+ jugador: "Hooker",
  numeroEjercitos: 1,
- numeroVecesOcupado: 2
+ numeroVecesOcupado: 1
 }
 
 $> describir jugador Gondorff
 {
  nombre: "Gondorff",
  color: "VERDE",
- numeroEjercitos: 40,
+ numeroEjercitos: 44,
  paises: [ "Alaska", "Territorios del Noroeste", "Groenlandia", "Islandia", "Escandinavia", "Siberia", "Yakustsk", "Kamchatka", "Alberta", "Ontario", "Quebec", "Gran Bretaña", "Europa Norte", "Rusia" ],
  continentes: [ ],
  cartas: [ ],
@@ -661,8 +669,8 @@ $> describir jugador Hooker
 {
  nombre: "Hooker",
  color: "AZUL",
- numeroEjercitos: 24,
- paises: [ "Irkutsk", "Estados Unidos del Oeste", "Estados Unidos del Este", "Europa Occidental", "Europa Sur", "Urales", "Mongolia", "Japón", "America Central", "Afganistan", "China", "Venezuela" ],
+ numeroEjercitos: 25,
+ paises: [ "Irkutsk", "Estados Unidos del Oeste", "Estados Unidos del Este", "Europa Occidental", "Europa Sur", "Urales", "Mongolia", "Japón", "America Central", "Afganistan", "China", "Venezuela", "África del Norte" ],
  continentes: [ ],
  cartas: [ ],
  numeroEjercitosRearmar: 4
@@ -673,11 +681,11 @@ $> describir jugador Lonnegan
  nombre: "Lonnegan",
  color: "ROJO",
  mision: "Destruir el ejército AZUL",
- numeroEjercitos: 36,
- paises: [ "Oriente Medio", "India", "Sureste Asiático", "Perú", "Brasil", "Congo", "Africa Oriental", "Argentina", "Sudafrica", "Madagascar", "Indonesia", "Nueva Guinea", "Australia Occidental", "Australia Oriental", "África del Norte", "Egipto" ],
- continentes: [ "Oceanía", "África" ],
+ numeroEjercitos: 35,
+ paises: [ "Oriente Medio", "India", "Sureste Asiático", "Perú", "Brasil", "Congo", "Africa Oriental", "Argentina", "Sudafrica", "Madagascar", "Indonesia", "Nueva Guinea", "Australia Occidental", "Australia Oriental", "Egipto" ],
+ continentes: [ "Oceanía" ],
  cartas: [ "Artillería&Ontario", "Infantería&Alaska" ],
- numeroEjercitosRearmar: 24
+ numeroEjercitosRearmar: 21
 }
 
 $> ver mapa
