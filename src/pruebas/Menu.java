@@ -276,6 +276,9 @@ public class Menu {
                         if(checker < 5 || rearmo == 1){
                             Salida error = new Salida(99);
                             System.out.println(error.toString());
+                        }else if(partes.length == 3){
+                            //cambiar cartas todas
+                            //ALBERTO MARICA
                         }else{
                             //aqui se haria la mierda de cartas de cambias todas o cambiar alguna por tropas
                             //se hace aqui al jugador actual que es quien marca los turnos
@@ -314,13 +317,6 @@ public class Menu {
                                                 System.out.println(error.toString());
                                             }else{
                                                 this.checkCombi(carta1, carta2, carta3);
-                                                /*las cartas han pasado todas las comprobaciones, existe el tipo, el pais y estan asignadas
-                                                ahora pasamos a ver que tipo de combinacion es 
-                                                1-infanteria
-                                                2-caballeria
-                                                3-artilleria
-                                                4-total
-                                                */
                                             }
                                         }
                                     }
