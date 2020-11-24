@@ -132,8 +132,8 @@ public class Jugador {
         // mirar codigo de error o algo para ver que hacer si color es invalido como migueloh else System.out.println();
     }
 
-    public String printNomEjerR() {
-        String texto = "{\n nombre: \"" + this.nombre + "\",\n numeroEjercitosRearmar: " + this.ejercitos_disponibles + "\n}";
+    public String printNomEjerR(int minimo) {
+        String texto = "{\n nombre: \"" + this.nombre + "\",\n numeroEjercitosRearmar: " + minimo + "\n}";
         return texto;
     }
 

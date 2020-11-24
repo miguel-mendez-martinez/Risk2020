@@ -261,11 +261,11 @@ public class Menu {
                             rearmo = 0;
                             this.jugadorActual.continentesJugador(this.continentes);
                             //aqui asignamos cuantas tropas recibe
-                            this.ejercitosTurno(this.jugadorActual);
+                            int minimo = this.ejercitosTurno(this.jugadorActual);
                             //this.jugadorActual.setEjercitos_disponibles(10);
-                            System.out.println(this.jugadorActual.printNomEjerR());
+                            System.out.println(this.jugadorActual.printNomEjerR(minimo));
                             Salida salida = new Salida();
-                            salida.imprimirArchivo(this.jugadorActual.printNomEjerR());
+                            salida.imprimirArchivo(this.jugadorActual.printNomEjerR(minimo));
                             
                         }else{
                             Salida error = new Salida(99);
@@ -716,7 +716,7 @@ public class Menu {
             s.imprimirArchivo(exito);
         }
     }
-    private void ejercitosTurno(Jugador jugador){
+    private int ejercitosTurno(Jugador jugador){
         int minimo;
         
         minimo = (jugador.getPaises().size())/3;
@@ -743,7 +743,8 @@ public class Menu {
                 minimo += 3;
             }
         }
-        jugador.setEjercitos_disponibles(minimo);
+        jugador.addEjercitos_disponibles(minimo);
+        return minimo;
     }
     private void rearme(Pais donante, Pais receptor, String Ejer){
         int ejercitos, ejerBefD, ejerAftD, ejerBefR, ejerAftR;
