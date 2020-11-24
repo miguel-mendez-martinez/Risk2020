@@ -1,60 +1,42 @@
-asignar misiones misiones.csv
-obtener frontera venezuela
-ver mapa
-crear jugadores jugadores.csv
-asignar pais Gondorff Siberia
-asignar misiones misiones.csv
-asignar pais Gondorff Siberia
-asignar mision Hooker M42
+crear mapa
 crear mapa
 crear jugadores jugadores.csv
+crear Gondorff VIOLETA
+crear JT VERDE
+asignar paises paises.csv
 asignar misiones misiones.csv
-asignar paises asignaciones.csv
-asignar mision Lonnegan M42
-asignar paises asignaciones.csv
-repartir ejercitos
-jugador
-repartir ejercitos 7 Siberia
-acabar turno
-jugador
-acabar turno
-jugador
-acabar turno
-jugador
-acabar turno
-atacar ANorte 4 Congo 6x6
-atacar Egipto 2 AOriental 6x6
-asignar carta Caballería&Indonesia
-asignar carta Infantería&Congo
-asignar carta Artillería&Alaska
-asignar carta Artillería&Ontario
-asignar carta Infantería&Alaska
+crear JT CYAN
+asignar paises paises.csv
+asignar mision Hooker M32
+asignar paises paises.csv
+asignar misiones misiones.csv
+asignar pais Gondorff Rusia
+repartir ejercitos 8 Alaska
+repartir ejercitos 5 Groenlan
+repartir ejercitos 5 Urales
+repartir ejercitos 3 Quebec
+repartir ejercitos 7 Ontario
 jugador
 acabar turno
-atacar Congo ANorte
-atacar AOriental Egipto 
-asignar carta Caballería&Indonesia
-asignar carta Infantería&Congo
-asignar carta Artillería&Alaska
-asignar carta Artillería&Ontario
-asignar carta Infantería&Alaska
+repartir ejercitos 10 Venezuela
+repartir ejercitos 5 ANorte
+repartir ejercitos 6 Egipto
+repartir ejercitos 5 India
 acabar turno
-acabar turno
-acabar turno
-cambiar cartas Caballería&Indonesia Infantería&Congo Artillería&Alaska
-cambiar cartas Caballería&Indonesia Infantería&Congo Artillería&Alaska
-obtener frontera Brasil
-obtener frontera Groenlan
-obtener frontera ANorte
-obtener continente Brasil
-obtener paises Oceanía
-obtener frontera casamigueloh
-obtener color Brasil
-ver mapa
-crear mapa
-describir pais ANorte
+repartir ejercitos 15 Indonesia
+repartir ejercitos 6 NGuinea
 describir jugador Gondorff
 describir jugador Hooker
-describir jugador Lonnegan
-ver mapa
+jugador
 acabar turno
+repartir ejercitos 3 Islandia
+describir pais USAEste
+atacar Ontario 5x1x1 USAEste 4
+describir pais USAEste
+describir pais Ontario
+rearmar Alaska 4 Alberta
+asignar carta Infantería&Alaska
+atacar GBretaña 3 EurSur 4
+acabar turno
+describir jugador Gondorff
+describir continente AméricaNorte

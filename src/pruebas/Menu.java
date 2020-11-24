@@ -36,7 +36,7 @@ public class Menu {
         // Inicialización de algunos atributos
         // Iniciar juego
          // Con fichero:
-        boolean iniciar;
+        boolean iniciar=false;
         this.mapa = null;
         int rearmo = 0;
         Mision mision;
@@ -116,8 +116,8 @@ public class Menu {
                                 System.out.println(error.toString());
                             }
                         }else if(partes.length==3) {
-                            if(checker >= 1){
-                                if(checker >2){ //si la siguiente instruccion en prioridad ha sido ejecutada no podra ejecutar esta, pero si podra volver a ejecutarse despues de un crear jugador
+                            if(this.mapa != null){
+                                if(this.algunaMision(this.jugadores) == true){ //si la siguiente instruccion en prioridad ha sido ejecutada no podra ejecutar esta, pero si podra volver a ejecutarse despues de un crear jugador
                                     Salida error = new Salida(99);
                                     System.out.println(error.toString());
                                 }else{
@@ -149,7 +149,7 @@ public class Menu {
                         break;
                     case "ver":
                         if(partes[1].equals("mapa")){
-                            if(checker >= 1){
+                            if(this.mapa!=null){
                                 this.mapa.printMapa();
                             }else{
                                 Salida error = new Salida(99);
@@ -159,7 +159,7 @@ public class Menu {
                         break;
                     case "jugador":
                         //esto es describir toda la mierda del jugador del turno actual
-                        if(checker < 5){
+                        if(iniciar==false){
                             Salida error = new Salida(99);
                             System.out.println(error.toString());
                         }else{
@@ -171,7 +171,7 @@ public class Menu {
                         
                         break;
                     case "rearmar":
-                        if(checker < 5){
+                        if(iniciar==false){
                             Salida error = new Salida(99);
                             System.out.println(error.toString());
                         }else{
@@ -217,63 +217,68 @@ public class Menu {
                         }
                         break;
                     case "describir":
-                        if(partes[1].equals("jugador")){
-                            //descripcion del jugador
-                            String exito;
-                            Jugador jugador = existeJugador(this.jugadores, partes[2]);
-                            if(jugador == null){
-                                Salida error = new Salida(103);
-                                System.out.println(error.toString());
-                            }else{
-                                jugador.continentesJugador(this.continentes);
-                                if(jugador.getNombre().equals(this.jugadorActual.getNombre())){
-                                    exito = jugador.descJugador(1);
-                                }else{
-                                    exito = jugador.descJugador(0);
-                                }
-                                System.out.println(exito);
-                                Salida salida = new Salida();
-                                salida.imprimirArchivo(exito);
-                            }
-                        }else if(partes[1].equals("pais")){
-                            //descripcion del pais
-                            Pais pais = existePais(this.paises, partes[2]);
-                            if(pais == null){
-                                Salida error = new Salida(109);
-                                System.out.println(error.toString());
-                            }else{
-                                System.out.println(pais.descPais());
-                                Salida salida = new Salida();
-                                salida.imprimirArchivo(pais.descPais());
-                            }
-                            
-                        }else if(partes[1].equals("Continente")){
-                            //descripcion del continente
-                        }else{
-                            Salida error = new Salida(101);
+                        if(iniciar==false){
+                            Salida error = new Salida(99);
                             System.out.println(error.toString());
+                        }else{
+                            if(partes[1].equals("jugador")){
+                                //descripcion del jugador
+                                String exito;
+                                Jugador jugador = existeJugador(this.jugadores, partes[2]);
+                                if(jugador == null){
+                                    Salida error = new Salida(103);
+                                    System.out.println(error.toString());
+                                }else{
+                                    jugador.continentesJugador(this.continentes);
+                                    if(jugador.getNombre().equals(this.jugadorActual.getNombre())){
+                                        exito = jugador.descJugador(1);
+                                    }else{
+                                        exito = jugador.descJugador(0);
+                                    }
+                                    System.out.println(exito);
+                                    Salida salida = new Salida();
+                                    salida.imprimirArchivo(exito);
+                                }
+                            }else if(partes[1].equals("pais")){
+                                //descripcion del pais
+                                Pais pais = existePais(this.paises, partes[2]);
+                                if(pais == null){
+                                    Salida error = new Salida(109);
+                                    System.out.println(error.toString());
+                                }else{
+                                    System.out.println(pais.descPais());
+                                    Salida salida = new Salida();
+                                    salida.imprimirArchivo(pais.descPais());
+                                }
+
+                            }else if(partes[1].equals("Continente")){
+                                //descripcion del continente
+                            }else{
+                                Salida error = new Salida(101);
+                                System.out.println(error.toString());
+                            }
                         }
                         break;
                     case "acabar":
-                        if(checker >= 5){
-                            this.jugadorActual = this.t.pasarTurno(this.jugadorActual);
-                            this.conquisto = 0;
-                            rearmo = 0;
-                            this.jugadorActual.continentesJugador(this.continentes);
-                            //aqui asignamos cuantas tropas recibe
-                            int minimo = this.ejercitosTurno(this.jugadorActual);
-                            //this.jugadorActual.setEjercitos_disponibles(10);
-                            System.out.println(this.jugadorActual.printNomEjerR(minimo));
-                            Salida salida = new Salida();
-                            salida.imprimirArchivo(this.jugadorActual.printNomEjerR(minimo));
-                            
+                        this.jugadorActual = this.t.pasarTurno(this.jugadorActual);
+                        this.conquisto = 0;
+                        rearmo = 0;
+                        int minimo;
+                        this.jugadorActual.continentesJugador(this.continentes);
+                        //aqui asignamos cuantas tropas recibe
+                        if(iniciar == true){
+                            minimo = this.ejercitosTurno(this.jugadorActual);
+                            this.jugadorActual.addEjercitos_disponibles(minimo);
                         }else{
-                            Salida error = new Salida(99);
-                            System.out.println(error.toString());
+                           minimo = this.ejercitosTurno(this.jugadorActual); 
                         }
+                        //this.jugadorActual.setEjercitos_disponibles(10);
+                        System.out.println(this.jugadorActual.printNomEjerR(minimo));
+                        Salida sal = new Salida();
+                        sal.imprimirArchivo(this.jugadorActual.printNomEjerR(minimo));
                         break;
                     case "cambiar":
-                        if(checker < 5 || rearmo == 1){
+                        if(iniciar==false || rearmo == 1){
                             Salida error = new Salida(99);
                             System.out.println(error.toString());
                         }else if(partes.length == 3){
@@ -330,7 +335,7 @@ public class Menu {
                             System.out.println(error.toString());
                         }else if(partes[1].equals("misiones")){
                             if(checker >= 2){
-                                if(checker > 3){ //si la siguiente instruccion ya ha sido ejecutada, no podra volver a ejecutar asignar
+                                if(this.algunaPais(this.paises) == true){ //si la siguiente instruccion ya ha sido ejecutada, no podra volver a ejecutar asignar
                                     Salida error = new Salida(99);
                                     System.out.println(error.toString());
                                 }else{
@@ -373,7 +378,7 @@ public class Menu {
                             }
                         }else if(partes[1].equals("carta")){
                             //se le asigna a jugador actual una carta
-                            if(checker < 5){
+                            if(iniciar==false){
                                 Salida error = new Salida(99);
                                 System.out.println(error.toString());
                             }else{
@@ -452,7 +457,7 @@ public class Menu {
                     case "atacar":
                         //el jugador actual atacara a un pais que no sea de su dominio, y que tenga alguna frontera en comun
                         //dos comandos, el automatico, y el forzado
-                        if(checker < 5 || rearmo == 1){ //solo se puede atacar entre repartir ejercitos y rearmar
+                        if(iniciar==false || rearmo == 1){ //solo se puede atacar entre repartir ejercitos y rearmar
                             Salida error = new Salida(99);
                             System.out.println(error.toString());
                         }
@@ -656,7 +661,7 @@ public class Menu {
                                     this.jugadorActual.continentesJugador(this.continentes);
                                     this.ejercitosTurno(jugadorActual);
                                     checker = 5;
-                                    iniciar = true;
+                                    iniciar = this.partidaIniciada();
                                     //partida iniciada con exito
                                 }
                             }else{
@@ -666,6 +671,7 @@ public class Menu {
                         }else{
                             if(checker >= 4){
                                 repartirEjercitos(partes[2], partes[3]);
+                                iniciar = this.partidaIniciada();
                                 //this.ejercitosTurno(jugadorActual);
                                 //a partir de aqui es cuando comienzan los turnos, pero, este comando se seguira utilizando no se que hacer
                             }else{
@@ -683,9 +689,54 @@ public class Menu {
             excepcion.printStackTrace();
         }
     }
+    public boolean partidaIniciada(){
+        if(this.mapa == null){
+            return false;
+        }
+        if(this.jugadores == null){
+            return false;
+        }
+        if(misionesAsignadas(this.jugadores) == false){
+            return false;
+        }
+        if(paisesAsignados(this.paises) == false){
+            return false;
+        }
+        if(tropasRepartidas(this.jugadores) == false){
+            return false;
+        }
+        for(Jugador j : this.jugadores){
+                j.setEjercitos_disponibles(0);
+        }
+        return true;
+    }
     public boolean paisesAsignados(ArrayList<Pais> paises){
         for(Pais p : paises){
             if(p.getJugador() == null){
+                return false;
+            }
+        }
+        return true;
+    }
+    public boolean algunaMision(ArrayList<Jugador> jugadores){
+        for(Jugador j : jugadores){
+            if(j.getMision() != null){
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean algunaPais(ArrayList<Pais> paises){
+        for(Pais p : paises){
+            if(p.getJugador() != null){
+                return true;
+            }
+        }
+        return false;
+    }
+     public boolean tropasRepartidas(ArrayList<Jugador> jugadores){
+        for(Jugador j : jugadores){
+            if(j.getTropas() < 35){
                 return false;
             }
         }
@@ -774,7 +825,7 @@ public class Menu {
                 minimo += 3;
             }
         }
-        jugador.addEjercitos_disponibles(minimo);
+        
         return minimo;
     }
     private void rearme(Pais donante, Pais receptor, String Ejer){
@@ -811,7 +862,6 @@ public class Menu {
         
         //en vez de comarar maximos, por victorias, si es 2, se eliminan 2 de los defensores, si es 1 se elimina 1 de cada y si es 0 se eliminan dos de los atacantes
         victorias = dadoAtt.compDado(dadoDef);
-        System.out.println(victorias);
         if(victorias == 0){
             //ganan los defensores
             ejercitosPerdidos = dadoAtt.countDados();
@@ -884,7 +934,8 @@ public class Menu {
                 }
             }else if(def.getEjercitos() == 0){
                 //se conquista el defensor
-                this.conquisto = 1; //el jugador puede recibir cartas
+                this.conquisto = 1;//el jugador puede recibir cartas
+                att.addEjercitos(1);
                 def.getJugador().getPaises().remove(def);
                 def.setJugador(att.getJugador());
                 def.addOcupacion();
@@ -920,10 +971,10 @@ public class Menu {
                 att.getJugador().setPaises(def);
                 ejercitosPerdidos = dadoAtt.countDados();
                 ejercitosBefA = att.getEjercitos();
-                ejercitosAftA = ejercitosBefA - ejercitosPerdidos;
+                ejercitosAftA = ejercitosBefA - ejercitosPerdidos + 1;
                 if(ejercitosAftA <= 0){
                     ejercitosAftD = ejercitosBefA - 1;
-                    ejercitosAftA = 1;
+                    ejercitosAftA = 2;
                     att.setEjercitos(1);
                     def.setEjercitos(ejercitosAftD);
                 }else{
@@ -954,6 +1005,7 @@ public class Menu {
         System.out.println(exito);
         Salida s = new Salida();
         s.imprimirArchivo(exito);
+        
     }
     public void selectDados(Pais paisAtt, Pais paisDef){
         int ejerAtt, ejerDef;

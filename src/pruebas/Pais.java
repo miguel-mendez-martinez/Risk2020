@@ -36,7 +36,7 @@ public class Pais {
    
     public Pais(String nombre, String abreviatura, Casilla casilla, Continente continente) {
         this.nombre = nombre;
-        this.vecesOcupado = 1;
+        this.vecesOcupado = 0;
         this.casilla = casilla;
         this.abreviatura = abreviatura;
         this.ejercitos = 0;

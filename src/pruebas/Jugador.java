@@ -84,7 +84,8 @@ public class Jugador {
     }
 
     public int getTropas() {
-        return tropas;
+        this.countTropas();
+        return this.tropas;
     }
 
     public void setTropas(int tropas) {
@@ -181,7 +182,7 @@ public class Jugador {
         }
         return cartaJug;
     }
-
+    
     public int countTropas() {
         int tropas = 0;
 
