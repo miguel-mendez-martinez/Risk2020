@@ -19,6 +19,7 @@ public class Continente {
     private ArrayList<Pais> paises;
     private String color;
     private int numPaises; // numero de paises de cada continente
+    public int ejercitosRearme; // Setear esto al crear el mapa
     // Constructores, recordar siempre reservar memoria para el array
 
     public Continente() {
