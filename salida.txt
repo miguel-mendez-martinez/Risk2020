@@ -89,13 +89,21 @@ $> asignar misiones misiones.csv
  mision: "Conquistar Asia y América del Sur"
 }
 {
- nombre: "Lonnegan"
- mision: "Destruir el ejército AZUL"
-}
-{
  código de error: 116,
  descripción: "La misión no existe"
 {
+
+$> asignar paises asignaciones.csv
+{
+ código de error: 118,
+ descripción: "Las misiones no están asignadas"
+{
+
+$> asignar mision Lonnegan M42
+{
+ nombre: "Lonnegan"
+ mision: "Destruir el ejército AZUL"
+}
 
 $> asignar paises asignaciones.csv
 {
@@ -505,8 +513,8 @@ $> acabar turno
 
 $> atacar Congo ANorte
 {
- dadosAtaque: [ 2 ],
- dadosDefensa: [ 4 ],
+ dadosAtaque: [ 1 ],
+ dadosDefensa: [ 6 ],
  ejercitosPaisAtaque: { 2, 1 },
  ejercitosPaisDefensa: { 1, 1 },
  paisAtaquePerteneceA: "Lonnegan",
@@ -516,44 +524,54 @@ $> atacar Congo ANorte
 
 $> atacar AOriental Egipto 
 {
- dadosAtaque: [ 2 ],
- dadosDefensa: [ 6 ],
+ dadosAtaque: [ 5 ],
+ dadosDefensa: [ 1 ],
  ejercitosPaisAtaque: { 2, 1 },
  ejercitosPaisDefensa: { 1, 1 },
  paisAtaquePerteneceA: "Lonnegan",
- paisDefensaPerteneceA: "Hooker",
+ paisDefensaPerteneceA: "Lonnegan",
  continenteConquistado: "null"
 }
 
 $> asignar carta Caballería&Indonesia
 {
- código de error: 127,
- descripción: "El jugador no conquistó ningun pais este turno"
-{
+ tipoCarta: "Caballería",
+ paisAsociado: "Indonesia",
+ perteneceAJugador: "Lonnegan",
+ ejercitosDeRearme: 1
+}
 
 $> asignar carta Infantería&Congo
 {
- código de error: 127,
- descripción: "El jugador no conquistó ningun pais este turno"
-{
+ tipoCarta: "Infantería",
+ paisAsociado: "Congo",
+ perteneceAJugador: "Lonnegan",
+ ejercitosDeRearme: 1
+}
 
 $> asignar carta Artillería&Alaska
 {
- código de error: 127,
- descripción: "El jugador no conquistó ningun pais este turno"
-{
+ tipoCarta: "Artillería",
+ paisAsociado: "Alaska",
+ perteneceAJugador: "Lonnegan",
+ ejercitosDeRearme: 0
+}
 
 $> asignar carta Artillería&Ontario
 {
- código de error: 127,
- descripción: "El jugador no conquistó ningun pais este turno"
-{
+ tipoCarta: "Artillería",
+ paisAsociado: "Ontario",
+ perteneceAJugador: "Lonnegan",
+ ejercitosDeRearme: 0
+}
 
 $> asignar carta Infantería&Alaska
 {
- código de error: 127,
- descripción: "El jugador no conquistó ningun pais este turno"
-{
+ tipoCarta: "Infantería",
+ paisAsociado: "Alaska",
+ perteneceAJugador: "Lonnegan",
+ ejercitosDeRearme: 0
+}
 
 $> acabar turno
 {
@@ -570,14 +588,16 @@ $> acabar turno
 $> acabar turno
 {
  nombre: "Lonnegan",
- numeroEjercitosRearmar: 6
+ numeroEjercitosRearmar: 7
 }
 
 $> cambiar cartas Caballería&Indonesia Infantería&Congo Artillería&Alaska
 {
- código de error: 99,
- descripción: "Comando no permitido en este momento"
-{
+ cartasCambio: "Caballería&Indonesia""Infantería&Congo""Artillería&Alaska",
+ cartasQuedan: [ "Artillería&Ontario", "Infantería&Alaska" ],
+ numeroEjercitosCambiados: 14,
+ numEjercitosRearme: 32
+}
 
 $> cambiar cartas Caballería&Indonesia Infantería&Congo Artillería&Alaska
 {
@@ -651,8 +671,8 @@ $> describir jugador Hooker
 {
  nombre: "Hooker",
  color: "AZUL",
- numeroEjercitos: 26,
- paises: [ "Irkutsk", "Estados Unidos del Oeste", "Estados Unidos del Este", "Europa Occidental", "Europa Sur", "Urales", "Mongolia", "Japón", "America Central", "Afganistan", "China", "Venezuela", "África del Norte", "Egipto" ],
+ numeroEjercitos: 25,
+ paises: [ "Irkutsk", "Estados Unidos del Oeste", "Estados Unidos del Este", "Europa Occidental", "Europa Sur", "Urales", "Mongolia", "Japón", "America Central", "Afganistan", "China", "Venezuela", "África del Norte" ],
  continentes: [ ],
  cartas: [ ],
  numeroEjercitosRearmar: 19
@@ -663,11 +683,11 @@ $> describir jugador Lonnegan
  nombre: "Lonnegan",
  color: "ROJO",
  mision: "Destruir el ejército AZUL",
- numeroEjercitos: 34,
- paises: [ "Oriente Medio", "India", "Sureste Asiático", "Perú", "Brasil", "Congo", "Africa Oriental", "Argentina", "Sudafrica", "Madagascar", "Indonesia", "Nueva Guinea", "Australia Occidental", "Australia Oriental" ],
+ numeroEjercitos: 35,
+ paises: [ "Oriente Medio", "India", "Sureste Asiático", "Perú", "Brasil", "Congo", "Africa Oriental", "Argentina", "Sudafrica", "Madagascar", "Indonesia", "Nueva Guinea", "Australia Occidental", "Australia Oriental", "Egipto" ],
  continentes: [ "Oceanía" ],
- cartas: [ ],
- numeroEjercitosRearmar: 17
+ cartas: [ "Artillería&Ontario", "Infantería&Alaska" ],
+ numeroEjercitosRearmar: 32
 }
 
 $> ver mapa

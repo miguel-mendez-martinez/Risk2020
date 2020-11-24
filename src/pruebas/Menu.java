@@ -337,7 +337,10 @@ public class Menu {
                                     if(partes[1].equals("misiones")){
                                         asignarMisiones(new File(partes[2]));
                                         if(checker < 3){
-                                            checker = 3;
+                                            if(this.misionesAsignadas(this.jugadores) == true){
+                                                checker = 3;
+                                                //se cumple que todos los jugadores tienen mision
+                                            }
                                         }
                                     }
                                 }
@@ -359,8 +362,10 @@ public class Menu {
                                         j.continentesJugador(this.continentes);
                                     }
                                     if(checker < 4){
+                                        if(this.paisesAsignados(this.paises) == true){
                                             checker = 4;
                                         }
+                                    }
                                 }
                             }else{
                                 Salida error = new Salida(118);
@@ -417,6 +422,12 @@ public class Menu {
                                     System.out.println(error.toString());
                                 }else{
                                     asignarMisiones(partes[2], partes[3]);
+                                    if(checker < 3){
+                                        if(this.misionesAsignadas(this.jugadores) == true){
+                                            checker = 3;
+                                            //se cumple que todos los jugadores tienen mision
+                                        }
+                                    }
                                 }
                             }else{
                                 Salida error = new Salida(105);
@@ -426,7 +437,11 @@ public class Menu {
                             
                             if(checker >= 3){
                                 asignarPaises(partes[2], partes[3]);
-                                
+                                if(checker < 4){
+                                    if(this.paisesAsignados(this.paises) == true){
+                                        checker = 4;
+                                    }
+                                }
                             }else{
                                 Salida error = new Salida(118);
                                 System.out.println(error.toString());
@@ -667,6 +682,22 @@ public class Menu {
         } catch(Exception excepcion) {
             excepcion.printStackTrace();
         }
+    }
+    public boolean paisesAsignados(ArrayList<Pais> paises){
+        for(Pais p : paises){
+            if(p.getJugador() == null){
+                return false;
+            }
+        }
+        return true;
+    }
+    public boolean misionesAsignadas(ArrayList<Jugador> jugadores){
+        for(Jugador j : jugadores){
+            if(j.getMision() == null){
+                return false;
+            }
+        }
+        return true;
     }
     public void checkCombi(Cartas carta1, Cartas carta2, Cartas carta3){
         int ejercitos = 0;
