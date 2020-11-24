@@ -505,24 +505,24 @@ $> acabar turno
 
 $> atacar Congo ANorte
 {
- dadosAtaque: [ 1 ],
- dadosDefensa: [ 5 ],
- ejercitosPaisAtaque: { 2, 1 },
- ejercitosPaisDefensa: { 1, 1 },
- paisAtaquePerteneceA: "Lonnegan",
- paisDefensaPerteneceA: "Hooker",
- continenteConquistado: "null"
-}
-
-$> atacar AOriental Egipto 
-{
  dadosAtaque: [ 5 ],
- dadosDefensa: [ 4 ],
+ dadosDefensa: [ 2 ],
  ejercitosPaisAtaque: { 2, 1 },
  ejercitosPaisDefensa: { 1, 1 },
  paisAtaquePerteneceA: "Lonnegan",
  paisDefensaPerteneceA: "Lonnegan",
  continenteConquistado: "null"
+}
+
+$> atacar AOriental Egipto 
+{
+ dadosAtaque: [ 2 ],
+ dadosDefensa: [ 1 ],
+ ejercitosPaisAtaque: { 2, 1 },
+ ejercitosPaisDefensa: { 1, 1 },
+ paisAtaquePerteneceA: "Lonnegan",
+ paisDefensaPerteneceA: "Lonnegan",
+ continenteConquistado: "África"
 }
 
 $> asignar carta Caballería&Indonesia
@@ -580,7 +580,7 @@ $> acabar turno
 $> acabar turno
 {
  nombre: "Lonnegan",
- numeroEjercitosRearmar: 7
+ numeroEjercitosRearmar: 10
 }
 
 $> cambiar cartas Caballería&Indonesia Infantería&Congo Artillería&Alaska
@@ -588,14 +588,8 @@ $> cambiar cartas Caballería&Indonesia Infantería&Congo Artillería&Alaska
  cartasCambio: "Caballería&Indonesia""Infantería&Congo""Artillería&Alaska",
  cartasQuedan: [ "Artillería&Ontario", "Infantería&Alaska" ],
  numeroEjercitosCambiados: 14,
- numEjercitosRearme: 21
+ numEjercitosRearme: 24
 }
-
-$> repartir ejercitos
-{
- código de error: 99,
- descripción: "Comando no permitido en este momento"
-{
 
 $> cambiar cartas Caballería&Indonesia Infantería&Congo Artillería&Alaska
 {
@@ -649,9 +643,9 @@ $> describir pais ANorte
  abreviatura: "ANorte",
  continente: "África",
  frontera:  [ "Congo", "Egipto", "Europa Occidental", "Brasil" ],
- jugador: "Hooker",
+ jugador: "Lonnegan",
  numeroEjercitos: 1,
- numeroVecesOcupado: 1
+ numeroVecesOcupado: 2
 }
 
 $> describir jugador Gondorff
@@ -669,8 +663,8 @@ $> describir jugador Hooker
 {
  nombre: "Hooker",
  color: "AZUL",
- numeroEjercitos: 25,
- paises: [ "Irkutsk", "Estados Unidos del Oeste", "Estados Unidos del Este", "Europa Occidental", "Europa Sur", "Urales", "Mongolia", "Japón", "America Central", "Afganistan", "China", "Venezuela", "África del Norte" ],
+ numeroEjercitos: 24,
+ paises: [ "Irkutsk", "Estados Unidos del Oeste", "Estados Unidos del Este", "Europa Occidental", "Europa Sur", "Urales", "Mongolia", "Japón", "America Central", "Afganistan", "China", "Venezuela" ],
  continentes: [ ],
  cartas: [ ],
  numeroEjercitosRearmar: 4
@@ -681,11 +675,11 @@ $> describir jugador Lonnegan
  nombre: "Lonnegan",
  color: "ROJO",
  mision: "Destruir el ejército AZUL",
- numeroEjercitos: 35,
- paises: [ "Oriente Medio", "India", "Sureste Asiático", "Perú", "Brasil", "Congo", "Africa Oriental", "Argentina", "Sudafrica", "Madagascar", "Indonesia", "Nueva Guinea", "Australia Occidental", "Australia Oriental", "Egipto" ],
- continentes: [ "Oceanía" ],
+ numeroEjercitos: 36,
+ paises: [ "Oriente Medio", "India", "Sureste Asiático", "Perú", "Brasil", "Congo", "Africa Oriental", "Argentina", "Sudafrica", "Madagascar", "Indonesia", "Nueva Guinea", "Australia Occidental", "Australia Oriental", "África del Norte", "Egipto" ],
+ continentes: [ "Oceanía", "África" ],
  cartas: [ "Artillería&Ontario", "Infantería&Alaska" ],
- numeroEjercitosRearmar: 21
+ numeroEjercitosRearmar: 24
 }
 
 $> ver mapa

@@ -260,7 +260,7 @@ public class Menu {
                             this.conquisto = 0;
                             rearmo = 0;
                             this.jugadorActual.continentesJugador(this.continentes);
-                            //aqui asignamos cuantas recibe
+                            //aqui asignamos cuantas tropas recibe
                             this.ejercitosTurno(this.jugadorActual);
                             //this.jugadorActual.setEjercitos_disponibles(10);
                             System.out.println(this.jugadorActual.printNomEjerR());
