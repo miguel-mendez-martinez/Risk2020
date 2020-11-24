@@ -39,6 +39,27 @@ public class Continente {
 
         }
         this.color = color;
+        
+        switch(nombre){
+            case "África":
+                this.bonus = 3;
+                break;
+            case "América del Norte":
+                this.bonus = 5;
+                break;
+            case "América del Sur":
+                this.bonus = 2;
+                break;
+            case "Asia":
+                this.bonus = 7;
+                break;
+            case "Europa":
+                this.bonus = 5;
+                break;
+            case "Oceanía":
+                this.bonus = 2;
+                break;
+        }
     }
 
     // setters & getters
@@ -128,16 +149,20 @@ public class Continente {
         return paisCont;
     }
 
-    public String printPaisesEjer() {
+    public String printPaisesEjer(Pais pais) {
         String paisCont = "";
-        for (int i = 0; i < paises.size(); i++) {
+        int i = 0;
+        for (Pais p : this.paises) {
             if (i == 0) {
-                paisCont += "[ { " + paises.get(i).printNombre() + "," + paises.get(i).getEjercitos() + " }";
-            } else if (i == (paises.size()) - 1) {
-                paisCont += ", { " + paises.get(i).printNombre() + "," + paises.get(i).getEjercitos() + " } ]";
-            } else {
-                paisCont += ", { " + paises.get(i).printNombre() + "," + paises.get(i).getEjercitos() + " }";
-            }
+                if(pais.getJugador().equals(p.getJugador())){
+                    paisCont += "[ { " + p.printNombre() + "," + p.getEjercitos() + " }";
+                    i+=1;
+                }
+            } else{
+                if(pais.getJugador().equals(p.getJugador())){
+                    paisCont += ", { " + p.printNombre() + "," + p.getEjercitos() + " } ]";
+                }
+            } 
         }
         return paisCont;
     }
@@ -170,7 +195,25 @@ public class Continente {
 
         return resultado;
     }
-
+    public String getJugadores(){
+        ArrayList<Jugador> jugadores;
+        String result = " ";
+        jugadores = new ArrayList<>();
+        for(Pais p : this.paises){
+            if(jugadores.isEmpty()){
+                jugadores.add(p.getJugador());
+                result += "{ " + p.getJugador().getNombre() + "," + p.getJugador().ejercitosColocadosEnContinente(this) + "}";
+            }else{
+                if(jugadores.contains(p.getJugador())){
+                    
+                }else{
+                    jugadores.add(p.getJugador());
+                    result += ", { " + p.getJugador().getNombre() + "," + p.getJugador().ejercitosColocadosEnContinente(this) + "}";
+                }
+            }
+        }
+        return result;
+    }
     public float porcentajePaisesOcupados() {
         int contador = 0;
         for (Pais p : this.paises) {

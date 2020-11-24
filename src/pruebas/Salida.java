@@ -33,7 +33,7 @@ public class Salida {
         try {
             File archivo = new File("salida.txt");
             if (archivo.createNewFile()) {
-                System.out.println("Creando el archivo de salidas...");
+                //System.out.println("Creando el archivo de salidas...");
             }
             //iniciamos el escritor en el archivo, buscado en internet 
             FileOutputStream fos = new FileOutputStream(archivo, true);

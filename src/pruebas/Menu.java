@@ -55,11 +55,11 @@ public class Menu {
         File file = new File("salida.txt"); 
         if(file.delete()) 
         { 
-            System.out.println("Existía archivo, ha sido eliminado correctamente"); 
+           // System.out.println("Existía archivo, ha sido eliminado correctamente"); 
         } 
         else
         { 
-            System.out.println("No existía archivo, por lo que no elimino nada."); 
+            //System.out.println("No existía archivo, por lo que no elimino nada."); 
         }
         
         //preguntar al weon si esto de arriba deberiamos imprimirlo tmb en salidas
@@ -996,9 +996,9 @@ public class Menu {
         int dadDef = dadoDef.countDados();
         String exito = "";
         exito += "{\n dadosAtaque: [ " + dadoAtt.printfDado(dadAtt) + " ],\n dadosDefensa: [ " 
-                + dadoDef.printfDado(dadDef) + " ],\n ejercitosPaisAtaque: { " + 
-                ejercitosBefA + ", " + ejercitosAftA + " },\n ejercitosPaisDefensa: { " + 
-                ejercitosBefD + ", " + ejercitosAftD + " },\n paisAtaquePerteneceA: "
+                + dadoDef.printfDado(dadDef) + " ],\n ejercitosPaisAtaque: [ " + 
+                ejercitosBefA + ", " + ejercitosAftA + " ],\n ejercitosPaisDefensa: [ " + 
+                ejercitosBefD + ", " + ejercitosAftD + " ],\n paisAtaquePerteneceA: "
                 + att.getJugador().printNombre() + ",\n paisDefensaPerteneceA: " +
                 def.getJugador().printNombre() + ",\n continenteConquistado: " + 
                 cont + "\n}";
@@ -1467,7 +1467,7 @@ public class Menu {
                 pais.getJugador().setEjercitos_disponibles(0); // si se quieren asignar mas de los disponibles se asignan solo estos y pasa a haber 0 disponibles
                 String exito = "{\n pais: \"" + pais.getNombre() + "\",\n jugador: \"" + 
                         pais.getJugador().getNombre() + "\",\n numeroEjercitosAsignados: " 
-                        + ejDisp + ",\n numeroEjercitosTotales: " + pais.getEjercitos() + ",\n paisesOcupadosContinente: " + pais.getContinente().printPaisesEjer();
+                        + ejDisp + ",\n numeroEjercitosTotales: " + pais.getEjercitos() + ",\n paisesOcupadosContinente: " + pais.getContinente().printPaisesEjer(pais);
                 System.out.println(exito);
                 Salida salida = new Salida();
                 salida.imprimirArchivo(exito);
@@ -1476,7 +1476,7 @@ public class Menu {
                 pais.getJugador().setEjercitos_disponibles(ejDisp - numEjer);
                 String exito = "{\n pais: \"" + pais.getNombre() + "\",\n jugador: \"" + 
                         pais.getJugador().getNombre() + "\",\n numeroEjercitosAsignados: " 
-                        + numEjer + ",\n numeroEjercitosTotales: " + pais.getEjercitos() + ",\n paisesOcupadosContinente: " + pais.getContinente().printPaisesEjer() + "\n}";
+                        + numEjer + ",\n numeroEjercitosTotales: " + pais.getEjercitos() + ",\n paisesOcupadosContinente: " + pais.getContinente().printPaisesEjer(pais) + "\n}";
                 System.out.println(exito);
                 Salida salida = new Salida();
                 salida.imprimirArchivo(exito);
@@ -1501,14 +1501,26 @@ public class Menu {
         if (existe) {
 
             String jugadoresContinente = "[";
-            for (Pais p: continente.getPaises()){
-                jugadoresContinente += "{ " + p.getJugador().getNombre() + "," + p.getJugador().ejercitosColocadosEnContinente(continente) + "},";
-
+            int i = 0;
+            //jugadoresContinente += continente.getJugadores();
+            for(Jugador j: this.jugadores){
+                if(i == 0){
+                    jugadoresContinente += " { " + j.getNombre() + ", " + j.ejercitosColocadosEnContinente(continente) + " }";
+                    i++;
+                }else{
+                    jugadoresContinente += ", { " + j.getNombre() + ", " + j.ejercitosColocadosEnContinente(continente) + " }";
+                }
+                
             }
-            jugadoresContinente += "],";
+            jugadoresContinente += " ]";
             Salida salida = new Salida();
             String exito;
-            exito = "{\n\tnombre: " + continente.getNombre() + ",\n\tabreviatura: " + continente.getAbreviatura() + ",\n\tjugadores: " + jugadoresContinente + ",\n\tnumeroEjercitos: " + continente.ejercitosColocadosEnContinenteTotal()+"\n}";
+            exito = "{\n nombre: " + continente.getNombre() + ",\n abreviatura: "
+                    + continente.getAbreviatura() + ",\n jugadores: " + 
+                    jugadoresContinente + ",\n numeroEjercitos: " + 
+                    continente.ejercitosColocadosEnContinenteTotal()+",\n rearmeContinente: "
+                    + continente.getBonus() + "\n}";
+            System.out.println(exito);
             salida.imprimirArchivo(exito);
         }else {// error de que no existe continente 
             

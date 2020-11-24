@@ -283,5 +283,9 @@ public class Jugador {
         }
        return resultado;
     }
-    
+    public boolean equals(Object obj){
+        // Conversion explicita del objeto a tipo pais
+        return this.nombre.equals(((Jugador) obj).nombre);
+
+    }
 }
