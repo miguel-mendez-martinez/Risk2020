@@ -139,7 +139,7 @@ public class Continente {
         String paisCont = "";
         for (int i = 0; i < paises.size(); i++) {
             if (i == 0) {
-                paisCont += "{\n paises: [ " + paises.get(i).printNombre() + ",\n";
+                paisCont += "{\npaises: [ " + paises.get(i).printNombre() + ",\n";
             } else if (i == (paises.size()) - 1) {
                 paisCont += "\t " + paises.get(i).printNombre() + "\n\t ]";
             } else {

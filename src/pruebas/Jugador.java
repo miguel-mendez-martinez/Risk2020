@@ -109,7 +109,7 @@ public class Jugador {
     }
 
     public String printColorNom() {
-        String texto = "{\n nombre: \"" + this.nombre + "\",\n color: \"" + this.color + "\"\n}";
+        String texto = "{\nnombre: \"" + this.nombre + "\",\ncolor: \"" + this.color + "\"\n}";
         return texto;
     }
 
@@ -134,7 +134,7 @@ public class Jugador {
     }
 
     public String printNomEjerR(int minimo) {
-        String texto = "{\n nombre: \"" + this.nombre + "\",\n numeroEjercitosRearmar: " + minimo + "\n}";
+        String texto = "{\nnombre: \"" + this.nombre + "\",\nnumeroEjercitosRearmar: " + minimo + "\n}";
         return texto;
     }
 
@@ -196,28 +196,28 @@ public class Jugador {
     public String descJugador(int check) {
         String texto;
         if (check == 1) {
-            texto = "{\n nombre: " + this.printNombre() + ",\n color: "
-                    + this.prinColor() + ",\n mision: " + this.mision.printDesc()
-                    + ",\n numeroEjercitos: " + this.countTropas() + ",\n paises: " + this.printPaises()
-                    + ",\n continentes: " + printContinentes() + ",\n cartas: "
-                    + this.printCartas() + ",\n numeroEjercitosRearmar: " + this.ejercitos_disponibles + "\n}";
+            texto = "{\nnombre: " + this.printNombre() + ",\ncolor: "
+                    + this.prinColor() + ",\nmision: " + this.mision.printDesc()
+                    + ",\nnumeroEjercitos: " + this.countTropas() + ",\npaises: " + this.printPaises()
+                    + ",\ncontinentes: " + printContinentes() + ",\ncartas: "
+                    + this.printCartas() + ",\nnumeroEjercitosRearmar: " + this.ejercitos_disponibles + "\n}";
         } else {
-            texto = "{\n nombre: " + this.printNombre() + ",\n color: "
-                    + this.prinColor() + ",\n numeroEjercitos: " + this.countTropas()
-                    + ",\n paises: " + this.printPaises() + ",\n continentes: "
-                    + printContinentes() + ",\n cartas: " + this.printCartas()
-                    + ",\n numeroEjercitosRearmar: " + this.ejercitos_disponibles + "\n}";
+            texto = "{\nnombre: " + this.printNombre() + ",\ncolor: "
+                    + this.prinColor() + ",\nnumeroEjercitos: " + this.countTropas()
+                    + ",\npaises: " + this.printPaises() + ",\ncontinentes: "
+                    + printContinentes() + ",\ncartas: " + this.printCartas()
+                    + ",\nnumeroEjercitosRearmar: " + this.ejercitos_disponibles + "\n}";
         }
         return texto;
     }
 
     @Override
     public String toString() {
-        String texto = "{\n nombre: " + this.printNombre() + ",\n color: "
-                + this.prinColor() + ",\n mision: " + this.mision.printDesc()
-                + ",\n numeroEjercitos: " + this.countTropas() + ",\n paises: " + this.printPaises()
-                + ",\n continentes: " + printContinentes() + ",\n cartas: "
-                + this.printCartas() + ",\n numeroEjercitosRearmar: " + this.ejercitos_disponibles + "\n}";
+        String texto = "{\nnombre: " + this.printNombre() + ",\ncolor: "
+                + this.prinColor() + ",\nmision: " + this.mision.printDesc()
+                + ",\nnumeroEjercitos: " + this.countTropas() + ",\npaises: " + this.printPaises()
+                + ",\ncontinentes: " + printContinentes() + ",\ncartas: "
+                + this.printCartas() + ",\nnumeroEjercitosRearmar: " + this.ejercitos_disponibles + "\n}";
         return texto;
     }
 

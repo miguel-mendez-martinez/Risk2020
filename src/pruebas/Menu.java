@@ -688,7 +688,7 @@ public class Menu {
                 }
             }
             Salida s = new Salida();
-            s.imprimirArchivo("EOF");
+            s.imprimirArchivo("\nEOF");
         } catch(Exception excepcion) {
             excepcion.printStackTrace();
         }
@@ -793,9 +793,9 @@ public class Menu {
             carta1.setJugador(null);
             this.jugadorActual.getCartas().remove(carta3);
             carta1.setJugador(null);
-            String exito = "{\n cartasCambio: " + carta1.printCarta() + carta2.printCarta()
-                    + carta3.printCarta() + ",\n cartasQuedan: " + this.jugadorActual.printCartas()
-                    + ",\n numeroEjercitosCambiados: " + ejercitos + ",\n numEjercitosRearme: " +
+            String exito = "{\ncartasCambio: " + carta1.printCarta() + carta2.printCarta()
+                    + carta3.printCarta() + ",\ncartasQuedan: " + this.jugadorActual.printCartas()
+                    + ",\n numeroEjercitosCambiados: " + ejercitos + ",\nnumEjercitosRearme: " +
                     this.jugadorActual.getEjercitos_disponibles() + "\n}";
             System.out.println(exito);
             Salida s = new Salida();
@@ -852,10 +852,10 @@ public class Menu {
             donante.setEjercitos(ejerAftD);
             receptor.setEjercitos(ejerAftR);
         }
-        String exito = "{\n numeroEjercitosInicialesOrigen: " + ejerBefD + 
-                ",\n numeroEjercitosInicialesDestino: " + ejerBefR + 
-                ",\n numeroEjercitosFinalesOrigen: " + ejerAftD + 
-                ",\n numeroEjercitosFinalesDestino: " + ejerAftR + "\n}";
+        String exito = "{\nnumeroEjercitosInicialesOrigen: " + ejerBefD + 
+                ",\nnumeroEjercitosInicialesDestino: " + ejerBefR + 
+                ",\nnumeroEjercitosFinalesOrigen: " + ejerAftD + 
+                ",\nnumeroEjercitosFinalesDestino: " + ejerAftR + "\n}";
         System.out.println(exito);
         Salida s = new Salida();
         s.imprimirArchivo(exito);
@@ -999,12 +999,12 @@ public class Menu {
         int dadAtt = dadoAtt.countDados();
         int dadDef = dadoDef.countDados();
         String exito = "";
-        exito += "{\n dadosAtaque: [ " + dadoAtt.printfDado(dadAtt) + " ],\n dadosDefensa: [ " 
-                + dadoDef.printfDado(dadDef) + " ],\n ejercitosPaisAtaque: [ " + 
-                ejercitosBefA + ", " + ejercitosAftA + " ],\n ejercitosPaisDefensa: [ " + 
-                ejercitosBefD + ", " + ejercitosAftD + " ],\n paisAtaquePerteneceA: "
-                + att.getJugador().printNombre() + ",\n paisDefensaPerteneceA: " +
-                def.getJugador().printNombre() + ",\n continenteConquistado: " + 
+        exito += "{\ndadosAtaque: [ " + dadoAtt.printfDado(dadAtt) + "],\ndadosDefensa: [ " 
+                + dadoDef.printfDado(dadDef) + "],\n ejercitosPaisAtaque: [ " + 
+                ejercitosBefA + ", " + ejercitosAftA + "],\nejercitosPaisDefensa: [ " + 
+                ejercitosBefD + ", " + ejercitosAftD + "],\npaisAtaquePerteneceA: "
+                + att.getJugador().printNombre() + ",\npaisDefensaPerteneceA: " +
+                def.getJugador().printNombre() + ",\ncontinenteConquistado: " + 
                 cont + "\n}";
         System.out.println(exito);
         Salida s = new Salida();
@@ -1223,7 +1223,7 @@ public class Menu {
                                 pais.setEjercitos(1);
                                 jugador.setEjercitos_disponibles(jugador.getEjercitos_disponibles()-1);
                                 String fronteras = pais.fronterasToString();
-                                String exito = "{\n\tnombre: " + nombreJugador +"\n\tpaís: " + nombrePais + "\n\tcontinente: " + pais.getContinente().getNombre() + "\n\tfronteras:" + fronteras + "\n}";
+                                String exito = "{\nnombre: " + nombreJugador +"\npaís: " + nombrePais + "\ncontinente: " + pais.getContinente().getNombre() + "\nfronteras:" + fronteras + "\n}";
                                 System.out.println(exito);
                                 Salida salida = new Salida();
                                 salida.imprimirArchivo(exito);
@@ -1260,7 +1260,7 @@ public class Menu {
             Salida error = new Salida(109);
             System.out.println(error.toString());
         }else{
-            String fronteras = "{\n fronteras: ";
+            String fronteras = "{\nfronteras: ";
             fronteras += pais.fronterasToString();
             fronteras += "\n}";
             System.out.println(fronteras);
@@ -1303,7 +1303,7 @@ public class Menu {
             Salida error = new Salida(109);
             System.out.println(error.toString());
         }else{
-            String paises = "{\n paises: [ ";
+            String paises = "{\npaises: [ ";
             for(int i=0; i<c.getPaises().size(); i++){
                 if(i==0){
                     paises += c.getPaises().get(i).printNombre();
@@ -1469,18 +1469,18 @@ public class Menu {
             }else if(numEjer > ejDisp){
                 pais.addEjercitos(ejDisp);
                 pais.getJugador().setEjercitos_disponibles(0); // si se quieren asignar mas de los disponibles se asignan solo estos y pasa a haber 0 disponibles
-                String exito = "{\n pais: \"" + pais.getNombre() + "\",\n jugador: \"" + 
-                        pais.getJugador().getNombre() + "\",\n numeroEjercitosAsignados: " 
-                        + ejDisp + ",\n numeroEjercitosTotales: " + pais.getEjercitos() + ",\n paisesOcupadosContinente: " + pais.getContinente().printPaisesEjer(pais);
+                String exito = "{\npais: \"" + pais.getNombre() + "\",\njugador: \"" + 
+                        pais.getJugador().getNombre() + "\",\nnumeroEjercitosAsignados: " 
+                        + ejDisp + ",\nnumeroEjercitosTotales: " + pais.getEjercitos() + ",\npaisesOcupadosContinente: " + pais.getContinente().printPaisesEjer(pais);
                 System.out.println(exito);
                 Salida salida = new Salida();
                 salida.imprimirArchivo(exito);
             }else { // caso todo correcto
                 pais.addEjercitos(numEjer);
                 pais.getJugador().setEjercitos_disponibles(ejDisp - numEjer);
-                String exito = "{\n pais: \"" + pais.getNombre() + "\",\n jugador: \"" + 
-                        pais.getJugador().getNombre() + "\",\n numeroEjercitosAsignados: " 
-                        + numEjer + ",\n numeroEjercitosTotales: " + pais.getEjercitos() + ",\n paisesOcupadosContinente: " + pais.getContinente().printPaisesEjer(pais) + "\n}";
+                String exito = "{\npais: \"" + pais.getNombre() + "\",\njugador: \"" + 
+                        pais.getJugador().getNombre() + "\",\nnumeroEjercitosAsignados: " 
+                        + numEjer + ",\nnumeroEjercitosTotales: " + pais.getEjercitos() + ",\npaisesOcupadosContinente: " + pais.getContinente().printPaisesEjer(pais) + "\n}";
                 System.out.println(exito);
                 Salida salida = new Salida();
                 salida.imprimirArchivo(exito);
@@ -1519,10 +1519,10 @@ public class Menu {
             jugadoresContinente += " ]";
             Salida salida = new Salida();
             String exito;
-            exito = "{\n nombre: " + continente.getNombre() + ",\n abreviatura: "
-                    + continente.getAbreviatura() + ",\n jugadores: " + 
-                    jugadoresContinente + ",\n numeroEjercitos: " + 
-                    continente.ejercitosColocadosEnContinenteTotal()+",\n rearmeContinente: "
+            exito = "{\nnombre: " + continente.getNombre() + ",\nabreviatura: "
+                    + continente.getAbreviatura() + ",\njugadores: " + 
+                    jugadoresContinente + ",\nnumeroEjercitos: " + 
+                    continente.ejercitosColocadosEnContinenteTotal()+",\nrearmeContinente: "
                     + continente.getBonus() + "\n}";
             System.out.println(exito);
             salida.imprimirArchivo(exito);

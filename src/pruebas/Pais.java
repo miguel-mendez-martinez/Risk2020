@@ -150,16 +150,16 @@ public class Pais {
         return texto;
     }
     public String descPais(){
-        String texto = "{\n nombre: " + this.printNombre() + 
-                ",\n abreviatura: " + this.printAbre() + ",\n continente: " 
-                + this.printCont() + ",\n frontera: " + this.fronterasToString()
-                + ",\n jugador: " + this.printJug() + ",\n numeroEjercitos: " 
-                + this.ejercitos + ",\n numeroVecesOcupado: " + this.vecesOcupado + "\n}";
+        String texto = "{\nnombre: " + this.printNombre() + 
+                ",\nabreviatura: " + this.printAbre() + ",\ncontinente: " 
+                + this.printCont() + ",\nfrontera: " + this.fronterasToString()
+                + ",\njugador: " + this.printJug() + ",\nnumeroEjercitos: " 
+                + this.ejercitos + ",\nnumeroVecesOcupado: " + this.vecesOcupado + "\n}";
         return texto;
     }
     @Override
     public String toString(){
-        String texto="\n\t "+ this.nombre + ", Tropas en pais: " + this.ejercitos;
+        String texto="\n"+ this.nombre + ", Tropas en pais: " + this.ejercitos;
         return texto;
     }
 

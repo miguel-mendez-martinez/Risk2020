@@ -96,9 +96,9 @@ public class Cartas {
 
     @Override
     public String toString() {
-        String texto = "{\n tipoCarta: " + this.printTipo() + ",\n paisAsociado: "
-                + this.printPais() + ",\n perteneceAJugador: " + this.jugador.printNombre()
-                + ",\n ejercitosDeRearme: " + this.ejercitosCarta() + "\n}";
+        String texto = "{\ntipoCarta: " + this.printTipo() + ",\npaisAsociado: "
+                + this.printPais() + ",\nperteneceAJugador: " + this.jugador.printNombre()
+                + ",\nejercitosDeRearme: " + this.ejercitosCarta() + "\n}";
         return texto;
     }
 
