@@ -31,7 +31,7 @@ public class Salida {
 
     public void imprimirArchivo(String salida) {
         try {
-            File archivo = new File("salida.txt");
+            File archivo = new File("resultados.txt");
             if (archivo.createNewFile()) {
                 //System.out.println("Creando el archivo de salidas...");
             }

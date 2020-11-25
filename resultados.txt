@@ -21,10 +21,14 @@ $> crear jugadores jugadores.csv
  color: "ROJO"
 }
 
-$> crear Gondorff VIOLETA
+$> crear Gondorff AZUL
 {
  código de error: 104,
  descripción: "El jugador ya existe"
+{
+{
+ código de error: 114,
+ descripción: "El color ya está asignado"
 {
 
 $> crear JT VERDE
@@ -206,7 +210,7 @@ $> asignar paises paises.csv
 }
 {
 	nombre: Hooker
-	país: AmeCentra
+	país: AmeCentral
 	continente: América del Norte
 	fronteras: [ "Estados Unidos del Este", "Venezuela" ]
 }
@@ -325,12 +329,6 @@ $> asignar paises paises.csv
 	fronteras: [ "Australia Occidental", "Nueva Guinea" ]
 }
 
-$> asignar misiones misiones.csv
-{
- código de error: 99,
- descripción: "Comando no permitido en este momento"
-{
-
 $> asignar pais Gondorff Rusia
 {
  código de error: 113,
@@ -377,12 +375,6 @@ $> repartir ejercitos 7 Ontario
  numeroEjercitosAsignados: 5,
  numeroEjercitosTotales: 6,
  paisesOcupadosContinente: [ { "Alaska",9 }, { "Alberta",1 } ], { "Territorios del Noroeste",1 } ], { "Ontario",6 } ], { "Groenlandia",6 } ], { "Quebec",4 } ]
-
-$> jugador
-{
- código de error: 99,
- descripción: "Comando no permitido en este momento"
-{
 
 $> acabar turno
 {
@@ -447,53 +439,19 @@ $> repartir ejercitos 6 NGuinea
  paisesOcupadosContinente: [ { "Indonesia",16 }, { "Australia Occidental",1 } ], { "Nueva Guinea",7 } ], { "Australia Oriental",1 } ]
 }
 
-$> describir jugador Gondorff
-{
- nombre: "Gondorff",
- color: "VERDE",
- numeroEjercitos: 35,
- paises: [ "Alaska", "Territorios del Noroeste", "Groenlandia", "Islandia", "Escandinavia", "Siberia", "Yakustsk", "Kamchatka", "Alberta", "Ontario", "Quebec", "Gran Bretaña", "Europa Norte", "Rusia" ],
- continentes: [ ],
- cartas: [ ],
- numeroEjercitosRearmar: 0
-}
-
-$> describir jugador Hooker
-{
- nombre: "Hooker",
- color: "AZUL",
- numeroEjercitos: 35,
- paises: [ "Irkutsk", "Estados Unidos del Oeste", "Estados Unidos del Este", "Europa Occidental", "Europa Sur", "Urales", "Mongolia", "Japón", "America Central", "Afganistan", "China", "Venezuela", "África del Norte", "Egipto" ],
- continentes: [ ],
- cartas: [ ],
- numeroEjercitosRearmar: 0
-}
-
-$> jugador
-{
- nombre: "Lonnegan",
- color: "ROJO",
- mision: "Destruir el ejército AZUL",
- numeroEjercitos: 35,
- paises: [ "Oriente Medio", "India", "Sureste Asiático", "Perú", "Brasil", "Congo", "Africa Oriental", "Argentina", "Sudafrica", "Madagascar", "Indonesia", "Nueva Guinea", "Australia Occidental", "Australia Oriental" ],
- continentes: [ "Oceanía" ],
- cartas: [ ],
- numeroEjercitosRearmar: 0
-}
-
 $> acabar turno
 {
  nombre: "Gondorff",
  numeroEjercitosRearmar: 4
 }
 
-$> repartir ejercitos 3 Islandia
+$> repartir ejercitos 4 Islandia
 {
  pais: "Islandia",
  jugador: "Gondorff",
- numeroEjercitosAsignados: 3,
- numeroEjercitosTotales: 4,
- paisesOcupadosContinente: [ { "Islandia",4 }, { "Escandinavia",1 } ], { "Gran Bretaña",1 } ], { "Europa Norte",1 } ], { "Rusia",1 } ]
+ numeroEjercitosAsignados: 4,
+ numeroEjercitosTotales: 5,
+ paisesOcupadosContinente: [ { "Islandia",5 }, { "Escandinavia",1 } ], { "Gran Bretaña",1 } ], { "Europa Norte",1 } ], { "Rusia",1 } ]
 }
 
 $> describir pais USAEste
@@ -572,7 +530,7 @@ $> describir jugador Gondorff
 {
  nombre: "Gondorff",
  color: "VERDE",
- numeroEjercitos: 39,
+ numeroEjercitos: 40,
  paises: [ "Alaska", "Territorios del Noroeste", "Groenlandia", "Islandia", "Escandinavia", "Siberia", "Yakustsk", "Kamchatka", "Alberta", "Ontario", "Quebec", "Gran Bretaña", "Europa Norte", "Rusia", "Estados Unidos del Este" ],
  continentes: [ ],
  cartas: [ "Infantería&Alaska" ],
@@ -587,3 +545,4 @@ $> describir continente AméricaNorte
  numeroEjercitos: 30,
  rearmeContinente: 5
 }
+EOF

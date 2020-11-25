@@ -52,7 +52,7 @@ public class Menu {
         //Jugador jugadorActual = new Jugador();
         
         //debemos ver si ya existe un fichero salida y eliminarlo si lo hace, ya que si existe escribiremos en el y tendremos las salidas de ejecuciones distintas en el mismo archivo
-        File file = new File("salida.txt"); 
+        File file = new File("resultados.txt"); 
         if(file.delete()) 
         { 
            // System.out.println("Existía archivo, ha sido eliminado correctamente"); 
@@ -457,7 +457,7 @@ public class Menu {
                     case "atacar":
                         //el jugador actual atacara a un pais que no sea de su dominio, y que tenga alguna frontera en comun
                         //dos comandos, el automatico, y el forzado
-                        if(iniciar==false || rearmo == 1){ //solo se puede atacar entre repartir ejercitos y rearmar
+                        if(iniciar==false || rearmo == 1 || this.jugadorActual.getEjercitos_disponibles() != 0){ //solo se puede atacar entre repartir ejercitos y rearmar
                             Salida error = new Salida(99);
                             System.out.println(error.toString());
                         }
@@ -650,8 +650,8 @@ public class Menu {
                         //en cuanto repartamos ejercitos, debe crearse un nuevo jugador actual, ese sera el que tiene el turno en ese momentoy el que ejecutara los comandos 
                         if(partes.length == 2){
                             //comando que reparte todos y no puede ser ejecutado 2 veces
-                            if(checker >= 4){ //los comandos anteriores han sido ejecutados con exito se reparten
-                                if(checker >= 5){ //los ejercitos ya han sido totalmente repartidos no puede volver a suceder
+                            if(this.paisesAsignados(this.paises) == true){ //los comandos anteriores han sido ejecutados con exito se reparten
+                                if(iniciar == true){ //los ejercitos ya han sido totalmente repartidos no puede volver a suceder
                                     Salida error = new Salida(99);
                                     System.out.println(error.toString());
                                 }else{
@@ -669,9 +669,11 @@ public class Menu {
                                 System.out.println(error.toString());
                             }
                         }else{
-                            if(checker >= 4){
+                            if(this.paisesAsignados(this.paises) == true){
                                 repartirEjercitos(partes[2], partes[3]);
-                                iniciar = this.partidaIniciada();
+                                if(iniciar == false){
+                                    iniciar = this.partidaIniciada();
+                                }
                                 //this.ejercitosTurno(jugadorActual);
                                 //a partir de aqui es cuando comienzan los turnos, pero, este comando se seguira utilizando no se que hacer
                             }else{
@@ -685,6 +687,8 @@ public class Menu {
                         System.out.println(error.toString());
                 }
             }
+            Salida s = new Salida();
+            s.imprimirArchivo("EOF");
         } catch(Exception excepcion) {
             excepcion.printStackTrace();
         }
@@ -1331,8 +1335,8 @@ public class Menu {
             File fichero=  new File("jugadores.csv");
             FileReader lector= new FileReader(fichero);
             bufferLector= new BufferedReader(lector);
-            while((jugadorleido= bufferLector.readLine())!=null) {
-                String[] partes=jugadorleido.split(";");
+            while((jugadorleido = bufferLector.readLine())!=null) {
+                String[] partes = jugadorleido.split(";");
                 nombre= partes[0];
                 color= partes[1];
                 crearJugador(nombre, color);

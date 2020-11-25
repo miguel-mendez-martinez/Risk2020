@@ -212,7 +212,7 @@ public class Mapa {
         paises.add(USAEste);
 
         casilla = new Casilla(1, 3);
-        Pais AmeCentral = new Pais("America Central", "AmeCentra", casilla, Anorte);
+        Pais AmeCentral = new Pais("America Central", "AmeCentral", casilla, Anorte);
         Anorte.setPais(AmeCentral);
         casilla.setPais(AmeCentral);
         casillas.add(casilla);
