@@ -67,7 +67,7 @@ public class Menu {
         
         
         try {
-            File fichero=  new File("comandos.csv"); // fichero será comandos.csv
+            File fichero=  new File("comandos.txt"); // fichero será comandos.csv
             FileReader lector= new FileReader(fichero); // Creacion de objeto que lee "fichero"
             bufferLector= new BufferedReader(lector); // Usamos objeto de la clase BufferedReader ya que permite leer lineas completas
             while((orden= bufferLector.readLine())!=null) { // Mientras las líneas no estén en blanco:
@@ -273,9 +273,10 @@ public class Menu {
                            minimo = this.ejercitosTurno(this.jugadorActual); 
                         }
                         //this.jugadorActual.setEjercitos_disponibles(10);
-                        System.out.println(this.jugadorActual.printNomEjerR(minimo));
+                        this.jugadorActual.setEjerRearme(minimo);
+                        System.out.println(this.jugadorActual.printNomEjerR());
                         Salida sal = new Salida();
-                        sal.imprimirArchivo(this.jugadorActual.printNomEjerR(minimo));
+                        sal.imprimirArchivo(this.jugadorActual.printNomEjerR());
                         break;
                     case "cambiar":
                         if(iniciar==false || rearmo == 1){
@@ -975,7 +976,7 @@ public class Menu {
                 att.getJugador().setPaises(def);
                 ejercitosPerdidos = dadoAtt.countDados();
                 ejercitosBefA = att.getEjercitos();
-                ejercitosAftA = ejercitosBefA - ejercitosPerdidos + 1;
+                ejercitosAftA = ejercitosBefA - ejercitosPerdidos /*+ 1*/;
                 if(ejercitosAftA <= 0){
                     ejercitosAftD = ejercitosBefA - 1;
                     ejercitosAftA = 2;

@@ -133,8 +133,12 @@ public class Jugador {
         // mirar codigo de error o algo para ver que hacer si color es invalido como migueloh else System.out.println();
     }
 
-    public String printNomEjerR(int minimo) {
-        String texto = "{\nnombre: \"" + this.nombre + "\",\nnumeroEjercitosRearmar: " + minimo + "\n}";
+    public void setEjerRearme(int ejerRearme) {
+        this.ejerRearme = ejerRearme;
+    }
+    
+    public String printNomEjerR() {
+        String texto = "{\nnombre: \"" + this.nombre + "\",\nnumeroEjercitosRearmar: " + this.ejercitos_disponibles + "\n}";
         return texto;
     }
 
@@ -206,11 +210,40 @@ public class Jugador {
                     + this.prinColor() + ",\nnumeroEjercitos: " + this.countTropas()
                     + ",\npaises: " + this.printPaises() + ",\ncontinentes: "
                     + printContinentes() + ",\ncartas: " + this.printCartas()
-                    + ",\nnumeroEjercitosRearmar: " + this.ejercitos_disponibles + "\n}";
+                    + ",\nnumeroEjercitosRearmar: " + this.ejerRearme() + "\n}";
         }
         return texto;
     }
+    public int ejerRearme(){
+        int minimo;
+        
+        minimo = (this.getPaises().size())/3;
+        
+        //ahora debemos mirar si es dueño de algun continente
 
+        for(Continente c : this.continentes){
+            if(c.getNombre().equals("Asia") && this.esDueño(c)){
+                minimo += 7;
+            }
+            if(c.getNombre().equals("Oceanía") && this.esDueño(c)){
+                minimo += 2;
+            }
+            if(c.getNombre().equals("Europa") && this.esDueño(c)){
+                minimo += 5;
+            }
+            if(c.getNombre().equals("América del Sur") && this.esDueño(c)){
+                minimo += 2;
+            }
+            if(c.getNombre().equals("América del Norte") && this.esDueño(c)){
+                minimo += 5;
+            }
+            if(c.getNombre().equals("África") && this.esDueño(c)){
+                minimo += 3;
+            }
+        }
+        
+        return minimo;
+    }
     @Override
     public String toString() {
         String texto = "{\nnombre: " + this.printNombre() + ",\ncolor: "

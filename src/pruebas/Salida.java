@@ -91,7 +91,7 @@ public class Salida {
                 this.descripcion = "El país no existe";
                 break;
             case 110:
-                this.descripcion = "El país no pertence al jugador";
+                this.descripcion = "El país no pertenece al jugador";
                 break;
             case 111:
                 this.descripcion = "El país pertenece al jugador";
@@ -118,7 +118,7 @@ public class Salida {
                 this.descripcion = "Las misiones no están asignadas";
                 break;
             case 119:
-                this.descripcion = "Ejercitos no disponible";
+                this.descripcion = "Ejércitos no disponibles";
                 break;
             case 120:
                 this.descripcion = "No hay cartas suficientes";
@@ -133,7 +133,7 @@ public class Salida {
                 this.descripcion = "Algunas cartas no existen";
                 break;
             case 124:
-                this.descripcion = "No hay ejercitos suficientes";
+                this.descripcion = "No hay ejércitos suficientes";
                 break;
             case 125:
                 this.descripcion = "El identificador no sigue el formato correcto";

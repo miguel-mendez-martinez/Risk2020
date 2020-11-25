@@ -155,15 +155,16 @@ public class Continente {
         for (Pais p : this.paises) {
             if (i == 0) {
                 if(pais.getJugador().equals(p.getJugador())){
-                    paisCont += "[ { " + p.printNombre() + "," + p.getEjercitos() + " }";
+                    paisCont += "[ { " + p.printNombre() + ", " + p.getEjercitos() + " }";
                     i+=1;
                 }
             } else{
                 if(pais.getJugador().equals(p.getJugador())){
-                    paisCont += ", { " + p.printNombre() + "," + p.getEjercitos() + " } ]";
+                    paisCont += ", { " + p.printNombre() + ", " + p.getEjercitos() + " }";
                 }
-            } 
+            }
         }
+        paisCont += " ]";
         return paisCont;
     }
 
