@@ -1223,7 +1223,7 @@ public class Menu {
                                 pais.setEjercitos(1);
                                 jugador.setEjercitos_disponibles(jugador.getEjercitos_disponibles()-1);
                                 String fronteras = pais.fronterasToString();
-                                String exito = "{\nnombre: " + nombreJugador +"\npaís: " + nombrePais + "\ncontinente: " + pais.getContinente().getNombre() + "\nfronteras:" + fronteras + "\n}";
+                                String exito = "{\nnombre: " + jugador.printNombre() +",\npais: " + pais.printNombre() + ",\ncontinente: " + pais.getContinente().printNombre() + ",\nfrontera:" + fronteras + "\n}";
                                 System.out.println(exito);
                                 Salida salida = new Salida();
                                 salida.imprimirArchivo(exito);
@@ -1471,7 +1471,7 @@ public class Menu {
                 pais.getJugador().setEjercitos_disponibles(0); // si se quieren asignar mas de los disponibles se asignan solo estos y pasa a haber 0 disponibles
                 String exito = "{\npais: \"" + pais.getNombre() + "\",\njugador: \"" + 
                         pais.getJugador().getNombre() + "\",\nnumeroEjercitosAsignados: " 
-                        + ejDisp + ",\nnumeroEjercitosTotales: " + pais.getEjercitos() + ",\npaisesOcupadosContinente: " + pais.getContinente().printPaisesEjer(pais);
+                        + ejDisp + ",\nnumeroEjercitosTotales: " + pais.getEjercitos() + ",\npaisesOcupadosContinente: " + pais.getContinente().printPaisesEjer(pais) + "\n}";
                 System.out.println(exito);
                 Salida salida = new Salida();
                 salida.imprimirArchivo(exito);

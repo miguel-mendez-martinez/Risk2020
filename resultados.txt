@@ -5,7 +5,7 @@ $> crear mapa
 {
 código de error: 107,
 descripción: "El mapa ya ha sido creado"
-{
+}
 
 $> crear jugadores jugadores.csv
 {
@@ -25,23 +25,23 @@ $> crear Gondorff AZUL
 {
 código de error: 104,
 descripción: "El jugador ya existe"
-{
+}
 {
 código de error: 114,
 descripción: "El color ya está asignado"
-{
+}
 
 $> crear JT VERDE
 {
 código de error: 114,
 descripción: "El color ya está asignado"
-{
+}
 
 $> asignar paises paises.csv
 {
 código de error: 118,
 descripción: "Las misiones no están asignadas"
-{
+}
 
 $> asignar misiones misiones.csv
 {
@@ -51,7 +51,7 @@ mision: "Conquistar 24 países de la preferencia del jugador"
 {
 código de error: 116,
 descripción: "La misión no existe"
-{
+}
 {
 nombre: "Lonnegan"
 mision: "Destruir el ejército AZUL"
@@ -61,13 +61,13 @@ $> crear JT CYAN
 {
 código de error: 99,
 descripción: "Comando no permitido en este momento"
-{
+}
 
 $> asignar paises paises.csv
 {
 código de error: 118,
 descripción: "Las misiones no están asignadas"
-{
+}
 
 $> asignar mision Hooker M32
 {
@@ -77,263 +77,263 @@ mision: "Conquistar Asia y África"
 
 $> asignar paises paises.csv
 {
-nombre: Gondorff
-país: Alaska
-continente: América del Norte
-fronteras: [ "Alberta", "Territorios del Noroeste", "Kamchatka" ]
+nombre: "Gondorff",
+pais: "Alaska",
+continente: "América del Norte",
+frontera: [ "Alberta", "Territorios del Noroeste", "Kamchatka" ]
 }
 {
-nombre: Gondorff
-país: TNoroeste
-continente: América del Norte
-fronteras: [ "Alaska", "Ontario", "Groenlandia" ]
+nombre: "Gondorff",
+pais: "Territorios del Noroeste",
+continente: "América del Norte",
+frontera: [ "Alaska", "Ontario", "Groenlandia" ]
 }
 {
-nombre: Gondorff
-país: Groenlan
-continente: América del Norte
-fronteras: [ "Islandia", "Territorios del Noroeste", "Quebec" ]
+nombre: "Gondorff",
+pais: "Groenlandia",
+continente: "América del Norte",
+frontera: [ "Islandia", "Territorios del Noroeste", "Quebec" ]
 }
 {
-nombre: Gondorff
-país: Islandia
-continente: Europa
-fronteras: [ "Escandinavia", "Groenlandia" ]
+nombre: "Gondorff",
+pais: "Islandia",
+continente: "Europa",
+frontera: [ "Escandinavia", "Groenlandia" ]
 }
 {
-nombre: Gondorff
-país: Escandina
-continente: Europa
-fronteras: [ "Islandia", "Gran Bretaña", "Siberia" ]
+nombre: "Gondorff",
+pais: "Escandinavia",
+continente: "Europa",
+frontera: [ "Islandia", "Gran Bretaña", "Siberia" ]
 }
 {
-nombre: Gondorff
-país: Siberia
-continente: Asia
-fronteras: [ "Escandinavia", "Europa Norte", "Yakustsk" ]
+nombre: "Gondorff",
+pais: "Siberia",
+continente: "Asia",
+frontera: [ "Escandinavia", "Europa del Norte", "Yakustsk" ]
 }
 {
-nombre: Gondorff
-país: Yakustsk
-continente: Asia
-fronteras: [ "Rusia", "Siberia", "Kamchatka" ]
+nombre: "Gondorff",
+pais: "Yakustsk",
+continente: "Asia",
+frontera: [ "Rusia", "Siberia", "Kamchatka" ]
 }
 {
-nombre: Gondorff
-país: Kamchatka
-continente: Asia
-fronteras: [ "Alaska", "Yakustsk", "Irkutsk" ]
+nombre: "Gondorff",
+pais: "Kamchatka",
+continente: "Asia",
+frontera: [ "Alaska", "Yakustsk", "Irkutsk" ]
 }
 {
-nombre: Gondorff
-país: Alberta
-continente: América del Norte
-fronteras: [ "Alaska", "Estados Unidos del Oeste", "Ontario" ]
+nombre: "Gondorff",
+pais: "Alberta",
+continente: "América del Norte",
+frontera: [ "Alaska", "Estados Unidos del Oeste", "Ontario" ]
 }
 {
-nombre: Gondorff
-país: Ontario
-continente: América del Norte
-fronteras: [ "Alberta", "Territorios del Noroeste", "Estados Unidos del Este", "Quebec" ]
+nombre: "Gondorff",
+pais: "Ontario",
+continente: "América del Norte",
+frontera: [ "Alberta", "Territorios del Noroeste", "Estados Unidos del Este", "Quebec" ]
 }
 {
-nombre: Gondorff
-país: Quebec
-continente: América del Norte
-fronteras: [ "Ontario", "Groenlandia" ]
+nombre: "Gondorff",
+pais: "Quebec",
+continente: "América del Norte",
+frontera: [ "Ontario", "Groenlandia" ]
 }
 {
-nombre: Gondorff
-país: GBretaña
-continente: Europa
-fronteras: [ "Escandinavia", "Europa Occidental", "Europa Norte" ]
+nombre: "Gondorff",
+pais: "Gran Bretaña",
+continente: "Europa",
+frontera: [ "Escandinavia", "Europa Occidental", "Europa del Norte" ]
 }
 {
-nombre: Gondorff
-país: EurNorte
-continente: Europa
-fronteras: [ "Gran Bretaña", "Europa Sur", "Rusia", "Siberia" ]
+nombre: "Gondorff",
+pais: "Europa del Norte",
+continente: "Europa",
+frontera: [ "Gran Bretaña", "Europa del Sur", "Rusia", "Siberia" ]
 }
 {
-nombre: Gondorff
-país: Rusia
-continente: Europa
-fronteras: [ "Europa Norte", "Yakustsk", "Urales", "Irkutsk" ]
+nombre: "Gondorff",
+pais: "Rusia",
+continente: "Europa",
+frontera: [ "Europa del Norte", "Yakustsk", "Urales", "Irkutsk" ]
 }
 {
-nombre: Hooker
-país: Irkutsk
-continente: Asia
-fronteras: [ "Rusia", "Kamchatka", "Mongolia" ]
+nombre: "Hooker",
+pais: "Irkutsk",
+continente: "Asia",
+frontera: [ "Rusia", "Kamchatka", "Mongolia" ]
 }
 {
-nombre: Hooker
-país: USAOeste
-continente: América del Norte
-fronteras: [ "Alberta", "Estados Unidos del Este" ]
+nombre: "Hooker",
+pais: "Estados Unidos del Oeste",
+continente: "América del Norte",
+frontera: [ "Alberta", "Estados Unidos del Este" ]
 }
 {
-nombre: Hooker
-país: USAEste
-continente: América del Norte
-fronteras: [ "Estados Unidos del Oeste", "Ontario", "America Central" ]
+nombre: "Hooker",
+pais: "Estados Unidos del Este",
+continente: "América del Norte",
+frontera: [ "Estados Unidos del Oeste", "Ontario", "América Central" ]
 }
 {
-nombre: Hooker
-país: EurOcc
-continente: Europa
-fronteras: [ "África del Norte", "Gran Bretaña", "Europa Sur" ]
+nombre: "Hooker",
+pais: "Europa Occidental",
+continente: "Europa",
+frontera: [ "África del Norte", "Gran Bretaña", "Europa del Sur" ]
 }
 {
-nombre: Hooker
-país: EurSur
-continente: Europa
-fronteras: [ "Egipto", "Europa Occidental", "Europa Norte", "Urales" ]
+nombre: "Hooker",
+pais: "Europa del Sur",
+continente: "Europa",
+frontera: [ "Egipto", "Europa Occidental", "Europa del Norte", "Urales" ]
 }
 {
-nombre: Hooker
-país: Urales
-continente: Asia
-fronteras: [ "Europa Sur", "Rusia", "Afganistan", "Mongolia" ]
+nombre: "Hooker",
+pais: "Urales",
+continente: "Asia",
+frontera: [ "Europa del Sur", "Rusia", "Afganistán", "Mongolia" ]
 }
 {
-nombre: Hooker
-país: Mongolia
-continente: Asia
-fronteras: [ "Urales", "Irkutsk", "China", "Japón" ]
+nombre: "Hooker",
+pais: "Mongolia",
+continente: "Asia",
+frontera: [ "Urales", "Irkutsk", "China", "Japón" ]
 }
 {
-nombre: Hooker
-país: Japón
-continente: Asia
-fronteras: [ "Mongolia" ]
+nombre: "Hooker",
+pais: "Japón",
+continente: "Asia",
+frontera: [ "Mongolia" ]
 }
 {
-nombre: Hooker
-país: AmeCentral
-continente: América del Norte
-fronteras: [ "Estados Unidos del Este", "Venezuela" ]
+nombre: "Hooker",
+pais: "América Central",
+continente: "América del Norte",
+frontera: [ "Estados Unidos del Este", "Venezuela" ]
 }
 {
-nombre: Hooker
-país: Afgan
-continente: Asia
-fronteras: [ "Urales", "Oriente Medio", "China" ]
+nombre: "Hooker",
+pais: "Afganistán",
+continente: "Asia",
+frontera: [ "Urales", "Oriente Medio", "China" ]
 }
 {
-nombre: Hooker
-país: China
-continente: Asia
-fronteras: [ "Afganistan", "Mongolia", "India" ]
+nombre: "Hooker",
+pais: "China",
+continente: "Asia",
+frontera: [ "Afganistán", "Mongolia", "India" ]
 }
 {
-nombre: Hooker
-país: Venezuela
-continente: América del Sur
-fronteras: [ "America Central", "Perú" ]
+nombre: "Hooker",
+pais: "Venezuela",
+continente: "América del Sur",
+frontera: [ "América Central", "Perú" ]
 }
 {
-nombre: Hooker
-país: ANorte
-continente: África
-fronteras: [ "Congo", "Egipto", "Europa Occidental", "Brasil" ]
+nombre: "Hooker",
+pais: "África del Norte",
+continente: "África",
+frontera: [ "Congo", "Egipto", "Europa Occidental", "Brasil" ]
 }
 {
-nombre: Hooker
-país: Egipto
-continente: África
-fronteras: [ "África del Norte", "Africa Oriental", "Europa Sur", "Oriente Medio" ]
+nombre: "Hooker",
+pais: "Egipto",
+continente: "África",
+frontera: [ "África del Norte", "África Oriental", "Europa del Sur", "Oriente Medio" ]
 }
 {
-nombre: Lonnegan
-país: OMedio
-continente: Asia
-fronteras: [ "Egipto", "Afganistan", "India" ]
+nombre: "Lonnegan",
+pais: "Oriente Medio",
+continente: "Asia",
+frontera: [ "Egipto", "Afganistán", "India" ]
 }
 {
-nombre: Lonnegan
-país: India
-continente: Asia
-fronteras: [ "Oriente Medio", "China", "Sureste Asiático" ]
+nombre: "Lonnegan",
+pais: "India",
+continente: "Asia",
+frontera: [ "Oriente Medio", "China", "Sureste Asiático" ]
 }
 {
-nombre: Lonnegan
-país: SAsiático
-continente: Asia
-fronteras: [ "Indonesia", "India" ]
+nombre: "Lonnegan",
+pais: "Sureste Asiático",
+continente: "Asia",
+frontera: [ "Indonesia", "India" ]
 }
 {
-nombre: Lonnegan
-país: Perú
-continente: América del Sur
-fronteras: [ "Venezuela", "Argentina", "Brasil" ]
+nombre: "Lonnegan",
+pais: "Perú",
+continente: "América del Sur",
+frontera: [ "Venezuela", "Argentina", "Brasil" ]
 }
 {
-nombre: Lonnegan
-país: Brasil
-continente: América del Sur
-fronteras: [ "África del Norte", "Perú" ]
+nombre: "Lonnegan",
+pais: "Brasil",
+continente: "América del Sur",
+frontera: [ "África del Norte", "Perú" ]
 }
 {
-nombre: Lonnegan
-país: Congo
-continente: África
-fronteras: [ "África del Norte", "Africa Oriental" ]
+nombre: "Lonnegan",
+pais: "Congo",
+continente: "África",
+frontera: [ "África del Norte", "África Oriental" ]
 }
 {
-nombre: Lonnegan
-país: AOriental
-continente: África
-fronteras: [ "Congo", "Egipto", "Sudafrica" ]
+nombre: "Lonnegan",
+pais: "África Oriental",
+continente: "África",
+frontera: [ "Congo", "Egipto", "Sudáfrica" ]
 }
 {
-nombre: Lonnegan
-país: Argentina
-continente: América del Sur
-fronteras: [ "Perú" ]
+nombre: "Lonnegan",
+pais: "Argentina",
+continente: "América del Sur",
+frontera: [ "Perú" ]
 }
 {
-nombre: Lonnegan
-país: Sudáfrica
-continente: África
-fronteras: [ "Africa Oriental", "Madagascar" ]
+nombre: "Lonnegan",
+pais: "Sudáfrica",
+continente: "África",
+frontera: [ "África Oriental", "Madagascar" ]
 }
 {
-nombre: Lonnegan
-país: Madagasca
-continente: África
-fronteras: [ "Sudafrica" ]
+nombre: "Lonnegan",
+pais: "Madagascar",
+continente: "África",
+frontera: [ "Sudáfrica" ]
 }
 {
-nombre: Lonnegan
-país: Indonesia
-continente: Oceanía
-fronteras: [ "Australia Occidental", "Nueva Guinea", "Sureste Asiático" ]
+nombre: "Lonnegan",
+pais: "Indonesia",
+continente: "Oceanía",
+frontera: [ "Australia Occidental", "Nueva Guinea", "Sureste Asiático" ]
 }
 {
-nombre: Lonnegan
-país: NGuinea
-continente: Oceanía
-fronteras: [ "Indonesia", "Australia Oriental" ]
+nombre: "Lonnegan",
+pais: "Nueva Guinea",
+continente: "Oceanía",
+frontera: [ "Indonesia", "Australia Oriental" ]
 }
 {
-nombre: Lonnegan
-país: AusOccid
-continente: Oceanía
-fronteras: [ "Indonesia", "Australia Oriental" ]
+nombre: "Lonnegan",
+pais: "Australia Occidental",
+continente: "Oceanía",
+frontera: [ "Indonesia", "Australia Oriental" ]
 }
 {
-nombre: Lonnegan
-país: AusOrient
-continente: Oceanía
-fronteras: [ "Australia Occidental", "Nueva Guinea" ]
+nombre: "Lonnegan",
+pais: "Australia Oriental",
+continente: "Oceanía",
+frontera: [ "Australia Occidental", "Nueva Guinea" ]
 }
 
 $> asignar pais Gondorff Rusia
 {
 código de error: 113,
 descripción: "El país ya está asignado"
-{
+}
 
 $> repartir ejercitos 8 Alaska
 {
@@ -357,7 +357,7 @@ $> repartir ejercitos 5 Urales
 {
 código de error: 110,
 descripción: "El país no pertence al jugador"
-{
+}
 
 $> repartir ejercitos 3 Quebec
 {
@@ -375,6 +375,7 @@ jugador: "Gondorff",
 numeroEjercitosAsignados: 5,
 numeroEjercitosTotales: 6,
 paisesOcupadosContinente: [ { "Alaska",9 }, { "Alberta",1 } ], { "Territorios del Noroeste",1 } ], { "Ontario",6 } ], { "Groenlandia",6 } ], { "Quebec",4 } ]
+}
 
 $> acabar turno
 {
@@ -413,7 +414,7 @@ $> repartir ejercitos 5 India
 {
 código de error: 110,
 descripción: "El país no pertence al jugador"
-{
+}
 
 $> acabar turno
 {
@@ -451,7 +452,7 @@ pais: "Islandia",
 jugador: "Gondorff",
 numeroEjercitosAsignados: 4,
 numeroEjercitosTotales: 5,
-paisesOcupadosContinente: [ { "Islandia",5 }, { "Escandinavia",1 } ], { "Gran Bretaña",1 } ], { "Europa Norte",1 } ], { "Rusia",1 } ]
+paisesOcupadosContinente: [ { "Islandia",5 }, { "Escandinavia",1 } ], { "Gran Bretaña",1 } ], { "Europa del Norte",1 } ], { "Rusia",1 } ]
 }
 
 $> describir pais USAEste
@@ -459,7 +460,7 @@ $> describir pais USAEste
 nombre: "Estados Unidos del Este",
 abreviatura: "USAEste",
 continente: "América del Norte",
-frontera:  [ "Estados Unidos del Oeste", "Ontario", "America Central" ],
+frontera:  [ "Estados Unidos del Oeste", "Ontario", "América Central" ],
 jugador: "Hooker",
 numeroEjercitos: 1,
 numeroVecesOcupado: 0
@@ -481,7 +482,7 @@ $> describir pais USAEste
 nombre: "Estados Unidos del Este",
 abreviatura: "USAEste",
 continente: "América del Norte",
-frontera:  [ "Estados Unidos del Oeste", "Ontario", "America Central" ],
+frontera:  [ "Estados Unidos del Oeste", "Ontario", "América Central" ],
 jugador: "Gondorff",
 numeroEjercitos: 3,
 numeroVecesOcupado: 1
@@ -518,7 +519,7 @@ $> atacar GBretaña 3 EurSur 4
 {
 código de error: 99,
 descripción: "Comando no permitido en este momento"
-{
+}
 
 $> acabar turno
 {
@@ -531,7 +532,7 @@ $> describir jugador Gondorff
 nombre: "Gondorff",
 color: "VERDE",
 numeroEjercitos: 40,
-paises: [ "Alaska", "Territorios del Noroeste", "Groenlandia", "Islandia", "Escandinavia", "Siberia", "Yakustsk", "Kamchatka", "Alberta", "Ontario", "Quebec", "Gran Bretaña", "Europa Norte", "Rusia", "Estados Unidos del Este" ],
+paises: [ "Alaska", "Territorios del Noroeste", "Groenlandia", "Islandia", "Escandinavia", "Siberia", "Yakustsk", "Kamchatka", "Alberta", "Ontario", "Quebec", "Gran Bretaña", "Europa del Norte", "Rusia", "Estados Unidos del Este" ],
 continentes: [ ],
 cartas: [ "Infantería&Alaska" ],
 numeroEjercitosRearmar: 0

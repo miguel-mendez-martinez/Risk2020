@@ -53,7 +53,7 @@ public class Salida {
     @Override
     public String toString() {
         codeToDesc(this.code);
-        String error = "{\ncódigo de error: " + this.code + ",\ndescripción: \"" + this.descripcion + "\"\n{";
+        String error = "{\ncódigo de error: " + this.code + ",\ndescripción: \"" + this.descripcion + "\"\n}";
         this.imprimirArchivo(error);
         return error;
     }

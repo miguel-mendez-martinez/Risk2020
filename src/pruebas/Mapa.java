@@ -66,7 +66,7 @@ public class Mapa {
         paises.add(anorte);
 
         casilla = new Casilla(6, 5);
-        Pais aoriental = new Pais("Africa Oriental", "AOriental", casilla, africa);
+        Pais aoriental = new Pais("África Oriental", "AOriental", casilla, africa);
         africa.setPais(aoriental);
         casilla.setPais(aoriental);
         casillas.add(casilla);
@@ -94,7 +94,7 @@ public class Mapa {
         paises.add(madagascar);
 
         casilla = new Casilla(6, 6);
-        Pais sudafrica = new Pais("Sudafrica", "Sudáfrica", casilla, africa);
+        Pais sudafrica = new Pais("Sudáfrica", "Sudáfrica", casilla, africa);
         africa.setPais(sudafrica);
         casilla.setPais(sudafrica);
         casillas.add(casilla);
@@ -139,14 +139,14 @@ public class Mapa {
         paises.add(EurOcc);
 
         casilla = new Casilla(6, 1);
-        Pais EurNorte = new Pais("Europa Norte", "EurNorte", casilla, europa);
+        Pais EurNorte = new Pais("Europa del Norte", "EurNorte", casilla, europa);
         europa.setPais(EurNorte);
         casilla.setPais(EurNorte);
         casillas.add(casilla);
         paises.add(EurNorte);
 
         casilla = new Casilla(6, 2);
-        Pais EurSur = new Pais("Europa Sur", "EurSur", casilla, europa);
+        Pais EurSur = new Pais("Europa del Sur", "EurSur", casilla, europa);
         europa.setPais(EurSur);
         casilla.setPais(EurSur);
         casillas.add(casilla);
@@ -212,7 +212,7 @@ public class Mapa {
         paises.add(USAEste);
 
         casilla = new Casilla(1, 3);
-        Pais AmeCentral = new Pais("America Central", "AmeCentral", casilla, Anorte);
+        Pais AmeCentral = new Pais("América Central", "AmeCentral", casilla, Anorte);
         Anorte.setPais(AmeCentral);
         casilla.setPais(AmeCentral);
         casillas.add(casilla);
@@ -340,7 +340,7 @@ public class Mapa {
         paises.add(Urales);
 
         casilla = new Casilla(7, 3);
-        Pais Afgan = new Pais("Afganistan", "Afgan", casilla, asia);
+        Pais Afgan = new Pais("Afganistán", "Afgan", casilla, asia);
         asia.setPais(Afgan);
         casilla.setPais(Afgan);
         casillas.add(casilla);
