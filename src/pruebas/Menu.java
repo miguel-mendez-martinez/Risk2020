@@ -53,19 +53,7 @@ public class Menu {
         
         //debemos ver si ya existe un fichero salida y eliminarlo si lo hace, ya que si existe escribiremos en el y tendremos las salidas de ejecuciones distintas en el mismo archivo
         File file = new File("resultados.txt"); 
-        if(file.delete()) 
-        { 
-           // System.out.println("Existía archivo, ha sido eliminado correctamente"); 
-        } 
-        else
-        { 
-            //System.out.println("No existía archivo, por lo que no elimino nada."); 
-        }
-        
-        //preguntar al weon si esto de arriba deberiamos imprimirlo tmb en salidas
-        // weon xddd
-        
-        
+        file.delete();
         try {
             File fichero=  new File("comandos.txt"); // fichero será comandos.csv
             FileReader lector= new FileReader(fichero); // Creacion de objeto que lee "fichero"
@@ -77,26 +65,6 @@ public class Menu {
                 s.imprimirArchivo(comandoArchivo);
                 String[] partes=orden.split(" "); // Separa en diferentes strings los elementos de la linea separados por espacios
                 String comando= partes[0]; // Definimos como comando la primera palabra de la linea
-                // COMANDOS INICIALES PARA EMPEZAR A JUGAR
-                //    crear mapa
-                //    crear jugadores <nombre_fichero>
-                //    crear <nombre_jugador> <nombre_color>
-                //    asignar misiones
-                //    asignar paises <nombre_fichero>
-                //    asignar <nombre_pais> <nombre_jugador>
-
-                // COMANDOS DISPONIBLES DURANTE EL JUEGO
-                //    acabar
-                //    atacar <nombre_pais> <nombre_pais>
-                //    describir continente <nombre_continente>
-                //    describir frontera <nombre_pais>
-                //    describir frontera <nombre_continente>
-                //    describir jugador <nombre_jugador>
-                //    describir pais <nombre_pais>
-                //    jugador
-                //    repartir ejercitos
-                //    ver mapa
-                //    ver pais <nombre_pais>
                 switch(comando) {
                     case "crear":
                         if(partes.length==2) {
