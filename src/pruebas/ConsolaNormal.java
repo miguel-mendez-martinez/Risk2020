@@ -20,8 +20,7 @@ public class ConsolaNormal implements Consola{
     public String leer(){
         String orden="";
         Scanner scanIn = new Scanner(System.in);
-        orden = scanIn.nextLine();
-        scanIn.close();            
+        orden = scanIn.nextLine();            
         return orden;
     }
 }
