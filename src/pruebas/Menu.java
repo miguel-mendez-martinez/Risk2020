@@ -29,373 +29,287 @@ public class Menu {
     Jugador jugadorActual;
     Turno t;
     int conquisto;
+    static ConsolaNormal consola;
     /**
      * 
      */
     public Menu() {
-        // Inicialización de algunos atributos
-        // Iniciar juego
-         // Con fichero:
-        boolean iniciar=false;
-        this.mapa = null;
-        int rearmo = 0;
-        Mision mision;
+        //Aqui inicializamos algunos atrubutos con valores que ponemos predetermiados para saber alguna condicion de la prioridad de los comandos
+        boolean iniciar=false; //este boolean nos dira si la partida ha sido iniciada correctamente
+        this.mapa = null; //el mapa lo iniciamos a null para saber si ya ha sido creado
+        int rearmo = 0; //esto es para saber cuando un jugador ha conquistado un pais en su turno
+        int checker = 0; //esto lo utilizamos al principio de la creacion del proyecto. Aunque lo hemos quitado de muchos sitios con mejores comprobantes aun hay funciones que no hemos sabido como hacer para deshacernos de el 
+        Mision mision; //se utiliza en varios puntos del menu por lo que hemos preferido declararlo aqui
+        this.jugadorActual = null;
+        this.conquisto=0;
+        //creacion de los arrays caracteristicos del menu, que seran utilizados en practiamente todos sus metodos
         this.jugadores = new ArrayList<>();
         this.paises = new ArrayList<>();
         this.continentes = new ArrayList<>();
         this.cartas = new ArrayList<>();
-        int checker = 0; //cuando se ataque y se obtenga victoria esto ira a 0, y se pondra siempre a 0 al empezar un turno
-        String orden= null;
-        BufferedReader bufferLector= null;
-        this.jugadorActual = null;
-        this.conquisto=0;
-        //Jugador jugadorActual = new Jugador();
+        consola = new ConsolaNormal();
+        
+        
         
         //debemos ver si ya existe un fichero salida y eliminarlo si lo hace, ya que si existe escribiremos en el y tendremos las salidas de ejecuciones distintas en el mismo archivo
         File file = new File("resultados.txt"); 
         file.delete();
-        try {
-            File fichero=  new File("comandos.txt"); // fichero será comandos.csv
-            FileReader lector= new FileReader(fichero); // Creacion de objeto que lee "fichero"
-            bufferLector= new BufferedReader(lector); // Usamos objeto de la clase BufferedReader ya que permite leer lineas completas
-            while((orden= bufferLector.readLine())!=null) { // Mientras las líneas no estén en blanco:
-                String comandoArchivo = "\n$> " + orden;
-                System.out.println(comandoArchivo);
-                Salida s = new Salida();
-                s.imprimirArchivo(comandoArchivo);
-                String[] partes=orden.split(" "); // Separa en diferentes strings los elementos de la linea separados por espacios
-                String comando= partes[0]; // Definimos como comando la primera palabra de la linea
-                switch(comando) {
-                    case "crear":
-                        if(partes.length==2) {
-                            if(partes[1].equals("mapa")){
+        String orden= null;
+        //BufferedReader bufferLector= null;
+        while(true){
+            orden = consola.leer();// Mientras las líneas no estén en blanco:
+            String comandoArchivo = "\n$> " + orden;
+            consola.imprimir(comandoArchivo);
+            Salida s = new Salida();
+            s.imprimirArchivo(comandoArchivo);
+            String[] partes=orden.split(" "); // Separa en diferentes strings los elementos de la linea separados por espacios
+            String comando= partes[0]; // Definimos como comando la primera palabra de la linea
+            switch(comando) {
+                case "crear":
+                    if(partes.length==2) {
+                        if(partes[1].equals("mapa")){
+                            if(this.mapa == null){ //comprobamos si el mapaya habia sido creado
+                                crearMapa();
                                 if(this.mapa == null){
-                                    crearMapa();
-                                    if(this.mapa == null){
-                                        System.out.println("Error en la creacion de mapa.");
-                                    }else
-                                    checker = 1;//tras crear el mapa, los comandos de maxima prioridad han terminado, por lo que se pueden ejecutar los siguientes
-                                }else{
-                                    Salida error = new Salida(107);
-                                    System.out.println(error.toString());
-                                }
+                                    System.out.println("Error en la creacion de mapa.");
+                                }else
+                                checker = 1;//tras crear el mapa, los comandos de maxima prioridad han terminado, por lo que se pueden ejecutar los siguientes
                             }else{
-                                Salida error = new Salida(101);
+                                //el mapa ya fue creado por lo que sacamos su error correspondiente
+                                Salida error = new Salida(107);
                                 System.out.println(error.toString());
                             }
-                        }else if(partes.length==3) {
-                            if(this.mapa != null){
-                                if(this.algunaMision(this.jugadores) == true){ //si la siguiente instruccion en prioridad ha sido ejecutada no podra ejecutar esta, pero si podra volver a ejecutarse despues de un crear jugador
-                                    Salida error = new Salida(99);
-                                    System.out.println(error.toString());
-                                }else{
-                                    if(partes[1].equals("jugadores")) { 
-                                        crearJugador(new File(partes[2]));
-                                        this.setEjercitosInicio();
-                                        this.jugadorActual = this.jugadores.get(0);
-                                        if(checker < 2){
-                                            checker = 2;
-                                        }
-                                    } else {
-                                        crearJugador(partes[1], partes[2]);
-                                        this.setEjercitosInicio();
-                                        this.jugadorActual = this.jugadores.get(0);
-                                        if(checker < 2){
-                                            checker = 2;
-                                        }
-                                    }
-                                }
-                            }else{
-                                Salida error = new Salida(106);
-                                System.out.println(error.toString());
-                            }
-                            
-                        }else {
+                        }else{
                             Salida error = new Salida(101);
                             System.out.println(error.toString());
                         }
-                        break;
-                    case "ver":
-                        if(partes[1].equals("mapa")){
-                            if(this.mapa!=null){
-                                this.mapa.printMapa();
-                            }else{
+                    }else if(partes.length==3) {
+                        if(this.mapa != null){
+                            if(this.algunaMision(this.jugadores) == true){ //si la siguiente instruccion en prioridad ha sido ejecutada no podra ejecutar esta, pero si podra volver a ejecutarse despues de un crear jugador
                                 Salida error = new Salida(99);
                                 System.out.println(error.toString());
+                            }else{
+                                if(partes[1].equals("jugadores")) { 
+                                    crearJugador(new File(partes[2]));
+                                    this.setEjercitosInicio();
+                                    this.jugadorActual = this.jugadores.get(0);
+                                    if(checker < 2){
+                                        checker = 2;
+                                    }
+                                } else {
+                                    crearJugador(partes[1], partes[2]);
+                                    this.setEjercitosInicio();
+                                    this.jugadorActual = this.jugadores.get(0);
+                                    if(checker < 2){
+                                        checker = 2;
+                                    }
+                                }
                             }
+                        }else{
+                            Salida error = new Salida(106);
+                            System.out.println(error.toString());
                         }
-                        break;
-                    case "jugador":
-                        //esto es describir toda la mierda del jugador del turno actual
-                        if(iniciar==false){
+
+                    }else {
+                        Salida error = new Salida(101);
+                        System.out.println(error.toString());
+                    }
+                    break;
+                case "ver":
+                    if(partes[1].equals("mapa")){
+                        if(this.mapa!=null){
+                            this.mapa.printMapa();
+                        }else{
                             Salida error = new Salida(99);
                             System.out.println(error.toString());
-                        }else{
-                            this.jugadorActual.continentesJugador(this.continentes);
-                            System.out.println(this.jugadorActual);
-                            Salida x = new Salida();
-                            x.imprimirArchivo(this.jugadorActual.toString());
                         }
-                        
-                        break;
-                    case "rearmar":
-                        if(iniciar==false){
-                            Salida error = new Salida(99);
+                    }
+                    break;
+                case "jugador":
+                    //esto es describir toda la mierda del jugador del turno actual
+                    if(iniciar==false){
+                        Salida error = new Salida(99);
+                        System.out.println(error.toString());
+                    }else{
+                        this.jugadorActual.continentesJugador(this.continentes);
+                        System.out.println(this.jugadorActual);
+                        Salida x = new Salida();
+                        x.imprimirArchivo(this.jugadorActual.toString());
+                    }
+
+                    break;
+                case "rearmar":
+                    if(iniciar==false){
+                        Salida error = new Salida(99);
+                        System.out.println(error.toString());
+                    }else{
+                        if(partes.length!=4){
+                            Salida error = new Salida(101);
                             System.out.println(error.toString());
                         }else{
-                            if(partes.length!=4){
-                                Salida error = new Salida(101);
+                            Pais p1 = this.existePais(this.paises, partes[1]);
+                            Pais p2 = this.existePais(this.paises, partes[3]);
+                            if(p1 == null || p2 == null){
+                                Salida error = new Salida(109);
                                 System.out.println(error.toString());
                             }else{
-                                Pais p1 = this.existePais(this.paises, partes[1]);
-                                Pais p2 = this.existePais(this.paises, partes[3]);
-                                if(p1 == null || p2 == null){
-                                    Salida error = new Salida(109);
+                                Pais p3 = this.existePais(this.jugadorActual.getPaises(), p1.getAbreviatura()); //miramos si el primer pais pertenece al jugador
+                                if(p3 == null){
+                                    Salida error = new Salida(110);
                                     System.out.println(error.toString());
                                 }else{
-                                    Pais p3 = this.existePais(this.jugadorActual.getPaises(), p1.getAbreviatura()); //miramos si el primer pais pertenece al jugador
-                                    if(p3 == null){
+                                    Pais p4 = this.existePais(this.jugadorActual.getPaises(), p2.getAbreviatura()); //miramos si el segundo pais pertenece al jugador
+                                    if(p4 == null){
                                         Salida error = new Salida(110);
                                         System.out.println(error.toString());
                                     }else{
-                                        Pais p4 = this.existePais(this.jugadorActual.getPaises(), p2.getAbreviatura()); //miramos si el segundo pais pertenece al jugador
-                                        if(p4 == null){
-                                            Salida error = new Salida(110);
+                                        //a este punto 1 y 3, 2 y 4 son iguales. 5 sera igual a p2
+                                        Pais p5 = this.existePais(p1.getFronteras(), p2.getAbreviatura());
+                                        if(p5 == null){
+                                            Salida error = new Salida(112);
                                             System.out.println(error.toString());
                                         }else{
-                                            //a este punto 1 y 3, 2 y 4 son iguales. 5 sera igual a p2
-                                            Pais p5 = this.existePais(p1.getFronteras(), p2.getAbreviatura());
-                                            if(p5 == null){
-                                                Salida error = new Salida(112);
+                                            //en este punto, existen, pertenecen al jugador y son frontera
+                                            if(p1.getEjercitos() <= 1){ //no se podran transferir tropas si el primer pais tiene el minimo
+                                                Salida error = new Salida(124);
                                                 System.out.println(error.toString());
                                             }else{
-                                                //en este punto, existen, pertenecen al jugador y son frontera
-                                                if(p1.getEjercitos() <= 1){ //no se podran transferir tropas si el primer pais tiene el minimo
-                                                    Salida error = new Salida(124);
-                                                    System.out.println(error.toString());
-                                                }else{
-                                                    rearme(p1,p2,partes[2]);
-                                                    rearmo = 1; 
-                                                }
+                                                rearme(p1,p2,partes[2]);
+                                                rearmo = 1; 
                                             }
                                         }
                                     }
                                 }
                             }
                         }
-                        break;
-                    case "describir":
-                        if(iniciar==false){
+                    }
+                    break;
+                case "describir":
+                    if(iniciar==false){
+                        Salida error = new Salida(99);
+                        System.out.println(error.toString());
+                    }else{
+                        if(partes[1].equals("jugador")){
+                            //descripcion del jugador
+                            String exito;
+                            Jugador jugador = existeJugador(this.jugadores, partes[2]);
+                            if(jugador == null){
+                                Salida error = new Salida(103);
+                                System.out.println(error.toString());
+                            }else{
+                                jugador.continentesJugador(this.continentes);
+                                if(jugador.getNombre().equals(this.jugadorActual.getNombre())){
+                                    exito = jugador.descJugador(1);
+                                }else{
+                                    exito = jugador.descJugador(0);
+                                }
+                                consola.imprimir(exito);
+                                Salida salida = new Salida();
+                                salida.imprimirArchivo(exito);
+                            }
+                        }else if(partes[1].equals("pais")){
+                            //descripcion del pais
+                            Pais pais = existePais(this.paises, partes[2]);
+                            if(pais == null){
+                                Salida error = new Salida(109);
+                                System.out.println(error.toString());
+                            }else{
+                                consola.imprimir(pais.descPais());
+                                Salida salida = new Salida();
+                                salida.imprimirArchivo(pais.descPais());
+                            }
+
+                        }else if(partes[1].equals("continente")){
+                            describirContinente(partes[2]);
+                        }else{
+                            Salida error = new Salida(101);
+                            System.out.println(error.toString());
+                        }
+                    }
+                    break;
+                case "acabar":
+                    this.jugadorActual = this.t.pasarTurno(this.jugadorActual);
+                    this.conquisto = 0;
+                    rearmo = 0;
+                    int minimo;
+                    this.jugadorActual.continentesJugador(this.continentes);
+                    //aqui asignamos cuantas tropas recibe
+                    if(iniciar == true){
+                        minimo = this.ejercitosTurno(this.jugadorActual);
+                        this.jugadorActual.addEjercitos_disponibles(minimo);
+                    }else{
+                       minimo = this.ejercitosTurno(this.jugadorActual); 
+                    }
+                    //this.jugadorActual.setEjercitos_disponibles(10);
+                    this.jugadorActual.setEjerRearme(minimo);
+                    consola.imprimir(this.jugadorActual.printNomEjerR());
+                    Salida sal = new Salida();
+                    sal.imprimirArchivo(this.jugadorActual.printNomEjerR());
+                    break;
+                case "cambiar":
+                    if(iniciar==false || rearmo == 1){
+                        Salida error = new Salida(99);
+                        System.out.println(error.toString());
+                    }else if(partes.length == 3){
+                        //cambiar cartas todas
+                        //ALBERTO MARICA
+                    }else{
+                        //aqui se haria la mierda de cartas de cambias todas o cambiar alguna por tropas
+                        //se hace aqui al jugador actual que es quien marca los turnos
+                        if(jugadorActual.getCartas().size() < 3){
                             Salida error = new Salida(99);
                             System.out.println(error.toString());
                         }else{
-                            if(partes[1].equals("jugador")){
-                                //descripcion del jugador
-                                String exito;
-                                Jugador jugador = existeJugador(this.jugadores, partes[2]);
-                                if(jugador == null){
-                                    Salida error = new Salida(103);
-                                    System.out.println(error.toString());
-                                }else{
-                                    jugador.continentesJugador(this.continentes);
-                                    if(jugador.getNombre().equals(this.jugadorActual.getNombre())){
-                                        exito = jugador.descJugador(1);
-                                    }else{
-                                        exito = jugador.descJugador(0);
-                                    }
-                                    System.out.println(exito);
-                                    Salida salida = new Salida();
-                                    salida.imprimirArchivo(exito);
-                                }
-                            }else if(partes[1].equals("pais")){
-                                //descripcion del pais
-                                Pais pais = existePais(this.paises, partes[2]);
-                                if(pais == null){
-                                    Salida error = new Salida(109);
-                                    System.out.println(error.toString());
-                                }else{
-                                    System.out.println(pais.descPais());
-                                    Salida salida = new Salida();
-                                    salida.imprimirArchivo(pais.descPais());
-                                }
-
-                            }else if(partes[1].equals("continente")){
-                                describirContinente(partes[2]);
-                            }else{
+                            if(partes.length != 5){
                                 Salida error = new Salida(101);
                                 System.out.println(error.toString());
-                            }
-                        }
-                        break;
-                    case "acabar":
-                        this.jugadorActual = this.t.pasarTurno(this.jugadorActual);
-                        this.conquisto = 0;
-                        rearmo = 0;
-                        int minimo;
-                        this.jugadorActual.continentesJugador(this.continentes);
-                        //aqui asignamos cuantas tropas recibe
-                        if(iniciar == true){
-                            minimo = this.ejercitosTurno(this.jugadorActual);
-                            this.jugadorActual.addEjercitos_disponibles(minimo);
-                        }else{
-                           minimo = this.ejercitosTurno(this.jugadorActual); 
-                        }
-                        //this.jugadorActual.setEjercitos_disponibles(10);
-                        this.jugadorActual.setEjerRearme(minimo);
-                        System.out.println(this.jugadorActual.printNomEjerR());
-                        Salida sal = new Salida();
-                        sal.imprimirArchivo(this.jugadorActual.printNomEjerR());
-                        break;
-                    case "cambiar":
-                        if(iniciar==false || rearmo == 1){
-                            Salida error = new Salida(99);
-                            System.out.println(error.toString());
-                        }else if(partes.length == 3){
-                            //cambiar cartas todas
-                            //ALBERTO MARICA
-                        }else{
-                            //aqui se haria la mierda de cartas de cambias todas o cambiar alguna por tropas
-                            //se hace aqui al jugador actual que es quien marca los turnos
-                            if(jugadorActual.getCartas().size() < 3){
-                                Salida error = new Salida(99);
-                                System.out.println(error.toString());
                             }else{
-                                if(partes.length != 5){
-                                    Salida error = new Salida(101);
+                                //creacion de las cartas
+                                String[] cartaCruda1=partes[2].split("&");
+                                String[] cartaCruda2=partes[3].split("&");
+                                String[] cartaCruda3=partes[4].split("&");
+
+                                if((!"Caballería".equals(cartaCruda1[0]) && !"Infantería".equals(cartaCruda1[0]) && !"Artillería".equals(cartaCruda1[0])) 
+                                    || (!"Caballería".equals(cartaCruda2[0]) && !"Infantería".equals(cartaCruda2[0]) && !"Artillería".equals(cartaCruda2[0]))
+                                    || (!"Caballería".equals(cartaCruda3[0]) && !"Infantería".equals(cartaCruda3[0]) && !"Artillería".equals(cartaCruda3[0]))){
+                                    Salida error = new Salida(123);
                                     System.out.println(error.toString());
                                 }else{
-                                    //creacion de las cartas
-                                    String[] cartaCruda1=partes[2].split("&");
-                                    String[] cartaCruda2=partes[3].split("&");
-                                    String[] cartaCruda3=partes[4].split("&");
-                                    
-                                    if((!"Caballería".equals(cartaCruda1[0]) && !"Infantería".equals(cartaCruda1[0]) && !"Artillería".equals(cartaCruda1[0])) 
-                                        || (!"Caballería".equals(cartaCruda2[0]) && !"Infantería".equals(cartaCruda2[0]) && !"Artillería".equals(cartaCruda2[0]))
-                                        || (!"Caballería".equals(cartaCruda3[0]) && !"Infantería".equals(cartaCruda3[0]) && !"Artillería".equals(cartaCruda3[0]))){
+                                    Pais p1 = this.existePais(this.paises, cartaCruda1[1]);
+                                    Pais p2 = this.existePais(this.paises, cartaCruda2[1]);
+                                    Pais p3 = this.existePais(this.paises, cartaCruda3[1]);
+                                    if(p1==null || p2==null || p3==null){
                                         Salida error = new Salida(123);
                                         System.out.println(error.toString());
                                     }else{
-                                        Pais p1 = this.existePais(this.paises, cartaCruda1[1]);
-                                        Pais p2 = this.existePais(this.paises, cartaCruda2[1]);
-                                        Pais p3 = this.existePais(this.paises, cartaCruda3[1]);
-                                        if(p1==null || p2==null || p3==null){
-                                            Salida error = new Salida(123);
+                                        Cartas carta1 = this.estaAsignada(this.jugadorActual.getCartas(), cartaCruda1[1], cartaCruda1[0]);
+                                        Cartas carta2 = this.estaAsignada(this.jugadorActual.getCartas(), cartaCruda2[1], cartaCruda2[0]);
+                                        Cartas carta3 = this.estaAsignada(this.jugadorActual.getCartas(), cartaCruda3[1], cartaCruda3[0]);
+                                        //revisar aqui
+                                        if(carta1 == null || carta2 == null || carta3 == null){
+                                            Salida error = new Salida(122);
                                             System.out.println(error.toString());
                                         }else{
-                                            Cartas carta1 = this.estaAsignada(this.jugadorActual.getCartas(), cartaCruda1[1], cartaCruda1[0]);
-                                            Cartas carta2 = this.estaAsignada(this.jugadorActual.getCartas(), cartaCruda2[1], cartaCruda2[0]);
-                                            Cartas carta3 = this.estaAsignada(this.jugadorActual.getCartas(), cartaCruda3[1], cartaCruda3[0]);
-                                            //revisar aqui
-                                            if(carta1 == null || carta2 == null || carta3 == null){
-                                                Salida error = new Salida(122);
-                                                System.out.println(error.toString());
-                                            }else{
-                                                this.checkCombi(carta1, carta2, carta3);
-                                            }
+                                            this.checkCombi(carta1, carta2, carta3);
                                         }
                                     }
                                 }
                             }
                         }
-                        break;
-                    case "asignar":
-                        if(partes.length > 4) {
-                            Salida error = new Salida(101);
-                            System.out.println(error.toString());
-                        }else if(partes[1].equals("misiones")){
-                            if(checker >= 2){
-                                if(this.algunaPais(this.paises) == true){ //si la siguiente instruccion ya ha sido ejecutada, no podra volver a ejecutar asignar
-                                    Salida error = new Salida(99);
-                                    System.out.println(error.toString());
-                                }else{
-                                    if(partes[1].equals("misiones")){
-                                        asignarMisiones(new File(partes[2]));
-                                        if(checker < 3){
-                                            if(this.misionesAsignadas(this.jugadores) == true){
-                                                checker = 3;
-                                                //se cumple que todos los jugadores tienen mision
-                                            }
-                                        }
-                                    }
-                                }
-                            }else{
-                                Salida error = new Salida(105);
-                                System.out.println(error.toString());
-                            }
-                            //primero tenemos que asignar misiones antes de paises
-                        }else if(partes[1].equals("paises")){
-                            if(checker >= 3){
-                                if(checker > 4){
-                                    Salida error = new Salida(99);
-                                    System.out.println(error.toString());
-                                }
-                                else{
-                                    asignarPaises(new File(partes[2]));
-                                  
-                                    for(Jugador j: this.jugadores){
-                                        j.continentesJugador(this.continentes);
-                                    }
-                                    if(checker < 4){
-                                        if(this.paisesAsignados(this.paises) == true){
-                                            checker = 4;
-                                        }
-                                    }
-                                }
-                            }else{
-                                Salida error = new Salida(118);
-                                System.out.println(error.toString());
-                            }
-                        }else if(partes[1].equals("carta")){
-                            //se le asigna a jugador actual una carta
-                            if(iniciar==false){
+                    }
+                    break;
+                case "asignar":
+                    if(partes.length > 4) {
+                        Salida error = new Salida(101);
+                        System.out.println(error.toString());
+                    }else if(partes[1].equals("misiones")){
+                        if(checker >= 2){
+                            if(this.algunaPais(this.paises) == true){ //si la siguiente instruccion ya ha sido ejecutada, no podra volver a ejecutar asignar
                                 Salida error = new Salida(99);
                                 System.out.println(error.toString());
                             }else{
-                                String[] partes2 = partes[2].split("&"); 
-                                if(partes2[0].equals("Infantería") || partes2[0].equals("Artillería") || partes2[0].equals("Caballería")){
-                                    String pais = partes2[1];
-                                    String clase = partes2[0];
-                                    Pais p = this.existePais(this.paises, pais);
-                                    if(p == null){
-                                        Salida error = new Salida(109);
-                                        System.out.println(error.toString());
-                                    }else{//continuamos
-                                        if(this.conquisto==1){
-                                            //comprobar si esta asignada
-                                            Cartas c = this.estaAsignada(this.cartas, pais, clase);
-                                            if(c == null){
-                                                c = new Cartas(pais, this.jugadorActual, clase);
-                                                this.jugadorActual.setCartas(c);
-                                                this.cartas.add(c);
-                                                
-                                                System.out.println(c);
-                                                Salida salida = new Salida();
-                                                salida.imprimirArchivo(c.toString());
-                                                
-                                            }else{
-                                                Salida error = new Salida(126);
-                                                System.out.println(error.toString()); 
-                                            }
-                                        }else{
-                                            Salida error = new Salida(127);
-                                            System.out.println(error.toString());
-                                        }
-                                    }
-                                    
-                                }else{
-                                    Salida error = new Salida(125);
-                                    System.out.println(error.toString());
-                                }
-                                
-                            }
-                        }else if(partes[1].equals("mision")){
-                            //Estas operaciones por ahora no cambian el checker ya que no asignan cosas a todos los jugadores
-                            if(checker >= 2){
-                                if(checker > 3){
-                                    Salida error = new Salida(99);
-                                    System.out.println(error.toString());
-                                }else{
-                                    asignarMisiones(partes[2], partes[3]);
+                                if(partes[1].equals("misiones")){
+                                    asignarMisiones(new File(partes[2]));
                                     if(checker < 3){
                                         if(this.misionesAsignadas(this.jugadores) == true){
                                             checker = 3;
@@ -403,185 +317,270 @@ public class Menu {
                                         }
                                     }
                                 }
-                            }else{
-                                Salida error = new Salida(105);
+                            }
+                        }else{
+                            Salida error = new Salida(105);
+                            System.out.println(error.toString());
+                        }
+                        //primero tenemos que asignar misiones antes de paises
+                    }else if(partes[1].equals("paises")){
+                        if(checker >= 3){
+                            if(checker > 4){
+                                Salida error = new Salida(99);
                                 System.out.println(error.toString());
                             }
-                        }else if(partes[1].equals("pais")){
-                            
-                            if(checker >= 3){
-                                asignarPaises(partes[2], partes[3]);
+                            else{
+                                asignarPaises(new File(partes[2]));
+
+                                for(Jugador j: this.jugadores){
+                                    j.continentesJugador(this.continentes);
+                                }
                                 if(checker < 4){
                                     if(this.paisesAsignados(this.paises) == true){
                                         checker = 4;
                                     }
                                 }
-                            }else{
-                                Salida error = new Salida(118);
-                                System.out.println(error.toString());
-                            } 
-                            
-                        }
-                        break;
-                    case "atacar":
-                        //el jugador actual atacara a un pais que no sea de su dominio, y que tenga alguna frontera en comun
-                        //dos comandos, el automatico, y el forzado
-                        if(iniciar==false || rearmo == 1 || this.jugadorActual.getEjercitos_disponibles() != 0){ //solo se puede atacar entre repartir ejercitos y rearmar
-                            Salida error = new Salida(99);
+                            }
+                        }else{
+                            Salida error = new Salida(118);
                             System.out.println(error.toString());
                         }
-                        else{
-                            if(partes.length>5){
-                                Salida error = new Salida(101);
-                                System.out.println(error.toString());
-                            }else if(partes.length == 3){
-                                Pais p1 = this.existePais(this.paises, partes[1]);
-                                Pais p2 = this.existePais(this.paises, partes[2]);
-                                if(p1 == null || p2 == null){
+                    }else if(partes[1].equals("carta")){
+                        //se le asigna a jugador actual una carta
+                        if(iniciar==false){
+                            Salida error = new Salida(99);
+                            System.out.println(error.toString());
+                        }else{
+                            String[] partes2 = partes[2].split("&"); 
+                            if(partes2[0].equals("Infantería") || partes2[0].equals("Artillería") || partes2[0].equals("Caballería")){
+                                String pais = partes2[1];
+                                String clase = partes2[0];
+                                Pais p = this.existePais(this.paises, pais);
+                                if(p == null){
                                     Salida error = new Salida(109);
                                     System.out.println(error.toString());
+                                }else{//continuamos
+                                    if(this.conquisto==1){
+                                        //comprobar si esta asignada
+                                        Cartas c = this.estaAsignada(this.cartas, pais, clase);
+                                        if(c == null){
+                                            c = new Cartas(pais, this.jugadorActual, clase);
+                                            this.jugadorActual.setCartas(c);
+                                            this.cartas.add(c);
+
+                                            System.out.println(c);
+                                            Salida salida = new Salida();
+                                            salida.imprimirArchivo(c.toString());
+
+                                        }else{
+                                            Salida error = new Salida(126);
+                                            System.out.println(error.toString()); 
+                                        }
+                                    }else{
+                                        Salida error = new Salida(127);
+                                        System.out.println(error.toString());
+                                    }
+                                }
+
+                            }else{
+                                Salida error = new Salida(125);
+                                System.out.println(error.toString());
+                            }
+
+                        }
+                    }else if(partes[1].equals("mision")){
+                        //Estas operaciones por ahora no cambian el checker ya que no asignan cosas a todos los jugadores
+                        if(checker >= 2){
+                            if(checker > 3){
+                                Salida error = new Salida(99);
+                                System.out.println(error.toString());
+                            }else{
+                                asignarMisiones(partes[2], partes[3]);
+                                if(checker < 3){
+                                    if(this.misionesAsignadas(this.jugadores) == true){
+                                        checker = 3;
+                                        //se cumple que todos los jugadores tienen mision
+                                    }
+                                }
+                            }
+                        }else{
+                            Salida error = new Salida(105);
+                            System.out.println(error.toString());
+                        }
+                    }else if(partes[1].equals("pais")){
+
+                        if(checker >= 3){
+                            asignarPaises(partes[2], partes[3]);
+                            if(checker < 4){
+                                if(this.paisesAsignados(this.paises) == true){
+                                    checker = 4;
+                                }
+                            }
+                        }else{
+                            Salida error = new Salida(118);
+                            System.out.println(error.toString());
+                        } 
+
+                    }
+                    break;
+                case "atacar":
+                    //el jugador actual atacara a un pais que no sea de su dominio, y que tenga alguna frontera en comun
+                    //dos comandos, el automatico, y el forzado
+                    if(iniciar==false || rearmo == 1 || this.jugadorActual.getEjercitos_disponibles() != 0){ //solo se puede atacar entre repartir ejercitos y rearmar
+                        Salida error = new Salida(99);
+                        System.out.println(error.toString());
+                    }
+                    else{
+                        if(partes.length>5){
+                            Salida error = new Salida(101);
+                            System.out.println(error.toString());
+                        }else if(partes.length == 3){
+                            Pais p1 = this.existePais(this.paises, partes[1]);
+                            Pais p2 = this.existePais(this.paises, partes[2]);
+                            if(p1 == null || p2 == null){
+                                Salida error = new Salida(109);
+                                System.out.println(error.toString());
+                            }else{
+                                Pais p3 = this.existePais(this.jugadorActual.getPaises(), p1.getAbreviatura()); //miramos si el primer pais pertenece al jugador
+                                if(p3 == null){
+                                    Salida error = new Salida(110);
+                                    System.out.println(error.toString());
                                 }else{
-                                    Pais p3 = this.existePais(this.jugadorActual.getPaises(), p1.getAbreviatura()); //miramos si el primer pais pertenece al jugador
-                                    if(p3 == null){
-                                        Salida error = new Salida(110);
+                                    Pais p4 = this.existePais(this.jugadorActual.getPaises(), p2.getAbreviatura()); //miramos si el segundo pais NO pertenece al jugador
+                                    if(p4 != null){
+                                        Salida error = new Salida(111);
                                         System.out.println(error.toString());
                                     }else{
-                                        Pais p4 = this.existePais(this.jugadorActual.getPaises(), p2.getAbreviatura()); //miramos si el segundo pais NO pertenece al jugador
-                                        if(p4 != null){
-                                            Salida error = new Salida(111);
+                                        //a este punto 1 y 3, 2 y 4 son iguales. 5 sera igual a p2
+                                        Pais p5 = this.existePais(p1.getFronteras(), p2.getAbreviatura());
+                                        if(p5 == null){
+                                            Salida error = new Salida(112);
                                             System.out.println(error.toString());
                                         }else{
-                                            //a este punto 1 y 3, 2 y 4 son iguales. 5 sera igual a p2
-                                            Pais p5 = this.existePais(p1.getFronteras(), p2.getAbreviatura());
-                                            if(p5 == null){
-                                                Salida error = new Salida(112);
+                                            if(p1.getEjercitos() <= 1 || p2.getEjercitos() < 1){
+                                                Salida error = new Salida(124);
                                                 System.out.println(error.toString());
                                             }else{
-                                                if(p1.getEjercitos() <= 1 || p2.getEjercitos() < 1){
-                                                    Salida error = new Salida(124);
-                                                    System.out.println(error.toString());
-                                                }else{
-                                                    this.selectDados(p1, p2);
-                                                }
+                                                this.selectDados(p1, p2);
                                             }
                                         }
                                     }
                                 }
-                            }else if(partes.length == 4){
-                                Salida error = new Salida(101);
+                            }
+                        }else if(partes.length == 4){
+                            Salida error = new Salida(101);
+                            System.out.println(error.toString());
+                        }else{
+                            //la forma de leer el comando es pais dados pais dado
+                            Pais p1 = this.existePais(this.paises, partes[1]);
+                            Pais p2 = this.existePais(this.paises, partes[3]);
+                            if(p1 == null || p2 == null){
+                                Salida error = new Salida(109);
                                 System.out.println(error.toString());
                             }else{
-                                //la forma de leer el comando es pais dados pais dado
-                                Pais p1 = this.existePais(this.paises, partes[1]);
-                                Pais p2 = this.existePais(this.paises, partes[3]);
-                                if(p1 == null || p2 == null){
-                                    Salida error = new Salida(109);
+                                Pais p3 = this.existePais(this.jugadorActual.getPaises(), p1.getAbreviatura()); //miramos si el primer pais pertenece al jugador
+                                if(p3 == null){
+                                    Salida error = new Salida(110);
                                     System.out.println(error.toString());
                                 }else{
-                                    Pais p3 = this.existePais(this.jugadorActual.getPaises(), p1.getAbreviatura()); //miramos si el primer pais pertenece al jugador
-                                    if(p3 == null){
-                                        Salida error = new Salida(110);
+                                    Pais p4 = this.existePais(this.jugadorActual.getPaises(), p2.getAbreviatura()); //miramos si el segundo pais NO pertenece al jugador
+                                    if(p4 != null){
+                                        Salida error = new Salida(111);
                                         System.out.println(error.toString());
                                     }else{
-                                        Pais p4 = this.existePais(this.jugadorActual.getPaises(), p2.getAbreviatura()); //miramos si el segundo pais NO pertenece al jugador
-                                        if(p4 != null){
-                                            Salida error = new Salida(111);
+                                        //a este punto 1 y 3, 2 y 4 son iguales. 5 sera igual a p2
+                                        Pais p5 = this.existePais(p1.getFronteras(), p2.getAbreviatura());
+                                        if(p5 == null){
+                                            Salida error = new Salida(112);
                                             System.out.println(error.toString());
                                         }else{
-                                            //a este punto 1 y 3, 2 y 4 son iguales. 5 sera igual a p2
-                                            Pais p5 = this.existePais(p1.getFronteras(), p2.getAbreviatura());
-                                            if(p5 == null){
-                                                Salida error = new Salida(112);
+                                            if(p1.getEjercitos() <= 1 || p2.getEjercitos() < 1){
+                                                Salida error = new Salida(124);
                                                 System.out.println(error.toString());
                                             }else{
-                                                if(p1.getEjercitos() <= 1 || p2.getEjercitos() < 1){
-                                                    Salida error = new Salida(124);
+                                                String dado1 = partes[2];
+                                                String dado2 = partes[4];
+                                                String[] partesDado1=dado1.split("x");
+                                                String[] partesDado2=dado2.split("x");
+
+                                                Dados dadoAt = new Dados();
+                                                Dados dadoDef = new Dados();
+
+                                                //ahora seteas todo:
+
+                                                //ataque
+                                                if(partesDado1.length > 3){
+                                                    Salida error = new Salida(101); //el comando se ha escrito con demasiados dados
                                                     System.out.println(error.toString());
+                                                    dadoAt = null;
                                                 }else{
-                                                    String dado1 = partes[2];
-                                                    String dado2 = partes[4];
-                                                    String[] partesDado1=dado1.split("x");
-                                                    String[] partesDado2=dado2.split("x");
-
-                                                    Dados dadoAt = new Dados();
-                                                    Dados dadoDef = new Dados();
-
-                                                    //ahora seteas todo:
-                                                    
-                                                    //ataque
-                                                    if(partesDado1.length > 3){
-                                                        Salida error = new Salida(101); //el comando se ha escrito con demasiados dados
-                                                        System.out.println(error.toString());
-                                                        dadoAt = null;
+                                                    if(p1.getEjercitos() > 3){
+                                                        if(partesDado1.length == 3){
+                                                            dadoAt.setX(Integer.parseInt(partesDado1[0]));
+                                                            dadoAt.setY(Integer.parseInt(partesDado1[1]));
+                                                            dadoAt.setZ(Integer.parseInt(partesDado1[2]));
+                                                        }else{ //tiramos 3 dados, si el comando tiene un numero erroneo de dados dara error
+                                                            Salida error = new Salida(101); //el comando esta mal escrito
+                                                            System.out.println(error.toString());
+                                                            dadoAt = null;
+                                                        }
                                                     }else{
-                                                        if(p1.getEjercitos() > 3){
-                                                            if(partesDado1.length == 3){
+                                                        if(partesDado1.length == 3){ //si no se tienen mas de 3 y se tiran 3 dados, error
+                                                            Salida error = new Salida(124);
+                                                            System.out.println(error.toString());
+                                                            dadoAt = null;
+                                                        }else if((p1.getEjercitos() == 3)){ //con 3 tropas se tiran 2 dados
+                                                            if(partesDado1.length == 2){
                                                                 dadoAt.setX(Integer.parseInt(partesDado1[0]));
                                                                 dadoAt.setY(Integer.parseInt(partesDado1[1]));
-                                                                dadoAt.setZ(Integer.parseInt(partesDado1[2]));
-                                                            }else{ //tiramos 3 dados, si el comando tiene un numero erroneo de dados dara error
+                                                            }else{ //tiramos 2 dados, si el comando tiene un numero erroneo de dados dara error
+                                                                Salida error = new Salida(101); //el comando esta mal escrito
+                                                                System.out.println(error.toString());
+                                                                dadoAt = null;
+                                                            }
+                                                        }else if((p1.getEjercitos() == 2)){
+                                                            if(partesDado1.length == 1){
+                                                                dadoAt.setX(Integer.parseInt(partesDado1[0]));
+                                                            }else{ //tiramos 1 dados, si el comando tiene un numero erroneo de dados dara error
                                                                 Salida error = new Salida(101); //el comando esta mal escrito
                                                                 System.out.println(error.toString());
                                                                 dadoAt = null;
                                                             }
                                                         }else{
-                                                            if(partesDado1.length == 3){ //si no se tienen mas de 3 y se tiran 3 dados, error
-                                                                Salida error = new Salida(124);
-                                                                System.out.println(error.toString());
-                                                                dadoAt = null;
-                                                            }else if((p1.getEjercitos() == 3)){ //con 3 tropas se tiran 2 dados
-                                                                if(partesDado1.length == 2){
-                                                                    dadoAt.setX(Integer.parseInt(partesDado1[0]));
-                                                                    dadoAt.setY(Integer.parseInt(partesDado1[1]));
-                                                                }else{ //tiramos 2 dados, si el comando tiene un numero erroneo de dados dara error
-                                                                    Salida error = new Salida(101); //el comando esta mal escrito
-                                                                    System.out.println(error.toString());
-                                                                    dadoAt = null;
-                                                                }
-                                                            }else if((p1.getEjercitos() == 2)){
-                                                                if(partesDado1.length == 1){
-                                                                    dadoAt.setX(Integer.parseInt(partesDado1[0]));
-                                                                }else{ //tiramos 1 dados, si el comando tiene un numero erroneo de dados dara error
-                                                                    Salida error = new Salida(101); //el comando esta mal escrito
-                                                                    System.out.println(error.toString());
-                                                                    dadoAt = null;
-                                                                }
-                                                            }else{
-                                                                Salida error = new Salida(124); //no hay las suficientes tropas para atacar
-                                                                System.out.println(error.toString());
-                                                                dadoAt = null;
-                                                            }
+                                                            Salida error = new Salida(124); //no hay las suficientes tropas para atacar
+                                                            System.out.println(error.toString());
+                                                            dadoAt = null;
                                                         }
                                                     }
+                                                }
 
-                                                    //defensa
-                                                    if(partesDado2.length >= 3){
-                                                            Salida error = new Salida(101); //comando mal escrito
-                                                            System.out.println(error.toString());
-                                                    }else if(p2.getEjercitos() >= 2 && dadoAt != null){ //con 2 o mas trpas se lanzan 2 dadps
-                                                        if(partesDado2.length == 2){
-                                                            dadoDef.setX(Integer.parseInt(partesDado2[0]));
-                                                            dadoDef.setY(Integer.parseInt(partesDado2[1]));
-                                                            dadoAt.ordenarDados();
-                                                            dadoDef.ordenarDados();
-                                                            this.atacar(p1, dadoAt, p2, dadoDef);
-                                                        }else if(partesDado2.length > 2){ //si se ponen mas de 2 valores no hay ejerctios disponibles
-                                                            Salida error = new Salida(124); //no ejercitos
-                                                            System.out.println(error.toString());
-                                                        }else{
-                                                            Salida error = new Salida(101); //comando incorrecto
-                                                            System.out.println(error.toString());
-                                                        }
-                                                    }else if(p2.getEjercitos() == 1 && dadoAt != null){
-                                                        if(partesDado2.length > 1){
-                                                            Salida error = new Salida(124);
-                                                            System.out.println(error.toString());
-                                                        }else{
-                                                            dadoDef.setX(Integer.parseInt(partes[4]));
-                                                            dadoAt.ordenarDados();
-                                                            dadoDef.ordenarDados();
-                                                            this.atacar(p1, dadoAt, p2, dadoDef);
-                                                        }
+                                                //defensa
+                                                if(partesDado2.length >= 3){
+                                                        Salida error = new Salida(101); //comando mal escrito
+                                                        System.out.println(error.toString());
+                                                }else if(p2.getEjercitos() >= 2 && dadoAt != null){ //con 2 o mas trpas se lanzan 2 dadps
+                                                    if(partesDado2.length == 2){
+                                                        dadoDef.setX(Integer.parseInt(partesDado2[0]));
+                                                        dadoDef.setY(Integer.parseInt(partesDado2[1]));
+                                                        dadoAt.ordenarDados();
+                                                        dadoDef.ordenarDados();
+                                                        this.atacar(p1, dadoAt, p2, dadoDef);
+                                                    }else if(partesDado2.length > 2){ //si se ponen mas de 2 valores no hay ejerctios disponibles
+                                                        Salida error = new Salida(124); //no ejercitos
+                                                        System.out.println(error.toString());
+                                                    }else{
+                                                        Salida error = new Salida(101); //comando incorrecto
+                                                        System.out.println(error.toString());
+                                                    }
+                                                }else if(p2.getEjercitos() == 1 && dadoAt != null){
+                                                    if(partesDado2.length > 1){
+                                                        Salida error = new Salida(124);
+                                                        System.out.println(error.toString());
+                                                    }else{
+                                                        dadoDef.setX(Integer.parseInt(partes[4]));
+                                                        dadoAt.ordenarDados();
+                                                        dadoDef.ordenarDados();
+                                                        this.atacar(p1, dadoAt, p2, dadoDef);
                                                     }
                                                 }
                                             }
@@ -590,77 +589,75 @@ public class Menu {
                                 }
                             }
                         }
-                        break;
-                    case "obtener": // Comandos sobre el mapa
-                        if(checker >= 1){
-                            if(partes.length!=3) {
-                                Salida error = new Salida(101);
+                    }
+                    break;
+                case "obtener": // Comandos sobre el mapa
+                    if(checker >= 1){
+                        if(partes.length!=3) {
+                            Salida error = new Salida(101);
+                            System.out.println(error.toString());
+
+                        }else if(partes[1].equals("frontera")){
+                            obtenerFronteras(partes[2]);  
+
+                        }else if(partes[1].equals("continente")){
+                            obtenerContinente(partes[2]);
+
+                        }else if(partes[1].equals("color")){
+                            obtenerColor(partes[2]);
+
+                        }else if(partes[1].equals("paises")){
+                            obtenerPaises(partes[2]);
+                        }
+                    }else{
+                        Salida error = new Salida(106);
+                        System.out.println(error.toString());
+                    }
+                    break;
+                case "repartir":
+
+                    //en cuanto repartamos ejercitos, debe crearse un nuevo jugador actual, ese sera el que tiene el turno en ese momentoy el que ejecutara los comandos 
+                    if(partes.length == 2){
+                        //comando que reparte todos y no puede ser ejecutado 2 veces
+                        if(this.paisesAsignados(this.paises) == true){ //los comandos anteriores han sido ejecutados con exito se reparten
+                            if(iniciar == true){ //los ejercitos ya han sido totalmente repartidos no puede volver a suceder
+                                Salida error = new Salida(99);
                                 System.out.println(error.toString());
-                            
-                            }else if(partes[1].equals("frontera")){
-                                obtenerFronteras(partes[2]);  
-
-                            }else if(partes[1].equals("continente")){
-                                obtenerContinente(partes[2]);
-
-                            }else if(partes[1].equals("color")){
-                                obtenerColor(partes[2]);
-
-                            }else if(partes[1].equals("paises")){
-                                obtenerPaises(partes[2]);
+                            }else{
+                                //this.repartirEjercitosInicio(); // 1 ejercito en cada pais
+                                //auto, esta es la importante parra empezar la partida, deben estar repartidos entre los paises pa empezar todo
+                                this.repartirEjercitos();
+                                this.jugadorActual.continentesJugador(this.continentes);
+                                this.ejercitosTurno(jugadorActual);
+                                checker = 5;
+                                iniciar = this.partidaIniciada();
+                                //partida iniciada con exito
                             }
                         }else{
-                            Salida error = new Salida(106);
+                            Salida error = new Salida(99);
                             System.out.println(error.toString());
                         }
-                        break;
-                    case "repartir":
-                        
-                        //en cuanto repartamos ejercitos, debe crearse un nuevo jugador actual, ese sera el que tiene el turno en ese momentoy el que ejecutara los comandos 
-                        if(partes.length == 2){
-                            //comando que reparte todos y no puede ser ejecutado 2 veces
-                            if(this.paisesAsignados(this.paises) == true){ //los comandos anteriores han sido ejecutados con exito se reparten
-                                if(iniciar == true){ //los ejercitos ya han sido totalmente repartidos no puede volver a suceder
-                                    Salida error = new Salida(99);
-                                    System.out.println(error.toString());
-                                }else{
-                                    //this.repartirEjercitosInicio(); // 1 ejercito en cada pais
-                                    //auto, esta es la importante parra empezar la partida, deben estar repartidos entre los paises pa empezar todo
-                                    this.repartirEjercitos();
-                                    this.jugadorActual.continentesJugador(this.continentes);
-                                    this.ejercitosTurno(jugadorActual);
-                                    checker = 5;
-                                    iniciar = this.partidaIniciada();
-                                    //partida iniciada con exito
-                                }
-                            }else{
-                                Salida error = new Salida(99);
-                                System.out.println(error.toString());
+                    }else{
+                        if(this.paisesAsignados(this.paises) == true){
+                            repartirEjercitos(partes[2], partes[3]);
+                            if(iniciar == false){
+                                iniciar = this.partidaIniciada();
                             }
+                            //this.ejercitosTurno(jugadorActual);
+                            //a partir de aqui es cuando comienzan los turnos, pero, este comando se seguira utilizando no se que hacer
                         }else{
-                            if(this.paisesAsignados(this.paises) == true){
-                                repartirEjercitos(partes[2], partes[3]);
-                                if(iniciar == false){
-                                    iniciar = this.partidaIniciada();
-                                }
-                                //this.ejercitosTurno(jugadorActual);
-                                //a partir de aqui es cuando comienzan los turnos, pero, este comando se seguira utilizando no se que hacer
-                            }else{
-                                Salida error = new Salida(99);
-                                System.out.println(error.toString());
-                            }
+                            Salida error = new Salida(99);
+                            System.out.println(error.toString());
                         }
-                        break;
-                    default:
-                        Salida error = new Salida(101);
-                        System.out.println(error.toString());
-                }
+                    }
+                    break;
+                default:
+                    Salida error = new Salida(101);
+                    System.out.println(error.toString());
             }
-            Salida s = new Salida();
-            s.imprimirArchivo("\nEOF");
-        } catch(Exception excepcion) {
-            excepcion.printStackTrace();
         }
+        /*Salida s = new Salida();
+        s.imprimirArchivo("\nEOF");*/
     }
     public boolean partidaIniciada(){
         if(this.mapa == null){
@@ -975,7 +972,8 @@ public class Menu {
                 + att.getJugador().printNombre() + ",\npaisDefensaPerteneceA: " +
                 def.getJugador().printNombre() + ",\ncontinenteConquistado: " + 
                 cont + "\n}";
-        System.out.println(exito);
+        //System.out.println(exito);
+        consola.imprimir(exito);
         Salida s = new Salida();
         s.imprimirArchivo(exito);
         
