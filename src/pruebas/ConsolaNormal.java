@@ -19,8 +19,9 @@ public class ConsolaNormal implements Consola{
     @Override
     public String leer(){
         String orden="";
+        System.out.println();
         Scanner scanIn = new Scanner(System.in);
-        orden = scanIn.nextLine();            
+        orden = scanIn.nextLine();     
         return orden;
     }
 }

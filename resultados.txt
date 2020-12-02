@@ -1,2 +1,290 @@
 
 $> crear mapa
+
+$> crear jugadores jugadores.csv
+{
+nombre: "Gondorff",
+color: "VERDE"
+}
+{
+nombre: "Hooker",
+color: "AZUL"
+}
+{
+nombre: "Lonnegan",
+color: "ROJO"
+}
+
+$> asignar mision Hooker M42
+{
+nombre: "Hooker"
+mision: "Destruir el ejército AZUL"
+}
+
+$> asignar mision Gondorff M1
+{
+nombre: "Gondorff"
+mision: "Conquistar 24 países de la preferencia del jugador"
+}
+
+$> asignar mision Lonnegan M2
+{
+nombre: "Lonnegan"
+mision: "Conquistar 18 países de la preferencia del jugador con un mínimo de dos ejércitos"
+}
+
+$> asignar paises paises.csv
+{
+nombre: "Gondorff",
+pais: "Alaska",
+continente: "América del Norte",
+frontera: [ "Alberta", "Territorios del Noroeste", "Kamchatka" ]
+}
+{
+nombre: "Gondorff",
+pais: "Territorios del Noroeste",
+continente: "América del Norte",
+frontera: [ "Alaska", "Ontario", "Groenlandia" ]
+}
+{
+nombre: "Gondorff",
+pais: "Groenlandia",
+continente: "América del Norte",
+frontera: [ "Islandia", "Territorios del Noroeste", "Quebec" ]
+}
+{
+nombre: "Gondorff",
+pais: "Islandia",
+continente: "Europa",
+frontera: [ "Escandinavia", "Groenlandia" ]
+}
+{
+nombre: "Gondorff",
+pais: "Escandinavia",
+continente: "Europa",
+frontera: [ "Islandia", "Gran Bretaña", "Siberia" ]
+}
+{
+nombre: "Gondorff",
+pais: "Siberia",
+continente: "Asia",
+frontera: [ "Escandinavia", "Europa del Norte", "Yakustsk" ]
+}
+{
+nombre: "Gondorff",
+pais: "Yakustsk",
+continente: "Asia",
+frontera: [ "Rusia", "Siberia", "Kamchatka" ]
+}
+{
+nombre: "Gondorff",
+pais: "Kamchatka",
+continente: "Asia",
+frontera: [ "Alaska", "Yakustsk", "Irkutsk" ]
+}
+{
+nombre: "Gondorff",
+pais: "Alberta",
+continente: "América del Norte",
+frontera: [ "Alaska", "Estados Unidos del Oeste", "Ontario" ]
+}
+{
+nombre: "Gondorff",
+pais: "Ontario",
+continente: "América del Norte",
+frontera: [ "Alberta", "Territorios del Noroeste", "Estados Unidos del Este", "Quebec" ]
+}
+{
+nombre: "Gondorff",
+pais: "Quebec",
+continente: "América del Norte",
+frontera: [ "Ontario", "Groenlandia" ]
+}
+{
+nombre: "Gondorff",
+pais: "Gran Bretaña",
+continente: "Europa",
+frontera: [ "Escandinavia", "Europa Occidental", "Europa del Norte" ]
+}
+{
+nombre: "Gondorff",
+pais: "Europa del Norte",
+continente: "Europa",
+frontera: [ "Gran Bretaña", "Europa del Sur", "Rusia", "Siberia" ]
+}
+{
+nombre: "Gondorff",
+pais: "Rusia",
+continente: "Europa",
+frontera: [ "Europa del Norte", "Yakustsk", "Urales", "Irkutsk" ]
+}
+{
+nombre: "Hooker",
+pais: "Irkutsk",
+continente: "Asia",
+frontera: [ "Rusia", "Kamchatka", "Mongolia" ]
+}
+{
+nombre: "Hooker",
+pais: "Estados Unidos del Oeste",
+continente: "América del Norte",
+frontera: [ "Alberta", "Estados Unidos del Este" ]
+}
+{
+nombre: "Hooker",
+pais: "Estados Unidos del Este",
+continente: "América del Norte",
+frontera: [ "Estados Unidos del Oeste", "Ontario", "América Central" ]
+}
+{
+nombre: "Hooker",
+pais: "Europa Occidental",
+continente: "Europa",
+frontera: [ "África del Norte", "Gran Bretaña", "Europa del Sur" ]
+}
+{
+nombre: "Hooker",
+pais: "Europa del Sur",
+continente: "Europa",
+frontera: [ "Egipto", "Europa Occidental", "Europa del Norte", "Urales" ]
+}
+{
+nombre: "Hooker",
+pais: "Urales",
+continente: "Asia",
+frontera: [ "Europa del Sur", "Rusia", "Afganistán", "Mongolia" ]
+}
+{
+nombre: "Hooker",
+pais: "Mongolia",
+continente: "Asia",
+frontera: [ "Urales", "Irkutsk", "China", "Japón" ]
+}
+{
+nombre: "Hooker",
+pais: "Japón",
+continente: "Asia",
+frontera: [ "Mongolia" ]
+}
+{
+nombre: "Hooker",
+pais: "América Central",
+continente: "América del Norte",
+frontera: [ "Estados Unidos del Este", "Venezuela" ]
+}
+{
+nombre: "Hooker",
+pais: "Afganistán",
+continente: "Asia",
+frontera: [ "Urales", "Oriente Medio", "China" ]
+}
+{
+nombre: "Hooker",
+pais: "China",
+continente: "Asia",
+frontera: [ "Afganistán", "Mongolia", "India" ]
+}
+{
+nombre: "Hooker",
+pais: "Venezuela",
+continente: "América del Sur",
+frontera: [ "América Central", "Perú" ]
+}
+{
+nombre: "Hooker",
+pais: "África del Norte",
+continente: "África",
+frontera: [ "Congo", "Egipto", "Europa Occidental", "Brasil" ]
+}
+{
+nombre: "Hooker",
+pais: "Egipto",
+continente: "África",
+frontera: [ "África del Norte", "África Oriental", "Europa del Sur", "Oriente Medio" ]
+}
+{
+nombre: "Lonnegan",
+pais: "Oriente Medio",
+continente: "Asia",
+frontera: [ "Egipto", "Afganistán", "India" ]
+}
+{
+nombre: "Lonnegan",
+pais: "India",
+continente: "Asia",
+frontera: [ "Oriente Medio", "China", "Sureste Asiático" ]
+}
+{
+nombre: "Lonnegan",
+pais: "Sureste Asiático",
+continente: "Asia",
+frontera: [ "Indonesia", "India" ]
+}
+{
+nombre: "Lonnegan",
+pais: "Perú",
+continente: "América del Sur",
+frontera: [ "Venezuela", "Argentina", "Brasil" ]
+}
+{
+nombre: "Lonnegan",
+pais: "Brasil",
+continente: "América del Sur",
+frontera: [ "África del Norte", "Perú" ]
+}
+{
+nombre: "Lonnegan",
+pais: "Congo",
+continente: "África",
+frontera: [ "África del Norte", "África Oriental" ]
+}
+{
+nombre: "Lonnegan",
+pais: "África Oriental",
+continente: "África",
+frontera: [ "Congo", "Egipto", "Sudáfrica" ]
+}
+{
+nombre: "Lonnegan",
+pais: "Argentina",
+continente: "América del Sur",
+frontera: [ "Perú" ]
+}
+{
+nombre: "Lonnegan",
+pais: "Sudáfrica",
+continente: "África",
+frontera: [ "África Oriental", "Madagascar" ]
+}
+{
+nombre: "Lonnegan",
+pais: "Madagascar",
+continente: "África",
+frontera: [ "Sudáfrica" ]
+}
+{
+nombre: "Lonnegan",
+pais: "Indonesia",
+continente: "Oceanía",
+frontera: [ "Australia Occidental", "Nueva Guinea", "Sureste Asiático" ]
+}
+{
+nombre: "Lonnegan",
+pais: "Nueva Guinea",
+continente: "Oceanía",
+frontera: [ "Indonesia", "Australia Oriental" ]
+}
+{
+nombre: "Lonnegan",
+pais: "Australia Occidental",
+continente: "Oceanía",
+frontera: [ "Indonesia", "Australia Oriental" ]
+}
+{
+nombre: "Lonnegan",
+pais: "Australia Oriental",
+continente: "Oceanía",
+frontera: [ "Australia Occidental", "Nueva Guinea" ]
+}
+
+$> asignar ejercitos 15 Siberia

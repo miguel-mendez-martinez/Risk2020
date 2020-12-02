@@ -155,14 +155,17 @@ public class Dados {
             return 1;
         }
     }
-    public String printfDado(int numDados){
+    @Override
+    public String toString(){
         String texto = "";
-        if(numDados == 1){
+        if(x > 0){
             texto += this.x;
-        }else if(numDados == 2){
+        }else if(x>0 && y>0){
             texto += this.x + ", " + this.y;
-        }else{
+        }else if(x>0 && y>0 && z>0){
             texto += this.x + ", " + this.y + ", " + this.z;
+        }else{
+            texto += "";
         }
         return texto;
     }
