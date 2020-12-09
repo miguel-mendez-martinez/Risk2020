@@ -38,7 +38,6 @@ public class Mapa {
         crearOceania();
         crearAsia();
         setFronterasP();
-        printMapa();
         //getFronterasP(); // prueba
         //aacabamos de borrar todo, aqui po
     }
@@ -464,82 +463,85 @@ public class Mapa {
      System.out.println("Frontera" + i+1 + ": " + p.getFronteras().get(i).getNombre());  
      }
      }
-     }*/
-    //@Override
-    public void printMapa() { //si haces to string hay que hacer return de un string, ya veremos como hacerlo
+     }*/  
+    @Override
+    public String toString() { //si haces to string hay que hacer return de un string, ya veremos como hacerlo
         int oceano;
+        String res="";
         for (int j = 0; j < 8; j++) {
             if (j == 5) { //impresion linea vertical que une brasil y anorte
-                System.out.print("\n|-----------|-----------|-----------|-----------\033[0;31m|\033[0m-----------|-----------|-----------|-----------|-----------|-----------|-----------|\n");
+                res += ("\n|-----------|-----------|-----------|-----------\033[0;31m|\033[0m-----------|-----------|-----------|-----------|-----------|-----------|-----------|\n");
             } else {
-                System.out.print("\n|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|\n");
+                res += ("\n|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|\n");
             }
             for (int i = 0; i < 11; i++) {
                 /*cada vez que vayamos a comprobar una casilla ponemos oceano a 0. Si esta cambia a 1 significa que 
                  en esa posicion hay pais, si se mantiene a 0 es que hay un oceano porque nada ha sido impreso*/
                 oceano = 0;
-                System.out.print("|"); //columnas
+                res += "|"; //columnas
                 //ponemos esto, por si el color no ha sido parado en allguno de los ifs, pare ahora antes de imprimir nada mas
-                System.out.print("\033[0m");
+                res += "\033[0m";
                 for (Casilla cBucle : casillas) {
                     if ((cBucle.getX() == i) && (cBucle.getY() == j)) {
-                        System.out.print(cBucle.getPais().getContinente().printColor());
+                        res += cBucle.getPais().getContinente().printColor();
                         //System.out.print("\033[0m" );  
-                        System.out.printf(String.format("%1$-11s", cBucle.getPais().getAbreviatura()));
-                        System.out.print("\033[0m");
+                        res += String.format("%1$-11s", cBucle.getPais().getAbreviatura());
+                        res += "\033[0m";
                         oceano = 1;
                     }
                 }
                 if ((i == 3 || i == 9 || i == 10) && j == 0) {
-                    System.out.print("\033[0;31m-----------\033[0m");
+                    res += "\033[0;31m-----------\033[0m";
                 } else if ((i == 3 && j == 5)) {
-                    System.out.print("\033[0;31m-----------");
+                    res += "\033[0;31m-----------";
                 }/*los dos siguientes ifs, componen las lineas rojas que unen brasil y anorte, ya que hay que hacer que la 
                  linea vertical de la anterior de anorte sea roja y la siguiente a brasil igual*/ else if (i == 3 && j == 4) {
-                    System.out.print("           \033[0;31m");
+                    res += "           \033[0;31m";
                 } else if (i == 4 && j == 4) {
-                    System.out.print("\033[0;31m-----------\033[0m");
+                    res += "\033[0;31m-----------\033[0m";
                 } else if (((i == 5 || i == 6) && j == 3) || (i == 9 && j == 5)) {
-                    System.out.print("     \033[0;31m|\033[0m     ");
+                    res += "     \033[0;31m|\033[0m     ";
                 } else if (oceano == 0) {
-                    System.out.print("           ");
+                    res += "           ";
                 }
             }
-            System.out.println();
+            res += "\n";
             for (int i = 0; i < 11; i++) {
                 /*cada vez que vayamos a comprobar una casilla ponemos oceano a 0. Si esta cambia a 1 significa que 
                  en esa posicion hay pais, si se mantiene a 0 es que hay un oceano porque nada ha sido impreso*/
                 oceano = 0;
-                System.out.print("|"); //columnas
+                res += "|"; //columnas
                 //ponemos esto, por si el color no ha sido parado en allguno de los ifs, pare ahora antes de imprimir nada mas
-                System.out.print("\033[0m");
+                res += "\033[0m";
                 for (Casilla cBucle : casillas) {
                     if ((cBucle.getX() == i) && (cBucle.getY() == j)) {
                         if (cBucle.getPais().getJugador() == null) {
-                            System.out.printf(String.format("%1$-11s", cBucle.getPais().getEjercitos()));
+                            res += String.format("%1$-11s", cBucle.getPais().getEjercitos());
                         } else {
-                            System.out.print(cBucle.getPais().getJugador().printColor());
-                            System.out.printf(String.format("%1$-11s", cBucle.getPais().getEjercitos()));
+                            res += cBucle.getPais().getJugador().printColor();
+                            res += String.format("%1$-11s", cBucle.getPais().getEjercitos());
                         }
                         //System.out.print(cBucle.getPais().getContinente().printColor());
                         //System.out.print("\033[0m" );  
 
-                        System.out.print("\033[0m");
+                        res += "\033[0m";
                         oceano = 1;
                     }
                 }
                 if (i == 3 && j == 4) {
-                    System.out.print("           \033[0;31m");
+                    res += "           \033[0;31m";
                 } else if (((i == 5 || i == 6) && j == 3) || (i == 9 && j == 5)) {
-                    System.out.print("     \033[0;31m|\033[0m     ");
+                    res += "     \033[0;31m|\033[0m     ";
                 } else if (oceano == 0) {
-                    System.out.print("           ");
+                    res += "           ";
                 }
             }
-            System.out.print("|");
+            res += "|";
         }
 
-        System.out.println("\n|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|\n");
+        res += "\n|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|\n\n";
+        
+        return res;
 
     }
 }

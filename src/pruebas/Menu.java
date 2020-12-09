@@ -56,7 +56,7 @@ public class Menu {
         file.delete();
         String orden= null;
         //BufferedReader bufferLector= null;
-        while(true){
+        do{
             try{
                 orden = consola.leer();// Mientras las líneas no estén en blanco:
                 String comandoArchivo = "\n$> " + orden;
@@ -121,7 +121,7 @@ public class Menu {
                     case "ver":
                         if(partes[1].equals("mapa")){
                             if(this.mapa!=null){
-                                this.mapa.printMapa();
+                                consola.imprimir(this.mapa.toString());
                             }else{
                                 Salida error = new Salida(99);
                                 System.out.println(error.toString());
@@ -686,12 +686,10 @@ public class Menu {
                 String mensaje = "Error->" + errorM.getMessage();
                 consola.imprimir(mensaje);
             }
-        }
+        }while(orden.equals("finalizar") == false);
     }
-    /*catch(){}
-    catch(){}
-    catch(){}
-    catch(){}*/
+    
+    
     public boolean partidaIniciada(){
         if(this.mapa == null){
             return false;
@@ -1123,11 +1121,14 @@ public class Menu {
                 nombreJugador = partes[0];
                 codigoMision = partes[1];
                 //preguntar al wachon como hacer para que no colapse
-                asignarMisiones(nombreJugador, codigoMision);
-
+                try{
+                    asignarMisiones(nombreJugador, codigoMision);
+                }catch(ExcepcionMision errorM){
+                    String mensaje = "Error->" + errorM.getMessage();
+                    consola.imprimir(mensaje);
+                }
             }
-        }
-        catch (Exception excepcion){
+        }catch (IOException excepcion){
             excepcion.printStackTrace();
         }
 
@@ -1257,6 +1258,7 @@ public class Menu {
             throw geo;
         }else{
             this.mapa = new Mapa();
+            consola.imprimir(this.mapa.toString());
             this.paises = this.mapa.getPaises();
             this.continentes = this.mapa.getContinentes();
             this.t = new Turno(this.paises);
@@ -1360,8 +1362,17 @@ public class Menu {
                         color= partes[1];
                         crearJugador(nombre, color);
                     }
-
-                }catch(Exception excepcion) {
+                                
+                }catch(ExcepcionGeo errorG){
+                    String mensaje = "Error->" + errorG.getMessage();
+                    consola.imprimir(mensaje);
+                }catch(ExcepcionComando errorC){
+                    String mensaje = "Error->" + errorC.getMessage();
+                    consola.imprimir(mensaje);
+                }catch(ExcepcionJugador errorJ){
+                    String mensaje = "Error->" + errorJ.getMessage();
+                    consola.imprimir(mensaje);
+                }catch(IOException excepcion) {
                     excepcion.printStackTrace();
                 }
             }
@@ -1933,6 +1944,6 @@ public class Menu {
             }
         }
     }
-        mapa.printMapa();
+        consola.imprimir(mapa.toString());
     }   
 }
