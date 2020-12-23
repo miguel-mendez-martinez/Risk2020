@@ -1360,18 +1360,19 @@ public class Menu {
                         String[] partes = jugadorleido.split(";");
                         nombre= partes[0];
                         color= partes[1];
+                        try{
                         crearJugador(nombre, color);
-                    }
-                                
-                }catch(ExcepcionGeo errorG){
-                    String mensaje = "Error->" + errorG.getMessage();
-                    consola.imprimir(mensaje);
-                }catch(ExcepcionComando errorC){
-                    String mensaje = "Error->" + errorC.getMessage();
-                    consola.imprimir(mensaje);
-                }catch(ExcepcionJugador errorJ){
-                    String mensaje = "Error->" + errorJ.getMessage();
-                    consola.imprimir(mensaje);
+                        }catch(ExcepcionGeo errorG){
+                            String mensaje = "Error->" + errorG.getMessage();
+                            consola.imprimir(mensaje);
+                        }catch(ExcepcionComando errorC){
+                            String mensaje = "Error->" + errorC.getMessage();
+                            consola.imprimir(mensaje);
+                        }catch(ExcepcionJugador errorJ){
+                            String mensaje = "Error->" + errorJ.getMessage();
+                            consola.imprimir(mensaje);
+                        }
+                    }                
                 }catch(IOException excepcion) {
                     excepcion.printStackTrace();
                 }
